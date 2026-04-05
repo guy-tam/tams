@@ -1,3 +1,5 @@
+"use client";
+
 // דף הבית - חזון החברה ומבוא
 import HeroSection from "@/components/sections/HeroSection";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";

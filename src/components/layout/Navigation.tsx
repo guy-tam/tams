@@ -33,7 +33,7 @@ const navItems = [
 // אנימציה לפריטי הניווט
 const linkVariants = {
   idle: { x: 0 },
-  hover: { x: 4, transition: { type: "spring", stiffness: 400, damping: 20 } },
+  hover: { x: 4, transition: { type: "spring" as const, stiffness: 400, damping: 20 } },
 };
 
 // אנימציית כניסה לתפריט מובייל
@@ -44,7 +44,7 @@ const overlayVariants = {
 
 const sidebarMobileVariants = {
   closed: { x: "-100%" },
-  open: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
+  open: { x: 0, transition: { type: "spring" as const, stiffness: 300, damping: 30 } },
 };
 
 export default function Navigation() {
