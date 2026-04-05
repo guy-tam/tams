@@ -9,7 +9,9 @@
       "Bash(mdfind \"kMDItemFSName == 'node'\")",
       "Read(//Users/open/node/bin/**)",
       "Read(//Users/open/node/**)",
-      "Bash(export PATH=\"/Users/open/node/bin:$PATH\")"
+      "Bash(export PATH=\"/Users/open/node/bin:$PATH\")",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest init -d)"
     ]
   }
 }
