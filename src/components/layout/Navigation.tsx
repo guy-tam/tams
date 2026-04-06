@@ -16,6 +16,7 @@ import {
   Users,
   Menu,
   X,
+  LogIn,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -132,6 +133,16 @@ export default function Navigation() {
       {/* קישורי ניווט */}
       <div className="flex-1 overflow-y-auto">
         <NavLinks />
+      </div>
+
+      {/* כפתור כניסה לפורטל משקיעים */}
+      <div className="mx-3 mb-3">
+        <Link href="/login">
+          <div className="flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-medium bg-gradient-to-r from-emerald-500/15 to-cyan-500/15 border border-emerald-500/20 text-emerald-400 hover:from-emerald-500/25 hover:to-cyan-500/25 hover:text-emerald-300 transition-all">
+            <LogIn className="size-4" />
+            <span>Investor Portal</span>
+          </div>
+        </Link>
       </div>
 
       {/* מחליף שפות */}
