@@ -17,6 +17,7 @@ import {
   X,
   LogOut,
   Bell,
+  ArrowLeft,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import { useAuth } from "@/lib/auth";
@@ -199,9 +200,15 @@ function DashboardShell({ children }: { children: ReactNode }) {
         <NavLinks />
       </div>
 
-      {/* תחתית הסיידבר - כפתור יציאה */}
+      {/* חזרה לאתר הראשי + התנתקות */}
       <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent" />
-      <div className="px-3 py-4">
+      <div className="px-3 py-3 space-y-1">
+        <Link href="/">
+          <div className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:text-cyan-400 hover:bg-cyan-400/10 transition-colors">
+            <ArrowLeft className="h-4 w-4" />
+            <span>חזרה לאתר הראשי</span>
+          </div>
+        </Link>
         <button
           onClick={logout}
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors"
