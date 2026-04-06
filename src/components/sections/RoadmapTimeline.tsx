@@ -1,9 +1,21 @@
 "use client";
 
-// ציר זמן מפת דרכים - תצוגת שלבי פיתוח עם אנימציות
+// ציר זמן מפת דרכים - תצוגת שלבי פיתוח עם אנימציות ותמיכה רב-לשונית
 import { motion } from "framer-motion";
 import { Check, Circle, Clock } from "lucide-react";
-import { phases } from "@/data/roadmap";
+import { useLanguage } from "@/lib/i18n";
+import type { Language } from "@/lib/i18n";
+import { getLocalizedPhases } from "@/data/roadmap";
+import { useMemo } from "react";
+
+// תוויות סטטוס מתורגמות
+const statusLabels: Record<Language, { completed: string; current: string; upcoming: string }> = {
+  en: { completed: "Completed", current: "In Progress", upcoming: "Upcoming" },
+  he: { completed: "הושלם", current: "בתהליך", upcoming: "בקרוב" },
+  ar: { completed: "مكتمل", current: "قيد التنفيذ", upcoming: "قادم" },
+  ru: { completed: "Завершено", current: "В процессе", upcoming: "Предстоит" },
+  es: { completed: "Completado", current: "En progreso", upcoming: "Próximo" },
+};
 
 // צבעים ואייקונים לפי סטטוס
 const statusConfig = {
@@ -11,23 +23,24 @@ const statusConfig = {
     color: "#10b981",
     bgColor: "#10b98120",
     icon: Check,
-    label: "Completed",
   },
   current: {
     color: "#3b82f6",
     bgColor: "#3b82f620",
     icon: Circle,
-    label: "In Progress",
   },
   upcoming: {
     color: "#6b7280",
     bgColor: "#6b728015",
     icon: Clock,
-    label: "Upcoming",
   },
 };
 
 export default function RoadmapTimeline() {
+  const { language } = useLanguage();
+  const localizedPhases = useMemo(() => getLocalizedPhases(language), [language]);
+  const labels = statusLabels[language];
+
   return (
     <div className="relative max-w-3xl mx-auto">
       {/* קו ציר הזמן */}
@@ -35,9 +48,10 @@ export default function RoadmapTimeline() {
 
       {/* שלבים */}
       <div className="space-y-8">
-        {phases.map((phase, i) => {
+        {localizedPhases.map((phase, i) => {
           const config = statusConfig[phase.status];
           const StatusIcon = config.icon;
+          const statusLabel = labels[phase.status];
 
           return (
             <motion.div
@@ -76,7 +90,7 @@ export default function RoadmapTimeline() {
                       className="text-xs font-medium"
                       style={{ color: config.color }}
                     >
-                      {phase.quarter} &middot; {config.label}
+                      {phase.quarter} &middot; {statusLabel}
                     </span>
                   </div>
                 </div>

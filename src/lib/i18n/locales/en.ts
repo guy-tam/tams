@@ -488,6 +488,56 @@ const en: TranslationStrings = {
       note: "No capital is deployed. No returns are guaranteed or implied. This is a conceptual exploration of blockchain investment management.",
     },
   },
+  homeVision: {
+    badge: "Our Vision",
+    title: "Placing Investors at the Forefront of the Blockchain Revolution",
+    subtitle: "TAMS is not just another crypto fund — it is a bridge between the institutional world and the decentralized future. We believe that every sophisticated investor deserves access to blockchain's transformative potential through a structured, transparent, and research-backed framework.",
+    blockchainFuture: {
+      title: "Building the Financial Infrastructure of Tomorrow",
+      description: "The blockchain revolution is not coming — it is here. From tokenized real-world assets to decentralized lending, from institutional ETFs to cross-chain interoperability, the infrastructure for a new financial paradigm is being built in real time. TAMS positions its investors at the intersection of this transformation.",
+    },
+    investorFirst: {
+      title: "Investor-First Philosophy",
+      description: "Every decision at TAMS starts with one question: how does this benefit our investors? Our multi-wallet architecture, risk segregation, and institutional-grade transparency are designed to give investors confidence that their capital is managed with the same rigor as traditional institutional funds — with the upside potential of an emerging asset class.",
+    },
+    globalAccess: {
+      title: "Global Access, Local Trust",
+      description: "Blockchain is borderless, but trust is local. TAMS bridges this gap by combining global DeFi opportunities with institutional transparency, multilingual communication, and regulatory awareness across jurisdictions.",
+    },
+    quote: "We don't just invest in blockchain — we build the infrastructure that makes blockchain investable.",
+  },
+  investorTiers: {
+    badge: "Investor Circle",
+    title: "Exclusive Investor Tiers",
+    subtitle: "Join an exclusive circle of forward-thinking investors positioned at the forefront of the blockchain revolution. Each tier unlocks unique benefits, deeper access, and greater alignment with the TAMS vision.",
+    tiers: {
+      explorer: {
+        name: "Explorer",
+        description: "Entry into the TAMS ecosystem with foundational access to research and community.",
+        minInvestment: "$10,000",
+        benefits: ["Monthly market reports", "Community access", "Quarterly performance updates", "Basic portfolio dashboard"],
+      },
+      builder: {
+        name: "Builder",
+        description: "Enhanced access with deeper research insights and priority in new strategies.",
+        minInvestment: "$50,000",
+        benefits: ["Everything in Explorer", "Weekly research briefings", "Priority strategy access", "Direct analyst communication", "Advanced analytics dashboard"],
+      },
+      architect: {
+        name: "Architect",
+        description: "Premium tier with personalized portfolio insights and strategic advisory.",
+        minInvestment: "$250,000",
+        benefits: ["Everything in Builder", "Personalized portfolio review", "Strategic advisory sessions", "Early access to new divisions", "Co-investment opportunities", "Dedicated account manager"],
+      },
+      visionary: {
+        name: "Visionary",
+        description: "The highest tier — full partnership-level access with governance participation.",
+        minInvestment: "$1,000,000",
+        benefits: ["Everything in Architect", "Governance participation", "Custom strategy development", "Board observer rights", "Revenue sharing structure", "Private quarterly dinners", "Legacy wealth planning"],
+      },
+    },
+    cta: "Apply for Access",
+  },
 };
 
 export default en;

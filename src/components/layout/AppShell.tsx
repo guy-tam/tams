@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/lib/i18n";
 import { useLanguage } from "@/lib/i18n";
 import type { Language, TranslationStrings } from "@/lib/i18n";
 import Navigation from "./Navigation";
+import { ToastProvider } from "@/components/ui/toast";
 
 // ייבוא תרגומים
 import en from "@/lib/i18n/locales/en";
@@ -45,7 +46,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
       <LanguageProvider translations={translations}>
-        <ShellInner>{children}</ShellInner>
+        <ToastProvider>
+          <ShellInner>{children}</ShellInner>
+        </ToastProvider>
       </LanguageProvider>
     </AuthProvider>
   );

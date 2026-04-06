@@ -1,6 +1,7 @@
 "use client";
 
 // גרף הקצאת פורטפוליו - דונאט עם חלוקה לפי ארנקים
+// תמיכה מלאה ב-5 שפות
 import { motion } from "framer-motion";
 import {
   PieChart,
@@ -10,13 +11,68 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import { useLanguage } from "@/lib/i18n";
 
-// נתוני הקצאה
-const allocationData = [
-  { name: "Long-Term Holdings", value: 40, color: "#3b82f6" },
-  { name: "Active Trading", value: 25, color: "#8b5cf6" },
-  { name: "DeFi Yield", value: 25, color: "#06b6d4" },
-  { name: "Operations", value: 10, color: "#10b981" },
+// מפת תרגומים לכל השפות
+const texts = {
+  en: {
+    title: "Conceptual Portfolio Allocation",
+    subtitle: "Target allocation across four wallet divisions",
+    labels: [
+      "Long-Term Holdings",
+      "Active Trading",
+      "DeFi Yield",
+      "Operations",
+    ] as const,
+  },
+  he: {
+    title: "הקצאת פורטפוליו קונספטואלית",
+    subtitle: "הקצאת יעד בארבעה חטיבות ארנק",
+    labels: [
+      "אחזקות לטווח ארוך",
+      "מסחר אקטיבי",
+      "תשואת DeFi",
+      "תפעול",
+    ] as const,
+  },
+  ar: {
+    title: "تخصيص المحفظة المفاهيمي",
+    subtitle: "التخصيص المستهدف عبر أربعة أقسام محفظة",
+    labels: [
+      "حيازات طويلة الأجل",
+      "تداول نشط",
+      "عائد DeFi",
+      "العمليات",
+    ] as const,
+  },
+  ru: {
+    title: "Концептуальное распределение портфеля",
+    subtitle: "Целевое распределение по четырём кошелькам",
+    labels: [
+      "Долгосрочные активы",
+      "Активная торговля",
+      "Доходность DeFi",
+      "Операции",
+    ] as const,
+  },
+  es: {
+    title: "Asignación conceptual del portafolio",
+    subtitle: "Asignación objetivo en cuatro divisiones de billetera",
+    labels: [
+      "Tenencias a largo plazo",
+      "Trading activo",
+      "Rendimiento DeFi",
+      "Operaciones",
+    ] as const,
+  },
+} as const;
+
+// צבעים וערכים בסיסיים (לא תלויים בשפה)
+const allocationBase = [
+  { value: 40, color: "#3b82f6" },
+  { value: 25, color: "#8b5cf6" },
+  { value: 25, color: "#06b6d4" },
+  { value: 10, color: "#10b981" },
 ];
 
 // טולטיפ מותאם
@@ -25,7 +81,7 @@ function CustomTooltip({
   payload,
 }: {
   active?: boolean;
-  payload?: Array<{ payload: (typeof allocationData)[0] }>;
+  payload?: Array<{ payload: { name: string; value: number; color: string } }>;
 }) {
   if (!active || !payload?.length) return null;
   const data = payload[0].payload;
@@ -70,6 +126,15 @@ function CustomLegend({
 }
 
 export default function AllocationChart() {
+  const { language } = useLanguage();
+  const loc = texts[language] || texts.en;
+
+  // בניית נתוני הגרף עם תוויות מתורגמות
+  const allocationData = allocationBase.map((item, i) => ({
+    ...item,
+    name: loc.labels[i],
+  }));
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -79,10 +144,10 @@ export default function AllocationChart() {
       className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
     >
       <h3 className="text-base font-semibold text-foreground mb-2 text-center">
-        Conceptual Portfolio Allocation
+        {loc.title}
       </h3>
       <p className="text-xs text-muted-foreground text-center mb-4">
-        Target allocation across four wallet divisions
+        {loc.subtitle}
       </p>
 
       <div className="h-72">

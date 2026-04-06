@@ -1,17 +1,18 @@
 "use client";
 
-// דף משקיע - מפת דרכים, גילוי סיכונים, וסיכום
+// דף משקיע - מפת דרכים, גילוי סיכונים, דרגות משקיעים וסיכום
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import RoadmapTimeline from "@/components/sections/RoadmapTimeline";
 import RiskDisclosureAccordion from "@/components/sections/RiskDisclosureAccordion";
+import InvestorTiers from "@/components/sections/InvestorTiers";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import { useLanguage } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { Briefcase, Lock, BarChart3, Clock } from "lucide-react";
 
 const highlightIcons = [Briefcase, BarChart3, Lock, Clock];
-const highlightColors = ["#3b82f6", "#8b5cf6", "#06b6d4", "#10b981"];
+const highlightColors = ["#4f8ff7", "#a78bfa", "#22d3ee", "#34d399"];
 const highlightKeys = ["structured", "research", "risk", "horizon"] as const;
 
 export default function InvestorPage() {
@@ -54,6 +55,8 @@ export default function InvestorPage() {
         <SectionHeader badge={t("investor.riskDisclosure.badge")} title={t("investor.riskDisclosure.title")} subtitle={t("investor.riskDisclosure.subtitle")} />
         <RiskDisclosureAccordion />
       </section>
+
+      <InvestorTiers />
 
       <section className="py-12 max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-white/[0.06] bg-gradient-to-br from-tams-blue/[0.05] to-tams-cyan/[0.05] backdrop-blur-md p-8 text-center">

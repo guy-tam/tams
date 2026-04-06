@@ -1,6 +1,6 @@
 "use client";
 
-// דשבורד ראשי - סקירת תיק השקעות בסגנון Bloomberg מודרני
+// דשבורד ראשי - סקירת תיק השקעות בסגנון Bloomberg מודרני עם תמיכה ב-5 שפות
 import { motion } from "framer-motion";
 import {
   AreaChart,
@@ -34,6 +34,151 @@ import {
   recentActivity,
   performanceHistory,
 } from "@/data/dashboard-mock";
+import { useLanguage } from "@/lib/i18n";
+
+// מפת תרגומים לכל הטקסטים בעמוד
+const texts = {
+  en: {
+    pageTitle: "Portfolio Overview",
+    pageSubtitle: "Updated data — concept only",
+    totalValue: "Total Portfolio Value",
+    monthlyReturn: "Monthly Return",
+    allTimeReturn: "All-Time Return",
+    weeklyReturn: "Weekly Return",
+    perfChartTitle: "Portfolio Performance — 12 Months",
+    perfChartSubtitle: "Portfolio value over time (₪)",
+    allocationTitle: "Allocation by Wallet",
+    allocationSubtitle: "Portfolio distribution across wallets",
+    topHoldings: "Top Holdings",
+    colTicker: "Ticker",
+    colName: "Name",
+    colValue: "Value",
+    colAllocation: "Allocation",
+    colPnl: "P&L",
+    recentActivity: "Recent Activity",
+    statusCompleted: "Completed",
+    statusPending: "Pending",
+    activityBuy: "Buy",
+    activitySell: "Sell",
+    activityStake: "Stake",
+    activityUnstake: "Unstake",
+    activityYield: "Yield",
+    activityDeposit: "Deposit",
+    activityWithdrawal: "Withdrawal",
+  },
+  he: {
+    pageTitle: "סקירת תיק השקעות",
+    pageSubtitle: "נתונים מעודכנים — קונספט בלבד",
+    totalValue: "שווי תיק כולל",
+    monthlyReturn: "תשואה חודשית",
+    allTimeReturn: "תשואה כוללת",
+    weeklyReturn: "תשואה שבועית",
+    perfChartTitle: "ביצועי תיק — 12 חודשים",
+    perfChartSubtitle: "שווי תיק לאורך זמן (₪)",
+    allocationTitle: "הקצאה לפי ארנק",
+    allocationSubtitle: "חלוקת תיק בין ארנקים",
+    topHoldings: "אחזקות מובילות",
+    colTicker: "טיקר",
+    colName: "שם",
+    colValue: "שווי",
+    colAllocation: "הקצאה",
+    colPnl: "רווח/הפסד",
+    recentActivity: "פעילות אחרונה",
+    statusCompleted: "הושלם",
+    statusPending: "ממתין",
+    activityBuy: "קנייה",
+    activitySell: "מכירה",
+    activityStake: "נעילה",
+    activityUnstake: "שחרור נעילה",
+    activityYield: "תשואה",
+    activityDeposit: "הפקדה",
+    activityWithdrawal: "משיכה",
+  },
+  ar: {
+    pageTitle: "نظرة عامة على المحفظة",
+    pageSubtitle: "بيانات محدّثة — مفهوم فقط",
+    totalValue: "القيمة الإجمالية للمحفظة",
+    monthlyReturn: "العائد الشهري",
+    allTimeReturn: "العائد الإجمالي",
+    weeklyReturn: "العائد الأسبوعي",
+    perfChartTitle: "أداء المحفظة — 12 شهراً",
+    perfChartSubtitle: "قيمة المحفظة عبر الزمن (₪)",
+    allocationTitle: "التوزيع حسب المحفظة",
+    allocationSubtitle: "توزيع المحفظة بين المحافظ",
+    topHoldings: "أكبر الحيازات",
+    colTicker: "الرمز",
+    colName: "الاسم",
+    colValue: "القيمة",
+    colAllocation: "التوزيع",
+    colPnl: "الربح/الخسارة",
+    recentActivity: "النشاط الأخير",
+    statusCompleted: "مكتمل",
+    statusPending: "قيد الانتظار",
+    activityBuy: "شراء",
+    activitySell: "بيع",
+    activityStake: "تخزين",
+    activityUnstake: "إلغاء التخزين",
+    activityYield: "عائد",
+    activityDeposit: "إيداع",
+    activityWithdrawal: "سحب",
+  },
+  ru: {
+    pageTitle: "Обзор портфеля",
+    pageSubtitle: "Актуальные данные — только концепция",
+    totalValue: "Общая стоимость портфеля",
+    monthlyReturn: "Месячная доходность",
+    allTimeReturn: "Совокупная доходность",
+    weeklyReturn: "Недельная доходность",
+    perfChartTitle: "Динамика портфеля — 12 месяцев",
+    perfChartSubtitle: "Стоимость портфеля за период (₪)",
+    allocationTitle: "Распределение по кошелькам",
+    allocationSubtitle: "Доли портфеля между кошельками",
+    topHoldings: "Крупнейшие позиции",
+    colTicker: "Тикер",
+    colName: "Название",
+    colValue: "Стоимость",
+    colAllocation: "Доля",
+    colPnl: "Прибыль/убыток",
+    recentActivity: "Последняя активность",
+    statusCompleted: "Выполнено",
+    statusPending: "В ожидании",
+    activityBuy: "Покупка",
+    activitySell: "Продажа",
+    activityStake: "Стейкинг",
+    activityUnstake: "Снятие стейкинга",
+    activityYield: "Доходность",
+    activityDeposit: "Пополнение",
+    activityWithdrawal: "Вывод",
+  },
+  es: {
+    pageTitle: "Resumen del portafolio",
+    pageSubtitle: "Datos actualizados — solo concepto",
+    totalValue: "Valor total del portafolio",
+    monthlyReturn: "Rendimiento mensual",
+    allTimeReturn: "Rendimiento acumulado",
+    weeklyReturn: "Rendimiento semanal",
+    perfChartTitle: "Rendimiento del portafolio — 12 meses",
+    perfChartSubtitle: "Valor del portafolio en el tiempo (₪)",
+    allocationTitle: "Asignación por billetera",
+    allocationSubtitle: "Distribución del portafolio entre billeteras",
+    topHoldings: "Principales posiciones",
+    colTicker: "Ticker",
+    colName: "Nombre",
+    colValue: "Valor",
+    colAllocation: "Asignación",
+    colPnl: "Ganancia/Pérdida",
+    recentActivity: "Actividad reciente",
+    statusCompleted: "Completado",
+    statusPending: "Pendiente",
+    activityBuy: "Compra",
+    activitySell: "Venta",
+    activityStake: "Staking",
+    activityUnstake: "Retiro de staking",
+    activityYield: "Rendimiento",
+    activityDeposit: "Depósito",
+    activityWithdrawal: "Retiro",
+  },
+} as const;
 
 // אנימציות כניסה מדורגות
 const containerVariants = {
@@ -205,7 +350,24 @@ function getActivityBg(type: string) {
   }
 }
 
+// תרגום שם סוג הפעולה
+function getActivityLabel(type: string, t: (typeof texts)["en"]) {
+  switch (type) {
+    case "buy": return t.activityBuy;
+    case "sell": return t.activitySell;
+    case "stake": return t.activityStake;
+    case "unstake": return t.activityUnstake;
+    case "yield": return t.activityYield;
+    case "deposit": return t.activityDeposit;
+    case "withdrawal": return t.activityWithdrawal;
+    default: return type;
+  }
+}
+
 export default function DashboardPage() {
+  const { language } = useLanguage();
+  const t = texts[language] || texts.en;
+
   const topHoldings = [...holdings]
     .sort((a, b) => b.valueILS - a.valueILS)
     .slice(0, 5);
@@ -220,10 +382,10 @@ export default function DashboardPage() {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-          סקירת תיק השקעות
+          {t.pageTitle}
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          נתונים מעודכנים — קונספט בלבד
+          {t.pageSubtitle}
         </p>
       </motion.div>
 
@@ -235,28 +397,28 @@ export default function DashboardPage() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
       >
         <StatCard
-          label="שווי תיק כולל"
+          label={t.totalValue}
           value={`₪${formatILS(portfolioSummary.totalValue)}`}
           change={portfolioSummary.dailyChange}
           icon={Wallet}
           color="#3b82f6"
         />
         <StatCard
-          label="תשואה חודשית"
+          label={t.monthlyReturn}
           value={`+${portfolioSummary.monthlyChange}%`}
           change={portfolioSummary.monthlyChange}
           icon={TrendingUp}
           color="#10b981"
         />
         <StatCard
-          label="תשואה כוללת"
+          label={t.allTimeReturn}
           value={`+${portfolioSummary.allTimeReturn}%`}
           change={portfolioSummary.allTimeReturn}
           icon={BarChart3}
           color="#8b5cf6"
         />
         <StatCard
-          label="תשואה שבועית"
+          label={t.weeklyReturn}
           value={`+${portfolioSummary.weeklyChange}%`}
           change={portfolioSummary.weeklyChange}
           icon={Percent}
@@ -274,10 +436,10 @@ export default function DashboardPage() {
           className="lg:col-span-2 rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
         >
           <h3 className="text-base font-semibold text-foreground mb-1">
-            ביצועי תיק — 12 חודשים
+            {t.perfChartTitle}
           </h3>
           <p className="text-xs text-muted-foreground mb-4">
-            שווי תיק לאורך זמן (₪)
+            {t.perfChartSubtitle}
           </p>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -322,10 +484,10 @@ export default function DashboardPage() {
           className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
         >
           <h3 className="text-base font-semibold text-foreground mb-1">
-            הקצאה לפי ארנק
+            {t.allocationTitle}
           </h3>
           <p className="text-xs text-muted-foreground mb-4">
-            חלוקת תיק בין ארנקים
+            {t.allocationSubtitle}
           </p>
           <div className="h-52">
             <ResponsiveContainer width="100%" height="100%">
@@ -385,16 +547,16 @@ export default function DashboardPage() {
           className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
         >
           <h3 className="text-base font-semibold text-foreground mb-4">
-            אחזקות מובילות
+            {t.topHoldings}
           </h3>
           <div className="space-y-3">
             {/* כותרות */}
             <div className="grid grid-cols-5 text-xs text-muted-foreground pb-2 border-b border-white/[0.06]">
-              <span>טיקר</span>
-              <span>שם</span>
-              <span className="text-left">שווי</span>
-              <span className="text-left">הקצאה</span>
-              <span className="text-left">רווח/הפסד</span>
+              <span>{t.colTicker}</span>
+              <span>{t.colName}</span>
+              <span className="text-left">{t.colValue}</span>
+              <span className="text-left">{t.colAllocation}</span>
+              <span className="text-left">{t.colPnl}</span>
             </div>
             {topHoldings.map((h) => (
               <div
@@ -434,7 +596,7 @@ export default function DashboardPage() {
           className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
         >
           <h3 className="text-base font-semibold text-foreground mb-4">
-            פעילות אחרונה
+            {t.recentActivity}
           </h3>
           <div className="space-y-3">
             {latestActivity.map((a) => (
@@ -460,7 +622,7 @@ export default function DashboardPage() {
                 <div className="text-left">
                   <div className="text-xs text-muted-foreground">{a.date}</div>
                   <div className={`text-[10px] font-medium ${a.status === "completed" ? "text-emerald-400" : "text-amber-400"}`}>
-                    {a.status === "completed" ? "הושלם" : "ממתין"}
+                    {a.status === "completed" ? t.statusCompleted : t.statusPending}
                   </div>
                 </div>
               </div>

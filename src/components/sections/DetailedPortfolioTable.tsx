@@ -1,9 +1,10 @@
 "use client";
 
-// טבלת פורטפוליו מפורטת - הקצאת נכסים בשקלים
+// טבלת פורטפוליו מפורטת - הקצאת נכסים עם תמיכה רב-לשונית
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, Shield, Coins, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 // סה"כ השקעה
 const TOTAL = 10_000_000;
@@ -25,19 +26,17 @@ interface Asset {
   amount: number;
 }
 
-// מבנה קטגוריה
-interface Category {
-  name: string;
+// מבנה קטגוריה בסיסי
+interface CategoryBase {
   percent: number;
   amount: number;
   color: string;
   assets: Asset[];
 }
 
-// נכסים דיגיטליים - קטגוריות
-const digitalCategories: Category[] = [
+// קטגוריות בסיסיות - ללא טקסט
+const categoriesBase: CategoryBase[] = [
   {
-    name: "תשלומים ותעבורה",
     percent: 27,
     amount: 1_836_000,
     color: categoryColors[0],
@@ -48,7 +47,6 @@ const digitalCategories: Category[] = [
     ],
   },
   {
-    name: "חוזים חכמים / מוסדות",
     percent: 36,
     amount: 2_448_000,
     color: categoryColors[1],
@@ -62,7 +60,6 @@ const digitalCategories: Category[] = [
     ],
   },
   {
-    name: "תשתיות חיבור ונתונים",
     percent: 14,
     amount: 952_000,
     color: categoryColors[2],
@@ -73,7 +70,6 @@ const digitalCategories: Category[] = [
     ],
   },
   {
-    name: "סקיילינג",
     percent: 7,
     amount: 476_000,
     color: categoryColors[3],
@@ -83,7 +79,6 @@ const digitalCategories: Category[] = [
     ],
   },
   {
-    name: "דאטה ואחסון",
     percent: 7,
     amount: 476_000,
     color: categoryColors[4],
@@ -93,7 +88,6 @@ const digitalCategories: Category[] = [
     ],
   },
   {
-    name: "DeFi",
     percent: 14,
     amount: 952_000,
     color: categoryColors[5],
@@ -103,7 +97,6 @@ const digitalCategories: Category[] = [
     ],
   },
   {
-    name: "פרטיות / זהות",
     percent: 5,
     amount: 340_000,
     color: categoryColors[6],
@@ -114,7 +107,106 @@ const digitalCategories: Category[] = [
   },
 ];
 
-// פורמט מספרים בעברית
+// מפת תרגומים
+const texts = {
+  en: {
+    badge: "Portfolio Allocation",
+    total: "Total:",
+    safeAssets: "Safe Assets",
+    digitalAssets: "Digital Assets",
+    safeAssetsSection: "Safe Assets — 32%",
+    digitalAssetsSection: "Digital Assets — 68%",
+    goldSilverCopper: "Gold / Silver / Copper",
+    note: "In the digital world, assets continue to work and generate income — Staking, lending, issuance. This is a \"working asset\" and not a static asset.",
+    categories: [
+      "Payments & Transfer",
+      "Smart Contracts / Institutions",
+      "Connection Infrastructure & Data",
+      "Scaling",
+      "Data & Storage",
+      "DeFi",
+      "Privacy / Identity",
+    ],
+  },
+  he: {
+    badge: "הקצאת פורטפוליו",
+    total: 'סה"כ:',
+    safeAssets: "נכסים בטוחים",
+    digitalAssets: "נכסים דיגיטליים",
+    safeAssetsSection: "נכסים בטוחים — 32%",
+    digitalAssetsSection: "נכסים דיגיטליים — 68%",
+    goldSilverCopper: "זהב / כסף / נחושת",
+    note: 'בעולם הדיגיטלי הנכסים ממשיכים לעבוד ולהניב הכנסה — Staking, הלוואות, הנפקה. זהו "נכס עובד" ולא נכס סטטי.',
+    categories: [
+      "תשלומים ותעבורה",
+      "חוזים חכמים / מוסדות",
+      "תשתיות חיבור ונתונים",
+      "סקיילינג",
+      "דאטה ואחסון",
+      "DeFi",
+      "פרטיות / זהות",
+    ],
+  },
+  ar: {
+    badge: "توزيع المحفظة",
+    total: "الإجمالي:",
+    safeAssets: "أصول آمنة",
+    digitalAssets: "أصول رقمية",
+    safeAssetsSection: "أصول آمنة — 32%",
+    digitalAssetsSection: "أصول رقمية — 68%",
+    goldSilverCopper: "ذهب / فضة / نحاس",
+    note: "في العالم الرقمي تستمر الأصول بالعمل وتوليد الدخل — Staking، إقراض، إصدار. هذا \"أصل عامل\" وليس أصلاً ثابتاً.",
+    categories: [
+      "المدفوعات والتحويلات",
+      "العقود الذكية / المؤسسات",
+      "بنية تحتية للربط والبيانات",
+      "التوسع",
+      "البيانات والتخزين",
+      "DeFi",
+      "الخصوصية / الهوية",
+    ],
+  },
+  ru: {
+    badge: "Распределение портфеля",
+    total: "Итого:",
+    safeAssets: "Безопасные активы",
+    digitalAssets: "Цифровые активы",
+    safeAssetsSection: "Безопасные активы — 32%",
+    digitalAssetsSection: "Цифровые активы — 68%",
+    goldSilverCopper: "Золото / серебро / медь",
+    note: "В цифровом мире активы продолжают работать и приносить доход — Staking, кредитование, эмиссия. Это «работающий актив», а не статичный.",
+    categories: [
+      "Платежи и переводы",
+      "Смарт-контракты / Институты",
+      "Инфраструктура связи и данных",
+      "Масштабирование",
+      "Данные и хранение",
+      "DeFi",
+      "Конфиденциальность / Идентификация",
+    ],
+  },
+  es: {
+    badge: "Asignación de portafolio",
+    total: "Total:",
+    safeAssets: "Activos seguros",
+    digitalAssets: "Activos digitales",
+    safeAssetsSection: "Activos seguros — 32%",
+    digitalAssetsSection: "Activos digitales — 68%",
+    goldSilverCopper: "Oro / Plata / Cobre",
+    note: "En el mundo digital, los activos continúan trabajando y generando ingresos — Staking, préstamos, emisión. Este es un \"activo productivo\" y no un activo estático.",
+    categories: [
+      "Pagos y transferencias",
+      "Contratos inteligentes / Instituciones",
+      "Infraestructura de conexión y datos",
+      "Escalabilidad",
+      "Datos y almacenamiento",
+      "DeFi",
+      "Privacidad / Identidad",
+    ],
+  },
+};
+
+// פורמט מספרים
 function formatILS(amount: number): string {
   return amount.toLocaleString("he-IL") + " ₪";
 }
@@ -141,7 +233,7 @@ const rowVariants = {
 };
 
 // רכיב קטגוריה מתרחבת
-function CategoryRow({ category, index }: { category: Category; index: number }) {
+function CategoryRow({ category, name }: { category: CategoryBase; name: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -181,7 +273,7 @@ function CategoryRow({ category, index }: { category: Category; index: number })
             style={{ background: category.color }}
           />
           <span className="text-sm font-semibold text-foreground">
-            {category.name}
+            {name}
           </span>
         </div>
 
@@ -244,6 +336,9 @@ function CategoryRow({ category, index }: { category: Category; index: number })
 }
 
 export default function DetailedPortfolioTable() {
+  const { language } = useLanguage();
+  const t = texts[language] || texts.en;
+
   return (
     <section className="w-full max-w-3xl mx-auto">
       {/* כותרת */}
@@ -256,10 +351,10 @@ export default function DetailedPortfolioTable() {
       >
         <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5">
           <Coins className="size-4 text-purple-400" />
-          <span className="text-sm text-muted-foreground">הקצאת פורטפוליו</span>
+          <span className="text-sm text-muted-foreground">{t.badge}</span>
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-          סה&quot;כ:{" "}
+          {t.total}{" "}
           <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
             {formatILS(TOTAL)}
           </span>
@@ -280,7 +375,7 @@ export default function DetailedPortfolioTable() {
             <div className="flex items-center gap-2">
               <Shield className="size-4 text-amber-400" />
               <span className="text-sm font-semibold text-foreground">
-                נכסים בטוחים
+                {t.safeAssets}
               </span>
             </div>
             <div className="flex items-center gap-3">
@@ -307,7 +402,7 @@ export default function DetailedPortfolioTable() {
             <div className="flex items-center gap-2">
               <Coins className="size-4 text-blue-400" />
               <span className="text-sm font-semibold text-foreground">
-                נכסים דיגיטליים
+                {t.digitalAssets}
               </span>
             </div>
             <div className="flex items-center gap-3">
@@ -339,14 +434,14 @@ export default function DetailedPortfolioTable() {
       >
         <h3 className="text-base font-bold text-amber-400 mb-3 flex items-center gap-2">
           <Shield className="size-4" />
-          נכסים בטוחים — 32% ({formatILS(3_200_000)})
+          {t.safeAssetsSection} ({formatILS(3_200_000)})
         </h3>
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-4 relative overflow-hidden">
           {/* פס צבעוני */}
           <div className="absolute right-0 top-0 bottom-0 w-1 rounded-r-xl bg-amber-400" />
           <div className="flex items-center justify-between mr-3">
             <span className="text-sm font-semibold text-foreground">
-              זהב / כסף / נחושת
+              {t.goldSilverCopper}
             </span>
             <span className="text-sm text-muted-foreground">
               {formatILS(3_200_000)}
@@ -365,7 +460,7 @@ export default function DetailedPortfolioTable() {
           className="text-base font-bold text-blue-400 mb-3 flex items-center gap-2"
         >
           <Coins className="size-4" />
-          נכסים דיגיטליים — 68% ({formatILS(6_800_000)})
+          {t.digitalAssetsSection} ({formatILS(6_800_000)})
         </motion.h3>
 
         {/* רשימת קטגוריות מתרחבות */}
@@ -376,8 +471,8 @@ export default function DetailedPortfolioTable() {
           viewport={{ once: true, margin: "-30px" }}
           className="space-y-2"
         >
-          {digitalCategories.map((category, index) => (
-            <CategoryRow key={category.name} category={category} index={index} />
+          {categoriesBase.map((category, index) => (
+            <CategoryRow key={index} category={category} name={t.categories[index]} />
           ))}
         </motion.div>
       </div>
@@ -392,8 +487,7 @@ export default function DetailedPortfolioTable() {
       >
         <Info className="size-5 text-blue-400 shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground leading-relaxed">
-          בעולם הדיגיטלי הנכסים ממשיכים לעבוד ולהניב הכנסה — Staking, הלוואות,
-          הנפקה. זהו &quot;נכס עובד&quot; ולא נכס סטטי.
+          {t.note}
         </p>
       </motion.div>
     </section>

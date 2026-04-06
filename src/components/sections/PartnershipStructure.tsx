@@ -1,6 +1,6 @@
 "use client";
 
-// מבנה שותפות LP/GP - הדמיה חזותית של מבנה הקרן
+// מבנה שותפות LP/GP - הדמיה חזותית של מבנה הקרן עם תמיכה רב-לשונית
 import { motion } from "framer-motion";
 import {
   Users,
@@ -12,70 +12,186 @@ import {
   Zap,
 } from "lucide-react";
 import { type LucideIcon } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
-// ערוצי השקעה
+// מבנה ערוץ השקעה
 interface InvestmentChannel {
   id: string;
   icon: LucideIcon;
-  title: string;
   color: string;
-  details: string;
 }
 
-const investmentChannels: InvestmentChannel[] = [
-  {
-    id: "digital",
-    icon: Coins,
-    title: "נכסים דיגיטליים",
-    color: "#3b82f6",
-    details: "Staking, DeFi, קריפטו",
-  },
-  {
-    id: "metals",
-    icon: Shield,
-    title: "מתכות יקרות",
-    color: "#f59e0b",
-    details: "זהב, כסף, נחושת",
-  },
-  {
-    id: "managed",
-    icon: BarChart3,
-    title: "מסחר מנוהל",
-    color: "#8b5cf6",
-    details: "אסטרטגיות לטווח ארוך",
-  },
-  {
-    id: "leverage",
-    icon: Zap,
-    title: "מינוף אסטרטגי",
-    color: "#10b981",
-    details: "הגדלת ערך הקרן",
-  },
+// ערוצי השקעה - ללא טקסט קבוע
+const investmentChannelsBase: InvestmentChannel[] = [
+  { id: "digital", icon: Coins, color: "#3b82f6" },
+  { id: "metals", icon: Shield, color: "#f59e0b" },
+  { id: "managed", icon: BarChart3, color: "#8b5cf6" },
+  { id: "leverage", icon: Zap, color: "#10b981" },
 ];
 
-// אחריות GP
-const gpResponsibilities = [
-  "ניהול כלל ההשקעות",
-  "מינוי צוות מקצועי",
-  "ניהול סיכונים ובניית אסטרטגיה",
-  "הקמת וניהול פלטפורמה דיגיטלית",
-  "גיוס משקיעים חדשים",
-];
-
-// תכונות הפלטפורמה
-const platformFeatures = [
-  "חלוקת תיקי השקעות לקטגוריות",
-  "ניהול דשבורדים אישיים",
-  "שקיפות בזמן אמת",
-  "גיבוי ואזור אישי",
-];
-
-// יתרונות LP
-const lpBenefits = [
-  "השקעה עם הגבלת אחריות",
-  "דשבורד אישי ושקיפות מלאה",
-  "ארנק דיגיטלי מאובטח (Ledger Flex)",
-];
+// מפת תרגומים לכל הטקסטים בקומפוננטה
+const texts = {
+  en: {
+    gpTitle: "GP — General Partner",
+    gpSubtitle: "General Partner — Fund Manager",
+    gpResponsibilities: [
+      "Management of all investments",
+      "Appointment of professional team",
+      "Risk management and strategy building",
+      "Establishment and management of digital platform",
+      "Recruitment of new investors",
+    ],
+    platformTitle: "Fordefi Platform",
+    platformSubtitle: "Investment management platform",
+    platformFeatures: [
+      "Portfolio categorization",
+      "Personal dashboard management",
+      "Real-time transparency",
+      "Backup and personal area",
+    ],
+    lpTitle: "LPs — Limited Partners",
+    lpSubtitle: "Limited Partners — Investors",
+    lpBenefits: [
+      "Investment with limited liability",
+      "Personal dashboard and full transparency",
+      "Secured digital wallet (Ledger Flex)",
+    ],
+    channels: [
+      { title: "Digital Assets", details: "Staking, DeFi, Crypto" },
+      { title: "Precious Metals", details: "Gold, Silver, Copper" },
+      { title: "Managed Trading", details: "Long-term strategies" },
+      { title: "Strategic Leverage", details: "Fund value enhancement" },
+    ],
+  },
+  he: {
+    gpTitle: "GP — שותף כללי",
+    gpSubtitle: "General Partner — מנהל הקרן",
+    gpResponsibilities: [
+      "ניהול כלל ההשקעות",
+      "מינוי צוות מקצועי",
+      "ניהול סיכונים ובניית אסטרטגיה",
+      "הקמת וניהול פלטפורמה דיגיטלית",
+      "גיוס משקיעים חדשים",
+    ],
+    platformTitle: "Fordefi Platform",
+    platformSubtitle: "פלטפורמת ניהול ההשקעות",
+    platformFeatures: [
+      "חלוקת תיקי השקעות לקטגוריות",
+      "ניהול דשבורדים אישיים",
+      "שקיפות בזמן אמת",
+      "גיבוי ואזור אישי",
+    ],
+    lpTitle: "LPs — שותפים מוגבלים",
+    lpSubtitle: "Limited Partners — המשקיעים",
+    lpBenefits: [
+      "השקעה עם הגבלת אחריות",
+      "דשבורד אישי ושקיפות מלאה",
+      "ארנק דיגיטלי מאובטח (Ledger Flex)",
+    ],
+    channels: [
+      { title: "נכסים דיגיטליים", details: "Staking, DeFi, קריפטו" },
+      { title: "מתכות יקרות", details: "זהב, כסף, נחושת" },
+      { title: "מסחר מנוהל", details: "אסטרטגיות לטווח ארוך" },
+      { title: "מינוף אסטרטגי", details: "הגדלת ערך הקרן" },
+    ],
+  },
+  ar: {
+    gpTitle: "GP — الشريك العام",
+    gpSubtitle: "General Partner — مدير الصندوق",
+    gpResponsibilities: [
+      "إدارة جميع الاستثمارات",
+      "تعيين فريق مهني",
+      "إدارة المخاطر وبناء الاستراتيجية",
+      "إنشاء وإدارة المنصة الرقمية",
+      "استقطاب مستثمرين جدد",
+    ],
+    platformTitle: "Fordefi Platform",
+    platformSubtitle: "منصة إدارة الاستثمارات",
+    platformFeatures: [
+      "تصنيف المحافظ الاستثمارية",
+      "إدارة لوحات تحكم شخصية",
+      "شفافية في الوقت الفعلي",
+      "نسخ احتياطي ومنطقة شخصية",
+    ],
+    lpTitle: "LPs — الشركاء المحدودون",
+    lpSubtitle: "Limited Partners — المستثمرون",
+    lpBenefits: [
+      "استثمار بمسؤولية محدودة",
+      "لوحة تحكم شخصية وشفافية كاملة",
+      "محفظة رقمية مؤمّنة (Ledger Flex)",
+    ],
+    channels: [
+      { title: "أصول رقمية", details: "Staking, DeFi, عملات مشفرة" },
+      { title: "معادن ثمينة", details: "ذهب، فضة، نحاس" },
+      { title: "تداول مُدار", details: "استراتيجيات طويلة الأمد" },
+      { title: "رافعة استراتيجية", details: "تعزيز قيمة الصندوق" },
+    ],
+  },
+  ru: {
+    gpTitle: "GP — Генеральный партнёр",
+    gpSubtitle: "General Partner — Управляющий фондом",
+    gpResponsibilities: [
+      "Управление всеми инвестициями",
+      "Назначение профессиональной команды",
+      "Управление рисками и построение стратегии",
+      "Создание и управление цифровой платформой",
+      "Привлечение новых инвесторов",
+    ],
+    platformTitle: "Fordefi Platform",
+    platformSubtitle: "Платформа управления инвестициями",
+    platformFeatures: [
+      "Категоризация инвестиционных портфелей",
+      "Управление персональными дашбордами",
+      "Прозрачность в реальном времени",
+      "Резервное копирование и личный кабинет",
+    ],
+    lpTitle: "LPs — Ограниченные партнёры",
+    lpSubtitle: "Limited Partners — Инвесторы",
+    lpBenefits: [
+      "Инвестиции с ограниченной ответственностью",
+      "Персональный дашборд и полная прозрачность",
+      "Защищённый цифровой кошелёк (Ledger Flex)",
+    ],
+    channels: [
+      { title: "Цифровые активы", details: "Staking, DeFi, Крипто" },
+      { title: "Драгоценные металлы", details: "Золото, серебро, медь" },
+      { title: "Управляемая торговля", details: "Долгосрочные стратегии" },
+      { title: "Стратегический леверидж", details: "Увеличение стоимости фонда" },
+    ],
+  },
+  es: {
+    gpTitle: "GP — Socio General",
+    gpSubtitle: "General Partner — Administrador del fondo",
+    gpResponsibilities: [
+      "Gestión de todas las inversiones",
+      "Designación de equipo profesional",
+      "Gestión de riesgos y construcción de estrategia",
+      "Creación y gestión de plataforma digital",
+      "Captación de nuevos inversores",
+    ],
+    platformTitle: "Fordefi Platform",
+    platformSubtitle: "Plataforma de gestión de inversiones",
+    platformFeatures: [
+      "Categorización de portafolios de inversión",
+      "Gestión de paneles personales",
+      "Transparencia en tiempo real",
+      "Respaldo y área personal",
+    ],
+    lpTitle: "LPs — Socios Limitados",
+    lpSubtitle: "Limited Partners — Los inversores",
+    lpBenefits: [
+      "Inversión con responsabilidad limitada",
+      "Panel personal y transparencia total",
+      "Billetera digital segura (Ledger Flex)",
+    ],
+    channels: [
+      { title: "Activos digitales", details: "Staking, DeFi, Cripto" },
+      { title: "Metales preciosos", details: "Oro, plata, cobre" },
+      { title: "Trading gestionado", details: "Estrategias a largo plazo" },
+      { title: "Apalancamiento estratégico", details: "Aumento del valor del fondo" },
+    ],
+  },
+};
 
 // אנימציות כניסה סדרתיות
 const containerVariants = {
@@ -107,6 +223,9 @@ const fadeUp = {
 };
 
 export default function PartnershipStructure() {
+  const { language, isRTL } = useLanguage();
+  const t = texts[language] || texts.en;
+
   return (
     <motion.div
       variants={containerVariants}
@@ -114,7 +233,7 @@ export default function PartnershipStructure() {
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       className="relative max-w-5xl mx-auto"
-      dir="rtl"
+      dir={isRTL ? "rtl" : "ltr"}
     >
       {/* GP - שותף כללי */}
       <motion.div variants={itemVariants} className="flex justify-center mb-6">
@@ -125,16 +244,16 @@ export default function PartnershipStructure() {
             </div>
             <div>
               <div className="text-base font-semibold text-foreground">
-                GP — שותף כללי
+                {t.gpTitle}
               </div>
               <div className="text-sm text-muted-foreground">
-                General Partner — מנהל הקרן
+                {t.gpSubtitle}
               </div>
             </div>
           </div>
           {/* אחריות */}
           <div className="space-y-1.5">
-            {gpResponsibilities.map((item, j) => (
+            {t.gpResponsibilities.map((item, j) => (
               <div
                 key={j}
                 className="flex items-center gap-2 text-xs text-muted-foreground"
@@ -179,16 +298,16 @@ export default function PartnershipStructure() {
             </div>
             <div>
               <div className="text-base font-semibold text-foreground">
-                Fordefi Platform
+                {t.platformTitle}
               </div>
               <div className="text-sm text-muted-foreground">
-                פלטפורמת ניהול ההשקעות
+                {t.platformSubtitle}
               </div>
             </div>
           </div>
           {/* תכונות */}
           <div className="grid grid-cols-2 gap-2">
-            {platformFeatures.map((item, j) => (
+            {t.platformFeatures.map((item, j) => (
               <div
                 key={j}
                 className="flex items-center gap-2 rounded-lg border border-white/[0.04] bg-white/[0.02] px-3 py-2 text-xs text-muted-foreground"
@@ -233,16 +352,16 @@ export default function PartnershipStructure() {
             </div>
             <div>
               <div className="text-base font-semibold text-foreground">
-                LPs — שותפים מוגבלים
+                {t.lpTitle}
               </div>
               <div className="text-sm text-muted-foreground">
-                Limited Partners — המשקיעים
+                {t.lpSubtitle}
               </div>
             </div>
           </div>
           {/* יתרונות */}
           <div className="space-y-1.5">
-            {lpBenefits.map((item, j) => (
+            {t.lpBenefits.map((item, j) => (
               <div
                 key={j}
                 className="flex items-center gap-2 text-xs text-muted-foreground"
@@ -262,7 +381,7 @@ export default function PartnershipStructure() {
           className="w-full h-20"
           preserveAspectRatio="xMidYMid meet"
         >
-          {investmentChannels.map((ch, i) => {
+          {investmentChannelsBase.map((ch, i) => {
             const x = 125 + i * 250;
             return (
               <motion.path
@@ -284,8 +403,9 @@ export default function PartnershipStructure() {
 
       {/* ערוצי השקעה - 4 כרטיסים */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {investmentChannels.map((ch, i) => {
+        {investmentChannelsBase.map((ch, i) => {
           const Icon = ch.icon;
+          const channelText = t.channels[i];
           return (
             <motion.div
               key={ch.id}
@@ -315,11 +435,11 @@ export default function PartnershipStructure() {
 
               {/* שם */}
               <div className="text-sm font-semibold text-foreground mb-1">
-                {ch.title}
+                {channelText.title}
               </div>
 
               {/* תיאור */}
-              <div className="text-xs text-muted-foreground">{ch.details}</div>
+              <div className="text-xs text-muted-foreground">{channelText.details}</div>
             </motion.div>
           );
         })}

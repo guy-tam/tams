@@ -485,6 +485,56 @@ const es: TranslationStrings = {
       note: "No se despliega capital. No se garantizan ni se implican rendimientos. Esta es una exploración conceptual de la gestión de inversiones en blockchain.",
     },
   },
+  homeVision: {
+    badge: "Nuestra Visión",
+    title: "Posicionando inversores en la vanguardia de la revolución blockchain",
+    subtitle: "TAMS no es solo otro fondo cripto — es un puente entre el mundo institucional y el futuro descentralizado. Creemos que todo inversor sofisticado merece acceso al potencial transformador del blockchain a través de un marco estructurado, transparente y respaldado por investigación.",
+    blockchainFuture: {
+      title: "Construyendo la infraestructura financiera del mañana",
+      description: "La revolución blockchain no está por llegar — ya está aquí. Desde activos del mundo real tokenizados hasta préstamos descentralizados, desde ETFs institucionales hasta la interoperabilidad entre cadenas — la infraestructura para un nuevo paradigma financiero se construye en tiempo real. TAMS posiciona a sus inversores en la intersección de esta transformación.",
+    },
+    investorFirst: {
+      title: "Filosofía del inversor primero",
+      description: "Cada decisión en TAMS comienza con una pregunta: ¿cómo beneficia esto a nuestros inversores? Nuestra arquitectura multi-billetera, segregación de riesgos y transparencia institucional están diseñadas para dar a los inversores la confianza de que su capital se gestiona con el mismo rigor que los fondos institucionales tradicionales — con el potencial alcista de una clase de activos emergente.",
+    },
+    globalAccess: {
+      title: "Acceso global, confianza local",
+      description: "El blockchain no tiene fronteras, pero la confianza es local. TAMS cierra esta brecha combinando oportunidades DeFi globales con transparencia institucional, comunicación multilingüe y conciencia regulatoria en distintas jurisdicciones.",
+    },
+    quote: "No solo invertimos en blockchain — construimos la infraestructura que hace que blockchain sea invertible.",
+  },
+  investorTiers: {
+    badge: "Círculo de Inversores",
+    title: "Niveles exclusivos de inversores",
+    subtitle: "Únase a un círculo exclusivo de inversores visionarios posicionados en la vanguardia de la revolución blockchain. Cada nivel desbloquea beneficios únicos, acceso más profundo y mayor alineación con la visión de TAMS.",
+    tiers: {
+      explorer: {
+        name: "Explorador",
+        description: "Entrada al ecosistema TAMS con acceso fundamental a investigación y comunidad.",
+        minInvestment: "$10,000",
+        benefits: ["Informes mensuales de mercado", "Acceso a la comunidad", "Actualizaciones trimestrales de rendimiento", "Panel de portafolio básico"],
+      },
+      builder: {
+        name: "Constructor",
+        description: "Acceso mejorado con información de investigación más profunda y prioridad en nuevas estrategias.",
+        minInvestment: "$50,000",
+        benefits: ["Todo lo del Explorador", "Briefings semanales de investigación", "Acceso prioritario a estrategias", "Comunicación directa con analistas", "Panel de análisis avanzado"],
+      },
+      architect: {
+        name: "Arquitecto",
+        description: "Nivel premium con perspectivas de portafolio personalizadas y asesoría estratégica.",
+        minInvestment: "$250,000",
+        benefits: ["Todo lo del Constructor", "Revisión personalizada de portafolio", "Sesiones de asesoría estratégica", "Acceso anticipado a nuevas divisiones", "Oportunidades de coinversión", "Gerente de cuenta dedicado"],
+      },
+      visionary: {
+        name: "Visionario",
+        description: "El nivel más alto — acceso completo a nivel de socio con participación en gobernanza.",
+        minInvestment: "$1,000,000",
+        benefits: ["Todo lo del Arquitecto", "Participación en gobernanza", "Desarrollo de estrategia personalizada", "Derechos de observador en el directorio", "Estructura de reparto de ingresos", "Cenas privadas trimestrales", "Planificación de patrimonio generacional"],
+      },
+    },
+    cta: "Solicitar acceso",
+  },
 };
 
 export default es;

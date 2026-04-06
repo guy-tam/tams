@@ -1,34 +1,154 @@
 "use client";
 
-// רשת סגמנטי שוק - תצוגת שווקים גלובליים שעוברים לבלוקצ׳יין
+// רשת סגמנטי שוק - תצוגת שווקים גלובליים עם תמיכה רב-לשונית
 import { motion } from "framer-motion";
 import { Globe, TrendingUp } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
-// רמות אימוץ בלוקצ׳יין וצבעים מתאימים
+// מפת תרגומים לרמות אימוץ
+const adoptionLabels = {
+  en: {
+    veryHigh: "Very High",
+    high: "High",
+    mediumHigh: "Medium-High",
+    medium: "Medium",
+  },
+  he: {
+    veryHigh: "גבוה מאוד",
+    high: "גבוה",
+    mediumHigh: "בינוני-גבוה",
+    medium: "בינוני",
+  },
+  ar: {
+    veryHigh: "مرتفع جداً",
+    high: "مرتفع",
+    mediumHigh: "متوسط-مرتفع",
+    medium: "متوسط",
+  },
+  ru: {
+    veryHigh: "Очень высокий",
+    high: "Высокий",
+    mediumHigh: "Средне-высокий",
+    medium: "Средний",
+  },
+  es: {
+    veryHigh: "Muy alto",
+    high: "Alto",
+    mediumHigh: "Medio-alto",
+    medium: "Medio",
+  },
+};
+
+// רמות אימוץ בלוקצ'יין וצבעים מתאימים
 const adoptionLevels = {
-  "גבוה מאוד": { color: "#10b981", bg: "#10b98120", percent: 90 },
-  "גבוה": { color: "#06b6d4", bg: "#06b6d420", percent: 70 },
-  "בינוני-גבוה": { color: "#8b5cf6", bg: "#8b5cf620", percent: 55 },
-  "בינוני": { color: "#f59e0b", bg: "#f59e0b20", percent: 40 },
+  veryHigh: { color: "#10b981", bg: "#10b98120", percent: 90 },
+  high: { color: "#06b6d4", bg: "#06b6d420", percent: 70 },
+  mediumHigh: { color: "#8b5cf6", bg: "#8b5cf620", percent: 55 },
+  medium: { color: "#f59e0b", bg: "#f59e0b20", percent: 40 },
 } as const;
 
-type AdoptionLevel = keyof typeof adoptionLevels;
+type AdoptionKey = keyof typeof adoptionLevels;
 
-// נתוני סגמנטי שוק
-const segments: {
-  name: string;
+// נתוני סגמנטי שוק בסיסיים (ללא טקסט)
+interface SegmentBase {
   size: string;
-  adoption: AdoptionLevel;
-}[] = [
-  { name: "תשלומים חוצי גבולות", size: "~1,000T$", adoption: "גבוה מאוד" },
-  { name: "נכסים מנוהלים", size: "147T$", adoption: "בינוני-גבוה" },
-  { name: "פנסיה", size: "~58.5T$", adoption: "בינוני" },
-  { name: "ביטוח / InsurTech", size: "~7T$", adoption: "גבוה" },
-  { name: 'נדל"ן דיגיטלי', size: "4.3T$", adoption: "גבוה מאוד" },
-  { name: "הלוואות DeFi", size: "—", adoption: "גבוה מאוד" },
-  { name: "BlackRock / Vanguard", size: "~20T$", adoption: "גבוה מאוד" },
-  { name: "קרנות סל ETFs", size: "~2T$", adoption: "בינוני" },
+  adoption: AdoptionKey;
+}
+
+const segmentsBase: SegmentBase[] = [
+  { size: "~1,000T$", adoption: "veryHigh" },
+  { size: "147T$", adoption: "mediumHigh" },
+  { size: "~58.5T$", adoption: "medium" },
+  { size: "~7T$", adoption: "high" },
+  { size: "4.3T$", adoption: "veryHigh" },
+  { size: "—", adoption: "veryHigh" },
+  { size: "~20T$", adoption: "veryHigh" },
+  { size: "~2T$", adoption: "medium" },
 ];
+
+// מפת תרגומים
+const texts = {
+  en: {
+    badge: "Global Markets",
+    titlePrefix: "A market of ",
+    titleHighlight: "~1-2 quadrillion dollars",
+    titleSuffix: " is gradually moving to blockchain",
+    segments: [
+      "Cross-Border Payments",
+      "Managed Assets",
+      "Pensions",
+      "Insurance / InsurTech",
+      "Digital Real Estate",
+      "DeFi Loans",
+      "BlackRock / Vanguard",
+      "ETF Funds",
+    ],
+  },
+  he: {
+    badge: "שווקים גלובליים",
+    titlePrefix: "שוק של ",
+    titleHighlight: "~1-2 קוואדריליון דולר",
+    titleSuffix: " עובר בהדרגה לבלוקצ׳יין",
+    segments: [
+      "תשלומים חוצי גבולות",
+      "נכסים מנוהלים",
+      "פנסיה",
+      "ביטוח / InsurTech",
+      'נדל"ן דיגיטלי',
+      "הלוואות DeFi",
+      "BlackRock / Vanguard",
+      "קרנות סל ETFs",
+    ],
+  },
+  ar: {
+    badge: "الأسواق العالمية",
+    titlePrefix: "سوق بقيمة ",
+    titleHighlight: "~1-2 كوادريليون دولار",
+    titleSuffix: " ينتقل تدريجياً إلى البلوكتشين",
+    segments: [
+      "المدفوعات العابرة للحدود",
+      "الأصول المدارة",
+      "المعاشات التقاعدية",
+      "التأمين / InsurTech",
+      "العقارات الرقمية",
+      "قروض DeFi",
+      "BlackRock / Vanguard",
+      "صناديق ETFs",
+    ],
+  },
+  ru: {
+    badge: "Глобальные рынки",
+    titlePrefix: "Рынок в ",
+    titleHighlight: "~1-2 квадриллиона долларов",
+    titleSuffix: " постепенно переходит на блокчейн",
+    segments: [
+      "Трансграничные платежи",
+      "Управляемые активы",
+      "Пенсии",
+      "Страхование / InsurTech",
+      "Цифровая недвижимость",
+      "DeFi-кредиты",
+      "BlackRock / Vanguard",
+      "ETF-фонды",
+    ],
+  },
+  es: {
+    badge: "Mercados globales",
+    titlePrefix: "Un mercado de ",
+    titleHighlight: "~1-2 cuatrillones de dólares",
+    titleSuffix: " se está moviendo gradualmente al blockchain",
+    segments: [
+      "Pagos transfronterizos",
+      "Activos gestionados",
+      "Pensiones",
+      "Seguros / InsurTech",
+      "Bienes raíces digitales",
+      "Préstamos DeFi",
+      "BlackRock / Vanguard",
+      "Fondos ETF",
+    ],
+  },
+};
 
 // אנימציית כניסה מדורגת
 const containerVariants = {
@@ -52,6 +172,10 @@ const cardVariants = {
 };
 
 export default function MarketSegmentsGrid() {
+  const { language } = useLanguage();
+  const t = texts[language] || texts.en;
+  const al = adoptionLabels[language] || adoptionLabels.en;
+
   return (
     <section className="w-full">
       {/* כותרת הסקשן */}
@@ -64,14 +188,14 @@ export default function MarketSegmentsGrid() {
       >
         <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5">
           <Globe className="size-4 text-blue-400" />
-          <span className="text-sm text-muted-foreground">שווקים גלובליים</span>
+          <span className="text-sm text-muted-foreground">{t.badge}</span>
         </div>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-relaxed">
-          שוק של{" "}
+          {t.titlePrefix}
           <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            ~1-2 קוואדריליון דולר
-          </span>{" "}
-          עובר בהדרגה לבלוקצ׳יין
+            {t.titleHighlight}
+          </span>
+          {t.titleSuffix}
         </h2>
       </motion.div>
 
@@ -83,8 +207,9 @@ export default function MarketSegmentsGrid() {
         viewport={{ once: true, margin: "-50px" }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
       >
-        {segments.map((segment, index) => {
+        {segmentsBase.map((segment, index) => {
           const level = adoptionLevels[segment.adoption];
+          const adoptionLabel = al[segment.adoption];
 
           return (
             <motion.div
@@ -103,7 +228,7 @@ export default function MarketSegmentsGrid() {
 
               {/* שם הסגמנט */}
               <h3 className="text-sm font-semibold text-foreground mb-3 leading-snug min-h-[2.5rem] flex items-center">
-                {segment.name}
+                {t.segments[index]}
               </h3>
 
               {/* גודל שוק - מספר בולט */}
@@ -123,7 +248,7 @@ export default function MarketSegmentsGrid() {
                 }}
               >
                 <TrendingUp className="size-3" />
-                {segment.adoption}
+                {adoptionLabel}
               </div>
 
               {/* פס התקדמות מיני */}

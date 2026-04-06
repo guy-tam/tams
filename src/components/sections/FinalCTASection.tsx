@@ -117,7 +117,7 @@ export default function FinalCTASection() {
                   className="mt-4 text-sm font-medium flex items-center gap-1 transition-transform group-hover:translate-x-1"
                   style={{ color: card.color }}
                 >
-                  Learn more
+                  {t("common.learnMore")}
                   <span>&rarr;</span>
                 </div>
               </motion.a>

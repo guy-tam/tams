@@ -14,20 +14,117 @@ import {
   Layers,
   Gift,
 } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 import { recentActivity } from "@/data/dashboard-mock";
 import type { ActivityItem } from "@/data/dashboard-mock";
 
-// סוגי סינון
-const filterOptions = [
-  { key: "all", label: "הכל" },
-  { key: "buy", label: "קניות" },
-  { key: "sell", label: "מכירות" },
-  { key: "stake", label: "סטייקינג" },
-  { key: "deposit", label: "הפקדות" },
-  { key: "yield", label: "תשואות" },
-] as const;
+// מפת תרגומים - כל הטקסטים הנראים בכל 5 השפות
+const texts = {
+  en: {
+    pageTitle: "Activity Log",
+    pageSubtitle: "Transaction history & operations — concept only",
+    filterAll: "All",
+    filterBuys: "Buys",
+    filterSells: "Sells",
+    filterStaking: "Staking",
+    filterDeposits: "Deposits",
+    filterYields: "Yields",
+    noActivity: "No activity of this type",
+    statusCompleted: "Completed",
+    statusPending: "Pending",
+    typeBuy: "Buy",
+    typeSell: "Sell",
+    typeStake: "Staking",
+    typeUnstake: "Unstake",
+    typeYield: "Yield",
+    typeDeposit: "Deposit",
+    typeWithdrawal: "Withdrawal",
+  },
+  he: {
+    pageTitle: "יומן פעילות",
+    pageSubtitle: "היסטוריית עסקאות ופעולות — קונספט בלבד",
+    filterAll: "הכל",
+    filterBuys: "קניות",
+    filterSells: "מכירות",
+    filterStaking: "סטייקינג",
+    filterDeposits: "הפקדות",
+    filterYields: "תשואות",
+    noActivity: "אין פעילות מסוג זה",
+    statusCompleted: "הושלם",
+    statusPending: "ממתין",
+    typeBuy: "קנייה",
+    typeSell: "מכירה",
+    typeStake: "סטייקינג",
+    typeUnstake: "שחרור",
+    typeYield: "תשואה",
+    typeDeposit: "הפקדה",
+    typeWithdrawal: "משיכה",
+  },
+  ar: {
+    pageTitle: "سجل النشاط",
+    pageSubtitle: "سجل المعاملات والعمليات — مفهوم فقط",
+    filterAll: "الكل",
+    filterBuys: "شراء",
+    filterSells: "بيع",
+    filterStaking: "تخزين",
+    filterDeposits: "إيداعات",
+    filterYields: "عوائد",
+    noActivity: "لا يوجد نشاط من هذا النوع",
+    statusCompleted: "مكتمل",
+    statusPending: "قيد الانتظار",
+    typeBuy: "شراء",
+    typeSell: "بيع",
+    typeStake: "تخزين",
+    typeUnstake: "إلغاء التخزين",
+    typeYield: "عائد",
+    typeDeposit: "إيداع",
+    typeWithdrawal: "سحب",
+  },
+  ru: {
+    pageTitle: "Журнал активности",
+    pageSubtitle: "История транзакций и операций — только концепт",
+    filterAll: "Все",
+    filterBuys: "Покупки",
+    filterSells: "Продажи",
+    filterStaking: "Стейкинг",
+    filterDeposits: "Депозиты",
+    filterYields: "Доходы",
+    noActivity: "Нет активности данного типа",
+    statusCompleted: "Завершено",
+    statusPending: "В ожидании",
+    typeBuy: "Покупка",
+    typeSell: "Продажа",
+    typeStake: "Стейкинг",
+    typeUnstake: "Разблокировка",
+    typeYield: "Доход",
+    typeDeposit: "Депозит",
+    typeWithdrawal: "Вывод",
+  },
+  es: {
+    pageTitle: "Registro de actividad",
+    pageSubtitle: "Historial de transacciones y operaciones — solo concepto",
+    filterAll: "Todos",
+    filterBuys: "Compras",
+    filterSells: "Ventas",
+    filterStaking: "Staking",
+    filterDeposits: "Depósitos",
+    filterYields: "Rendimientos",
+    noActivity: "No hay actividad de este tipo",
+    statusCompleted: "Completado",
+    statusPending: "Pendiente",
+    typeBuy: "Compra",
+    typeSell: "Venta",
+    typeStake: "Staking",
+    typeUnstake: "Desbloqueo",
+    typeYield: "Rendimiento",
+    typeDeposit: "Depósito",
+    typeWithdrawal: "Retiro",
+  },
+} as const;
 
-type FilterKey = (typeof filterOptions)[number]["key"];
+// מפתחות סינון
+const filterKeys = ["all", "buy", "sell", "stake", "deposit", "yield"] as const;
+type FilterKey = (typeof filterKeys)[number];
 
 // אנימציות
 const listVariants = {
@@ -96,28 +193,6 @@ function getActivityBg(type: string) {
   }
 }
 
-// תווית סוג פעולה
-function getTypeLabel(type: string) {
-  switch (type) {
-    case "buy":
-      return "קנייה";
-    case "sell":
-      return "מכירה";
-    case "stake":
-      return "סטייקינג";
-    case "unstake":
-      return "שחרור";
-    case "yield":
-      return "תשואה";
-    case "deposit":
-      return "הפקדה";
-    case "withdrawal":
-      return "משיכה";
-    default:
-      return type;
-  }
-}
-
 // צבע תווית סוג
 function getTypeLabelColor(type: string) {
   switch (type) {
@@ -142,6 +217,40 @@ function getTypeLabelColor(type: string) {
 
 export default function ActivityPage() {
   const [filter, setFilter] = useState<FilterKey>("all");
+  const { language } = useLanguage();
+  const t = texts[language] || texts.en;
+
+  // תוויות סינון בשפה הנוכחית
+  const filterOptions: { key: FilterKey; label: string }[] = [
+    { key: "all", label: t.filterAll },
+    { key: "buy", label: t.filterBuys },
+    { key: "sell", label: t.filterSells },
+    { key: "stake", label: t.filterStaking },
+    { key: "deposit", label: t.filterDeposits },
+    { key: "yield", label: t.filterYields },
+  ];
+
+  // תווית סוג פעולה בשפה הנוכחית
+  function getTypeLabel(type: string) {
+    switch (type) {
+      case "buy":
+        return t.typeBuy;
+      case "sell":
+        return t.typeSell;
+      case "stake":
+        return t.typeStake;
+      case "unstake":
+        return t.typeUnstake;
+      case "yield":
+        return t.typeYield;
+      case "deposit":
+        return t.typeDeposit;
+      case "withdrawal":
+        return t.typeWithdrawal;
+      default:
+        return type;
+    }
+  }
 
   // סינון פעילות
   const filtered =
@@ -158,10 +267,10 @@ export default function ActivityPage() {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-          יומן פעילות
+          {t.pageTitle}
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          היסטוריית עסקאות ופעולות — קונספט בלבד
+          {t.pageSubtitle}
         </p>
       </motion.div>
 
@@ -200,7 +309,7 @@ export default function ActivityPage() {
         >
           {filtered.length === 0 ? (
             <div className="p-12 text-center text-muted-foreground text-sm">
-              אין פעילות מסוג זה
+              {t.noActivity}
             </div>
           ) : (
             <div className="divide-y divide-white/[0.04]">
@@ -253,7 +362,7 @@ export default function ActivityPage() {
                         : "bg-amber-500/15 text-amber-400"
                     }`}
                   >
-                    {a.status === "completed" ? "הושלם" : "ממתין"}
+                    {a.status === "completed" ? t.statusCompleted : t.statusPending}
                   </span>
                 </motion.div>
               ))}

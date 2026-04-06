@@ -178,6 +178,29 @@ export type TranslationStrings = {
     riskDisclosure: { badge: string; title: string; subtitle: string };
     conclusion: { title: string; content: string; note: string };
   };
+  // חזון - קטע חדש בדף הבית
+  homeVision: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    blockchainFuture: { title: string; description: string };
+    investorFirst: { title: string; description: string };
+    globalAccess: { title: string; description: string };
+    quote: string;
+  };
+  // מערכת דרגות משקיעים
+  investorTiers: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    tiers: {
+      explorer: { name: string; description: string; minInvestment: string; benefits: string[] };
+      builder: { name: string; description: string; minInvestment: string; benefits: string[] };
+      architect: { name: string; description: string; minInvestment: string; benefits: string[] };
+      visionary: { name: string; description: string; minInvestment: string; benefits: string[] };
+    };
+    cta: string;
+  };
 };
 
 /** מיפוי שפות לתרגומים */
