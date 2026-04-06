@@ -3,34 +3,7 @@
 // סקשן CTA סופי - קריאה לפעולה עם כרטיסים
 import { motion } from "framer-motion";
 import { BookOpen, LayoutGrid, TrendingUp } from "lucide-react";
-
-// כרטיסי CTA
-const ctaCards = [
-  {
-    icon: BookOpen,
-    title: "Explore Thesis",
-    description:
-      "Dive deep into our investment thesis, market analysis, and strategic framework.",
-    href: "#thesis",
-    color: "#3b82f6",
-  },
-  {
-    icon: LayoutGrid,
-    title: "Review Architecture",
-    description:
-      "Understand the four-wallet architecture and capital allocation methodology.",
-    href: "#architecture",
-    color: "#8b5cf6",
-  },
-  {
-    icon: TrendingUp,
-    title: "Understand Opportunity",
-    description:
-      "Explore the market opportunity, TAM analysis, and growth projections.",
-    href: "#market",
-    color: "#06b6d4",
-  },
-];
+import { useLanguage } from "@/lib/i18n";
 
 // אנימציית כניסה מדורגת
 const containerVariants = {
@@ -47,16 +20,40 @@ const cardVariants = {
 };
 
 export default function FinalCTASection() {
+  const { t } = useLanguage();
+
+  const ctaCards = [
+    {
+      icon: BookOpen,
+      title: t("home.ctaCards.thesis.title"),
+      description: t("home.ctaCards.thesis.description"),
+      href: "/company",
+      color: "#3b82f6",
+    },
+    {
+      icon: LayoutGrid,
+      title: t("home.ctaCards.architecture.title"),
+      description: t("home.ctaCards.architecture.description"),
+      href: "/architecture",
+      color: "#8b5cf6",
+    },
+    {
+      icon: TrendingUp,
+      title: t("home.ctaCards.opportunity.title"),
+      description: t("home.ctaCards.opportunity.description"),
+      href: "/market-shift",
+      color: "#06b6d4",
+    },
+  ];
+
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* רקע גראדיינט */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-tams-blue/[0.03] to-transparent" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-tams-purple/[0.06] rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
-        {/* כותרת */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,15 +62,13 @@ export default function FinalCTASection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="gradient-text">Ready to Explore?</span>
+            <span className="gradient-text">{t("home.cta.title")}</span>
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Navigate the complete TAMS framework - from investment thesis to
-            technical architecture to market opportunity.
+            {t("home.cta.subtitle")}
           </p>
         </motion.div>
 
-        {/* כרטיסי CTA */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -139,17 +134,7 @@ export default function FinalCTASection() {
           className="rounded-xl border border-white/[0.04] bg-white/[0.02] p-6 text-center"
         >
           <p className="text-xs text-muted-foreground/60 leading-relaxed max-w-3xl mx-auto">
-            <span className="font-semibold text-muted-foreground/80">
-              Disclaimer:
-            </span>{" "}
-            This presentation is for informational and conceptual purposes only.
-            It does not constitute financial advice, an offer to sell, or a
-            solicitation of an offer to buy any securities or digital assets.
-            Past performance is not indicative of future results. All investments
-            carry risk, including potential loss of principal. Cryptocurrency
-            investments are particularly volatile and speculative. Consult with
-            qualified financial and legal advisors before making any investment
-            decisions.
+            {t("home.cta.disclaimer")}
           </p>
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import MarketShiftTimeline from "@/components/sections/MarketShiftTimeline";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
+import MarketSegmentsGrid from "@/components/sections/MarketSegmentsGrid";
 import { useLanguage } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { TrendingUp, Shield, Globe, Landmark, ArrowUpRight, Layers } from "lucide-react";
@@ -29,6 +30,16 @@ export default function MarketShiftPage() {
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6"><span className="gradient-text">{t("marketShift.title")}</span></h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">{t("marketShift.subtitle")}</p>
         </motion.div>
+      </section>
+
+      {/* סגמנטי שוק גלובליים */}
+      <section className="py-12 max-w-7xl mx-auto">
+        <SectionHeader
+          badge="Global Market"
+          title="שוק של טריליוני דולרים עובר לבלוקצ׳יין"
+          subtitle="תשלומים, נכסים מנוהלים, ביטוח, נדל״ן ועוד — כולם עוברים דיגיטציה והתאמה לתשתיות בלוקצ׳יין חדשות."
+        />
+        <MarketSegmentsGrid />
       </section>
 
       <section className="py-12 max-w-7xl mx-auto">

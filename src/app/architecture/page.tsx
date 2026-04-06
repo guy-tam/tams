@@ -6,6 +6,7 @@ import SectionHeader from "@/components/layout/SectionHeader";
 import WalletArchitectureMap from "@/components/sections/WalletArchitectureMap";
 import CapitalFlowDiagram from "@/components/sections/CapitalFlowDiagram";
 import AllocationChart from "@/components/charts/AllocationChart";
+import DetailedPortfolioTable from "@/components/sections/DetailedPortfolioTable";
 import { useLanguage } from "@/lib/i18n";
 import { motion } from "framer-motion";
 
@@ -63,6 +64,15 @@ export default function ArchitecturePage() {
             ))}
           </div>
         </div>
+      </section>
+      {/* הקצאת תיק מפורטת */}
+      <section className="py-16 max-w-7xl mx-auto">
+        <SectionHeader
+          badge="Portfolio Breakdown"
+          title="הקצאת תיק מפורטת"
+          subtitle="מבנה תיק של 10 מיליון ש״ח — חלוקה בין נכסים בטוחים (32%) לנכסים דיגיטליים (68%) עם פירוט מלא לפי סקטורים."
+        />
+        <DetailedPortfolioTable />
       </section>
     </PageWrapper>
   );

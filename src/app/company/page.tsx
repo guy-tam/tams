@@ -4,6 +4,8 @@
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
+import PartnershipStructure from "@/components/sections/PartnershipStructure";
+import OperatingModel from "@/components/sections/OperatingModel";
 import { useLanguage } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import {
@@ -114,6 +116,26 @@ export default function CompanyPage() {
             );
           })}
         </div>
+      </section>
+
+      {/* מבנה שותפות LP/GP */}
+      <section className="py-16 max-w-7xl mx-auto">
+        <SectionHeader
+          badge="Partnership Structure"
+          title="מבנה השותפות"
+          subtitle="שותפות מוגבלת (Limited Partnership) — מבנה מוכח לניהול השקעות מוסדי עם הפרדה ברורה בין ניהול לבעלות."
+        />
+        <PartnershipStructure />
+      </section>
+
+      {/* מודל תפעול */}
+      <section className="py-16 max-w-7xl mx-auto">
+        <SectionHeader
+          badge="Operating Model"
+          title="מודל תפעול"
+          subtitle="גוף עצמאי דיגיטלי, בטוח ושקוף, עם שליטה מלאה של הקרן ללא תלות בגוף חיצוני."
+        />
+        <OperatingModel />
       </section>
 
       <section className="py-12 max-w-3xl mx-auto">

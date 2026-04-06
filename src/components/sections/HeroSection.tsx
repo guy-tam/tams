@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Compass, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/i18n";
 
 interface HeroSectionProps {
   title: string;
@@ -57,6 +58,7 @@ export default function HeroSection({
   ctaText = "Explore Architecture",
   ctaHref = "#architecture",
 }: HeroSectionProps) {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* רקע עם כדורים צפים */}
@@ -106,7 +108,7 @@ export default function HeroSection({
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-1.5 text-sm text-muted-foreground mb-8"
           >
             <span className="size-2 rounded-full bg-tams-green animate-pulse" />
-            Blockchain Investment Architecture
+            {t("home.hero.badge")}
           </motion.div>
 
           {/* כותרת ראשית */}
@@ -147,7 +149,7 @@ export default function HeroSection({
                 className="px-6 h-11 text-base gap-2 border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10"
               >
                 <FileText className="size-4" />
-                View Research
+                {t("home.hero.cta2")}
               </Button>
             </a>
           </motion.div>
@@ -166,7 +168,7 @@ export default function HeroSection({
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-muted-foreground/50"
         >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <span className="text-xs uppercase tracking-widest">{t("home.hero.scroll")}</span>
           <ArrowDown className="size-4" />
         </motion.div>
       </motion.div>
