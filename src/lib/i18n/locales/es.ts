@@ -1,0 +1,490 @@
+// קובץ תרגום לספרדית - ספרדית לטינו-אמריקאית מקצועית
+import type { TranslationStrings } from "../types";
+
+const es: TranslationStrings = {
+  nav: {
+    home: "Inicio",
+    company: "Empresa",
+    architecture: "Arquitectura",
+    holdings: "Portafolio",
+    defi: "DeFi",
+    marketShift: "Mercado",
+    strategy: "Estrategia",
+    investor: "Inversionistas",
+    language: "Idioma",
+  },
+  common: {
+    conceptApp: "Aplicación conceptual",
+    version: "Versión",
+    learnMore: "Conocer más",
+    close: "Cerrar",
+    search: "Buscar",
+    noResults: "Sin resultados",
+    disclaimer:
+      "TAMS es una aplicación conceptual diseñada para demostrar los principios de infraestructura de inversión en blockchain. No representa un fondo operativo, una solución de custodia ni un producto financiero. No se despliega capital real a través de esta aplicación.",
+    readMore: "Leer más",
+  },
+  home: {
+    hero: {
+      badge: "Infraestructura de inversión en blockchain",
+      title: "Infraestructura de Inversión en Blockchain",
+      subtitle:
+        "TAMS es un marco conceptual para la gestión de activos digitales con estándares institucionales — combinando posiciones a largo plazo basadas en investigación, trading activo y estrategias de rendimiento DeFi dentro de una arquitectura estructurada de múltiples billeteras.",
+      cta1: "Explorar arquitectura",
+      cta2: "Resumen para inversionistas",
+      scroll: "Desplazar hacia abajo",
+    },
+    thesis: {
+      badge: "Marco de inversión",
+      title: "Cómo funciona TAMS",
+      subtitle:
+        "Un enfoque estructurado para la gestión de activos digitales a través de cuatro divisiones especializadas, cada una con objetivos de asignación definidos, parámetros de riesgo y protocolos operativos.",
+    },
+    cards: {
+      longTerm: {
+        title: "Posiciones a largo plazo",
+        description:
+          "Acumulación de activos digitales de alta convicción basada en investigación para la creación de valor a largo plazo. Enfoque en protocolos de infraestructura con efectos de red comprobados.",
+      },
+      trading: {
+        title: "Trading activo",
+        description:
+          "Estrategias disciplinadas de swing y momentum en mercados cripto líquidos. Gestión de riesgos sistemática con dimensionamiento de posiciones y marcos de stop-loss definidos.",
+      },
+      defi: {
+        title: "Rendimiento DeFi",
+        description:
+          "Generación de rendimiento con estándares institucionales a través de préstamos, staking y provisión de liquidez en protocolos probados en batalla. Énfasis en retornos ajustados por riesgo.",
+      },
+      multiWallet: {
+        title: "Arquitectura multi-billetera",
+        description:
+          "Estructura de billeteras segregada que aísla el riesgo entre divisiones. Cada billetera opera con asignación, estrategia y parámetros de riesgo definidos.",
+      },
+      research: {
+        title: "Basado en investigación",
+        description:
+          "Cada posición respaldada por análisis fundamental. 16 activos en los verticales de Capa 1, Pagos, Infraestructura, Empresarial, Activos del Mundo Real e IA.",
+      },
+      institutional: {
+        title: "Grado institucional",
+        description:
+          "Marcos de seguridad, cumplimiento y gestión de riesgos modelados según operaciones de inversión institucional. Multi-firma, almacenamiento en frío y auditorías periódicas.",
+      },
+    },
+    cta: {
+      title: "Explore el marco TAMS",
+      subtitle:
+        "Profundice en la arquitectura, la investigación de posiciones, las estrategias DeFi y el análisis de mercado.",
+      disclaimer:
+        "TAMS es una aplicación conceptual. No se despliega capital real. No se garantizan ni se implican rendimientos.",
+    },
+    ctaCards: {
+      thesis: {
+        title: "Tesis de inversión",
+        description: "Descubra el marco de investigación detrás de la selección de activos de TAMS.",
+      },
+      architecture: {
+        title: "Arquitectura",
+        description: "Explore la estructura multi-billetera y los flujos de capital.",
+      },
+      opportunity: {
+        title: "Oportunidad de mercado",
+        description: "Comprenda por qué este es el momento para la inversión institucional en blockchain.",
+      },
+    },
+  },
+  company: {
+    badge: "Acerca de TAMS",
+    title: "Infraestructura de inversión para la era digital",
+    subtitle:
+      "TAMS es un marco conceptual para gestionar activos digitales con disciplina institucional. Combinamos convicción basada en investigación con gestión de riesgos estructurada en una arquitectura multi-billetera.",
+    vision: {
+      title: "Visión",
+      content:
+        "Demostrar que la inversión basada en blockchain puede gestionarse con el mismo rigor, transparencia y disciplina que la gestión institucional tradicional de activos — al tiempo que se capturan las oportunidades únicas de una clase de activos emergente.",
+    },
+    mission: {
+      title: "Misión",
+      content:
+        "Construir un marco estructurado y respaldado por investigación para la gestión de activos digitales que equilibre posiciones de convicción a largo plazo con trading activo y estrategias de rendimiento DeFi — todo dentro de una arquitectura multi-billetera consciente del riesgo.",
+    },
+    principles: {
+      badge: "Principios fundamentales",
+      title: "Qué impulsa a TAMS",
+      subtitle:
+        "Los principios fundacionales que guían cada aspecto del marco TAMS — desde la selección de activos hasta la gestión de riesgos.",
+    },
+    principleCards: {
+      research: {
+        title: "Investigación primero",
+        description:
+          "Cada decisión comienza con análisis fundamental. Sin especulación impulsada por tendencias. Los activos se evalúan por tecnología, equipo, ajuste al mercado y alineación con la tesis a largo plazo.",
+      },
+      risk: {
+        title: "Segregación de riesgos",
+        description:
+          "El capital se divide en billeteras aisladas, cada una con su propia estrategia y tolerancia al riesgo. Una falla en una división no se propaga a las demás.",
+      },
+      discipline: {
+        title: "Disciplina institucional",
+        description:
+          "Modelado según la gestión profesional de fondos — objetivos de asignación definidos, reglas de rebalanceo, conciencia regulatoria y procesos de inversión documentados.",
+      },
+      transparency: {
+        title: "Transparencia",
+        description:
+          "Comunicación clara sobre estrategia, riesgo y desempeño. Cada elemento conceptual — desde el análisis TAM hasta la divulgación de riesgos — se presenta con honestidad intelectual.",
+      },
+    },
+    process: {
+      badge: "Proceso",
+      title: "Cómo funciona",
+      subtitle:
+        "De la investigación a la ejecución — el proceso estructurado detrás de la asignación de capital de TAMS.",
+    },
+    steps: [
+      {
+        title: "Investigación y análisis",
+        description:
+          "Análisis fundamental profundo de activos digitales en múltiples verticales: Capa 1, Pagos, Infraestructura, Empresarial, Activos del Mundo Real e IA/Cómputo.",
+      },
+      {
+        title: "Construcción de tesis",
+        description:
+          "Construcción de posiciones ponderadas por convicción basadas en la alineación con la tesis a largo plazo, evaluación de riesgos y análisis de ajuste al portafolio para cada activo.",
+      },
+      {
+        title: "Asignación de capital",
+        description:
+          "Despliegue de capital en cuatro billeteras especializadas — Posiciones a largo plazo (40%), Trading activo (25%), Rendimiento DeFi (25%), Operaciones (10%).",
+      },
+      {
+        title: "Gestión activa",
+        description:
+          "Monitoreo continuo, rebalanceo y optimización de estrategia. Los marcos de riesgo se aplican en cada nivel, desde posiciones individuales hasta la exposición total del portafolio.",
+      },
+    ],
+    note: "TAMS es una aplicación conceptual diseñada para demostrar los principios de infraestructura de inversión en blockchain. No representa un fondo operativo, una solución de custodia ni un producto financiero. No se despliega capital real a través de esta aplicación.",
+  },
+  architecture: {
+    badge: "Arquitectura",
+    title: "Arquitectura estratégica multi-billetera",
+    subtitle:
+      "El capital se asigna sistemáticamente a través de cuatro billeteras especializadas — cada una operando con estrategias distintas, parámetros de riesgo y objetivos de rendimiento.",
+    wallet: {
+      badge: "Estructura de billeteras",
+      title: "Arquitectura jerárquica de billeteras",
+      subtitle:
+        "La billetera maestra de TAMS asigna capital a cuatro sub-billeteras especializadas, cada una responsable de una función de inversión distinta.",
+    },
+    flow: {
+      badge: "Flujo de capital",
+      title: "Cómo se mueve el capital",
+      subtitle:
+        "El capital del inversionista ingresa a la billetera maestra y se despliega sistemáticamente a través de las cuatro divisiones según los porcentajes de asignación objetivo.",
+    },
+    allocation: {
+      badge: "Asignación",
+      title: "Modelo de asignación del portafolio",
+      subtitle:
+        "Asignación objetivo entre divisiones, diseñada para equilibrar crecimiento a largo plazo, retornos activos, generación de rendimiento y liquidez operativa.",
+    },
+    divisions: [
+      {
+        name: "Posiciones a largo plazo",
+        description:
+          "Posiciones de convicción central — BTC, ETH y activos de Capa 1, Infraestructura y Activos Reales respaldados por investigación, mantenidos en horizontes de múltiples años.",
+      },
+      {
+        name: "Trading activo",
+        description:
+          "Estrategias sistemáticas de swing y momentum en mercados líquidos con parámetros de riesgo definidos y reglas de dimensionamiento de posiciones.",
+      },
+      {
+        name: "Rendimiento DeFi",
+        description:
+          "Generación de rendimiento a través de préstamos, staking y provisión de liquidez en protocolos probados como Aave, Lido y Uniswap.",
+      },
+      {
+        name: "Operaciones",
+        description:
+          "Reservas de gas, comisiones de trading, reserva de emergencia y liquidez operativa para garantizar la ejecución fluida en todas las divisiones.",
+      },
+    ],
+  },
+  holdings: {
+    badge: "Investigación y portafolio",
+    title: "Investigación de posiciones a largo plazo",
+    subtitle:
+      "16 activos digitales respaldados por investigación en seis verticales — Capa 1, Pagos, Infraestructura, Empresarial, Activos del Mundo Real e IA/Cómputo. Cada activo evaluado por fundamentos, alineación con la tesis, perfil de riesgo y ajuste al portafolio TAMS.",
+    stats: {
+      totalAssets: "Total de activos",
+      verticals: "Verticales",
+      layer1: "Activos Capa 1",
+      riskCategories: "Categorías de riesgo",
+    },
+    explorer: {
+      badge: "Explorador de activos",
+      title: "Base de datos de investigación",
+      subtitle:
+        "Busque, filtre y explore el perfil de investigación completo de cada activo en la tesis de posiciones a largo plazo de TAMS.",
+    },
+    disclaimer:
+      "Los perfiles de activos son únicamente con fines informativos y educativos. No constituyen asesoría de inversión ni recomendaciones. Las condiciones del mercado, los fundamentos y los perfiles de riesgo pueden cambiar rápidamente. Siempre realice su propia investigación y consulte asesores calificados antes de tomar decisiones de inversión.",
+  },
+  defi: {
+    badge: "División DeFi",
+    title: "Estrategia de rendimiento descentralizado",
+    subtitle:
+      "La billetera DeFi de TAMS despliega el 25% del capital del portafolio en estrategias de rendimiento de grado institucional a través de préstamos, staking y provisión de liquidez — con gestión de riesgos sistemática en cada nivel.",
+    metrics: {
+      targetApy: "Rango APY objetivo",
+      maxExposure: "Exposición máx. por protocolo",
+      chains: "Cadenas activas",
+      allocation: "Asignación del portafolio",
+    },
+    strategies: {
+      badge: "Estrategias",
+      title: "Estrategias de rendimiento DeFi",
+      subtitle:
+        "Fuentes de rendimiento diversificadas a través de múltiples protocolos y cadenas, cada una evaluada según el marco de riesgos de TAMS.",
+    },
+    strategyCards: {
+      lending: {
+        title: "Préstamos y créditos",
+        description:
+          "Provisión de activos a protocolos de préstamo probados (Aave, Compound) para generar rendimiento. Ratios LTV conservadores y diversificación entre protocolos para minimizar el riesgo de contratos inteligentes.",
+      },
+      staking: {
+        title: "Staking y staking líquido",
+        description:
+          "Staking de ETH a través de derivados de staking líquido (Lido, Rocket Pool) para rendimiento base más composabilidad DeFi. Staking nativo en redes compatibles.",
+      },
+      liquidity: {
+        title: "Provisión de liquidez",
+        description:
+          "Posiciones de liquidez concentrada en pares principales (ETH/USDC, BTC/ETH) en Uniswap v3 y Curve. Enfoque en pares de alto volumen y baja pérdida impermanente.",
+      },
+      optimization: {
+        title: "Optimización de rendimiento",
+        description:
+          "Estrategias de rendimiento automatizadas entre cadenas, dirigiendo capital a las mejores oportunidades ajustadas por riesgo. Rebalanceo regular según cambios de tasas y riesgo de protocolo.",
+      },
+      riskFirst: {
+        title: "Enfoque de riesgo primero",
+        description:
+          "Cada posición DeFi se evalúa según el marco de riesgos de TAMS. La exposición máxima por protocolo está limitada al 10%. Monitoreo continuo de TVL, estado de auditoría y gobernanza.",
+      },
+      multiChain: {
+        title: "Despliegue multi-cadena",
+        description:
+          "Estrategias DeFi desplegadas en Ethereum, Arbitrum y Solana para capturar oportunidades específicas de cada cadena y reducir el riesgo de concentración en una sola cadena.",
+      },
+    },
+    risk: {
+      badge: "Gestión de riesgos",
+      title: "Marco de riesgos DeFi",
+      subtitle:
+        "Evaluación y mitigación sistemática de riesgos específicos de las operaciones de finanzas descentralizadas.",
+    },
+  },
+  marketShift: {
+    badge: "Cambio de mercado",
+    title: "Por qué ahora: el cambio institucional",
+    subtitle:
+      "La convergencia de claridad regulatoria, aprobaciones de ETF, adopción institucional y madurez de infraestructura crea una ventana única para la inversión estructurada en blockchain. El mercado está pasando de especulativo a institucional.",
+    catalysts: {
+      badge: "Catalizadores del mercado",
+      title: "Por qué este momento importa",
+      subtitle:
+        "Seis fuerzas convergentes están transformando blockchain de una clase de activos especulativa a infraestructura institucional.",
+    },
+    catalystCards: {
+      etf: {
+        title: "Legitimación por ETF",
+        description:
+          "Los ETF spot de Bitcoin y Ethereum han sido aprobados, atrayendo miles de millones en flujos institucionales y legitimando las criptomonedas como clase de activos para asignadores convencionales.",
+      },
+      regulatory: {
+        title: "Claridad regulatoria",
+        description:
+          "Los marcos regulatorios globales se están consolidando. MiCA en la UE, las directrices estadounidenses en evolución y la competencia jurisdiccional están creando reglas más claras para la participación institucional.",
+      },
+      corporate: {
+        title: "Adopción de tesorerías corporativas",
+        description:
+          "De MicroStrategy a Tesla, las tesorerías corporativas están asignando a activos digitales. Esta tendencia se expande a empresas medianas y fondos soberanos.",
+      },
+      rwa: {
+        title: "Ola de tokenización RWA",
+        description:
+          "Se proyecta que la tokenización de activos del mundo real alcance $16 billones para 2030. BlackRock, Franklin Templeton y otros gigantes de TradFi están construyendo activamente productos on-chain.",
+      },
+      defiMaturation: {
+        title: "Maduración de DeFi",
+        description:
+          "DeFi ha sobrevivido múltiples ciclos de mercado. Los protocolos probados ahora gestionan miles de millones con seguridad comprobada. La infraestructura DeFi de grado institucional está emergiendo.",
+      },
+      infrastructure: {
+        title: "Preparación de infraestructura",
+        description:
+          "El escalamiento de Capa 2, la interoperabilidad entre cadenas, la abstracción de cuentas y las soluciones de custodia institucional han alcanzado niveles de madurez adecuados para el despliegue serio de capital.",
+      },
+    },
+    timeline: {
+      badge: "Cronología",
+      title: "Cronología de adopción institucional",
+      subtitle:
+        "Hitos clave en el camino desde los primeros adoptantes hasta la participación institucional convencional en activos digitales.",
+    },
+    quote: {
+      text: "Estamos presenciando la convergencia de las finanzas tradicionales y la infraestructura blockchain — no como sistemas competidores, sino como capas complementarias de una nueva arquitectura financiera.",
+      source: "La tesis de inversión de TAMS",
+    },
+  },
+  strategy: {
+    badge: "Estrategia y negocios",
+    title: "Marco estratégico de negocios",
+    subtitle:
+      "Dimensionamiento de mercado, prueba de participación, prueba de concepto y posicionamiento competitivo — la base estratégica del marco de inversión de TAMS.",
+    tam: {
+      badge: "Dimensionamiento de mercado",
+      title: "Análisis TAM / SAM / SOM",
+      subtitle:
+        "Comprensión de la oportunidad total de mercado, los segmentos abordables y los objetivos realistas de captura inicial.",
+    },
+    pos: {
+      badge: "POS — Prueba de participación",
+      title: "Lo que TAMS ha construido",
+      subtitle:
+        "Activos y marcos estratégicos tangibles que demuestran la viabilidad y profundidad del enfoque TAMS.",
+    },
+    posItems: [
+      {
+        title: "Arquitectura multi-billetera estructurada",
+        description:
+          "Un modelo de cuatro billeteras definido con objetivos claros de asignación, parámetros de riesgo y protocolos operativos para cada división.",
+      },
+      {
+        title: "Selección de activos basada en investigación",
+        description:
+          "16 activos seleccionados mediante análisis fundamental en seis verticales — cada uno con tesis documentada, perfil de riesgo y ajuste al portafolio.",
+      },
+      {
+        title: "Marco de riesgos institucional",
+        description:
+          "Evaluación integral de riesgos que cubre contratos inteligentes, contraparte, liquidez, regulatorio, custodia, mercado y riesgos geopolíticos.",
+      },
+      {
+        title: "Integración de rendimiento DeFi",
+        description:
+          "Estrategias definidas para generación de rendimiento a través de préstamos, staking y provisión de liquidez con gestión de riesgos a nivel de protocolo.",
+      },
+    ],
+    poc: {
+      badge: "POC — Prueba de concepto",
+      title: "Validación del concepto",
+      subtitle:
+        "Hitos completados que validan el concepto del marco TAMS y demuestran capacidad de ejecución.",
+    },
+    pocItems: [
+      {
+        title: "Aplicación conceptual construida",
+        description:
+          "Esta aplicación en sí misma sirve como prueba de concepto — demostrando la capacidad de articular, estructurar y presentar un marco de inversión sofisticado.",
+      },
+      {
+        title: "Análisis TAM/SAM/SOM completado",
+        description:
+          "El análisis de dimensionamiento de mercado identifica el mercado total abordable, los segmentos atendibles y los objetivos realistas de captura inicial.",
+      },
+      {
+        title: "Arquitectura de billeteras diseñada",
+        description:
+          "Estructura jerárquica completa de billeteras con diagramas de flujo de capital, modelos de asignación y aislamiento de riesgos entre divisiones.",
+      },
+      {
+        title: "Marco completo de divulgación de riesgos",
+        description:
+          "Siete categorías de riesgo documentadas con descripciones detalladas, estrategias de mitigación y lenguaje de divulgación adecuado para revisión de inversionistas.",
+      },
+    ],
+    edge: {
+      badge: "Ventaja competitiva",
+      title: "Ventajas estratégicas",
+      subtitle:
+        "Lo que diferencia al enfoque TAMS de los fondos cripto genéricos y los portafolios especulativos.",
+    },
+    advantages: {
+      clarity: {
+        title: "Claridad de tesis",
+        description:
+          "Tesis de inversión clara y documentada para cada posición — no seguimiento de patrones ni persecución de momentum, sino convicción fundamental.",
+      },
+      multiStrategy: {
+        title: "Multi-estrategia",
+        description:
+          "Tres estrategias complementarias (mantener, operar, generar rendimiento) en un solo marco. Diversificación de enfoque, no solo de activos.",
+      },
+      mindset: {
+        title: "Mentalidad institucional",
+        description:
+          "Documentación, gestión de riesgos y transparencia de grado inversionista. Diseñado para cumplir las expectativas de asignadores sofisticados.",
+      },
+      timing: {
+        title: "Timing de mercado",
+        description:
+          "Construido durante la ola de adopción institucional — post-aprobación de ETF, durante la clarificación regulatoria y antes del auge de tokenización RWA.",
+      },
+    },
+  },
+  investor: {
+    badge: "Resumen para inversionistas",
+    title: "Experiencia del inversionista y hoja de ruta",
+    subtitle:
+      "Desde los hitos del proyecto hasta la divulgación de riesgos — todo lo que un inversionista necesita para comprender el marco TAMS, su trayectoria y los riesgos involucrados.",
+    highlights: {
+      structured: {
+        title: "Enfoque estructurado",
+        value: "4 billeteras",
+        description: "Capital segregado en divisiones especializadas",
+      },
+      research: {
+        title: "Cobertura de investigación",
+        value: "16 activos",
+        description: "Análisis profundo en 6 categorías verticales",
+      },
+      risk: {
+        title: "Categorías de riesgo",
+        value: "7 capas",
+        description: "Marco integral de evaluación de riesgos",
+      },
+      horizon: {
+        title: "Horizonte",
+        value: "Multi-anual",
+        description: "Tesis a largo plazo con hitos estructurados",
+      },
+    },
+    roadmap: {
+      badge: "Hoja de ruta",
+      title: "Hoja de ruta y milestones del proyecto",
+      subtitle:
+        "El plan de desarrollo por fases del marco TAMS — desde investigación e infraestructura hasta gestión activa y escalamiento.",
+    },
+    riskDisclosure: {
+      badge: "Divulgación de riesgos",
+      title: "Categorías de riesgo y divulgaciones",
+      subtitle:
+        "Divulgación integral de riesgos que cubre todas las categorías principales de riesgo relevantes para la inversión en activos digitales. La transparencia no es negociable.",
+    },
+    conclusion: {
+      title: "Un marco, no un producto",
+      content:
+        "TAMS es una aplicación conceptual diseñada para demostrar cómo la infraestructura de inversión en blockchain podría estructurarse con disciplina institucional. Presenta estrategia, investigación, arquitectura y gestión de riesgos — pero no es un fondo operativo, producto financiero ni oferta de inversión.",
+      note: "No se despliega capital. No se garantizan ni se implican rendimientos. Esta es una exploración conceptual de la gestión de inversiones en blockchain.",
+    },
+  },
+};
+
+export default es;

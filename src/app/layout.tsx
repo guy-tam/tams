@@ -1,8 +1,8 @@
-// תבנית ראשית - מבנה האפליקציה עם ניווט צדדי ומצב כהה
+// תבנית ראשית - מבנה האפליקציה עם ניווט צדדי, מצב כהה ותמיכה בריבוי שפות
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/layout/Navigation";
+import AppShell from "@/components/layout/AppShell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,15 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="he"
+      dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full bg-zinc-950 text-zinc-100 flex">
-        {/* ניווט צדדי */}
-        <Navigation />
-
-        {/* תוכן ראשי - רווח שמאלי בדסקטופ עבור הסיידבר */}
-        <div className="flex-1 lg:pl-64">{children}</div>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

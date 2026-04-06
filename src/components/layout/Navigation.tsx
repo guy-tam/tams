@@ -1,6 +1,6 @@
 "use client";
 
-// ניווט ראשי - סרגל צד פרימיום עם אפקט זכוכית
+// ניווט ראשי - סרגל צד פרימיום עם אפקט זכוכית ותמיכה בריבוי שפות
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,17 +17,19 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-// פריטי ניווט - כל עמוד עם אייקון ונתיב
+// מפתחות ניווט עם אייקונים ונתיבים
 const navItems = [
-  { label: "Home", href: "/", icon: Home },
-  { label: "Company", href: "/company", icon: Building2 },
-  { label: "Architecture", href: "/architecture", icon: Network },
-  { label: "Holdings", href: "/holdings", icon: Wallet },
-  { label: "DeFi", href: "/defi", icon: Coins },
-  { label: "Market Shift", href: "/market-shift", icon: TrendingUp },
-  { label: "Strategy", href: "/strategy", icon: Target },
-  { label: "Investor", href: "/investor", icon: Users },
+  { labelKey: "nav.home", href: "/", icon: Home },
+  { labelKey: "nav.company", href: "/company", icon: Building2 },
+  { labelKey: "nav.architecture", href: "/architecture", icon: Network },
+  { labelKey: "nav.holdings", href: "/holdings", icon: Wallet },
+  { labelKey: "nav.defi", href: "/defi", icon: Coins },
+  { labelKey: "nav.marketShift", href: "/market-shift", icon: TrendingUp },
+  { labelKey: "nav.strategy", href: "/strategy", icon: Target },
+  { labelKey: "nav.investor", href: "/investor", icon: Users },
 ];
 
 // אנימציה לפריטי הניווט
@@ -51,6 +53,7 @@ export default function Navigation() {
   // מצב פתוח/סגור של תפריט מובייל
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { t, isRTL } = useLanguage();
 
   // סגירת תפריט מובייל בעת שינוי נתיב
   useEffect(() => {
@@ -87,17 +90,17 @@ export default function Navigation() {
                 <motion.div
                   layoutId="activeNav"
                   className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/20"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}
               <item.icon className="relative z-10 h-4 w-4 shrink-0" />
-              <span className="relative z-10">{item.label}</span>
-              {/* פס אינדיקטור בצד שמאל */}
+              <span className="relative z-10">{t(item.labelKey)}</span>
+              {/* פס אינדיקטור בצד */}
               {active && (
                 <motion.div
                   layoutId="activeIndicator"
-                  className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-cyan-400 to-blue-500"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-cyan-400 to-blue-500`}
+                  transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}
             </motion.div>
@@ -118,7 +121,7 @@ export default function Navigation() {
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
           <p className="text-[10px] uppercase tracking-widest text-zinc-500">
-            Investment Infrastructure
+            {t("common.conceptApp")}
           </p>
         </div>
       </div>
@@ -131,11 +134,16 @@ export default function Navigation() {
         <NavLinks />
       </div>
 
+      {/* מחליף שפות */}
+      <div className="mx-3 mb-2">
+        <LanguageSwitcher />
+      </div>
+
       {/* תחתית הסיידבר */}
-      <div className="mx-4 mt-auto mb-2 h-px bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent" />
+      <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent" />
       <div className="px-6 py-4">
         <p className="text-[10px] text-zinc-600 uppercase tracking-widest">
-          Concept App &middot; v0.1
+          {t("common.conceptApp")} &middot; v0.1
         </p>
       </div>
     </div>
@@ -146,9 +154,9 @@ export default function Navigation() {
       {/* כפתור המבורגר למובייל */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-4 left-4 z-50 flex h-10 w-10 items-center justify-center rounded-lg
+        className={`fixed top-4 ${isRTL ? "right-4" : "left-4"} z-50 flex h-10 w-10 items-center justify-center rounded-lg
           bg-zinc-900/80 backdrop-blur-md border border-zinc-800/60 text-zinc-400
-          hover:text-white transition-colors lg:hidden"
+          hover:text-white transition-colors lg:hidden`}
         aria-label="פתיחת תפריט"
       >
         <Menu className="h-5 w-5" />
@@ -156,11 +164,10 @@ export default function Navigation() {
 
       {/* סיידבר קבוע לדסקטופ */}
       <aside
-        className="hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 left-0 z-40
+        className={`hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-40
           bg-zinc-950/70 backdrop-blur-xl
-          border-r border-zinc-800/40"
+          ${isRTL ? "border-l" : "border-r"} border-zinc-800/40`}
         style={{
-          // גבול גרדיאנט עדין בצד ימין
           borderImage: "linear-gradient(to bottom, transparent, rgba(6,182,212,0.15), rgba(59,130,246,0.15), transparent) 1",
         }}
       >
@@ -189,14 +196,14 @@ export default function Navigation() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed inset-y-0 left-0 z-50 w-64 flex flex-col
-                bg-zinc-950/90 backdrop-blur-xl border-r border-zinc-800/40 lg:hidden"
+              className={`fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-50 w-64 flex flex-col
+                bg-zinc-950/90 backdrop-blur-xl ${isRTL ? "border-l" : "border-r"} border-zinc-800/40 lg:hidden`}
             >
               {/* כפתור סגירה */}
               <button
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center
-                  rounded-md text-zinc-500 hover:text-white transition-colors"
+                className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
+                  rounded-md text-zinc-500 hover:text-white transition-colors`}
                 aria-label="סגירת תפריט"
               >
                 <X className="h-4 w-4" />
