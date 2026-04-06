@@ -15,6 +15,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { useLanguage, type Language } from "@/lib/i18n";
 
 // אנימציות
 const containerVariants = {
@@ -62,7 +63,7 @@ function Toggle({
 
 export default function SettingsPage() {
   const { user } = useAuth();
-  const [language, setLanguage] = useState("he");
+  const { language, setLanguage: setAppLanguage } = useLanguage();
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [pushNotifications, setPushNotifications] = useState(false);
   const [priceAlerts, setPriceAlerts] = useState(true);
@@ -163,7 +164,7 @@ export default function SettingsPage() {
               </div>
               <select
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+                onChange={(e) => setAppLanguage(e.target.value as Language)}
                 className="bg-white/[0.05] border border-white/[0.08] rounded-lg px-3 py-1.5 text-sm text-foreground outline-none focus:border-blue-500/50"
               >
                 <option value="he">עברית</option>
