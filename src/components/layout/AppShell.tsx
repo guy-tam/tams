@@ -1,7 +1,9 @@
 "use client";
 
-// מעטפת האפליקציה - LanguageProvider + ניווט + תוכן עם RTL דינמי
+// מעטפת האפליקציה - AuthProvider + LanguageProvider + ניווט + תוכן עם RTL דינמי
 import { type ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { AuthProvider } from "@/lib/auth";
 import { LanguageProvider } from "@/lib/i18n";
 import { useLanguage } from "@/lib/i18n";
 import type { Language, TranslationStrings } from "@/lib/i18n";
@@ -17,8 +19,17 @@ import es from "@/lib/i18n/locales/es";
 const translations: Record<Language, TranslationStrings> = { en, he, ar, ru, es };
 
 // רכיב פנימי - מבנה התוכן עם RTL דינמי
+// בנתיבי דשבורד לא מוצגת הניווט הציבורי - יש להם סרגל צד ייעודי
 function ShellInner({ children }: { children: ReactNode }) {
   const { isRTL } = useLanguage();
+  const pathname = usePathname();
+  const isDashboard = pathname.startsWith("/dashboard");
+  const isLogin = pathname.startsWith("/login");
+
+  // בדשבורד ובדף ההתחברות - תוכן מלא ללא ניווט ציבורי
+  if (isDashboard || isLogin) {
+    return <>{children}</>;
+  }
 
   return (
     <>
@@ -32,8 +43,10 @@ function ShellInner({ children }: { children: ReactNode }) {
 
 export default function AppShell({ children }: { children: ReactNode }) {
   return (
-    <LanguageProvider translations={translations}>
-      <ShellInner>{children}</ShellInner>
-    </LanguageProvider>
+    <AuthProvider>
+      <LanguageProvider translations={translations}>
+        <ShellInner>{children}</ShellInner>
+      </LanguageProvider>
+    </AuthProvider>
   );
 }
