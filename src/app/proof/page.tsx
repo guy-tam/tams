@@ -40,37 +40,37 @@ export default function ProofPage() {
         </div>
 
         {/* קו הפרדה */}
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-4" />
+        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
 
         <div id="evidence-explorer">
           <EvidenceExplorer initialAsset={selectedAsset} />
         </div>
 
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-4" />
+        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
 
         <div id="global-coverage">
           <AdoptionCoverage />
         </div>
 
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-4" />
+        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
 
         <div id="market-analysis">
           <MarketUnderpricing />
         </div>
 
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-4" />
+        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
 
         <div id="business-model">
           <BusinessModelAdvantage />
         </div>
 
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-4" />
+        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
 
         <div id="scenarios">
           <ScenarioModel />
         </div>
 
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent my-4" />
+        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
 
         <div id="methodology">
           <MethodologyDisclaimer />

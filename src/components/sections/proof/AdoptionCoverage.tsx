@@ -22,7 +22,7 @@ import { useLanguage } from "@/lib/i18n/context";
 const regionColors: Record<string, string> = {
   "North America": "from-blue-500/20 to-blue-600/10 border-blue-500/20",
   "Europe": "from-purple-500/20 to-purple-600/10 border-purple-500/20",
-  "Asia Pacific": "from-cyan-500/20 to-cyan-600/10 border-cyan-500/20",
+  "Asia Pacific": "from-blue-500/20 to-blue-600/10 border-blue-500/20",
   "Global": "from-emerald-500/20 to-emerald-600/10 border-emerald-500/20",
   "Africa": "from-amber-500/20 to-amber-600/10 border-amber-500/20",
   "Latin America": "from-rose-500/20 to-rose-600/10 border-rose-500/20",
@@ -32,9 +32,9 @@ const regionColors: Record<string, string> = {
 
 // צבעי ביטחון — מגולם כצבעים מוחלטים לתרשימי recharts
 const CONFIDENCE_COLORS: Record<ConfidenceLevel, string> = {
-  high: "#22d3ee",    // ציאן
-  medium: "#a78bfa",  // סגול
-  low: "#f59e0b",     // כתום
+  high: "#3b82f6",    // כחול
+  medium: "#f59e0b",  // זהב
+  low: "#71717a",     // אפור
 };
 
 // צבעי סטטוס
@@ -42,17 +42,18 @@ const STATUS_COLORS: Record<EvidenceStatus, string> = {
   active: "#34d399",
   pilot: "#4f8ff7",
   announced: "#a78bfa",
-  "ecosystem-support": "#22d3ee",
+  "ecosystem-support": "#3b82f6",
   historical: "#71717a",
   indirect: "#a1a1aa",
 };
 
-// חישוב צבע ע״פ עוצמת ביטחון ממוצעת (0-1) — מציאן כהה לציאן בהיר
+// חישוב צבע ע״פ עוצמת ביטחון ממוצעת (0-1) — מכחול כהה לזהב בהיר
 function getTreemapColor(avgConfidence: number): string {
   // avgConfidence: 0 (low) to 1 (high)
-  const r = Math.round(34 + (79 - 34) * (1 - avgConfidence));
-  const g = Math.round(211 - (211 - 143) * (1 - avgConfidence));
-  const b = Math.round(238 - (238 - 247) * (1 - avgConfidence));
+  // Low confidence -> muted gold, High confidence -> bright blue
+  const r = Math.round(59 + (245 - 59) * (1 - avgConfidence));
+  const g = Math.round(130 + (158 - 130) * (1 - avgConfidence));
+  const b = Math.round(246 + (11 - 246) * (1 - avgConfidence));
   return `rgb(${r}, ${g}, ${b})`;
 }
 
@@ -218,7 +219,7 @@ export default function AdoptionCoverage() {
           className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
         >
           <div className="flex items-center gap-2 mb-5">
-            <Globe className="h-4 w-4 text-cyan-400" />
+            <Globe className="h-4 w-4 text-blue-400" />
             <h3 className="text-sm font-semibold text-white">{t("proof.coverage.geoDistribution")}</h3>
           </div>
           <div className="space-y-2.5">
@@ -247,7 +248,7 @@ export default function AdoptionCoverage() {
           className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
         >
           <div className="flex items-center gap-2 mb-5">
-            <Building2 className="h-4 w-4 text-purple-400" />
+            <Building2 className="h-4 w-4 text-amber-400" />
             <h3 className="text-sm font-semibold text-white">{t("proof.coverage.orgTypes")}</h3>
           </div>
           <div className="space-y-2">
@@ -267,7 +268,7 @@ export default function AdoptionCoverage() {
                     whileInView={{ width: `${(item.count / analysis.orgTypes[0].count) * 100}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: i * 0.04 }}
-                    className="h-full rounded-full bg-gradient-to-r from-purple-500/60 to-blue-500/60"
+                    className="h-full rounded-full bg-gradient-to-r from-blue-500/60 to-amber-500/60"
                   />
                 </div>
                 <span className="text-xs font-mono text-zinc-400 w-6 text-right">{item.count}</span>
@@ -329,7 +330,7 @@ export default function AdoptionCoverage() {
           className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
         >
           <div className="flex items-center gap-2 mb-4">
-            <ShieldCheck className="h-4 w-4 text-cyan-400" />
+            <ShieldCheck className="h-4 w-4 text-blue-400" />
             <h3 className="text-sm font-semibold text-white">Confidence Distribution</h3>
           </div>
           <div className="flex items-center gap-4">

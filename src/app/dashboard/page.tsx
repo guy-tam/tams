@@ -1,6 +1,7 @@
 "use client";
 
 // דשבורד ראשי - סקירת תיק השקעות בסגנון Bloomberg מודרני עם תמיכה ב-5 שפות
+// עיצוב פרימיום: כחול כהה + זהב מוסדי
 import { motion } from "framer-motion";
 import {
   AreaChart,
@@ -203,44 +204,52 @@ function formatILS(value: number) {
   return value.toLocaleString("he-IL");
 }
 
-// כרטיס סטטיסטיקה
+// כרטיס סטטיסטיקה - עיצוב פרימיום כחול כהה + זהב
 function StatCard({
   label,
   value,
   change,
   icon: Icon,
   color,
+  isGold,
 }: {
   label: string;
   value: string;
   change: number;
   icon: React.ElementType;
   color: string;
+  isGold?: boolean;
 }) {
   const isPositive = change >= 0;
   return (
     <motion.div
       variants={itemVariants}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-5 relative overflow-hidden group"
+      className={`rounded-2xl backdrop-blur-md p-5 relative overflow-hidden group ${
+        isGold
+          ? "border border-amber-500/25 bg-gradient-to-br from-[#0f1d35] to-[#1a2744] shadow-lg shadow-amber-900/10"
+          : "border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36]"
+      }`}
     >
-      {/* גלאו עליון */}
+      {/* גלאו עליון פרימיום */}
       <div
         className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100"
         style={{
-          background: `linear-gradient(90deg, transparent, ${color}40, transparent)`,
+          background: isGold
+            ? "linear-gradient(90deg, transparent, #d4a85380, transparent)"
+            : `linear-gradient(90deg, transparent, ${color}40, transparent)`,
         }}
       />
       <div className="flex items-start justify-between mb-3">
         <div
           className="inline-flex items-center justify-center size-10 rounded-xl"
-          style={{ background: `${color}15` }}
+          style={{ background: isGold ? "rgba(212,168,83,0.12)" : `${color}15` }}
         >
-          <Icon className="size-5" style={{ color }} />
+          <Icon className="size-5" style={{ color: isGold ? "#d4a853" : color }} />
         </div>
         <div
           className={`flex items-center gap-1 text-xs font-medium ${
-            isPositive ? "text-emerald-400" : "text-red-400"
+            isPositive ? "text-emerald-400/90" : "text-rose-400/90"
           }`}
         >
           {isPositive ? (
@@ -252,10 +261,13 @@ function StatCard({
           {change}%
         </div>
       </div>
-      <div className="text-2xl font-bold text-foreground mb-1" style={{ color }}>
+      <div
+        className="text-2xl font-bold mb-1"
+        style={{ color: isGold ? "#d4a853" : color }}
+      >
         {value}
       </div>
-      <div className="text-xs text-muted-foreground">{label}</div>
+      <div className="text-xs text-slate-400">{label}</div>
     </motion.div>
   );
 }
@@ -272,9 +284,9 @@ function PerformanceTooltip({
 }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-white/[0.08] bg-card/95 backdrop-blur-md px-3 py-2 shadow-xl">
-      <div className="text-xs text-muted-foreground mb-1">{label}</div>
-      <div className="text-sm font-bold text-foreground">
+    <div className="rounded-lg border border-blue-500/20 bg-[#0c1829]/95 backdrop-blur-md px-3 py-2 shadow-xl shadow-blue-900/20">
+      <div className="text-xs text-slate-400 mb-1">{label}</div>
+      <div className="text-sm font-bold text-white">
         ₪{formatILS(payload[0].value)}
       </div>
     </div>
@@ -292,61 +304,61 @@ function AllocationTooltip({
   if (!active || !payload?.length) return null;
   const data = payload[0].payload;
   return (
-    <div className="rounded-lg border border-white/[0.08] bg-card/95 backdrop-blur-md px-3 py-2 shadow-xl">
+    <div className="rounded-lg border border-blue-500/20 bg-[#0c1829]/95 backdrop-blur-md px-3 py-2 shadow-xl shadow-blue-900/20">
       <div className="flex items-center gap-2">
         <div
           className="size-2.5 rounded-full"
           style={{ background: data.color }}
         />
-        <span className="text-sm font-medium text-foreground">{data.name}</span>
+        <span className="text-sm font-medium text-white">{data.name}</span>
       </div>
-      <div className="text-lg font-bold text-foreground mt-0.5">
+      <div className="text-lg font-bold text-white mt-0.5">
         {data.allocation}%
       </div>
-      <div className="text-xs text-muted-foreground">
+      <div className="text-xs text-slate-400">
         ₪{formatILS(data.valueILS)}
       </div>
     </div>
   );
 }
 
-// אייקון לפי סוג פעולה
+// אייקון לפי סוג פעולה - צבעים מעודנים
 function getActivityIcon(type: string) {
   switch (type) {
     case "buy":
-      return <ShoppingCart className="size-4 text-emerald-400" />;
+      return <ShoppingCart className="size-4 text-emerald-400/90" />;
     case "sell":
-      return <ArrowRightLeft className="size-4 text-red-400" />;
+      return <ArrowRightLeft className="size-4 text-rose-400/90" />;
     case "stake":
     case "unstake":
     case "yield":
-      return <Percent className="size-4 text-cyan-400" />;
+      return <Percent className="size-4 text-blue-400" />;
     case "deposit":
-      return <Landmark className="size-4 text-blue-400" />;
+      return <Landmark className="size-4 text-blue-300" />;
     case "withdrawal":
-      return <CircleDollarSign className="size-4 text-amber-400" />;
+      return <CircleDollarSign className="size-4 text-amber-400/90" />;
     default:
-      return <Wallet className="size-4 text-zinc-400" />;
+      return <Wallet className="size-4 text-slate-400" />;
   }
 }
 
-// צבע לפי סוג פעולה
+// צבע לפי סוג פעולה - כחול במקום ציאן
 function getActivityBg(type: string) {
   switch (type) {
     case "buy":
       return "bg-emerald-400/10";
     case "sell":
-      return "bg-red-400/10";
+      return "bg-rose-400/10";
     case "stake":
     case "unstake":
     case "yield":
-      return "bg-cyan-400/10";
-    case "deposit":
       return "bg-blue-400/10";
+    case "deposit":
+      return "bg-blue-300/10";
     case "withdrawal":
       return "bg-amber-400/10";
     default:
-      return "bg-zinc-400/10";
+      return "bg-slate-400/10";
   }
 }
 
@@ -381,10 +393,10 @@ export default function DashboardPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+        <h1 className="text-2xl md:text-3xl font-bold text-white">
           {t.pageTitle}
         </h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <p className="text-sm text-slate-400 mt-1">
           {t.pageSubtitle}
         </p>
       </motion.div>
@@ -402,27 +414,28 @@ export default function DashboardPage() {
           change={portfolioSummary.dailyChange}
           icon={Wallet}
           color="#3b82f6"
+          isGold
         />
         <StatCard
           label={t.monthlyReturn}
           value={`+${portfolioSummary.monthlyChange}%`}
           change={portfolioSummary.monthlyChange}
           icon={TrendingUp}
-          color="#10b981"
+          color="#34d399"
         />
         <StatCard
           label={t.allTimeReturn}
           value={`+${portfolioSummary.allTimeReturn}%`}
           change={portfolioSummary.allTimeReturn}
           icon={BarChart3}
-          color="#8b5cf6"
+          color="#818cf8"
         />
         <StatCard
           label={t.weeklyReturn}
           value={`+${portfolioSummary.weeklyChange}%`}
           change={portfolioSummary.weeklyChange}
           icon={Percent}
-          color="#06b6d4"
+          color="#60a5fa"
         />
       </motion.div>
 
@@ -433,12 +446,12 @@ export default function DashboardPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-2 rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="lg:col-span-2 rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
         >
-          <h3 className="text-base font-semibold text-foreground mb-1">
+          <h3 className="text-base font-semibold text-white mb-1">
             {t.perfChartTitle}
           </h3>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="text-xs text-slate-400 mb-4">
             {t.perfChartSubtitle}
           </p>
           <div className="h-72">
@@ -447,17 +460,18 @@ export default function DashboardPage() {
                 <defs>
                   <linearGradient id="perfGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.3} />
+                    <stop offset="50%" stopColor="#3b82f6" stopOpacity={0.08} />
                     <stop offset="100%" stopColor="#3b82f6" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <XAxis
                   dataKey="date"
-                  tick={{ fill: "#71717a", fontSize: 11 }}
+                  tick={{ fill: "#64748b", fontSize: 11 }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fill: "#71717a", fontSize: 11 }}
+                  tick={{ fill: "#64748b", fontSize: 11 }}
                   axisLine={false}
                   tickLine={false}
                   tickFormatter={(v) => `${(v / 1000000).toFixed(1)}M`}
@@ -481,12 +495,12 @@ export default function DashboardPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
         >
-          <h3 className="text-base font-semibold text-foreground mb-1">
+          <h3 className="text-base font-semibold text-white mb-1">
             {t.allocationTitle}
           </h3>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="text-xs text-slate-400 mb-4">
             {t.allocationSubtitle}
           </p>
           <div className="h-52">
@@ -506,7 +520,7 @@ export default function DashboardPage() {
                     <Cell
                       key={entry.name}
                       fill={entry.color}
-                      fillOpacity={0.8}
+                      fillOpacity={0.85}
                     />
                   ))}
                 </Pie>
@@ -522,7 +536,7 @@ export default function DashboardPage() {
                   className="size-2.5 rounded-full flex-shrink-0"
                   style={{ background: w.color }}
                 />
-                <span className="text-xs text-muted-foreground flex-1 truncate">
+                <span className="text-xs text-slate-400 flex-1 truncate">
                   {w.name}
                 </span>
                 <span
@@ -544,14 +558,14 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
         >
-          <h3 className="text-base font-semibold text-foreground mb-4">
+          <h3 className="text-base font-semibold text-white mb-4">
             {t.topHoldings}
           </h3>
           <div className="space-y-3">
-            {/* כותרות */}
-            <div className="grid grid-cols-5 text-xs text-muted-foreground pb-2 border-b border-white/[0.06]">
+            {/* כותרות - עיצוב פרימיום */}
+            <div className="grid grid-cols-5 text-xs text-slate-500 uppercase tracking-wider pb-2 border-b border-blue-500/10 font-medium">
               <span>{t.colTicker}</span>
               <span>{t.colName}</span>
               <span className="text-left">{t.colValue}</span>
@@ -561,23 +575,23 @@ export default function DashboardPage() {
             {topHoldings.map((h) => (
               <div
                 key={h.ticker}
-                className="grid grid-cols-5 items-center text-sm py-2 border-b border-white/[0.03] last:border-0"
+                className="grid grid-cols-5 items-center text-sm py-2 border-b border-blue-900/20 last:border-0 hover:bg-blue-500/5 transition-colors rounded-lg"
               >
-                <span className="font-mono font-bold text-foreground">
+                <span className="font-mono font-bold text-white">
                   {h.ticker}
                 </span>
-                <span className="text-muted-foreground text-xs truncate">
+                <span className="text-slate-400 text-xs truncate">
                   {h.name}
                 </span>
-                <span className="text-foreground text-xs text-left">
+                <span className="text-slate-200 text-xs text-left">
                   ₪{formatILS(h.valueILS)}
                 </span>
-                <span className="text-muted-foreground text-xs text-left">
+                <span className="text-slate-400 text-xs text-left">
                   {h.allocation}%
                 </span>
                 <span
                   className={`text-xs font-medium text-left ${
-                    h.pnl >= 0 ? "text-emerald-400" : "text-red-400"
+                    h.pnl >= 0 ? "text-emerald-400/90" : "text-rose-400/90"
                   }`}
                 >
                   {h.pnl >= 0 ? "+" : ""}
@@ -593,16 +607,16 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
         >
-          <h3 className="text-base font-semibold text-foreground mb-4">
+          <h3 className="text-base font-semibold text-white mb-4">
             {t.recentActivity}
           </h3>
           <div className="space-y-3">
             {latestActivity.map((a) => (
               <div
                 key={a.id}
-                className="flex items-center gap-3 py-2 border-b border-white/[0.03] last:border-0"
+                className="flex items-center gap-3 py-2 border-b border-blue-900/20 last:border-0 hover:bg-blue-500/5 transition-colors rounded-lg"
               >
                 <div
                   className={`size-8 rounded-lg flex items-center justify-center ${getActivityBg(
@@ -612,16 +626,16 @@ export default function DashboardPage() {
                   {getActivityIcon(a.type)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium text-foreground">
+                  <div className="text-sm font-medium text-white">
                     {a.asset}
                   </div>
-                  <div className="text-xs text-muted-foreground truncate">
+                  <div className="text-xs text-slate-400 truncate">
                     {a.amount}
                   </div>
                 </div>
                 <div className="text-left">
-                  <div className="text-xs text-muted-foreground">{a.date}</div>
-                  <div className={`text-[10px] font-medium ${a.status === "completed" ? "text-emerald-400" : "text-amber-400"}`}>
+                  <div className="text-xs text-slate-400">{a.date}</div>
+                  <div className={`text-[10px] font-medium ${a.status === "completed" ? "text-emerald-400/90" : "text-amber-400/90"}`}>
                     {a.status === "completed" ? t.statusCompleted : t.statusPending}
                   </div>
                 </div>

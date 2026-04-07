@@ -48,14 +48,14 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
       {cards.map((card, index) => {
         const Icon = card.icon;
         // צבע ברירת מחדל אם לא סופק
-        const accentColor = card.accent || "#3b82f6";
+        const accentColor = card.accent || "#4f8ff7";
 
         return (
           <motion.div
             key={index}
             variants={cardVariants}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6 transition-colors hover:border-white/[0.12] hover:bg-white/[0.05]"
+            className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-white/[0.05] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)]"
           >
             {/* גלאו עדין ברקע הכרטיס */}
             <div
@@ -69,8 +69,8 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
             <div
               className="mb-4 inline-flex items-center justify-center size-12 rounded-xl"
               style={{
-                background: `${accentColor}15`,
-                boxShadow: `0 0 20px ${accentColor}10`,
+                background: `${accentColor}18`,
+                boxShadow: `0 0 24px ${accentColor}15`,
               }}
             >
               <Icon

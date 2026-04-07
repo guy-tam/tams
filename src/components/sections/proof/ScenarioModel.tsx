@@ -25,88 +25,88 @@ interface ScenarioCardData {
 const scenarios: ScenarioCardData[] = [
   {
     id: "conservative",
-    name: "Conservative Adoption",
+    name: "אימוץ שמרני",
     icon: TrendingDown,
     iconColor: "text-zinc-400",
     borderColor: "border-zinc-500/20",
     bgColor: "bg-zinc-500/[0.03]",
     description:
-      "Enterprise blockchain adoption proceeds slowly. Tokenization remains niche. Most institutional pilots do not convert to production. Crypto market remains primarily speculative.",
+      "אימוץ בלוקצ׳יין מוסדי מתקדם באיטיות. טוקניזציה נותרת נישתית. רוב הפיילוטים המוסדיים אינם עוברים לייצור. שוק הקריפטו נשאר ספקולטיבי בעיקרו.",
     assumptions: [
-      "Tokenization growth below $2T by 2030",
-      "CBDC adoption limited to few small nations",
-      "Regulatory environment remains uncertain",
-      "Institutional interest plateaus at current levels",
-      "DeFi yields compress significantly",
+      "צמיחת טוקניזציה מתחת ל-$2T עד 2030",
+      "אימוץ CBDC מוגבל למספר מדינות קטנות",
+      "סביבה רגולטורית נותרת בלתי ודאית",
+      "עניין מוסדי מתייצב ברמות הנוכחיות",
+      "תשואות DeFi מתכווצות באופן משמעותי",
     ],
     factors: [
-      { label: "Adoption Growth", level: "low" },
-      { label: "Treasury Appreciation", level: "low" },
-      { label: "Yield Contribution", level: "low" },
-      { label: "Trading Alpha", level: "moderate" },
-      { label: "Downside Risk", level: "high" },
+      { label: "צמיחת אימוץ", level: "low" },
+      { label: "עליית ערך אוצר", level: "low" },
+      { label: "תרומת תשואה", level: "low" },
+      { label: "אלפא מסחר", level: "moderate" },
+      { label: "סיכון ירידה", level: "high" },
     ],
     outlook:
-      "Under this scenario, portfolio value preservation depends primarily on active trading strategies and risk management. Infrastructure thesis remains intact long-term but takes significantly longer to materialize. Capital protection through position sizing and drawdown limits becomes critical.",
+      "בתרחיש זה, שימור ערך התיק תלוי בעיקר באסטרטגיות מסחר אקטיביות וניהול סיכונים. תזת התשתית נותרת תקפה לטווח הארוך אך לוקחת זמן רב משמעותית להתממש. הגנה על ההון באמצעות גודל פוזיציות ומגבלות ירידה הופכת קריטית.",
   },
   {
     id: "moderate",
-    name: "Moderate Adoption",
+    name: "אימוץ מתון",
     icon: Minus,
-    iconColor: "text-cyan-400",
-    borderColor: "border-cyan-500/20",
-    bgColor: "bg-cyan-500/[0.03]",
+    iconColor: "text-blue-400",
+    borderColor: "border-blue-500/20",
+    bgColor: "bg-blue-500/[0.03]",
     description:
-      "Institutional adoption continues at its current trajectory. Tokenization grows meaningfully. Several major payment networks and banks integrate blockchain rails. Regulatory frameworks emerge in key markets.",
+      "אימוץ מוסדי ממשיך במסלול הנוכחי. טוקניזציה צומחת באופן משמעותי. מספר רשתות תשלום ובנקים מרכזיים משלבים תשתיות בלוקצ׳יין. מסגרות רגולטוריות מתגבשות בשווקים מרכזיים.",
     assumptions: [
-      "Tokenization reaches $4-8T by 2030",
-      "Multiple CBDCs launch in major economies",
-      "Regulatory clarity in US and EU",
-      "Enterprise pilots convert at 20-40% rate",
-      "DeFi matures with institutional participation",
+      "טוקניזציה מגיעה ל-$4-8T עד 2030",
+      "מספר מטבעות CBDC מושקים בכלכלות גדולות",
+      "בהירות רגולטורית בארה״ב ובאיחוד האירופי",
+      "פיילוטים מוסדיים עוברים לייצור בשיעור של 20-40%",
+      "DeFi מבשיל עם השתתפות מוסדית",
     ],
     factors: [
-      { label: "Adoption Growth", level: "moderate" },
-      { label: "Treasury Appreciation", level: "moderate" },
-      { label: "Yield Contribution", level: "moderate" },
-      { label: "Trading Alpha", level: "moderate" },
-      { label: "Downside Risk", level: "moderate" },
+      { label: "צמיחת אימוץ", level: "moderate" },
+      { label: "עליית ערך אוצר", level: "moderate" },
+      { label: "תרומת תשואה", level: "moderate" },
+      { label: "אלפא מסחר", level: "moderate" },
+      { label: "סיכון ירידה", level: "moderate" },
     ],
     outlook:
-      "Under this scenario, infrastructure assets appreciate as adoption validates their utility. DeFi yield provides meaningful operational revenue. The multi-engine model generates returns from both appreciation and active management. This represents the working thesis for portfolio construction.",
+      "בתרחיש זה, נכסי תשתית עולים בערכם ככל שהאימוץ מאמת את התועלת שלהם. תשואות DeFi מספקות הכנסה תפעולית משמעותית. מודל רב-מנועי מייצר תשואות הן מעליית ערך והן מניהול אקטיבי. זוהי תזת העבודה לבניית התיק.",
   },
   {
     id: "aggressive",
-    name: "Accelerated Adoption",
+    name: "אימוץ מואץ",
     icon: TrendingUp,
     iconColor: "text-emerald-400",
     borderColor: "border-emerald-500/20",
     bgColor: "bg-emerald-500/[0.03]",
     description:
-      "Blockchain infrastructure becomes standard financial plumbing. Tokenization scales rapidly. Cross-border payments shift meaningfully to blockchain rails. Oracle networks become critical infrastructure.",
+      "תשתית בלוקצ׳יין הופכת לתשתית פיננסית סטנדרטית. טוקניזציה מתרחבת במהירות. תשלומים חוצי גבולות עוברים באופן משמעותי לתשתיות בלוקצ׳יין. רשתות אורקל הופכות לתשתית קריטית.",
     assumptions: [
-      "Tokenization exceeds $10T by 2030",
-      "Major economies launch CBDCs at scale",
-      "SWIFT integration with blockchain becomes standard",
-      "Enterprise pilot conversion exceeds 50%",
-      "DeFi TVL reaches $500B+ with institutional capital",
+      "טוקניזציה חוצה את רף $10T עד 2030",
+      "כלכלות מרכזיות משיקות CBDC בקנה מידה רחב",
+      "שילוב SWIFT עם בלוקצ׳יין הופך לסטנדרט",
+      "שיעור המרת פיילוטים מוסדיים עולה על 50%",
+      "TVL של DeFi מגיע ל-$500B+ עם הון מוסדי",
     ],
     factors: [
-      { label: "Adoption Growth", level: "high" },
-      { label: "Treasury Appreciation", level: "high" },
-      { label: "Yield Contribution", level: "high" },
-      { label: "Trading Alpha", level: "moderate" },
-      { label: "Downside Risk", level: "low" },
+      { label: "צמיחת אימוץ", level: "high" },
+      { label: "עליית ערך אוצר", level: "high" },
+      { label: "תרומת תשואה", level: "high" },
+      { label: "אלפא מסחר", level: "moderate" },
+      { label: "סיכון ירידה", level: "low" },
     ],
     outlook:
-      "Under this scenario, infrastructure assets positioned at the center of financial modernization experience significant repricing. The total addressable market for blockchain-native assets expands well beyond current crypto market cap. This represents the upside case — possible but not guaranteed.",
+      "בתרחיש זה, נכסי תשתית הממוקמים במרכז המודרניזציה הפיננסית חווים תמחור מחדש משמעותי. השוק הניתן להשגה עבור נכסים מבוססי בלוקצ׳יין מתרחב הרבה מעבר לשווי שוק הקריפטו הנוכחי. זהו תרחיש הפוטנציאל — אפשרי אך אינו מובטח.",
   },
 ];
 
 function LevelIndicator({ level, delay = 0 }: { level: "low" | "moderate" | "high"; delay?: number }) {
   const colors = {
     low: "bg-zinc-500",
-    moderate: "bg-cyan-400",
+    moderate: "bg-blue-400",
     high: "bg-emerald-400",
   };
   const filled = level === "low" ? 1 : level === "moderate" ? 2 : 3;
@@ -139,11 +139,11 @@ export default function ScenarioModel() {
 
   // תוויות גורמים מתורגמות
   const factorLabels: Record<string, string> = {
-    "Adoption Growth": t("proof.scenarios.factorAdoption"),
-    "Treasury Appreciation": t("proof.scenarios.factorTreasury"),
-    "Yield Contribution": t("proof.scenarios.factorYield"),
-    "Trading Alpha": t("proof.scenarios.factorTrading"),
-    "Downside Risk": t("proof.scenarios.factorDownside"),
+    "צמיחת אימוץ": t("proof.scenarios.factorAdoption"),
+    "עליית ערך אוצר": t("proof.scenarios.factorTreasury"),
+    "תרומת תשואה": t("proof.scenarios.factorYield"),
+    "אלפא מסחר": t("proof.scenarios.factorTrading"),
+    "סיכון ירידה": t("proof.scenarios.factorDownside"),
   };
 
   return (

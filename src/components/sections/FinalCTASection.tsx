@@ -28,29 +28,29 @@ export default function FinalCTASection() {
       title: t("home.ctaCards.thesis.title"),
       description: t("home.ctaCards.thesis.description"),
       href: "/company",
-      color: "#3b82f6",
+      color: "#4f8ff7",
     },
     {
       icon: LayoutGrid,
       title: t("home.ctaCards.architecture.title"),
       description: t("home.ctaCards.architecture.description"),
       href: "/architecture",
-      color: "#8b5cf6",
+      color: "#3b6fd4",
     },
     {
       icon: TrendingUp,
       title: t("home.ctaCards.opportunity.title"),
       description: t("home.ctaCards.opportunity.description"),
       href: "/market-shift",
-      color: "#06b6d4",
+      color: "#d4a853",
     },
   ];
 
   return (
     <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-tams-blue/[0.03] to-transparent" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-tams-purple/[0.06] rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/[0.04] to-amber-500/[0.02]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/[0.05] rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
@@ -84,7 +84,7 @@ export default function FinalCTASection() {
                 href={card.href}
                 variants={cardVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6 transition-colors hover:border-white/[0.12] hover:bg-white/[0.05] block"
+                className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-white/[0.06] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] block"
               >
                 {/* גלאו עליון */}
                 <div

@@ -8,15 +8,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["smart-contract-infrastructure", "tokenization-rwa", "custody-settlement"],
     primaryCategory: "smart-contract-infrastructure",
     institutionalSummary:
-      "Dominant smart contract platform serving as the settlement layer for the majority of institutional DeFi, tokenized assets, and on-chain financial infrastructure. Hosts BlackRock BUIDL, multiple ETFs, and the broadest enterprise tooling ecosystem.",
+      "פלטפורמת החוזים החכמים הדומיננטית המשמשת כשכבת הסליקה עבור מרבית ה-DeFi המוסדי, הנכסים המטוקנים והתשתית הפיננסית on-chain. מארחת את BlackRock BUIDL, מספר תעודות ETF, ואת המערכת האקולוגית הרחבה ביותר של כלים ארגוניים.",
     adoptionThemes: [
-      "ETF-grade investment product",
-      "Primary tokenization settlement layer",
-      "Institutional DeFi backbone",
-      "Enterprise tooling ecosystem",
+      "מוצר השקעה ברמת ETF",
+      "שכבת סליקה ראשית לטוקניזציה",
+      "עמוד השדרה של DeFi מוסדי",
+      "מערכת אקולוגית של כלים ארגוניים",
     ],
     riskNote:
-      "High gas fees under congestion; L2 fragmentation; regulatory classification uncertainty around staking.",
+      "עמלות Gas גבוהות בעומס; פיצול L2; חוסר ודאות רגולטורי בסיווג Staking.",
     scores: {
       financeRelevance: 10,
       adoptionMaturity: 9,
@@ -30,15 +30,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["smart-contract-infrastructure", "financial-rails", "developer-ecosystem"],
     primaryCategory: "smart-contract-infrastructure",
     institutionalSummary:
-      "High-performance Layer 1 gaining institutional traction through payment integrations (Visa, PayPal PYUSD, Stripe), DeFi growth, and sub-second finality. Positioned as the primary chain for high-frequency on-chain activity.",
+      "Layer 1 בעל ביצועים גבוהים הצובר אחיזה מוסדית באמצעות אינטגרציות תשלום (Visa, PayPal PYUSD, Stripe), צמיחת DeFi וסופיות תת-שנייתית. ממוצב כרשת הראשית לפעילות on-chain בתדירות גבוהה.",
     adoptionThemes: [
-      "Payment network integrations",
-      "Stablecoin settlement rails",
-      "High-frequency DeFi",
-      "Rapid developer ecosystem growth",
+      "אינטגרציות רשתות תשלום",
+      "פסי סליקה של Stablecoins",
+      "DeFi בתדירות גבוהה",
+      "צמיחה מהירה של מערכת אקולוגית למפתחים",
     ],
     riskNote:
-      "Historical network outages; validator centralization concerns; heavy competition from Ethereum L2 ecosystem.",
+      "היסטוריה של השבתות רשת; חששות ריכוזיות של מאמתים; תחרות עזה ממערכת ה-L2 של Ethereum.",
     scores: {
       financeRelevance: 8,
       adoptionMaturity: 7,
@@ -52,15 +52,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["tokenization-rwa", "institutional-blockchain", "smart-contract-infrastructure"],
     primaryCategory: "institutional-blockchain",
     institutionalSummary:
-      "Modular subnet architecture attracting institutional tokenization pilots from major financial firms. Citi, JPMorgan, and WisdomTree have conducted experiments on Avalanche subnets for tokenized assets and cross-chain settlement.",
+      "ארכיטקטורת Subnet מודולרית המושכת פיילוטים מוסדיים לטוקניזציה מחברות פיננסיות מובילות. Citi, JPMorgan ו-WisdomTree ביצעו ניסויים על Subnets של Avalanche עבור נכסים מטוקנים וסליקה חוצת-שרשראות.",
     adoptionThemes: [
-      "Institutional subnet deployments",
-      "Tokenization pilot platform",
-      "Enterprise-grade customization",
-      "Fast finality for financial use cases",
+      "פריסות Subnet מוסדיות",
+      "פלטפורמה לפיילוטים של טוקניזציה",
+      "התאמה אישית ברמה ארגונית",
+      "סופיות מהירה למקרי שימוש פיננסיים",
     ],
     riskNote:
-      "Subnet adoption still nascent; lower DeFi TVL vs. peers; institutional pilots may not convert to production deployments.",
+      "אימוץ Subnets עדיין בחיתוליו; TVL נמוך ב-DeFi ביחס למתחרים; פיילוטים מוסדיים עשויים שלא להפוך לפריסות ייצור.",
     scores: {
       financeRelevance: 7,
       adoptionMaturity: 6,
@@ -74,15 +74,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["institutional-blockchain", "financial-rails", "enterprise-integration"],
     primaryCategory: "institutional-blockchain",
     institutionalSummary:
-      "Academically rigorous blockchain with focus on government, CBDC pilots, and regulated financial infrastructure. Secured contracts with multiple government and central bank entities, particularly in emerging markets.",
+      "בלוקצ'יין בעל בסיס אקדמי מחמיר עם מיקוד בממשלות, פיילוטים של CBDC ותשתית פיננסית מפוקחת. חתם על חוזים עם מספר גופים ממשלתיים ובנקים מרכזיים, בעיקר בשווקים מתעוררים.",
     adoptionThemes: [
-      "CBDC infrastructure platform",
-      "Government blockchain adoption",
-      "Compliance-oriented architecture",
-      "Carbon-negative operations",
+      "פלטפורמת תשתית CBDC",
+      "אימוץ בלוקצ'יין ממשלתי",
+      "ארכיטקטורה מוכוונת ציות",
+      "פעילות שלילית-פחמן",
     ],
     riskNote:
-      "Limited DeFi ecosystem; foundation token sales history; government adoption timelines often extend significantly.",
+      "מערכת DeFi מוגבלת; היסטוריה של מכירות טוקנים על ידי הקרן; לוחות זמנים לאימוץ ממשלתי נוטים להתארך משמעותית.",
     scores: {
       financeRelevance: 6,
       adoptionMaturity: 5,
@@ -96,15 +96,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["smart-contract-infrastructure", "developer-ecosystem"],
     primaryCategory: "developer-ecosystem",
     institutionalSummary:
-      "Next-generation Layer 1 with object-centric architecture derived from Meta's Diem project. Offers parallel execution for high throughput. Still early in institutional adoption cycle but growing rapidly in developer activity and DeFi metrics.",
+      "Layer 1 מהדור הבא עם ארכיטקטורה מבוססת אובייקטים שמקורה בפרויקט Diem של Meta. מציע ביצוע מקבילי לתפוקה גבוהה. עדיין בשלב מוקדם במחזור האימוץ המוסדי אך צומח במהירות בפעילות מפתחים ומדדי DeFi.",
     adoptionThemes: [
-      "Novel parallel execution model",
-      "Move language safety guarantees",
-      "Rapid ecosystem expansion",
-      "Gaming and consumer blockchain focus",
+      "מודל ביצוע מקבילי חדשני",
+      "ערבויות בטיחות של שפת Move",
+      "התרחבות מהירה של המערכת האקולוגית",
+      "מיקוד בבלוקצ'יין לגיימינג וצרכנות",
     ],
     riskNote:
-      "Young ecosystem with limited institutional track record; significant VC token unlocks; unproven in regulated financial use cases.",
+      "מערכת אקולוגית צעירה עם רקורד מוסדי מוגבל; שחרורי טוקנים משמעותיים של VC; לא הוכח במקרי שימוש פיננסיים מפוקחים.",
     scores: {
       financeRelevance: 4,
       adoptionMaturity: 4,
@@ -118,15 +118,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["smart-contract-infrastructure", "developer-ecosystem", "interoperability"],
     primaryCategory: "developer-ecosystem",
     institutionalSummary:
-      "Sharded Layer 1 pioneering chain abstraction — the concept that users interact across blockchains without knowing which chain they are on. AI integration and simplified onboarding position NEAR for mainstream adoption pathways.",
+      "Layer 1 מפוצל החולש על Chain Abstraction — הרעיון שמשתמשים פועלים בין בלוקצ'יינים מבלי לדעת על איזו שרשרת הם נמצאים. אינטגרציית AI וקליטה פשוטה ממצבים את NEAR למסלולי אימוץ מיינסטרים.",
     adoptionThemes: [
-      "Chain abstraction vision",
-      "AI integration layer",
-      "User onboarding simplification",
-      "Cross-chain interoperability",
+      "חזון Chain Abstraction",
+      "שכבת אינטגרציית AI",
+      "פישוט קליטת משתמשים",
+      "יכולת פעולה הדדית חוצת-שרשראות",
     ],
     riskNote:
-      "Chain abstraction vision is ambitious but unproven at scale; smaller developer ecosystem than top competitors; narrative-dependent valuation.",
+      "חזון ה-Chain Abstraction שאפתני אך לא הוכח בקנה מידה; מערכת מפתחים קטנה יותר מהמתחרים המובילים; תמחור תלוי-נרטיב.",
     scores: {
       financeRelevance: 4,
       adoptionMaturity: 5,
@@ -140,15 +140,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["financial-rails", "custody-settlement", "enterprise-integration"],
     primaryCategory: "financial-rails",
     institutionalSummary:
-      "Purpose-built for cross-border payments with sub-second settlement. Ripple's On-Demand Liquidity product used by financial institutions for international transfers. Post-SEC regulatory clarity unlocked institutional pathways in the US market.",
+      "נבנה במיוחד לתשלומים חוצי-גבולות עם סליקה תת-שנייתית. מוצר On-Demand Liquidity של Ripple משמש מוסדות פיננסיים להעברות בינלאומיות. בהירות רגולטורית לאחר SEC פתחה מסלולים מוסדיים בשוק האמריקאי.",
     adoptionThemes: [
-      "Cross-border payment rails",
-      "Banking and remittance corridors",
-      "Post-SEC regulatory clarity",
-      "Institutional liquidity product",
+      "פסי תשלום חוצי-גבולות",
+      "מסדרונות בנקאות והעברות כספים",
+      "בהירות רגולטורית לאחר SEC",
+      "מוצר נזילות מוסדי",
     ],
     riskNote:
-      "Competition from stablecoins and CBDCs; centralization concerns around Ripple's holdings; adoption slower than early projections.",
+      "תחרות מ-Stablecoins ו-CBDCs; חששות ריכוזיות סביב אחזקות Ripple; אימוץ איטי יותר מהתחזיות המוקדמות.",
     scores: {
       financeRelevance: 8,
       adoptionMaturity: 7,
@@ -162,15 +162,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["financial-rails", "financial-rails", "enterprise-integration"],
     primaryCategory: "financial-rails",
     institutionalSummary:
-      "Open payment network targeting financial inclusion, remittances, and stablecoin distribution. Circle's USDC runs natively on Stellar. Focus on developing markets and compliance-ready infrastructure.",
+      "רשת תשלומים פתוחה המתמקדת בהכלה פיננסית, העברות כספים והפצת Stablecoins. USDC של Circle פועל באופן מקורי על Stellar. מיקוד בשווקים מתפתחים ותשתית מוכנה לציות.",
     adoptionThemes: [
-      "Stablecoin distribution rails",
-      "Financial inclusion infrastructure",
-      "Developing market focus",
-      "Compliance-ready payment network",
+      "פסי הפצה של Stablecoins",
+      "תשתית הכלה פיננסית",
+      "מיקוד בשווקים מתפתחים",
+      "רשת תשלומים מוכנה לציות",
     ],
     riskNote:
-      "Historical MoneyGram and IBM World Wire partnerships ended; modest network activity relative to aspirations; Soroban smart contracts still early.",
+      "שותפויות היסטוריות עם MoneyGram ו-IBM World Wire הסתיימו; פעילות רשת צנועה ביחס לשאיפות; חוזים חכמים של Soroban עדיין בשלב מוקדם.",
     scores: {
       financeRelevance: 6,
       adoptionMaturity: 5,
@@ -184,15 +184,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["enterprise-integration", "tokenization-rwa", "financial-rails"],
     primaryCategory: "enterprise-integration",
     institutionalSummary:
-      "Enterprise blockchain specifically designed for trade finance — a $5.2T underserved market. Partners with trade finance platforms for invoice tokenization, supply chain financing, and letters of credit on-chain.",
+      "בלוקצ'יין ארגוני שתוכנן במיוחד למימון סחר — שוק בהיקף $5.2T שאינו מקבל מענה מספק. שותפויות עם פלטפורמות מימון סחר לטוקניזציה של חשבוניות, מימון שרשרת אספקה ומכתבי אשראי on-chain.",
     adoptionThemes: [
-      "Trade finance digitization",
-      "Supply chain financing",
-      "Invoice tokenization",
-      "Enterprise-grade compliance",
+      "דיגיטציה של מימון סחר",
+      "מימון שרשרת אספקה",
+      "טוקניזציה של חשבוניות",
+      "ציות ברמה ארגונית",
     ],
     riskNote:
-      "Niche focus limits broader adoption; low public awareness and liquidity; enterprise blockchain adoption timelines are unpredictable.",
+      "מיקוד נישתי מגביל אימוץ רחב; מודעות ציבורית ונזילות נמוכות; לוחות זמנים לאימוץ בלוקצ'יין ארגוני בלתי צפויים.",
     scores: {
       financeRelevance: 6,
       adoptionMaturity: 4,
@@ -206,15 +206,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["institutional-blockchain", "enterprise-integration", "custody-settlement"],
     primaryCategory: "institutional-blockchain",
     institutionalSummary:
-      "Governed by a council of up to 39 Fortune 500 companies (Google, IBM, Boeing, Deutsche Telekom). Hashgraph consensus provides mathematically fair ordering and high throughput. Unique governance model provides institutional legitimacy.",
+      "מנוהל על ידי מועצה של עד 39 חברות Fortune 500 (Google, IBM, Boeing, Deutsche Telekom). קונסנזוס Hashgraph מספק סדר הוגן מתמטית ותפוקה גבוהה. מודל ממשל ייחודי המעניק לגיטימציה מוסדית.",
     adoptionThemes: [
-      "Fortune 500 governance council",
-      "Enterprise supply chain solutions",
-      "Hashgraph consensus technology",
-      "Sustainability and carbon markets",
+      "מועצת ממשל של Fortune 500",
+      "פתרונות שרשרת אספקה ארגוניים",
+      "טכנולוגיית קונסנזוס Hashgraph",
+      "קיימות ושוקי פחמן",
     ],
     riskNote:
-      "Council governance perceived as centralization; limited DeFi ecosystem; token supply overhang from foundation; council membership does not guarantee active usage.",
+      "ממשל מועצתי נתפס כריכוזיות; מערכת DeFi מוגבלת; עודף היצע טוקנים מהקרן; חברות במועצה אינה מבטיחה שימוש פעיל.",
     scores: {
       financeRelevance: 6,
       adoptionMaturity: 5,
@@ -228,15 +228,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["oracle-data-infrastructure", "interoperability", "smart-contract-infrastructure"],
     primaryCategory: "oracle-data-infrastructure",
     institutionalSummary:
-      "Dominant oracle network securing $75B+ in DeFi value. CCIP (Cross-Chain Interoperability Protocol) positions Chainlink as the messaging layer between blockchains. SWIFT, DTCC, and ANZ Bank have conducted integration pilots.",
+      "רשת ה-oracle הדומיננטית המאבטחת למעלה מ-$75B בערך DeFi. CCIP (Cross-Chain Interoperability Protocol) ממצב את Chainlink כשכבת המסרים בין בלוקצ'יינים. SWIFT, DTCC ו-ANZ Bank ביצעו פיילוטים של אינטגרציה.",
     adoptionThemes: [
-      "Critical DeFi infrastructure",
-      "Cross-chain messaging protocol",
-      "SWIFT integration pilot",
-      "Institutional data feeds",
+      "תשתית DeFi קריטית",
+      "פרוטוקול מסרים חוצה-שרשראות",
+      "פיילוט אינטגרציה עם SWIFT",
+      "פידים מוסדיים של נתונים",
     ],
     riskNote:
-      "Revenue model still evolving; SCALE subsidies may mask true demand; competition from Pyth and API3; CCIP competes with specialized bridges.",
+      "מודל הכנסות עדיין בהתפתחות; סבסוד SCALE עשוי להסוות ביקוש אמיתי; תחרות מ-Pyth ו-API3; CCIP מתחרה בגשרים מתמחים.",
     scores: {
       financeRelevance: 8,
       adoptionMaturity: 8,
@@ -250,15 +250,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["interoperability", "enterprise-integration", "institutional-blockchain"],
     primaryCategory: "interoperability",
     institutionalSummary:
-      "Enterprise-grade blockchain interoperability through Overledger protocol. Focused on regulated financial institutions and central bank infrastructure. Partnerships with European payment providers and involvement in CBDC initiatives.",
+      "יכולת פעולה הדדית בין בלוקצ'יינים ברמה ארגונית באמצעות פרוטוקול Overledger. ממוקד במוסדות פיננסיים מפוקחים ותשתית בנקים מרכזיים. שותפויות עם ספקי תשלום אירופיים ומעורבות ביוזמות CBDC.",
     adoptionThemes: [
-      "Enterprise interoperability standard",
-      "CBDC infrastructure involvement",
-      "European payment integration",
-      "Regulated environment focus",
+      "תקן יכולת פעולה הדדית ארגוני",
+      "מעורבות בתשתית CBDC",
+      "אינטגרציית תשלום אירופית",
+      "מיקוד בסביבה מפוקחת",
     ],
     riskNote:
-      "Closed-source technology limits transparency; small team; revenue validation still in progress; low DeFi integration.",
+      "טכנולוגיה סגורת-קוד מגבילה שקיפות; צוות קטן; אימות הכנסות עדיין בתהליך; אינטגרציית DeFi נמוכה.",
     scores: {
       financeRelevance: 7,
       adoptionMaturity: 4,
@@ -272,15 +272,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["tokenization-rwa", "custody-settlement", "financial-rails"],
     primaryCategory: "tokenization-rwa",
     institutionalSummary:
-      "Leading tokenization protocol bridging US Treasuries and institutional yield products to DeFi. USDY and OUSG backed by real government securities. Partnership with BlackRock's BUIDL fund provides unmatched institutional credibility.",
+      "פרוטוקול טוקניזציה מוביל המגשר בין אגרות חוב אמריקאיות ומוצרי תשואה מוסדיים לבין DeFi. USDY ו-OUSG מגובים בניירות ערך ממשלתיים אמיתיים. שותפות עם קרן BUIDL של BlackRock מעניקה אמינות מוסדית ללא תחרות.",
     adoptionThemes: [
-      "Tokenized US Treasury products",
-      "BlackRock BUIDL partnership",
-      "Institutional yield on-chain",
-      "Multi-chain RWA distribution",
+      "מוצרי אגרות חוב אמריקאיות מטוקנים",
+      "שותפות עם BlackRock BUIDL",
+      "תשואה מוסדית on-chain",
+      "הפצת RWA רב-שרשרתית",
     ],
     riskNote:
-      "Regulatory risk around tokenized securities; dependency on interest rate environment; smart contract and bridge risks across chains.",
+      "סיכון רגולטורי סביב ניירות ערך מטוקנים; תלות בסביבת ריבית; סיכוני חוזים חכמים וגשרים חוצי-שרשראות.",
     scores: {
       financeRelevance: 9,
       adoptionMaturity: 6,
@@ -294,15 +294,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["tokenization-rwa", "financial-rails"],
     primaryCategory: "tokenization-rwa",
     institutionalSummary:
-      "Decentralized protocol connecting the $100T+ private credit market to DeFi liquidity. Integrated with MakerDAO and Aave as a source of real-world yield through tokenized invoices, real estate, and structured credit.",
+      "פרוטוקול מבוזר המחבר את שוק האשראי הפרטי בהיקף $100T+ לנזילות DeFi. משולב עם MakerDAO ו-Aave כמקור תשואה מהעולם האמיתי באמצעות חשבוניות מטוקנות, נדל\"ן ואשראי מובנה.",
     adoptionThemes: [
-      "Private credit tokenization",
-      "MakerDAO RWA integration",
-      "Aave institutional pools",
-      "DeFi-native real-world yield",
+      "טוקניזציה של אשראי פרטי",
+      "אינטגרציית RWA עם MakerDAO",
+      "מאגרים מוסדיים של Aave",
+      "תשואה מהעולם האמיתי מקורית ל-DeFi",
     ],
     riskNote:
-      "Default risk on underlying real-world assets; legal frameworks still developing; small team and modest TVL; CFG token liquidity is low.",
+      "סיכון חדלות פירעון על נכסים מהעולם האמיתי; מסגרות משפטיות עדיין בהתפתחות; צוות קטן ו-TVL צנוע; נזילות טוקן CFG נמוכה.",
     scores: {
       financeRelevance: 7,
       adoptionMaturity: 5,
@@ -316,15 +316,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["ai-compute", "developer-ecosystem"],
     primaryCategory: "ai-compute",
     institutionalSummary:
-      "Decentralized GPU compute marketplace connecting AI/ML workloads and 3D rendering demand with distributed GPU supply. Migration to Solana improved throughput. Positioned at the intersection of AI compute demand and decentralized infrastructure.",
+      "שוק מבוזר של כוח עיבוד GPU המחבר עומסי עבודה של AI/ML וביקוש לרינדור תלת-ממדי עם אספקת GPU מבוזרת. מעבר ל-Solana שיפר את התפוקה. ממוצב בצומת בין ביקוש לעיבוד AI לבין תשתית מבוזרת.",
     adoptionThemes: [
-      "Decentralized GPU marketplace",
-      "AI/ML compute infrastructure",
-      "Spatial computing rendering",
-      "Creator and studio adoption",
+      "שוק GPU מבוזר",
+      "תשתית עיבוד AI/ML",
+      "רינדור מחשוב מרחבי",
+      "אימוץ על ידי יוצרים ואולפנים",
     ],
     riskNote:
-      "Competition from centralized cloud providers; GPU supply reliability; token economics still maturing; AI compute may shift to specialized hardware.",
+      "תחרות מספקי ענן ריכוזיים; אמינות אספקת GPU; כלכלת טוקנים עדיין מתבגרת; עיבוד AI עשוי לעבור לחומרה מתמחה.",
     scores: {
       financeRelevance: 3,
       adoptionMaturity: 5,
@@ -338,15 +338,15 @@ export const assetProfiles: AssetThesisProfile[] = [
     thesisCategories: ["ai-compute"],
     primaryCategory: "ai-compute",
     institutionalSummary:
-      "Decentralized AI network creating an open marketplace for machine intelligence through subnet specialization. Experimental approach to incentivizing AI model development outside centralized corporate control. Highest risk/reward profile in portfolio.",
+      "רשת AI מבוזרת היוצרת שוק פתוח לאינטליגנציה מכונה באמצעות התמחות Subnet. גישה ניסיונית לתמרוץ פיתוח מודלי AI מחוץ לשליטה תאגידית ריכוזית. פרופיל הסיכון/תשואה הגבוה ביותר בפורטפוליו.",
     adoptionThemes: [
-      "Decentralized AI marketplace",
-      "Subnet specialization model",
-      "AI centralization counter-thesis",
-      "Open intelligence network",
+      "שוק AI מבוזר",
+      "מודל התמחות Subnet",
+      "תזה נגדית לריכוזיות AI",
+      "רשת אינטליגנציה פתוחה",
     ],
     riskNote:
-      "Extremely early-stage; unproven quality benchmarks; sybil and gaming risks; token price highly speculative; may not compete with centralized AI quality.",
+      "שלב מוקדם ביותר; מדדי איכות לא מוכחים; סיכוני Sybil ומניפולציה; מחיר טוקן ספקולטיבי ביותר; עשוי שלא להתחרות באיכות AI ריכוזי.",
     scores: {
       financeRelevance: 2,
       adoptionMaturity: 2,

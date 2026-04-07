@@ -76,7 +76,7 @@ export default function ProofTableOfContents() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 24 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed top-1/2 -translate-y-1/2 right-6 z-50 hidden xl:flex flex-col gap-1 rounded-xl bg-white/[0.03] border border-white/[0.06] backdrop-blur-md p-3 shadow-lg shadow-black/20"
+          className="fixed top-1/2 -translate-y-1/2 right-6 z-50 hidden xl:flex flex-col gap-1 rounded-xl bg-[#0a1628]/80 border border-white/[0.06] backdrop-blur-md p-3 shadow-lg shadow-black/20"
         >
           {sections.map((section) => {
             const isActive = activeId === section.id;
@@ -89,7 +89,7 @@ export default function ProofTableOfContents() {
                   transition-all duration-200 cursor-pointer
                   ${
                     isActive
-                      ? "text-cyan-400 bg-cyan-500/[0.08]"
+                      ? "text-blue-400 bg-blue-500/[0.08]"
                       : "text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.04]"
                   }
                 `}
@@ -98,7 +98,7 @@ export default function ProofTableOfContents() {
                 {isActive && (
                   <motion.div
                     layoutId="toc-indicator"
-                    className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-cyan-400"
+                    className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-amber-400"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}

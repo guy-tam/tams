@@ -150,10 +150,10 @@ const tierTexts: Record<Language, Record<string, TierData>> = {
 };
 
 const tierMeta = [
-  { key: "explorer", icon: Compass, color: "#22d3ee", badge: null },
+  { key: "explorer", icon: Compass, color: "#6b9bd2", badge: null },
   { key: "builder", icon: Hammer, color: "#4f8ff7", badge: null },
-  { key: "architect", icon: Building2, color: "#a78bfa", badge: Star },
-  { key: "visionary", icon: Eye, color: "#fbbf24", badge: Crown },
+  { key: "architect", icon: Building2, color: "#3b6fd4", badge: Star },
+  { key: "visionary", icon: Eye, color: "#d4a853", badge: Crown },
 ] as const;
 
 const cardVariants = {
@@ -169,8 +169,8 @@ export default function InvestorTiers() {
     <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* רקע */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-tams-amber/[0.03] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-tams-purple/[0.04] rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/[0.04] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-900/[0.05] rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -197,7 +197,11 @@ export default function InvestorTiers() {
               <motion.div
                 key={meta.key}
                 variants={cardVariants}
-                className="group relative flex flex-col rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-white/[0.15] hover:bg-white/[0.05]"
+                className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-white/[0.05] ${
+                  meta.key === "visionary"
+                    ? "border border-amber-500/25 bg-white/[0.04] hover:border-amber-500/40 shadow-[0_0_40px_-12px_rgba(212,168,83,0.12)]"
+                    : "border border-white/[0.08] bg-white/[0.03] hover:border-white/[0.15]"
+                }`}
               >
                 {/* כותרת הדרגה */}
                 <div

@@ -23,12 +23,12 @@ export default function ProofHero() {
   return (
     <section className="relative py-20 sm:py-28 overflow-hidden">
       {/* רקע גרדיאנט עדין */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/[0.03] via-transparent to-blue-500/[0.03]" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/[0.04] blur-[120px] rounded-full" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/[0.04] blur-[120px] rounded-full" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="inline-block rounded-full bg-cyan-500/10 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-400 border border-cyan-500/20 mb-8">
+          <span className="inline-block rounded-full bg-amber-500/10 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-400 border border-amber-500/15 mb-8">
             {t("proof.hero.badge")}
           </span>
 
@@ -59,7 +59,7 @@ export default function ProofHero() {
             { value: evidenceStats.uniqueCountries, label: t("proof.hero.statsCountries") },
             { value: evidenceStats.byConfidence.high, label: t("proof.hero.statsHighConfidence") },
           ].map((stat, i) => (
-            <div key={i} className="rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm p-4">
+            <div key={i} className="rounded-xl border border-white/[0.08] bg-blue-500/[0.04] backdrop-blur-sm p-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -88,9 +88,9 @@ export default function ProofHero() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + i * 0.07 }}
-                className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left hover:border-cyan-500/20 hover:bg-white/[0.04] transition-all duration-300"
+                className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left hover:border-amber-500/20 hover:bg-white/[0.04] transition-all duration-300"
               >
-                <engine.icon className="h-4 w-4 text-cyan-400 mb-2" />
+                <engine.icon className="h-4 w-4 text-blue-400 mb-2" />
                 <div className="text-sm font-medium text-white mb-1">{engine.label}</div>
                 <div className="text-[11px] text-zinc-500 leading-relaxed">{engine.desc}</div>
               </motion.div>

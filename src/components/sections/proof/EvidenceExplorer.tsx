@@ -59,7 +59,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
       {/* שורה ראשית */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full text-left px-4 py-3 hover:bg-white/[0.02] transition-colors flex items-center gap-3"
+        className="w-full text-left px-4 py-3 hover:bg-blue-500/[0.03] transition-colors flex items-center gap-3"
       >
         {/* טיקר */}
         <span className="text-xs font-bold text-white w-12 shrink-0">{record.asset}</span>
@@ -112,7 +112,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
 
                 {/* למה זה חשוב */}
                 <div>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-cyan-400 block mb-1">{t("proof.evidence.whyItMatters")}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-400 block mb-1">{t("proof.evidence.whyItMatters")}</span>
                   <p className="text-xs text-zinc-400 leading-relaxed">{record.whyItMatters}</p>
                 </div>
 
@@ -144,7 +144,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
                         href={record.sourceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+                        className="text-[10px] text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
                       >
                         <ExternalLink className="h-3 w-3" />
                         {record.sourceLabel}
@@ -253,14 +253,14 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
               placeholder={t("proof.evidence.searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500/30 focus:ring-1 focus:ring-cyan-500/20 transition-colors"
+              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
             />
           </div>
           <button
             onClick={() => setShowFilters(!showFilters)}
             className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors ${
               showFilters
-                ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-400"
+                ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
                 : "border-white/[0.08] bg-white/[0.03] text-zinc-400 hover:text-white"
             }`}
           >
@@ -286,7 +286,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={assetFilter}
                     onChange={(e) => setAssetFilter(e.target.value as AssetTicker | "all")}
-                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyan-500/30"
+                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allAssets")}</option>
                     {allAssets.map((a) => (
@@ -301,7 +301,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={regionFilter}
                     onChange={(e) => setRegionFilter(e.target.value as Region | "all")}
-                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyan-500/30"
+                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allRegions")}</option>
                     {allRegions.map((r) => (
@@ -316,7 +316,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={confidenceFilter}
                     onChange={(e) => setConfidenceFilter(e.target.value as ConfidenceLevel | "all")}
-                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyan-500/30"
+                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allLevels")}</option>
                     {allConfidence.map((c) => (
@@ -331,7 +331,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value as EvidenceStatus | "all")}
-                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyan-500/30"
+                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allStatuses")}</option>
                     {allStatuses.map((s) => (
@@ -346,7 +346,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={sortField}
                     onChange={(e) => setSortField(e.target.value as SortField)}
-                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyan-500/30"
+                    className="w-full rounded-md border border-white/[0.08] bg-zinc-900 px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="asset">{t("proof.evidence.sortAsset")}</option>
                     <option value="confidence">{t("proof.evidence.sortConfidence")}</option>

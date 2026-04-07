@@ -9,45 +9,45 @@ import { useLanguage } from "@/lib/i18n/context";
 const frameworks = [
   {
     icon: Eye,
-    title: "Visible Market vs. Embedded Infrastructure",
+    title: "שוק גלוי מול תשתית מוטמעת",
     description:
-      "Current crypto market capitalization reflects speculative and retail activity. Enterprise adoption of blockchain infrastructure — tokenization rails, settlement layers, oracle networks — operates largely below the surface of visible market activity.",
-    insight: "If even a fraction of institutional infrastructure spending shifts to public blockchain rails, the addressable market for these assets expands significantly beyond current token valuations.",
+      "שווי השוק הנוכחי של הקריפטו משקף בעיקר פעילות ספקולטיבית וקמעונאית. אימוץ מוסדי של תשתיות blockchain — מסילות tokenization, שכבות סליקה, רשתות oracle — מתרחש ברובו מתחת לפני השטח של הפעילות הנראית בשוק.",
+    insight: "אם אפילו חלק קטן מהוצאות התשתית המוסדית יעבור למסילות blockchain ציבוריות, השוק הניתן לכתובת עבור נכסים אלו מתרחב באופן משמעותי מעבר לשווי הטוקנים הנוכחי.",
   },
   {
     icon: Layers,
-    title: "Speculation Layer vs. Utility Layer vs. Infrastructure Layer",
+    title: "שכבת ספקולציה מול שכבת תועלת מול שכבת תשתית",
     description:
-      "Most crypto market discussion focuses on the speculation layer. The utility layer (DeFi, payments, stablecoins) is growing but still early. The infrastructure layer (oracles, interoperability, settlement, tokenization) compounds value over time as adoption accumulates.",
-    insight: "Infrastructure layers capture value from all applications built on top of them — similar to how cloud providers capture value from all SaaS companies running on their platforms.",
+      "רוב הדיון בשוק הקריפטו מתמקד בשכבת הספקולציה. שכבת התועלת (DeFi, תשלומים, stablecoins) צומחת אך עדיין בשלבים מוקדמים. שכבת התשתית (oracles, אינטראופרביליות, סליקה, tokenization) צוברת ערך לאורך זמן ככל שהאימוץ מצטבר.",
+    insight: "שכבות תשתית לוכדות ערך מכל האפליקציות הבנויות מעליהן — בדומה לאופן שבו ספקי ענן לוכדים ערך מכל חברות ה-SaaS הפועלות על הפלטפורמות שלהם.",
   },
   {
     icon: TrendingUp,
-    title: "Tokenization TAM Expansion",
+    title: "הרחבת השוק הכולל הניתן לכתובת (TAM) של Tokenization",
     description:
-      "BCG estimates $16T in tokenized assets by 2030. McKinsey projects $5T by 2030. Even conservative estimates suggest tokenization alone could add trillions in on-chain economic activity — most of which does not exist in today's crypto market cap.",
-    insight: "Tokenization growth creates structural demand for settlement chains, oracle networks, and interoperability protocols — directly benefiting assets in this portfolio.",
+      "BCG מעריך $16T בנכסים מטוקנים עד 2030. McKinsey מתכנן $5T עד 2030. אפילו הערכות שמרניות מצביעות על כך ש-tokenization לבדו יכול להוסיף טריליונים בפעילות כלכלית on-chain — שרובה אינה קיימת בשווי השוק הנוכחי של הקריפטו.",
+    insight: "צמיחת ה-tokenization יוצרת ביקוש מבני לשרשראות סליקה, רשתות oracle ופרוטוקולי אינטראופרביליות — לטובת נכסים בתיק זה באופן ישיר.",
   },
   {
     icon: Puzzle,
-    title: "Enterprise Adoption Time Lag",
+    title: "פער זמן באימוץ מוסדי",
     description:
-      "Enterprise and institutional blockchain adoption operates on multi-year cycles. Pilots conducted in 2023-2024 may not reach production until 2025-2027. Token prices often fail to reflect this pipeline because markets discount what they cannot immediately measure.",
-    insight: "The gap between enterprise pipeline activity and market pricing creates potential for asymmetric returns if adoption converts from pilot to production.",
+      "אימוץ blockchain מוסדי וארגוני פועל במחזורים רב-שנתיים. פיילוטים שבוצעו ב-2023-2024 עשויים להגיע לייצור רק ב-2025-2027. מחירי טוקנים לעיתים קרובות אינם משקפים צנרת זו מכיוון שהשוק מנכה את מה שאינו יכול למדוד באופן מיידי.",
+    insight: "הפער בין פעילות הצנרת המוסדית לבין תמחור השוק יוצר פוטנציאל לתשואות אסימטריות אם האימוץ עובר מפיילוט לייצור.",
   },
   {
     icon: EyeOff,
-    title: "Settlement Modernization is Invisible",
+    title: "מודרניזציה של סליקה — התהליך הבלתי נראה",
     description:
-      "Cross-border payments ($150T+/year), securities settlement ($2.5 quadrillion/year DTCC), and trade finance ($5.2T gap) are massive markets with significant inefficiencies. Blockchain-based modernization of these systems doesn't require retail adoption — it happens in the infrastructure layer.",
-    insight: "Financial infrastructure transformation is the largest potential demand driver for blockchain — and it operates independently of retail crypto market sentiment.",
+      "תשלומים חוצי גבולות ($150T+/שנה), סליקת ניירות ערך ($2.5 קוודריליון/שנה ב-DTCC), ומימון סחר (פער של $5.2T) הם שווקים עצומים עם חוסר יעילות משמעותי. מודרניזציה מבוססת blockchain של מערכות אלו אינה דורשת אימוץ קמעונאי — היא מתרחשת בשכבת התשתית.",
+    insight: "טרנספורמציה של תשתיות פיננסיות היא מנוע הביקוש הפוטנציאלי הגדול ביותר עבור blockchain — והיא פועלת באופן בלתי תלוי בסנטימנט שוק הקריפטו הקמעונאי.",
   },
   {
     icon: Zap,
-    title: "Optionality and Asymmetric Exposure",
+    title: "אופציונליות וחשיפה אסימטרית",
     description:
-      "Portfolio assets positioned at the intersection of blockchain infrastructure and traditional finance carry embedded optionality. If adoption accelerates, these assets benefit disproportionately. If adoption stalls, positions are sized to manage downside.",
-    insight: "Under a successful execution scenario, the relationship between current pricing and potential infrastructure value represents asymmetric upside — not a guarantee, but a structural positioning advantage.",
+      "נכסי התיק הממוקמים בצומת שבין תשתיות blockchain לפיננסים מסורתיים נושאים אופציונליות מוטמעת. אם האימוץ מואץ, נכסים אלו נהנים באופן בלתי פרופורציונלי. אם האימוץ נעצר, הפוזיציות מותאמות לניהול סיכון צד שלילי.",
+    insight: "בתרחיש של ביצוע מוצלח, היחס בין התמחור הנוכחי לערך התשתית הפוטנציאלי מייצג אפסייד אסימטרי — לא ערבות, אלא יתרון מיצוב מבני.",
   },
 ];
 
@@ -73,14 +73,14 @@ export default function MarketUnderpricing() {
             className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 hover:border-white/[0.1] transition-colors duration-300"
           >
             <div className="flex items-start gap-4">
-              <div className="rounded-lg bg-cyan-500/10 border border-cyan-500/15 p-2.5 shrink-0">
-                <fw.icon className="h-5 w-5 text-cyan-400" />
+              <div className="rounded-lg bg-blue-500/10 border border-blue-500/15 p-2.5 shrink-0">
+                <fw.icon className="h-5 w-5 text-blue-400" />
               </div>
               <div className="flex-1">
                 <h3 className="text-base font-semibold text-white mb-2">{fw.title}</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed mb-3">{fw.description}</p>
                 <div className="flex items-start gap-2 rounded-lg bg-white/[0.03] border border-white/[0.05] p-3">
-                  <ArrowRight className="h-3.5 w-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                  <ArrowRight className="h-3.5 w-3.5 text-amber-400 mt-0.5 shrink-0" />
                   <p className="text-xs text-zinc-300 leading-relaxed">{fw.insight}</p>
                 </div>
               </div>

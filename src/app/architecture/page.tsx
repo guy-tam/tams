@@ -20,7 +20,7 @@ export default function ArchitecturePage() {
     <PageWrapper bgGrid>
       <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <span className="inline-block rounded-full bg-purple-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-purple-400 border border-purple-500/20 mb-6">
+          <span className="inline-block rounded-full bg-amber-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-400 border border-amber-500/15 mb-6">
             {t("architecture.badge")}
           </span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
@@ -52,7 +52,7 @@ export default function ArchitecturePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-4"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-4"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="size-3 rounded-full" style={{ background: divisionColors[i] }} />

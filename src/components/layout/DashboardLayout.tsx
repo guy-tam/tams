@@ -107,7 +107,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
     <div className="px-5 py-5">
       <div className="flex items-center gap-3">
         {/* עיגול אווטאר */}
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 text-sm font-bold text-white shadow-lg shadow-cyan-500/20">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-amber-500 text-sm font-bold text-white shadow-lg shadow-blue-500/20 ring-2 ring-amber-500/20">
           {initials}
         </div>
         <div className="flex-1 min-w-0">
@@ -115,10 +115,10 @@ function DashboardShell({ children }: { children: ReactNode }) {
           <p className="text-[10px] text-zinc-500 font-mono">{user?.investorId}</p>
         </div>
         {/* פעמון התראות */}
-        <button className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-colors">
+        <button className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors">
           <Bell className="h-4 w-4" />
           {/* נקודת אינדיקטור */}
-          <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-cyan-400 ring-2 ring-zinc-950" />
+          <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-amber-400 ring-2 ring-[#0a1628] shadow-sm shadow-amber-400/30" />
         </button>
       </div>
     </div>
@@ -141,7 +141,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
                 ${
                   active
                     ? "text-white"
-                    : "text-zinc-400 hover:text-zinc-200"
+                    : "text-zinc-400 hover:text-blue-200"
                 }
               `}
             >
@@ -149,7 +149,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
               {active && (
                 <motion.div
                   layoutId="activeDashboardNav"
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/20"
+                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/15 to-amber-500/10 border border-blue-500/15"
                   transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}
@@ -159,7 +159,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
               {active && (
                 <motion.div
                   layoutId="activeDashboardIndicator"
-                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-cyan-400 to-purple-500`}
+                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-blue-400 to-amber-400`}
                   transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}
@@ -175,7 +175,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
     <div className="flex h-full flex-col">
       {/* לוגו ומותג - פורטל משקיע */}
       <div className="flex items-center gap-3 px-6 py-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 shadow-lg shadow-cyan-500/20">
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-amber-500 shadow-lg shadow-blue-500/15">
           <span className="text-sm font-bold text-white tracking-tight">T</span>
         </div>
         <div>
@@ -187,13 +187,13 @@ function DashboardShell({ children }: { children: ReactNode }) {
       </div>
 
       {/* קו הפרדה */}
-      <div className="mx-4 mb-2 h-px bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent" />
+      <div className="mx-4 mb-2 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
 
       {/* מידע משתמש */}
       <UserSection />
 
       {/* קו הפרדה */}
-      <div className="mx-4 mb-3 h-px bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent" />
+      <div className="mx-4 mb-3 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
 
       {/* קישורי ניווט */}
       <div className="flex-1 overflow-y-auto">
@@ -201,10 +201,10 @@ function DashboardShell({ children }: { children: ReactNode }) {
       </div>
 
       {/* חזרה לאתר הראשי + התנתקות */}
-      <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-zinc-700/50 to-transparent" />
+      <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
       <div className="px-3 py-3 space-y-1">
         <Link href="/">
-          <div className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:text-cyan-400 hover:bg-cyan-400/10 transition-colors">
+          <div className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:text-blue-300 hover:bg-blue-400/10 transition-colors">
             <ArrowLeft className="h-4 w-4" />
             <span>חזרה לאתר הראשי</span>
           </div>
@@ -236,10 +236,10 @@ function DashboardShell({ children }: { children: ReactNode }) {
       {/* סיידבר קבוע לדסקטופ */}
       <aside
         className={`hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-40
-          bg-zinc-950/70 backdrop-blur-xl
+          bg-[#0a1628]/90 backdrop-blur-2xl
           ${isRTL ? "border-l" : "border-r"} border-zinc-800/40`}
         style={{
-          borderImage: "linear-gradient(to bottom, transparent, rgba(6,182,212,0.15), rgba(139,92,246,0.15), transparent) 1",
+          borderImage: "linear-gradient(to bottom, transparent, rgba(212, 168, 83, 0.15), rgba(79, 143, 247, 0.15), transparent) 1",
         }}
       >
         <SidebarContent />
@@ -268,7 +268,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
               animate="open"
               exit="closed"
               className={`fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-50 w-64 flex flex-col
-                bg-zinc-950/90 backdrop-blur-xl ${isRTL ? "border-l" : "border-r"} border-zinc-800/40 lg:hidden`}
+                bg-[#0a1628]/95 backdrop-blur-2xl ${isRTL ? "border-l" : "border-r"} border-zinc-800/40 lg:hidden`}
             >
               {/* כפתור סגירה */}
               <button
@@ -288,10 +288,10 @@ function DashboardShell({ children }: { children: ReactNode }) {
       {/* בר עליון + תוכן ראשי */}
       <div className={`flex-1 ${isRTL ? "lg:pr-64" : "lg:pl-64"} flex flex-col`}>
         {/* בר עליון */}
-        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-zinc-800/40 bg-zinc-950/80 backdrop-blur-md px-4 sm:px-6">
+        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-zinc-800/40 bg-[#0a1628]/80 backdrop-blur-md px-4 sm:px-6">
           {/* לוגו בבר עליון - נראה רק במובייל */}
           <div className="flex items-center gap-2 lg:hidden">
-            <div className="h-7 w-7 rounded-md bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center mr-8">
+            <div className="h-7 w-7 rounded-md bg-gradient-to-br from-blue-600 to-amber-500 flex items-center justify-center mr-8">
               <span className="text-xs font-bold text-white">T</span>
             </div>
             <span className="text-sm font-bold text-white">TAMS Investor Portal</span>
@@ -305,15 +305,15 @@ function DashboardShell({ children }: { children: ReactNode }) {
           {/* פרטי משתמש בבר עליון */}
           <div className="flex items-center gap-3">
             {/* פעמון התראות */}
-            <button className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-colors">
+            <button className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors">
               <Bell className="h-4 w-4" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-cyan-400 ring-2 ring-zinc-950" />
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-amber-400 ring-2 ring-[#0a1628] shadow-sm shadow-amber-400/30" />
             </button>
 
             {/* שם משתמש ואווטאר */}
             <div className="flex items-center gap-2">
               <span className="text-xs text-zinc-400 hidden sm:inline">{user?.name}</span>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 text-xs font-bold text-white">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-amber-500 text-xs font-bold text-white ring-2 ring-amber-500/20">
                 {initials}
               </div>
             </div>

@@ -65,28 +65,28 @@ export default function HeroSection({
       <div className="absolute inset-0">
         <FloatingOrb
           size={500}
-          color="radial-gradient(circle, #3b82f6, transparent)"
+          color="radial-gradient(circle, #1e3a7a, transparent)"
           x="10%"
           y="20%"
           delay={0}
         />
         <FloatingOrb
           size={400}
-          color="radial-gradient(circle, #8b5cf6, transparent)"
+          color="radial-gradient(circle, #d4a853, transparent)"
           x="60%"
           y="10%"
           delay={2}
         />
         <FloatingOrb
           size={350}
-          color="radial-gradient(circle, #06b6d4, transparent)"
+          color="radial-gradient(circle, #3b6fd4, transparent)"
           x="70%"
           y="60%"
           delay={4}
         />
         <FloatingOrb
           size={300}
-          color="radial-gradient(circle, #10b981, transparent)"
+          color="radial-gradient(circle, #1a4a8a, transparent)"
           x="20%"
           y="70%"
           delay={6}
@@ -107,7 +107,7 @@ export default function HeroSection({
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-1.5 text-sm text-muted-foreground mb-8"
           >
-            <span className="size-2 rounded-full bg-tams-green animate-pulse" />
+            <span className="size-2 rounded-full bg-amber-400 animate-pulse" />
             {t("home.hero.badge")}
           </motion.div>
 
@@ -136,7 +136,7 @@ export default function HeroSection({
             <a href={ctaHref}>
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-tams-blue to-tams-cyan text-white border-0 px-6 h-11 text-base gap-2 hover:opacity-90 transition-opacity"
+                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 px-6 h-11 text-base gap-2 transition-all"
               >
                 <Compass className="size-4" />
                 {ctaText}
@@ -146,7 +146,7 @@ export default function HeroSection({
               <Button
                 variant="outline"
                 size="lg"
-                className="px-6 h-11 text-base gap-2 border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10"
+                className="px-6 h-11 text-base gap-2 border-white/15 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-amber-500/20 transition-all"
               >
                 <FileText className="size-4" />
                 {t("home.hero.cta2")}

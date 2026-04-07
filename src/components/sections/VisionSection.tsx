@@ -19,22 +19,22 @@ export default function VisionSection() {
       icon: Rocket,
       title: t("homeVision.blockchainFuture.title"),
       description: t("homeVision.blockchainFuture.description"),
-      gradient: "from-tams-blue to-tams-cyan",
+      gradient: "from-blue-600 to-blue-400",
       accentColor: "#4f8ff7",
     },
     {
       icon: Users,
       title: t("homeVision.investorFirst.title"),
       description: t("homeVision.investorFirst.description"),
-      gradient: "from-tams-purple to-tams-blue",
-      accentColor: "#a78bfa",
+      gradient: "from-blue-500 to-amber-500",
+      accentColor: "#d4a853",
     },
     {
       icon: Globe2,
       title: t("homeVision.globalAccess.title"),
       description: t("homeVision.globalAccess.description"),
-      gradient: "from-tams-cyan to-tams-green",
-      accentColor: "#22d3ee",
+      gradient: "from-amber-500 to-amber-400",
+      accentColor: "#c9952e",
     },
   ];
 
@@ -42,8 +42,8 @@ export default function VisionSection() {
     <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* אלמנטי רקע */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-tams-blue/[0.04] rounded-full blur-3xl" />
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-tams-purple/[0.03] rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-900/[0.06] rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-500/[0.03] rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -67,7 +67,7 @@ export default function VisionSection() {
               <motion.div
                 key={card.title}
                 variants={cardVariants}
-                className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.05] card-glow"
+                className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-amber-500/20 hover:bg-white/[0.06] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] card-glow"
               >
                 {/* קו גראדיינט עליון */}
                 <div
@@ -104,8 +104,8 @@ export default function VisionSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 max-w-3xl mx-auto text-center"
         >
-          <div className="relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-8 sm:p-10">
-            <Quote className="size-8 text-tams-blue/30 mx-auto mb-4" />
+          <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md p-8 sm:p-10">
+            <Quote className="size-8 text-amber-500/30 mx-auto mb-4" />
             <blockquote className="text-lg sm:text-xl font-medium text-foreground leading-relaxed gradient-text">
               {t("homeVision.quote")}
             </blockquote>

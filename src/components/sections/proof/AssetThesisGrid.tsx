@@ -14,14 +14,14 @@ import { useLanguage } from "@/lib/i18n/context";
 // צבעים לציונים
 function scoreColor(score: number): string {
   if (score >= 8) return "text-emerald-400";
-  if (score >= 6) return "text-cyan-400";
+  if (score >= 6) return "text-blue-400";
   if (score >= 4) return "text-amber-400";
   return "text-zinc-500";
 }
 
 function scoreBarColor(score: number): string {
   if (score >= 8) return "bg-emerald-400";
-  if (score >= 6) return "bg-cyan-400";
+  if (score >= 6) return "bg-blue-400";
   if (score >= 4) return "bg-amber-400";
   return "bg-zinc-600";
 }
@@ -30,7 +30,7 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
   return (
     <div className="flex items-center gap-2">
       <span className="text-[10px] text-zinc-500 w-24 shrink-0">{label}</span>
-      <div className="flex-1 h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-white/[0.08] rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${value * 10}%` }}
@@ -53,7 +53,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="rounded-xl border border-white/[0.06] bg-white/[0.025] backdrop-blur-sm overflow-hidden hover:border-white/[0.1] transition-colors duration-300"
+      className="rounded-xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-sm overflow-hidden hover:border-white/[0.1] transition-colors duration-300"
     >
       <div className="p-5">
         {/* כותרת */}
@@ -63,7 +63,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
               <span className="text-lg font-bold text-white">{profile.ticker}</span>
               <span className="text-sm text-zinc-400">{profile.name}</span>
             </div>
-            <span className="inline-block text-[10px] font-medium uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/15 rounded-full px-2.5 py-0.5">
+            <span className="inline-block text-[10px] font-medium uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/15 rounded-full px-2.5 py-0.5">
               {thesisCategoryLabels[profile.primaryCategory]}
             </span>
           </div>
@@ -75,9 +75,9 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
             className="text-right group cursor-pointer"
             title={`View ${profile.ticker} evidence records`}
           >
-            <div className="text-[10px] text-zinc-500 uppercase tracking-wider group-hover:text-cyan-400 transition-colors">{t("proof.assetGrid.evidence")}</div>
-            <div className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">{evidenceCount}</div>
-            <div className="text-[9px] text-zinc-600 group-hover:text-cyan-500/60 transition-colors">{t("proof.assetGrid.view")} &darr;</div>
+            <div className="text-[10px] text-zinc-500 uppercase tracking-wider group-hover:text-amber-400 transition-colors">{t("proof.assetGrid.evidence")}</div>
+            <div className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">{evidenceCount}</div>
+            <div className="text-[9px] text-zinc-600 group-hover:text-amber-500/60 transition-colors">{t("proof.assetGrid.view")} &darr;</div>
           </button>
         </div>
 

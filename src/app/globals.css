@@ -46,82 +46,85 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --color-tams-blue: #4f8ff7;
+  --color-tams-blue: #3a7be8;
   --color-tams-cyan: #22d3ee;
   --color-tams-purple: #a78bfa;
   --color-tams-green: #34d399;
   --color-tams-amber: #fbbf24;
   --color-tams-rose: #fb7185;
+  --color-tams-gold: #d4a853;
+  --color-tams-gold-light: #e8c779;
+  --color-tams-gold-dark: #b8923d;
 }
 
 .dark {
-  --background: oklch(0.08 0.015 260);
+  --background: oklch(0.11 0.025 250);
   --foreground: oklch(0.96 0.005 260);
-  --card: oklch(0.12 0.015 265);
+  --card: oklch(0.14 0.03 255);
   --card-foreground: oklch(0.96 0.005 260);
-  --popover: oklch(0.12 0.015 265);
+  --popover: oklch(0.14 0.03 255);
   --popover-foreground: oklch(0.96 0.005 260);
-  --primary: oklch(0.72 0.18 250);
+  --primary: oklch(0.65 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.18 0.025 265);
+  --secondary: oklch(0.19 0.035 255);
   --secondary-foreground: oklch(0.92 0.01 260);
-  --muted: oklch(0.18 0.02 265);
+  --muted: oklch(0.19 0.03 255);
   --muted-foreground: oklch(0.58 0.03 260);
-  --accent: oklch(0.2 0.04 270);
+  --accent: oklch(0.22 0.05 260);
   --accent-foreground: oklch(0.96 0.005 260);
   --destructive: oklch(0.62 0.22 25);
-  --border: oklch(0.22 0.03 265);
-  --input: oklch(0.2 0.025 265);
-  --ring: oklch(0.65 0.18 250);
-  --chart-1: oklch(0.72 0.18 250);
+  --border: oklch(0.22 0.03 250);
+  --input: oklch(0.21 0.035 255);
+  --ring: oklch(0.60 0.20 255);
+  --chart-1: oklch(0.65 0.20 255);
   --chart-2: oklch(0.72 0.16 175);
   --chart-3: oklch(0.7 0.18 290);
   --chart-4: oklch(0.72 0.16 145);
   --chart-5: oklch(0.75 0.16 55);
   --radius: 0.625rem;
-  --sidebar: oklch(0.09 0.015 262);
+  --sidebar: oklch(0.10 0.025 252);
   --sidebar-foreground: oklch(0.96 0.005 260);
-  --sidebar-primary: oklch(0.72 0.18 250);
+  --sidebar-primary: oklch(0.65 0.20 255);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.16 0.025 265);
+  --sidebar-accent: oklch(0.17 0.035 255);
   --sidebar-accent-foreground: oklch(0.96 0.005 260);
-  --sidebar-border: oklch(0.2 0.025 265);
-  --sidebar-ring: oklch(0.65 0.18 250);
+  --sidebar-border: oklch(0.21 0.03 255);
+  --sidebar-ring: oklch(0.60 0.20 255);
 }
 
 :root {
-  --background: oklch(0.08 0.015 260);
+  --background: oklch(0.11 0.025 250);
   --foreground: oklch(0.96 0.005 260);
-  --card: oklch(0.12 0.015 265);
+  --card: oklch(0.14 0.03 255);
   --card-foreground: oklch(0.96 0.005 260);
-  --popover: oklch(0.12 0.015 265);
+  --popover: oklch(0.14 0.03 255);
   --popover-foreground: oklch(0.96 0.005 260);
-  --primary: oklch(0.72 0.18 250);
+  --primary: oklch(0.65 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.18 0.025 265);
+  --secondary: oklch(0.19 0.035 255);
   --secondary-foreground: oklch(0.92 0.01 260);
-  --muted: oklch(0.18 0.02 265);
+  --muted: oklch(0.19 0.03 255);
   --muted-foreground: oklch(0.58 0.03 260);
-  --accent: oklch(0.2 0.04 270);
+  --accent: oklch(0.22 0.05 260);
   --accent-foreground: oklch(0.96 0.005 260);
   --destructive: oklch(0.62 0.22 25);
-  --border: oklch(0.22 0.03 265);
-  --input: oklch(0.2 0.025 265);
-  --ring: oklch(0.65 0.18 250);
-  --chart-1: oklch(0.72 0.18 250);
+  --border: oklch(0.22 0.03 250);
+  --input: oklch(0.21 0.035 255);
+  --ring: oklch(0.60 0.20 255);
+  --chart-1: oklch(0.65 0.20 255);
   --chart-2: oklch(0.72 0.16 175);
   --chart-3: oklch(0.7 0.18 290);
   --chart-4: oklch(0.72 0.16 145);
   --chart-5: oklch(0.75 0.16 55);
   --radius: 0.625rem;
-  --sidebar: oklch(0.09 0.015 262);
+  --sidebar: oklch(0.10 0.025 252);
   --sidebar-foreground: oklch(0.96 0.005 260);
-  --sidebar-primary: oklch(0.72 0.18 250);
+  --sidebar-primary: oklch(0.65 0.20 255);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.16 0.025 265);
+  --sidebar-accent: oklch(0.17 0.035 255);
   --sidebar-accent-foreground: oklch(0.96 0.005 260);
-  --sidebar-border: oklch(0.2 0.025 265);
-  --sidebar-ring: oklch(0.65 0.18 250);
+  --sidebar-border: oklch(0.21 0.03 255);
+  --sidebar-ring: oklch(0.60 0.20 255);
 }
 
 @layer base {
@@ -130,30 +133,39 @@
   }
   body {
     @apply bg-background text-foreground;
+    background: radial-gradient(ellipse at 50% 0%, rgba(30, 50, 90, 0.15) 0%, transparent 60%), var(--background);
   }
   html {
     @apply font-sans scroll-smooth;
   }
 }
 
-/* גלס-מורפיזם עדין */
+/* גלס-מורפיזם עדין - גוון כחול פרימיום */
 .glass {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(30, 50, 80, 0.25);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(30, 50, 80, 0.4);
   backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* גראדיינט טקסט */
+/* גראדיינט טקסט - כחול לזהב פרימיום */
 .gradient-text {
-  background: linear-gradient(135deg, #4f8ff7 0%, #22d3ee 50%, #a78bfa 100%);
+  background: linear-gradient(135deg, #4f8ff7 0%, #d4a853 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* גראדיינט טקסט פרימיום - זהב דומיננטי */
+.gradient-text-premium {
+  background: linear-gradient(135deg, #d4a853 0%, #e8c779 50%, #d4a853 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -174,7 +186,7 @@
   background-clip: text;
 }
 
-/* כרטיס עם זוהר עדין */
+/* כרטיס עם זוהר עדין - כחול וזהב */
 .card-glow {
   position: relative;
 }
@@ -183,13 +195,30 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(79, 143, 247, 0.15), rgba(34, 211, 238, 0.08), rgba(167, 139, 250, 0.15));
+  background: linear-gradient(135deg, rgba(79, 143, 247, 0.12), rgba(212, 168, 83, 0.08), rgba(79, 143, 247, 0.12));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 .card-glow:hover::before {
   opacity: 1;
+}
+
+/* כרטיס פרימיום - שכבות עומק יוקרתיות */
+.card-premium {
+  background: linear-gradient(145deg, rgba(30, 50, 90, 0.4), rgba(20, 35, 65, 0.6));
+  border: 1px solid rgba(212, 168, 83, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.card-premium:hover {
+  border-color: rgba(212, 168, 83, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* קו מפריד פרימיום */
+.divider-premium {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.3), transparent);
 }
 
 /* אנימציות */
@@ -222,6 +251,13 @@
   animation: shimmer 3s ease-in-out infinite;
 }
 
+/* נצנוץ זהב פרימיום */
+.shimmer-gold {
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.15), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
 /* גריד רקע */
 .bg-grid {
   background-image:
@@ -242,5 +278,5 @@
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(212, 168, 83, 0.3);
 }
