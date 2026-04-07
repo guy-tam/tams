@@ -241,7 +241,7 @@ function CategoryRow({ category, name }: { category: CategoryBase; name: string 
       {/* שורת קטגוריה */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-3 p-4 rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md hover:bg-white/[0.06] hover:border-amber-500/15 transition-colors text-right relative overflow-hidden group"
+        className="w-full flex items-center gap-3 p-4 rounded-xl border border-gray-200 bg-white backdrop-blur-md hover:bg-gray-50 hover:border-amber-400/40 transition-colors text-right relative overflow-hidden group"
       >
         {/* פס צבעוני בצד ימין */}
         <div
@@ -308,7 +308,7 @@ function CategoryRow({ category, name }: { category: CategoryBase; name: string 
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: i * 0.05 }}
-                  className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-white/[0.03] transition-colors"
+                  className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-white transition-colors"
                 >
                   <div className="flex items-center gap-2">
                     <div
@@ -349,7 +349,7 @@ export default function DetailedPortfolioTable() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10"
       >
-        <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-amber-500/15 bg-amber-500/10 px-4 py-1.5">
+        <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-amber-500/15 bg-amber-50 px-4 py-1.5">
           <Coins className="size-4 text-amber-400" />
           <span className="text-sm text-muted-foreground">{t.badge}</span>
         </div>
@@ -370,7 +370,7 @@ export default function DetailedPortfolioTable() {
         className="mb-8 space-y-4"
       >
         {/* נכסים בטוחים */}
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4">
+        <div className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <Shield className="size-4 text-amber-400" />
@@ -385,7 +385,7 @@ export default function DetailedPortfolioTable() {
               </span>
             </div>
           </div>
-          <div className="w-full h-2.5 rounded-full bg-white/[0.06] overflow-hidden">
+          <div className="w-full h-2.5 rounded-full bg-gray-50 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "32%" }}
@@ -397,7 +397,7 @@ export default function DetailedPortfolioTable() {
         </div>
 
         {/* נכסים דיגיטליים */}
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4">
+        <div className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <Coins className="size-4 text-blue-400" />
@@ -412,7 +412,7 @@ export default function DetailedPortfolioTable() {
               </span>
             </div>
           </div>
-          <div className="w-full h-2.5 rounded-full bg-white/[0.06] overflow-hidden">
+          <div className="w-full h-2.5 rounded-full bg-gray-50 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "68%" }}
@@ -436,7 +436,7 @@ export default function DetailedPortfolioTable() {
           <Shield className="size-4" />
           {t.safeAssetsSection} ({formatILS(3_200_000)})
         </h3>
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4 relative overflow-hidden">
+        <div className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 relative overflow-hidden">
           {/* פס צבעוני */}
           <div className="absolute right-0 top-0 bottom-0 w-1 rounded-r-xl bg-amber-400" />
           <div className="flex items-center justify-between mr-3">
@@ -483,7 +483,7 @@ export default function DetailedPortfolioTable() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4 flex gap-3 items-start"
+        className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 flex gap-3 items-start"
       >
         <Info className="size-5 text-amber-400 shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground leading-relaxed">

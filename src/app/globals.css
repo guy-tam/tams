@@ -58,73 +58,73 @@
 }
 
 .dark {
-  --background: oklch(0.11 0.025 250);
-  --foreground: oklch(0.96 0.005 260);
-  --card: oklch(0.14 0.03 255);
-  --card-foreground: oklch(0.96 0.005 260);
-  --popover: oklch(0.14 0.03 255);
-  --popover-foreground: oklch(0.96 0.005 260);
-  --primary: oklch(0.65 0.20 255);
+  --background: oklch(0.97 0.005 80);
+  --foreground: oklch(0.15 0.02 250);
+  --card: oklch(1.0 0 0);
+  --card-foreground: oklch(0.15 0.02 250);
+  --popover: oklch(1.0 0 0);
+  --popover-foreground: oklch(0.15 0.02 250);
+  --primary: oklch(0.50 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.19 0.035 255);
-  --secondary-foreground: oklch(0.92 0.01 260);
-  --muted: oklch(0.19 0.03 255);
-  --muted-foreground: oklch(0.58 0.03 260);
-  --accent: oklch(0.22 0.05 260);
-  --accent-foreground: oklch(0.96 0.005 260);
-  --destructive: oklch(0.62 0.22 25);
-  --border: oklch(0.22 0.03 250);
-  --input: oklch(0.21 0.035 255);
-  --ring: oklch(0.60 0.20 255);
-  --chart-1: oklch(0.65 0.20 255);
-  --chart-2: oklch(0.72 0.16 175);
-  --chart-3: oklch(0.7 0.18 290);
-  --chart-4: oklch(0.72 0.16 145);
-  --chart-5: oklch(0.75 0.16 55);
+  --secondary: oklch(0.94 0.01 80);
+  --secondary-foreground: oklch(0.25 0.02 250);
+  --muted: oklch(0.94 0.008 80);
+  --muted-foreground: oklch(0.45 0.02 250);
+  --accent: oklch(0.95 0.01 80);
+  --accent-foreground: oklch(0.15 0.02 250);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.88 0.01 80);
+  --input: oklch(0.95 0.005 80);
+  --ring: oklch(0.50 0.20 255);
+  --chart-1: oklch(0.50 0.20 255);
+  --chart-2: oklch(0.65 0.15 80);
+  --chart-3: oklch(0.55 0.18 170);
+  --chart-4: oklch(0.60 0.15 145);
+  --chart-5: oklch(0.55 0.15 25);
   --radius: 0.625rem;
-  --sidebar: oklch(0.10 0.025 252);
+  --sidebar: oklch(0.12 0.03 250);
   --sidebar-foreground: oklch(0.96 0.005 260);
   --sidebar-primary: oklch(0.65 0.20 255);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.17 0.035 255);
+  --sidebar-accent: oklch(0.18 0.03 250);
   --sidebar-accent-foreground: oklch(0.96 0.005 260);
-  --sidebar-border: oklch(0.21 0.03 255);
-  --sidebar-ring: oklch(0.60 0.20 255);
+  --sidebar-border: oklch(0.22 0.03 250);
+  --sidebar-ring: oklch(0.65 0.18 250);
 }
 
 :root {
-  --background: oklch(0.11 0.025 250);
-  --foreground: oklch(0.96 0.005 260);
-  --card: oklch(0.14 0.03 255);
-  --card-foreground: oklch(0.96 0.005 260);
-  --popover: oklch(0.14 0.03 255);
-  --popover-foreground: oklch(0.96 0.005 260);
-  --primary: oklch(0.65 0.20 255);
+  --background: oklch(0.97 0.005 80);
+  --foreground: oklch(0.15 0.02 250);
+  --card: oklch(1.0 0 0);
+  --card-foreground: oklch(0.15 0.02 250);
+  --popover: oklch(1.0 0 0);
+  --popover-foreground: oklch(0.15 0.02 250);
+  --primary: oklch(0.50 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.19 0.035 255);
-  --secondary-foreground: oklch(0.92 0.01 260);
-  --muted: oklch(0.19 0.03 255);
-  --muted-foreground: oklch(0.58 0.03 260);
-  --accent: oklch(0.22 0.05 260);
-  --accent-foreground: oklch(0.96 0.005 260);
-  --destructive: oklch(0.62 0.22 25);
-  --border: oklch(0.22 0.03 250);
-  --input: oklch(0.21 0.035 255);
-  --ring: oklch(0.60 0.20 255);
-  --chart-1: oklch(0.65 0.20 255);
-  --chart-2: oklch(0.72 0.16 175);
-  --chart-3: oklch(0.7 0.18 290);
-  --chart-4: oklch(0.72 0.16 145);
-  --chart-5: oklch(0.75 0.16 55);
+  --secondary: oklch(0.94 0.01 80);
+  --secondary-foreground: oklch(0.25 0.02 250);
+  --muted: oklch(0.94 0.008 80);
+  --muted-foreground: oklch(0.45 0.02 250);
+  --accent: oklch(0.95 0.01 80);
+  --accent-foreground: oklch(0.15 0.02 250);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.88 0.01 80);
+  --input: oklch(0.95 0.005 80);
+  --ring: oklch(0.50 0.20 255);
+  --chart-1: oklch(0.50 0.20 255);
+  --chart-2: oklch(0.65 0.15 80);
+  --chart-3: oklch(0.55 0.18 170);
+  --chart-4: oklch(0.60 0.15 145);
+  --chart-5: oklch(0.55 0.15 25);
   --radius: 0.625rem;
-  --sidebar: oklch(0.10 0.025 252);
+  --sidebar: oklch(0.12 0.03 250);
   --sidebar-foreground: oklch(0.96 0.005 260);
   --sidebar-primary: oklch(0.65 0.20 255);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.17 0.035 255);
+  --sidebar-accent: oklch(0.18 0.03 250);
   --sidebar-accent-foreground: oklch(0.96 0.005 260);
-  --sidebar-border: oklch(0.21 0.03 255);
-  --sidebar-ring: oklch(0.60 0.20 255);
+  --sidebar-border: oklch(0.22 0.03 250);
+  --sidebar-ring: oklch(0.65 0.18 250);
 }
 
 @layer base {
@@ -133,7 +133,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: radial-gradient(ellipse at 50% 0%, rgba(30, 50, 90, 0.15) 0%, transparent 60%), var(--background);
+    background: radial-gradient(ellipse at 50% 0%, rgba(30, 64, 175, 0.03) 0%, transparent 50%), var(--background);
   }
   html {
     @apply font-sans scroll-smooth;
@@ -142,22 +142,22 @@
 
 /* גלס-מורפיזם עדין - גוון כחול פרימיום */
 .glass {
-  background: rgba(30, 50, 80, 0.25);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 }
 
 .glass-strong {
-  background: rgba(30, 50, 80, 0.4);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 /* גראדיינט טקסט - כחול לזהב פרימיום */
 .gradient-text {
-  background: linear-gradient(135deg, #4f8ff7 0%, #d4a853 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #b8923d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -195,7 +195,7 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(79, 143, 247, 0.12), rgba(212, 168, 83, 0.08), rgba(79, 143, 247, 0.12));
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(212, 168, 83, 0.06), rgba(30, 64, 175, 0.08));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -206,19 +206,19 @@
 
 /* כרטיס פרימיום - שכבות עומק יוקרתיות */
 .card-premium {
-  background: linear-gradient(145deg, rgba(30, 50, 90, 0.4), rgba(20, 35, 65, 0.6));
-  border: 1px solid rgba(212, 168, 83, 0.12);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 24px rgba(0, 0, 0, 0.03);
 }
 .card-premium:hover {
-  border-color: rgba(212, 168, 83, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 168, 83, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
 }
 
 /* קו מפריד פרימיום */
 .divider-premium {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.4), transparent);
 }
 
 /* אנימציות */
@@ -246,14 +246,14 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.03), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
 /* נצנוץ זהב פרימיום */
 .shimmer-gold {
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.25), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
@@ -261,8 +261,8 @@
 /* גריד רקע */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -274,9 +274,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.12);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 168, 83, 0.3);
+  background: rgba(212, 168, 83, 0.4);
 }

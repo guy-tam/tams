@@ -42,7 +42,7 @@ const engines = [
     icon: ShieldCheck,
     title: "Risk-Managed Allocation",
     description: "קביעת גודל פוזיציות, מגבלות ירידה וניהול מתאמים להגנה על ההון בתנאי תנודתיות שוק. תשתית ניהול סיכונים ברמה מוסדית על פני כלל האסטרטגיות.",
-    color: "from-amber-500/20 to-amber-600/10 border-amber-500/20 text-amber-400",
+    color: "from-amber-500/20 to-amber-600/10 border-amber-200 text-amber-400",
     iconColor: "text-amber-400",
   },
   {
@@ -88,7 +88,7 @@ export default function BusinessModelAdvantage() {
           >
             <engine.icon className={`h-6 w-6 ${engine.iconColor} mb-3`} />
             <h3 className="text-sm font-semibold text-white mb-2">{engineTitles[i]}</h3>
-            <p className="text-[11px] text-zinc-400 leading-relaxed">{engine.description}</p>
+            <p className="text-[11px] text-gray-500 leading-relaxed">{engine.description}</p>
           </motion.div>
         ))}
       </div>
@@ -98,7 +98,7 @@ export default function BusinessModelAdvantage() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-10 rounded-xl border border-blue-500/[0.1] bg-white/[0.02] p-6"
+        className="mt-10 rounded-xl border border-blue-500/[0.1] bg-gray-50/50 p-6"
       >
         <h3 className="text-sm font-semibold text-white mb-6 text-center">{t("proof.businessModel.valueCaptureFlow")}</h3>
         <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 text-center">
@@ -109,9 +109,9 @@ export default function BusinessModelAdvantage() {
             { label: t("proof.businessModel.flowStep4Label"), sub: t("proof.businessModel.flowStep4Sub") },
           ].map((step, i) => (
             <div key={step.label} className="flex items-center gap-3 md:gap-4">
-              <div className="rounded-lg border border-blue-500/[0.1] bg-white/[0.03] px-4 py-3 min-w-[160px]">
+              <div className="rounded-lg border border-blue-500/[0.1] bg-white px-4 py-3 min-w-[160px]">
                 <div className="text-xs font-medium text-white">{step.label}</div>
-                <div className="text-[10px] text-zinc-500 mt-0.5">{step.sub}</div>
+                <div className="text-[10px] text-gray-400 mt-0.5">{step.sub}</div>
               </div>
               {i < 3 && <ArrowRight className={`h-4 w-4 text-amber-500/60 shrink-0 hidden md:block ${isRTL ? "rotate-180" : ""}`} />}
               {i < 3 && <ArrowDown className="h-4 w-4 text-amber-500/60 shrink-0 md:hidden" />}

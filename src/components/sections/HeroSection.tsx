@@ -105,7 +105,7 @@ export default function HeroSection({
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-1.5 text-sm text-muted-foreground mb-8"
+            className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 backdrop-blur-sm px-4 py-1.5 text-sm text-muted-foreground mb-8"
           >
             <span className="size-2 rounded-full bg-amber-400 animate-pulse" />
             {t("home.hero.badge")}
@@ -146,7 +146,7 @@ export default function HeroSection({
               <Button
                 variant="outline"
                 size="lg"
-                className="px-6 h-11 text-base gap-2 border-white/15 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-amber-500/20 transition-all"
+                className="px-6 h-11 text-base gap-2 border-gray-200 bg-gray-50 backdrop-blur-sm hover:bg-gray-100 hover:border-amber-400/40 transition-all"
               >
                 <FileText className="size-4" />
                 {t("home.hero.cta2")}

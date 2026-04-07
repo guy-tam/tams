@@ -52,7 +52,7 @@ function ChartTooltip({
 }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-white/[0.08] bg-card/95 backdrop-blur-md px-4 py-3 shadow-xl">
+    <div className="rounded-lg border border-gray-200 bg-card/95 backdrop-blur-md px-4 py-3 shadow-xl">
       <div className="text-xs text-muted-foreground mb-1">{label}</div>
       <div className="text-base font-bold text-foreground">
         ₪{formatILS(payload[0].value)}
@@ -85,7 +85,7 @@ function PerfStatCard({
     <motion.div
       variants={itemVariants}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-5 group relative overflow-hidden"
+      className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-5 group relative overflow-hidden"
     >
       <div
         className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100"
@@ -129,7 +129,7 @@ export default function PerformancePage() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
+        className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6"
       >
         <h3 className="text-base font-semibold text-foreground mb-1">
           ביצועי תיק — 12 חודשים
@@ -216,7 +216,7 @@ export default function PerformancePage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
+        className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6"
       >
         <h3 className="text-base font-semibold text-foreground mb-1">
           תרומת ארנקים לביצועים
@@ -254,7 +254,7 @@ export default function PerformancePage() {
                     +{w.contribution}%
                   </span>
                 </div>
-                <div className="h-2.5 rounded-full bg-white/[0.04] overflow-hidden">
+                <div className="h-2.5 rounded-full bg-white overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${widthPct}%` }}

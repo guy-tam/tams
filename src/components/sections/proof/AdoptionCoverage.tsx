@@ -24,7 +24,7 @@ const regionColors: Record<string, string> = {
   "Europe": "from-purple-500/20 to-purple-600/10 border-purple-500/20",
   "Asia Pacific": "from-blue-500/20 to-blue-600/10 border-blue-500/20",
   "Global": "from-emerald-500/20 to-emerald-600/10 border-emerald-500/20",
-  "Africa": "from-amber-500/20 to-amber-600/10 border-amber-500/20",
+  "Africa": "from-amber-500/20 to-amber-600/10 border-amber-200",
   "Latin America": "from-rose-500/20 to-rose-600/10 border-rose-500/20",
   "Middle East": "from-orange-500/20 to-orange-600/10 border-orange-500/20",
   "Oceania": "from-teal-500/20 to-teal-600/10 border-teal-500/20",
@@ -120,9 +120,9 @@ function CustomPieTooltip({ active, payload }: any) {
   if (!active || !payload?.[0]) return null;
   const { name, value, payload: entry } = payload[0];
   return (
-    <div className="rounded-lg border border-white/10 bg-zinc-900/95 px-3 py-2 shadow-xl text-xs">
+    <div className="rounded-lg border border-gray-200 bg-white/95 px-3 py-2 shadow-xl text-xs">
       <div className="font-semibold text-white">{name}</div>
-      <div className="text-zinc-400 mt-0.5">{value} records ({entry.pct}%)</div>
+      <div className="text-gray-500 mt-0.5">{value} records ({entry.pct}%)</div>
     </div>
   );
 }
@@ -216,7 +216,7 @@ export default function AdoptionCoverage() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
+          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
         >
           <div className="flex items-center gap-2 mb-5">
             <Globe className="h-4 w-4 text-blue-400" />
@@ -245,7 +245,7 @@ export default function AdoptionCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
+          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
         >
           <div className="flex items-center gap-2 mb-5">
             <Building2 className="h-4 w-4 text-amber-400" />
@@ -261,8 +261,8 @@ export default function AdoptionCoverage() {
                 transition={{ delay: i * 0.04 }}
                 className="flex items-center gap-3"
               >
-                <span className="text-[11px] text-zinc-400 w-36 shrink-0 truncate">{organizationTypeLabels[item.type]}</span>
-                <div className="flex-1 h-2 bg-white/[0.04] rounded-full overflow-hidden">
+                <span className="text-[11px] text-gray-500 w-36 shrink-0 truncate">{organizationTypeLabels[item.type]}</span>
+                <div className="flex-1 h-2 bg-white rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${(item.count / analysis.orgTypes[0].count) * 100}%` }}
@@ -271,7 +271,7 @@ export default function AdoptionCoverage() {
                     className="h-full rounded-full bg-gradient-to-r from-blue-500/60 to-amber-500/60"
                   />
                 </div>
-                <span className="text-xs font-mono text-zinc-400 w-6 text-right">{item.count}</span>
+                <span className="text-xs font-mono text-gray-500 w-6 text-right">{item.count}</span>
               </motion.div>
             ))}
           </div>
@@ -284,14 +284,14 @@ export default function AdoptionCoverage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
-        className="mt-6 rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
+        className="mt-6 rounded-xl border border-gray-200 bg-gray-50/50 p-6"
       >
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
             <BarChart3 className="h-4 w-4 text-emerald-400" />
             <h3 className="text-sm font-semibold text-white">{t("proof.coverage.assetConcentration")}</h3>
           </div>
-          <div className="flex items-center gap-4 text-[10px] text-zinc-500">
+          <div className="flex items-center gap-4 text-[10px] text-gray-400">
             <span className="flex items-center gap-1.5">
               <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: getTreemapColor(1) }} />
               High confidence
@@ -327,7 +327,7 @@ export default function AdoptionCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
+          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
         >
           <div className="flex items-center gap-2 mb-4">
             <ShieldCheck className="h-4 w-4 text-blue-400" />
@@ -362,13 +362,13 @@ export default function AdoptionCoverage() {
                     className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                     style={{ background: d.color }}
                   />
-                  <span className="text-xs text-zinc-300 flex-1">{d.name}</span>
-                  <span className="text-xs font-mono text-zinc-400">{d.pct}%</span>
-                  <span className="text-[10px] text-zinc-500">({d.value})</span>
+                  <span className="text-xs text-gray-600 flex-1">{d.name}</span>
+                  <span className="text-xs font-mono text-gray-500">{d.pct}%</span>
+                  <span className="text-[10px] text-gray-400">({d.value})</span>
                 </div>
               ))}
-              <div className="pt-2 border-t border-white/[0.04]">
-                <span className="text-[10px] text-zinc-500">{analysis.total} {t("proof.coverage.records")}</span>
+              <div className="pt-2 border-t border-gray-100">
+                <span className="text-[10px] text-gray-400">{analysis.total} {t("proof.coverage.records")}</span>
               </div>
             </div>
           </div>
@@ -380,7 +380,7 @@ export default function AdoptionCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.25 }}
-          className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6"
+          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
         >
           <div className="flex items-center gap-2 mb-4">
             <Activity className="h-4 w-4 text-green-400" />
@@ -415,9 +415,9 @@ export default function AdoptionCoverage() {
                     className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                     style={{ background: d.color }}
                   />
-                  <span className="text-xs text-zinc-300 flex-1">{d.name}</span>
-                  <span className="text-xs font-mono text-zinc-400">{d.pct}%</span>
-                  <span className="text-[10px] text-zinc-500">({d.value})</span>
+                  <span className="text-xs text-gray-600 flex-1">{d.name}</span>
+                  <span className="text-xs font-mono text-gray-500">{d.pct}%</span>
+                  <span className="text-[10px] text-gray-400">({d.value})</span>
                 </div>
               ))}
             </div>

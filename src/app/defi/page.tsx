@@ -32,7 +32,7 @@ export default function DeFiPage() {
     <PageWrapper bgGrid>
       <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <span className="inline-block rounded-full bg-amber-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-400 border border-amber-500/15 mb-6">{t("defi.badge")}</span>
+          <span className="inline-block rounded-full bg-amber-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">{t("defi.badge")}</span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6"><span className="gradient-text">{t("defi.title")}</span></h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">{t("defi.subtitle")}</p>
         </motion.div>
@@ -41,7 +41,7 @@ export default function DeFiPage() {
       <section className="pb-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {metrics.map((m, i) => (
-            <motion.div key={m.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-4 text-center">
+            <motion.div key={m.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 text-center">
               <div className="text-2xl font-bold mb-1" style={{ color: m.color }}>{m.value}</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider">{m.label}</div>
             </motion.div>

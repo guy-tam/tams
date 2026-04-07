@@ -167,7 +167,7 @@ function getActivityIcon(type: string) {
     case "withdrawal":
       return <CircleDollarSign className="size-4 text-amber-400" />;
     default:
-      return <Wallet className="size-4 text-zinc-400" />;
+      return <Wallet className="size-4 text-gray-500" />;
   }
 }
 
@@ -211,7 +211,7 @@ function getTypeLabelColor(type: string) {
     case "withdrawal":
       return "bg-amber-500/15 text-amber-400";
     default:
-      return "bg-zinc-500/15 text-zinc-400";
+      return "bg-gray-400/15 text-gray-500";
   }
 }
 
@@ -289,7 +289,7 @@ export default function ActivityPage() {
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filter === opt.key
                 ? "bg-blue-500/[0.12] text-foreground border border-blue-500/20"
-                : "bg-white/[0.04] text-muted-foreground border border-white/[0.08] hover:bg-blue-500/[0.06] hover:text-foreground"
+                : "bg-white text-muted-foreground border border-gray-200 hover:bg-blue-500/[0.06] hover:text-foreground"
             }`}
           >
             {opt.label}
@@ -305,14 +305,14 @@ export default function ActivityPage() {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md overflow-hidden"
+          className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md overflow-hidden"
         >
           {filtered.length === 0 ? (
             <div className="p-12 text-center text-muted-foreground text-sm">
               {t.noActivity}
             </div>
           ) : (
-            <div className="divide-y divide-white/[0.04]">
+            <div className="divide-y divide-gray-100">
               {filtered.map((a: ActivityItem) => (
                 <motion.div
                   key={a.id}

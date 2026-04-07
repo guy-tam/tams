@@ -28,7 +28,7 @@ export default function ProofHero() {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="inline-block rounded-full bg-amber-500/10 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-400 border border-amber-500/15 mb-8">
+          <span className="inline-block rounded-full bg-amber-50 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-700 border border-amber-200 mb-8">
             {t("proof.hero.badge")}
           </span>
 
@@ -37,11 +37,11 @@ export default function ProofHero() {
             <span className="gradient-text">{t("proof.hero.titleHighlight")}</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-6">
+          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed mb-6">
             {t("proof.hero.description")}
           </p>
 
-          <p className="text-sm text-zinc-500 max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed mb-12">
             {t("proof.hero.subdescription")}
           </p>
         </motion.div>
@@ -59,14 +59,14 @@ export default function ProofHero() {
             { value: evidenceStats.uniqueCountries, label: t("proof.hero.statsCountries") },
             { value: evidenceStats.byConfidence.high, label: t("proof.hero.statsHighConfidence") },
           ].map((stat, i) => (
-            <div key={i} className="rounded-xl border border-white/[0.08] bg-blue-500/[0.04] backdrop-blur-sm p-4">
+            <div key={i} className="rounded-xl border border-gray-200 bg-blue-500/[0.04] backdrop-blur-sm p-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
               >
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-[11px] text-zinc-500 uppercase tracking-wider">{stat.label}</div>
+                <div className="text-[11px] text-gray-400 uppercase tracking-wider">{stat.label}</div>
               </motion.div>
             </div>
           ))}
@@ -78,7 +78,7 @@ export default function ProofHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-6">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-6">
             {t("proof.hero.enginesTitle")}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto">
@@ -88,11 +88,11 @@ export default function ProofHero() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + i * 0.07 }}
-                className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left hover:border-amber-500/20 hover:bg-white/[0.04] transition-all duration-300"
+                className="rounded-xl border border-gray-200 bg-gray-50/50 p-4 text-left hover:border-amber-400/40 hover:bg-white transition-all duration-300"
               >
                 <engine.icon className="h-4 w-4 text-blue-400 mb-2" />
                 <div className="text-sm font-medium text-white mb-1">{engine.label}</div>
-                <div className="text-[11px] text-zinc-500 leading-relaxed">{engine.desc}</div>
+                <div className="text-[11px] text-gray-400 leading-relaxed">{engine.desc}</div>
               </motion.div>
             ))}
           </div>

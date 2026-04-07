@@ -249,7 +249,7 @@ export default function MarketShiftTimeline() {
                 </div>
 
                 {/* כרטיס אירוע */}
-                <div className="flex-1 rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4 hover:border-amber-500/15 transition-colors">
+                <div className="flex-1 rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 hover:border-amber-400/40 transition-colors">
                   <div className="flex items-center gap-3 mb-2">
                     <span
                       className="text-sm font-bold"

@@ -40,13 +40,13 @@ export default function SectionHeader({
     >
       {/* תג עליון */}
       {badge && (
-        <span className="mb-3 inline-block rounded-full bg-amber-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-amber-400 border border-amber-500/15">
+        <span className="mb-3 inline-block rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-amber-700 border border-amber-200">
           {badge}
         </span>
       )}
 
       {/* כותרת */}
-      <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+      <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
         {title}
       </h2>
 
@@ -55,7 +55,7 @@ export default function SectionHeader({
 
       {/* תת-כותרת */}
       {subtitle && (
-        <p className="mt-3 text-sm leading-relaxed text-zinc-400 max-w-xl">
+        <p className="mt-3 text-sm leading-relaxed text-gray-500 max-w-xl">
           {subtitle}
         </p>
       )}

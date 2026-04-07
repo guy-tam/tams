@@ -26,7 +26,7 @@ export default function MarketShiftPage() {
     <PageWrapper bgGrid>
       <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <span className="inline-block rounded-full bg-amber-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-400 border border-amber-500/15 mb-6">{t("marketShift.badge")}</span>
+          <span className="inline-block rounded-full bg-amber-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">{t("marketShift.badge")}</span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6"><span className="gradient-text">{t("marketShift.title")}</span></h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">{t("marketShift.subtitle")}</p>
         </motion.div>
@@ -53,7 +53,7 @@ export default function MarketShiftPage() {
       </section>
 
       <section className="py-16 max-w-3xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-white/[0.06] bg-gradient-to-br from-tams-blue/[0.05] to-tams-purple/[0.05] backdrop-blur-md p-8 text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-gray-200 bg-gradient-to-br from-tams-blue/[0.05] to-tams-purple/[0.05] backdrop-blur-md p-8 text-center">
           <p className="text-lg text-foreground font-medium leading-relaxed mb-4">&ldquo;{t("marketShift.quote.text")}&rdquo;</p>
           <p className="text-sm text-muted-foreground">— {t("marketShift.quote.source")}</p>
         </motion.div>

@@ -145,7 +145,7 @@ export default function WalletArchitectureMap() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="relative rounded-2xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md overflow-hidden hover:border-amber-500/15 transition-colors"
+              className="relative rounded-2xl border border-gray-200 bg-white backdrop-blur-md overflow-hidden hover:border-amber-400/40 transition-colors"
             >
               {/* פס צבעוני עליון */}
               <div
@@ -182,7 +182,7 @@ export default function WalletArchitectureMap() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
-                      className="flex items-center gap-2.5 rounded-lg border border-white/[0.04] bg-white/[0.03] px-3 py-2"
+                      className="flex items-center gap-2.5 rounded-lg border border-gray-100 bg-white px-3 py-2"
                     >
                       <div
                         className="size-1.5 rounded-full flex-shrink-0"

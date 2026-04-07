@@ -147,7 +147,7 @@ export default function LoginPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <motion.div
-          className="size-8 rounded-full border-2 border-white/10 border-t-tams-blue"
+          className="size-8 rounded-full border-2 border-gray-200 border-t-tams-blue"
           animate={{ rotate: 360 }}
           transition={{
             duration: 1,
@@ -298,7 +298,7 @@ export default function LoginPage() {
           </div>
 
           {/* כרטיס הטופס */}
-          <div className="rounded-2xl p-8 bg-[rgba(30,50,80,0.4)] backdrop-blur-xl border border-white/[0.08]">
+          <div className="rounded-2xl p-8 bg-[rgba(30,50,80,0.4)] backdrop-blur-xl border border-gray-200">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-white mb-2">Sign In</h2>
               <p className="text-sm text-muted-foreground">
@@ -326,7 +326,7 @@ export default function LoginPage() {
                       setError("");
                     }}
                     placeholder="you@company.com"
-                    className="w-full h-11 pl-10 pr-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all"
+                    className="w-full h-11 pl-10 pr-4 rounded-lg bg-gray-50 border border-gray-200 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all"
                     autoComplete="email"
                     required
                   />
@@ -349,7 +349,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
-                    className="w-full h-11 pl-10 pr-11 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all"
+                    className="w-full h-11 pl-10 pr-11 rounded-lg bg-gray-50 border border-gray-200 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all"
                     autoComplete="current-password"
                     required
                   />
@@ -422,7 +422,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={fillDemo}
-              className="w-full h-11 rounded-lg border border-white/10 bg-white/5 text-white font-medium text-sm flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
+              className="w-full h-11 rounded-lg border border-gray-200 bg-gray-50 text-white font-medium text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
             >
               <Shield className="size-4 text-blue-400" />
               Demo Access

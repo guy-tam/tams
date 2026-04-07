@@ -83,7 +83,7 @@ export default function MethodologyDisclaimer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5"
+            className="rounded-xl border border-gray-200 bg-gray-50/50 p-5"
           >
             <div className="flex items-center gap-2 mb-3">
               <item.icon className="h-4 w-4 text-blue-400" />
@@ -91,8 +91,8 @@ export default function MethodologyDisclaimer() {
             </div>
             <ul className="space-y-2">
               {item.content.map((line) => (
-                <li key={line} className="text-[11px] text-zinc-400 leading-relaxed flex items-start gap-2">
-                  <span className="text-zinc-600 mt-1 shrink-0">·</span>
+                <li key={line} className="text-[11px] text-gray-500 leading-relaxed flex items-start gap-2">
+                  <span className="text-gray-400 mt-1 shrink-0">·</span>
                   <span>{line}</span>
                 </li>
               ))}
@@ -113,7 +113,7 @@ export default function MethodologyDisclaimer() {
           <h3 className="text-sm font-semibold text-white">{t("proof.methodology.disclaimersTitle")}</h3>
         </div>
 
-        <div className="rounded-xl border border-amber-500/10 bg-amber-500/[0.03] p-6 space-y-4">
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 space-y-4">
           {[
             "עמוד זה מיועד למטרות מידע וחינוך בלבד. הוא אינו מהווה ייעוץ השקעות, הצעה למכירה, או שידול לרכישת ניירות ערך או נכסים דיגיטליים כלשהם.",
             "נכסים דיגיטליים הם תנודתיים, ספקולטיביים, ונושאים סיכון משמעותי להפסד — כולל הפסד מלא של הקרן. ביצועי עבר וראיות היסטוריות על קשרי אקוסיסטם אינם מבטיחים תשואות עתידיות.",
@@ -123,7 +123,7 @@ export default function MethodologyDisclaimer() {
             "התרחישים המוצגים הם מסגרות איכותניות, לא תחזיות פיננסיות. אין לפרש אותם כתוצאות משוקללות הסתברות או תשואות צפויות.",
             "על המשקיעים לבצע בדיקת נאותות עצמאית ולהתייעץ עם יועצים פיננסיים, משפטיים ומיסויים מוסמכים לפני קבלת כל החלטת השקעה.",
           ].map((disclaimer) => (
-            <p key={disclaimer} className="text-[11px] text-zinc-400 leading-relaxed">
+            <p key={disclaimer} className="text-[11px] text-gray-500 leading-relaxed">
               {disclaimer}
             </p>
           ))}
@@ -131,8 +131,8 @@ export default function MethodologyDisclaimer() {
 
         {/* חותמת מתודולוגיה */}
         <div className="flex items-center justify-center gap-2 pt-4">
-          <FileText className="h-3.5 w-3.5 text-zinc-600" />
-          <span className="text-[10px] text-zinc-600 uppercase tracking-widest">
+          <FileText className="h-3.5 w-3.5 text-gray-400" />
+          <span className="text-[10px] text-gray-400 uppercase tracking-widest">
             {t("proof.methodology.stamp")}
           </span>
         </div>

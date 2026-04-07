@@ -78,7 +78,7 @@ export default function ProofTableOfContents() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 24 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className={`fixed top-1/2 -translate-y-1/2 ${isRTL ? "left-6" : "right-6"} z-50 hidden xl:flex flex-col gap-1 rounded-xl bg-[#0a1628]/80 border border-white/[0.06] backdrop-blur-md p-3 shadow-lg shadow-black/20`}
+          className={`fixed top-1/2 -translate-y-1/2 ${isRTL ? "left-6" : "right-6"} z-50 hidden xl:flex flex-col gap-1 rounded-xl bg-[#0a1628]/80 border border-gray-200 backdrop-blur-md p-3 shadow-lg shadow-black/20`}
         >
           {sectionDefs.map((section) => {
             const isActive = activeId === section.id;
@@ -92,7 +92,7 @@ export default function ProofTableOfContents() {
                   ${
                     isActive
                       ? "text-blue-400 bg-blue-500/[0.08]"
-                      : "text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.04]"
+                      : "text-gray-500 hover:text-zinc-200 hover:bg-white"
                   }
                 `}
               >

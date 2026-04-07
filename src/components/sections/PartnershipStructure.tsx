@@ -310,7 +310,7 @@ export default function PartnershipStructure() {
             {t.platformFeatures.map((item, j) => (
               <div
                 key={j}
-                className="flex items-center gap-2 rounded-lg border border-white/[0.04] bg-white/[0.02] px-3 py-2 text-xs text-muted-foreground"
+                className="flex items-center gap-2 rounded-lg border border-gray-100 bg-gray-50/50 px-3 py-2 text-xs text-muted-foreground"
               >
                 <div className="size-1.5 rounded-full flex-shrink-0 bg-tams-blue" />
                 {item}
@@ -415,7 +415,7 @@ export default function PartnershipStructure() {
               whileInView="visible"
               viewport={{ once: true }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-5 text-center transition-colors hover:border-white/[0.12]"
+              className="relative rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-5 text-center transition-colors hover:border-gray-300"
             >
               {/* פס צבעוני עליון */}
               <div
