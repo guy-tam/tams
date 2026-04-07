@@ -54,8 +54,8 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
           <motion.div
             key={index}
             variants={cardVariants}
-            whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/25 hover:bg-white/[0.06] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)]"
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            className="group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-white/[0.06] hover:shadow-lg hover:shadow-amber-500/5"
           >
             {/* גלאו עדין ברקע הכרטיס */}
             <div
@@ -74,7 +74,7 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
               }}
             >
               <Icon
-                className="size-6"
+                className="size-6 transition-transform duration-300 group-hover:scale-110"
                 style={{ color: accentColor }}
               />
             </div>

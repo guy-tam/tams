@@ -158,7 +158,12 @@ const tierMeta = [
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5 } },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, delay: i * 0.1 },
+  }),
 };
 
 export default function InvestorTiers() {
@@ -188,7 +193,7 @@ export default function InvestorTiers() {
           transition={{ staggerChildren: 0.12 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12"
         >
-          {tierMeta.map((meta) => {
+          {tierMeta.map((meta, tierIndex) => {
             const Icon = meta.icon;
             const tier = tiers[meta.key];
             const BadgeIcon = meta.badge;
@@ -197,9 +202,10 @@ export default function InvestorTiers() {
               <motion.div
                 key={meta.key}
                 variants={cardVariants}
+                custom={tierIndex}
                 className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-white/[0.04] ${
                   meta.key === "visionary"
-                    ? "border border-amber-500/25 bg-white/[0.06] hover:border-amber-500/40 shadow-[0_0_40px_-12px_rgba(212,168,83,0.12)]"
+                    ? "card-ornate border border-amber-500/25 bg-white/[0.06] hover:border-amber-500/40 shadow-[0_0_40px_-12px_rgba(212,168,83,0.12)]"
                     : "border border-amber-500/15 bg-white/[0.04] hover:border-amber-500/25"
                 }`}
               >

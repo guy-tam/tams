@@ -1,7 +1,8 @@
 "use client";
 
 // סקשן ראשי - הירו עם אנימציות ועיצוב דרמטי
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Compass, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/i18n";
@@ -43,7 +44,7 @@ function FloatingOrb({
         scale: [1, 1.1, 1, 0.9, 1],
       }}
       transition={{
-        duration: 12,
+        duration: 20,
         repeat: Infinity,
         delay,
         ease: "easeInOut",
@@ -59,33 +60,40 @@ export default function HeroSection({
   ctaHref = "#architecture",
 }: HeroSectionProps) {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* רקע עם כדורים צפים */}
       <div className="absolute inset-0">
         <FloatingOrb
-          size={500}
+          size={650}
           color="radial-gradient(circle, #1e3a7a, transparent)"
           x="10%"
           y="20%"
           delay={0}
         />
         <FloatingOrb
-          size={400}
+          size={520}
           color="radial-gradient(circle, #d4a853, transparent)"
           x="60%"
           y="10%"
           delay={2}
         />
         <FloatingOrb
-          size={350}
+          size={455}
           color="radial-gradient(circle, #3b6fd4, transparent)"
           x="70%"
           y="60%"
           delay={4}
         />
         <FloatingOrb
-          size={300}
+          size={390}
           color="radial-gradient(circle, #1a4a8a, transparent)"
           x="20%"
           y="70%"
@@ -107,14 +115,17 @@ export default function HeroSection({
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full border border-amber-500/15 bg-white/[0.04] backdrop-blur-sm px-4 py-1.5 text-sm text-muted-foreground mb-8"
           >
-            <span className="size-2 rounded-full bg-amber-400 animate-pulse" />
+            <span className="size-2 rounded-full bg-amber-400 animate-slow-pulse" />
             {t("home.hero.badge")}
           </motion.div>
 
-          {/* כותרת ראשית */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-normal leading-[1.2] mb-6">
-            <span className="gradient-text">{title}</span>
-          </h1>
+          {/* כותרת ראשית עם פרלקס */}
+          <motion.h1
+            style={{ y: titleY }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-normal leading-[1.2] mb-6"
+          >
+            <span className="gradient-text animate-text-glow">{title}</span>
+          </motion.h1>
 
           {/* תת כותרת */}
           <motion.p
@@ -136,7 +147,7 @@ export default function HeroSection({
             <a href={ctaHref}>
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 px-6 h-11 text-base gap-2 transition-all"
+                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 px-6 h-12 text-base gap-2 transition-all shadow-lg shadow-blue-500/20"
               >
                 <Compass className="size-4" />
                 {ctaText}
@@ -146,7 +157,7 @@ export default function HeroSection({
               <Button
                 variant="outline"
                 size="lg"
-                className="px-6 h-11 text-base gap-2 border-amber-500/15 bg-white/[0.04] backdrop-blur-sm hover:bg-white/[0.06] hover:border-amber-500/25 transition-all"
+                className="px-6 h-12 text-base gap-2 border-amber-500/15 bg-white/[0.04] backdrop-blur-sm hover:bg-white/[0.06] hover:border-amber-500/25 transition-all shadow-lg shadow-black/10"
               >
                 <FileText className="size-4" />
                 {t("home.hero.cta2")}

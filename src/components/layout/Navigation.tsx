@@ -102,7 +102,7 @@ export default function Navigation() {
               {active && (
                 <motion.div
                   layoutId="activeIndicator"
-                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-blue-400 to-amber-400`}
+                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-blue-400 to-amber-400 shadow-sm shadow-amber-400/20`}
                   transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}

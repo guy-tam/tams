@@ -55,7 +55,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="border-b border-white/[0.06] last:border-b-0">
+    <div className={`border-b border-white/[0.06] last:border-b-0 transition-all duration-300 ${expanded ? "border-s-2 border-s-amber-500/20 border-e-2 border-e-amber-500/20" : ""}`}>
       {/* שורה ראשית */}
       <button
         onClick={() => setExpanded(!expanded)}
@@ -246,7 +246,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
       <div className="mt-8 mb-4 space-y-3">
         {/* חיפוש */}
         <div className="flex gap-3">
-          <div className="relative flex-1">
+          <div className="relative flex-1 search-gold-underline">
             <Search className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <input
               type="text"
@@ -276,7 +276,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="overflow-hidden"
             >
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 p-4 rounded-xl border border-amber-500/15 bg-white/[0.03]">
