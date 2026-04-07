@@ -138,7 +138,7 @@ export default function Navigation() {
 
       {/* כפתור כניסה לפורטל משקיעים */}
       <div className="mx-3 mb-3">
-        <Link href="/login">
+        <Link href="/access">
           <div className="flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-medium bg-gradient-to-r from-amber-500/10 to-blue-500/10 border border-amber-500/15 text-amber-400 hover:from-amber-500/20 hover:to-blue-500/20 hover:text-amber-300 transition-all">
             <LogIn className="size-4" />
             <span>{t("nav.investorPortal")}</span>

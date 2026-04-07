@@ -13,7 +13,7 @@ const ar: TranslationStrings = {
     investor: "المستثمرون",
     proof: "الإثباتات",
     language: "اللغة",
-    investorPortal: "بوابة المستثمرين",
+    investorPortal: "وصول خاص",
   },
   common: {
     conceptApp: "تطبيق مفاهيمي",

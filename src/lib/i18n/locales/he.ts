@@ -14,7 +14,7 @@ const he: TranslationStrings = {
     investor: "למשקיע",
     proof: "הוכחות",
     language: "שפה",
-    investorPortal: "פורטל משקיעים",
+    investorPortal: "גישה פרטית",
   },
   common: {
     conceptApp: "אפליקציית מסגרת מושגית",

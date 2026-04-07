@@ -13,7 +13,7 @@ const ru: TranslationStrings = {
     investor: "Инвестору",
     proof: "Доказательства",
     language: "Язык",
-    investorPortal: "Портал инвестора",
+    investorPortal: "Частный доступ",
   },
   common: {
     conceptApp: "Концептуальное приложение",

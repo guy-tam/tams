@@ -13,7 +13,7 @@ const es: TranslationStrings = {
     investor: "Inversionistas",
     proof: "Pruebas",
     language: "Idioma",
-    investorPortal: "Portal de Inversores",
+    investorPortal: "Acceso Privado",
   },
   common: {
     conceptApp: "Aplicación conceptual",
