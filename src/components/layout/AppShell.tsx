@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/lib/i18n";
 import { useLanguage } from "@/lib/i18n";
 import type { Language, TranslationStrings } from "@/lib/i18n";
 import Navigation from "./Navigation";
+import TamsLogo from "./TamsLogo";
 import { ToastProvider } from "@/components/ui/toast";
 
 // ייבוא תרגומים
@@ -36,6 +37,10 @@ function ShellInner({ children }: { children: ReactNode }) {
     <>
       <Navigation />
       <div className={`flex-1 ${isRTL ? "lg:pr-64" : "lg:pl-64"}`}>
+        {/* לוגו עץ מוזהב — קבוע, לא נטען מחדש בין עמודים */}
+        <div className="hidden lg:block">
+          <TamsLogo />
+        </div>
         {children}
       </div>
     </>
