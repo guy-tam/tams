@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Compass, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/i18n";
+import TamsLogo from "@/components/layout/TamsLogo";
 
 interface HeroSectionProps {
   title: string;
@@ -108,6 +109,11 @@ export default function HeroSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+          {/* לוגו TAMS */}
+          <div className="mb-8">
+            <TamsLogo size="lg" showText={false} />
+          </div>
+
           {/* תג עליון */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

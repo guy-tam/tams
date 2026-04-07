@@ -22,6 +22,7 @@ import {
 import { useLanguage } from "@/lib/i18n";
 import { useAuth } from "@/lib/auth";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import TamsLogo from "./TamsLogo";
 import type { ReactNode } from "react";
 
 // --- פריטי ניווט הדשבורד ---
@@ -175,9 +176,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
     <div className="flex h-full flex-col">
       {/* לוגו ומותג - פורטל משקיע */}
       <div className="flex items-center gap-3 px-6 py-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-amber-500 shadow-lg shadow-blue-500/15">
-          <span className="text-sm font-bold text-white tracking-tight">T</span>
-        </div>
+        <TamsLogo size="sm" showText={false} />
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
           <p className="text-[10px] uppercase tracking-widest text-zinc-500">
@@ -291,9 +290,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-zinc-800/40 bg-[#0a1628]/80 backdrop-blur-md px-4 sm:px-6">
           {/* לוגו בבר עליון - נראה רק במובייל */}
           <div className="flex items-center gap-2 lg:hidden">
-            <div className="h-7 w-7 rounded-md bg-gradient-to-br from-blue-600 to-amber-500 flex items-center justify-center mr-8">
-              <span className="text-xs font-bold text-white">T</span>
-            </div>
+            <TamsLogo size="sm" showText={false} />
             <span className="text-sm font-bold text-white">TAMS {t("nav.investorPortal")}</span>
           </div>
 

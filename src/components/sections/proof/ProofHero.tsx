@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Shield, TrendingUp, Layers, Zap, BarChart3, Repeat } from "lucide-react";
 import { evidenceStats } from "@/data/adoption/evidence";
 import { useLanguage } from "@/lib/i18n/context";
+import TamsLogo from "@/components/layout/TamsLogo";
 
 const engineIcons = [TrendingUp, Layers, Zap, Repeat, BarChart3, Shield];
 
@@ -28,6 +29,10 @@ export default function ProofHero() {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <div className="mb-6">
+            <TamsLogo size="md" showText={false} />
+          </div>
+
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-700 border border-amber-200 mb-8 shadow-[0_0_20px_rgba(212,168,83,0.12)]">
             {t("proof.hero.badge")}
           </span>

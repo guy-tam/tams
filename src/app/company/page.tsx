@@ -8,6 +8,7 @@ import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
 import PartnershipStructure from "@/components/sections/PartnershipStructure";
 import OperatingModel from "@/components/sections/OperatingModel";
 import { useLanguage } from "@/lib/i18n";
+import TamsLogo from "@/components/layout/TamsLogo";
 import { motion } from "framer-motion";
 import {
   Target,
@@ -74,6 +75,9 @@ export default function CompanyPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
+          <div className="flex justify-center mb-6">
+            <TamsLogo size="md" showText={false} />
+          </div>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">
             {t("company.badge")}
           </span>

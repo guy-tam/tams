@@ -6,6 +6,7 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import AssetResearchExplorer from "@/components/sections/AssetResearchExplorer";
 import { useLanguage } from "@/lib/i18n";
+import TamsLogo from "@/components/layout/TamsLogo";
 import { motion } from "framer-motion";
 
 export default function HoldingsPage() {
@@ -30,6 +31,9 @@ export default function HoldingsPage() {
 
       <section id="holdings-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <div className="flex justify-center mb-6">
+            <TamsLogo size="md" showText={false} />
+          </div>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">
             {t("holdings.badge")}
           </span>
