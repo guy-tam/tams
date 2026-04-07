@@ -55,7 +55,7 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
             key={index}
             variants={cardVariants}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="group relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-400/40 hover:bg-amber-50/30 hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)]"
+            className="group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/25 hover:bg-white/[0.04] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)]"
           >
             {/* גלאו עדין ברקע הכרטיס */}
             <div

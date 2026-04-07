@@ -169,7 +169,7 @@ export default function InvestorTiers() {
     <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* רקע */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-50 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/[0.06] rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-900/[0.05] rounded-full blur-3xl" />
       </div>
 
@@ -197,10 +197,10 @@ export default function InvestorTiers() {
               <motion.div
                 key={meta.key}
                 variants={cardVariants}
-                className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-amber-50/30 ${
+                className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-white/[0.04] ${
                   meta.key === "visionary"
                     ? "border border-amber-500/25 bg-white hover:border-amber-500/40 shadow-[0_0_40px_-12px_rgba(212,168,83,0.12)]"
-                    : "border border-amber-200/40 bg-white hover:border-amber-300/40"
+                    : "border border-amber-500/15 bg-white hover:border-amber-500/25"
                 }`}
               >
                 {/* כותרת הדרגה */}

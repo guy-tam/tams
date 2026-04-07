@@ -57,74 +57,75 @@
   --color-tams-gold-dark: #b8923d;
 }
 
+/* ─── רקע כהה פרימיום עם חמימות זהובה ─── */
 .dark {
-  --background: oklch(0.96 0.015 85);
-  --foreground: oklch(0.15 0.02 250);
-  --card: oklch(0.98 0.01 85);
-  --card-foreground: oklch(0.18 0.02 250);
-  --popover: oklch(1.0 0 0);
-  --popover-foreground: oklch(0.15 0.02 250);
-  --primary: oklch(0.50 0.20 255);
+  --background: oklch(0.09 0.02 255);
+  --foreground: oklch(0.96 0.005 60);
+  --card: oklch(0.12 0.02 255);
+  --card-foreground: oklch(0.96 0.005 60);
+  --popover: oklch(0.12 0.02 255);
+  --popover-foreground: oklch(0.96 0.005 60);
+  --primary: oklch(0.65 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.94 0.01 80);
-  --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.93 0.015 80);
-  --muted-foreground: oklch(0.45 0.02 80);
-  --accent: oklch(0.95 0.01 80);
-  --accent-foreground: oklch(0.15 0.02 250);
-  --destructive: oklch(0.55 0.22 25);
-  --border: oklch(0.86 0.03 80);
-  --input: oklch(0.94 0.01 80);
-  --ring: oklch(0.50 0.20 255);
-  --chart-1: oklch(0.50 0.20 255);
-  --chart-2: oklch(0.65 0.15 80);
-  --chart-3: oklch(0.55 0.18 170);
-  --chart-4: oklch(0.60 0.15 145);
-  --chart-5: oklch(0.55 0.15 25);
+  --secondary: oklch(0.16 0.02 255);
+  --secondary-foreground: oklch(0.92 0.01 60);
+  --muted: oklch(0.16 0.02 255);
+  --muted-foreground: oklch(0.55 0.02 60);
+  --accent: oklch(0.18 0.03 260);
+  --accent-foreground: oklch(0.96 0.005 60);
+  --destructive: oklch(0.62 0.22 25);
+  --border: oklch(0.20 0.025 255);
+  --input: oklch(0.18 0.02 255);
+  --ring: oklch(0.65 0.18 255);
+  --chart-1: oklch(0.65 0.20 255);
+  --chart-2: oklch(0.70 0.14 80);
+  --chart-3: oklch(0.65 0.16 175);
+  --chart-4: oklch(0.68 0.15 145);
+  --chart-5: oklch(0.72 0.14 55);
   --radius: 0.625rem;
-  --sidebar: oklch(0.12 0.03 250);
-  --sidebar-foreground: oklch(0.96 0.005 260);
+  --sidebar: oklch(0.07 0.02 255);
+  --sidebar-foreground: oklch(0.96 0.005 60);
   --sidebar-primary: oklch(0.65 0.20 255);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.18 0.03 250);
-  --sidebar-accent-foreground: oklch(0.96 0.005 260);
-  --sidebar-border: oklch(0.22 0.03 250);
-  --sidebar-ring: oklch(0.65 0.18 250);
+  --sidebar-accent: oklch(0.14 0.025 255);
+  --sidebar-accent-foreground: oklch(0.96 0.005 60);
+  --sidebar-border: oklch(0.20 0.025 255);
+  --sidebar-ring: oklch(0.65 0.18 255);
 }
 
 :root {
-  --background: oklch(0.96 0.015 85);
-  --foreground: oklch(0.15 0.02 250);
-  --card: oklch(0.98 0.01 85);
-  --card-foreground: oklch(0.18 0.02 250);
-  --popover: oklch(1.0 0 0);
-  --popover-foreground: oklch(0.15 0.02 250);
-  --primary: oklch(0.50 0.20 255);
+  --background: oklch(0.09 0.02 255);
+  --foreground: oklch(0.96 0.005 60);
+  --card: oklch(0.12 0.02 255);
+  --card-foreground: oklch(0.96 0.005 60);
+  --popover: oklch(0.12 0.02 255);
+  --popover-foreground: oklch(0.96 0.005 60);
+  --primary: oklch(0.65 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.94 0.01 80);
-  --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.93 0.015 80);
-  --muted-foreground: oklch(0.45 0.02 80);
-  --accent: oklch(0.95 0.01 80);
-  --accent-foreground: oklch(0.15 0.02 250);
-  --destructive: oklch(0.55 0.22 25);
-  --border: oklch(0.86 0.03 80);
-  --input: oklch(0.94 0.01 80);
-  --ring: oklch(0.50 0.20 255);
-  --chart-1: oklch(0.50 0.20 255);
-  --chart-2: oklch(0.65 0.15 80);
-  --chart-3: oklch(0.55 0.18 170);
-  --chart-4: oklch(0.60 0.15 145);
-  --chart-5: oklch(0.55 0.15 25);
+  --secondary: oklch(0.16 0.02 255);
+  --secondary-foreground: oklch(0.92 0.01 60);
+  --muted: oklch(0.16 0.02 255);
+  --muted-foreground: oklch(0.55 0.02 60);
+  --accent: oklch(0.18 0.03 260);
+  --accent-foreground: oklch(0.96 0.005 60);
+  --destructive: oklch(0.62 0.22 25);
+  --border: oklch(0.20 0.025 255);
+  --input: oklch(0.18 0.02 255);
+  --ring: oklch(0.65 0.18 255);
+  --chart-1: oklch(0.65 0.20 255);
+  --chart-2: oklch(0.70 0.14 80);
+  --chart-3: oklch(0.65 0.16 175);
+  --chart-4: oklch(0.68 0.15 145);
+  --chart-5: oklch(0.72 0.14 55);
   --radius: 0.625rem;
-  --sidebar: oklch(0.12 0.03 250);
-  --sidebar-foreground: oklch(0.96 0.005 260);
+  --sidebar: oklch(0.07 0.02 255);
+  --sidebar-foreground: oklch(0.96 0.005 60);
   --sidebar-primary: oklch(0.65 0.20 255);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.18 0.03 250);
-  --sidebar-accent-foreground: oklch(0.96 0.005 260);
-  --sidebar-border: oklch(0.22 0.03 250);
-  --sidebar-ring: oklch(0.65 0.18 250);
+  --sidebar-accent: oklch(0.14 0.025 255);
+  --sidebar-accent-foreground: oklch(0.96 0.005 60);
+  --sidebar-border: oklch(0.20 0.025 255);
+  --sidebar-ring: oklch(0.65 0.18 255);
 }
 
 @layer base {
@@ -133,37 +134,39 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.05) 0%, rgba(30, 64, 175, 0.02) 30%, transparent 60%), var(--background);
+    background:
+      radial-gradient(ellipse at 30% 10%, rgba(212, 168, 83, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(58, 123, 232, 0.04) 0%, transparent 50%),
+      var(--background);
   }
   html {
     @apply font-sans scroll-smooth;
   }
 }
 
-/* גלס-מורפיזם עדין - גוון כחול פרימיום */
+/* ─── גלס-מורפיזם — זכוכית כהה עם נגיעת זהב ─── */
 .glass {
-  background: rgba(255, 250, 240, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 168, 83, 0.12);
-  box-shadow: 0 4px 24px rgba(180, 150, 80, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: rgba(15, 25, 50, 0.5);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 168, 83, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .glass-strong {
-  background: rgba(255, 250, 240, 0.88);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(212, 168, 83, 0.18);
-  box-shadow: 0 8px 32px rgba(180, 150, 80, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: rgba(15, 25, 50, 0.7);
+  backdrop-filter: blur(28px);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* גראדיינט טקסט - כחול לזהב פרימיום */
+/* ─── גראדיינט טקסט — כחול-זהב על רקע כהה ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #1a3a7a 0%, #b8923d 60%, #d4a853 100%);
+  background: linear-gradient(135deg, #4f8ff7 0%, #d4a853 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* גראדיינט טקסט פרימיום - זהב דומיננטי */
 .gradient-text-premium {
   background: linear-gradient(135deg, #d4a853 0%, #e8c779 50%, #d4a853 100%);
   -webkit-background-clip: text;
@@ -178,7 +181,6 @@
   background-clip: text;
 }
 
-/* גראדיינט טקסט נוסף - ירוק לביצועים */
 .gradient-text-green {
   background: linear-gradient(135deg, #34d399, #22d3ee);
   -webkit-background-clip: text;
@@ -186,7 +188,7 @@
   background-clip: text;
 }
 
-/* כרטיס עם זוהר עדין - כחול וזהב */
+/* ─── כרטיס ריחוף — זוהר זהב עדין ─── */
 .card-glow {
   position: relative;
 }
@@ -195,7 +197,7 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(212, 168, 83, 0.1), rgba(184, 146, 61, 0.06), rgba(212, 168, 83, 0.1));
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.12), rgba(58, 123, 232, 0.06), rgba(212, 168, 83, 0.12));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -204,114 +206,95 @@
   opacity: 1;
 }
 
-/* כרטיס פרימיום - שכבות עומק יוקרתיות */
+/* ─── כרטיס פרימיום — מסגרת זהב רוחפת על חלל כהה ─── */
 .card-premium {
-  background: linear-gradient(145deg, rgba(255, 252, 245, 0.95), rgba(255, 248, 235, 0.9));
-  border: 1px solid rgba(212, 168, 83, 0.2);
+  background: linear-gradient(145deg, rgba(20, 30, 60, 0.6), rgba(12, 20, 45, 0.8));
+  border: 1px solid rgba(212, 168, 83, 0.15);
   box-shadow:
-    0 1px 2px rgba(180, 146, 61, 0.04),
-    0 4px 16px rgba(180, 146, 61, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    inset 0 -1px 0 rgba(212, 168, 83, 0.05);
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(212, 168, 83, 0.06);
 }
 .card-premium:hover {
+  border-color: rgba(212, 168, 83, 0.3);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 16px 48px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(212, 168, 83, 0.1);
+}
+
+/* ─── כרטיס מעוטר — מסגרת זהב מלכותית ─── */
+.card-ornate {
+  background: linear-gradient(160deg, rgba(20, 32, 65, 0.7), rgba(12, 22, 50, 0.85));
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.05),
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(212, 168, 83, 0.08),
+    inset 0 0 40px rgba(212, 168, 83, 0.02);
+}
+.card-ornate:hover {
   border-color: rgba(212, 168, 83, 0.35);
   box-shadow:
-    0 2px 4px rgba(180, 146, 61, 0.06),
-    0 8px 24px rgba(180, 146, 61, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 rgba(212, 168, 83, 0.08);
+    0 0 0 1px rgba(212, 168, 83, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(212, 168, 83, 0.12),
+    inset 0 0 60px rgba(212, 168, 83, 0.03);
 }
 
-/* קו מפריד פרימיום */
+/* ─── קו מפריד פרימיום ─── */
 .divider-premium {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.4), rgba(184, 146, 61, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.3), rgba(58, 123, 232, 0.15), transparent);
 }
 
-/* אנימציות */
+/* ─── אנימציות ─── */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
-
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.8; }
 }
-
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.03), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.06), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* נצנוץ זהב פרימיום */
 .shimmer-gold {
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.15), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* גריד רקע */
+/* ─── גריד רקע — חלל עם קווים עדינים ─── */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(180, 146, 61, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180, 146, 61, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(212, 168, 83, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 83, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* סקרולבר מותאם */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(180, 146, 61, 0.15);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 168, 83, 0.35);
-}
-
-/* כרטיס מעוטר - מסגרת זהב יוקרתית */
-.card-ornate {
-  background: linear-gradient(160deg, rgba(255, 253, 248, 0.97), rgba(255, 249, 238, 0.93));
-  border: 1px solid rgba(212, 168, 83, 0.25);
-  border-radius: 16px;
-  box-shadow:
-    0 0 0 1px rgba(212, 168, 83, 0.05),
-    0 2px 8px rgba(180, 146, 61, 0.04),
-    0 8px 32px rgba(180, 146, 61, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 0 20px rgba(212, 168, 83, 0.02);
-}
-.card-ornate:hover {
-  border-color: rgba(212, 168, 83, 0.4);
-  box-shadow:
-    0 0 0 1px rgba(212, 168, 83, 0.08),
-    0 4px 12px rgba(180, 146, 61, 0.06),
-    0 12px 40px rgba(180, 146, 61, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset 0 0 30px rgba(212, 168, 83, 0.03);
-}
-
-/* רקע חם עם זוהר זהב עדין */
+/* ─── זוהר חם ─── */
 .bg-warm {
-  background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
 }
+
+/* ─── סקרולבר ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(212, 168, 83, 0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212, 168, 83, 0.3); }

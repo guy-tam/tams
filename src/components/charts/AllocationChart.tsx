@@ -86,7 +86,7 @@ function CustomTooltip({
   if (!active || !payload?.length) return null;
   const data = payload[0].payload;
   return (
-    <div className="rounded-lg border border-amber-200/40 bg-white/95 backdrop-blur-md px-3 py-2 shadow-xl">
+    <div className="rounded-lg border border-amber-500/15 bg-white/95 backdrop-blur-md px-3 py-2 shadow-xl">
       <div className="flex items-center gap-2">
         <div
           className="size-2.5 rounded-full"
@@ -141,7 +141,7 @@ export default function AllocationChart() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6 shadow-sm"
+      className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6 shadow-sm"
     >
       <h3 className="text-base font-semibold text-foreground mb-2 text-center">
         {loc.title}
@@ -182,7 +182,7 @@ export default function AllocationChart() {
         {allocationData.map((item) => (
           <div
             key={item.name}
-            className="flex items-center gap-2.5 rounded-lg border border-amber-100/30 bg-amber-50/20 px-3 py-2"
+            className="flex items-center gap-2.5 rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2"
           >
             <div
               className="size-2 rounded-full flex-shrink-0"

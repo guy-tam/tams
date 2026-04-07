@@ -167,7 +167,7 @@ function getActivityIcon(type: string) {
     case "withdrawal":
       return <CircleDollarSign className="size-4 text-amber-400" />;
     default:
-      return <Wallet className="size-4 text-gray-500" />;
+      return <Wallet className="size-4 text-zinc-400" />;
   }
 }
 
@@ -209,9 +209,9 @@ function getTypeLabelColor(type: string) {
     case "deposit":
       return "bg-blue-500/15 text-blue-400";
     case "withdrawal":
-      return "bg-amber-500/15 text-amber-400";
+      return "bg-amber-500/[0.06]0/15 text-amber-400";
     default:
-      return "bg-gray-400/15 text-gray-500";
+      return "bg-gray-400/15 text-zinc-400";
   }
 }
 
@@ -289,7 +289,7 @@ export default function ActivityPage() {
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filter === opt.key
                 ? "bg-blue-500/[0.12] text-foreground border border-blue-500/20"
-                : "bg-white text-muted-foreground border border-amber-200/40 hover:bg-blue-500/[0.06] hover:text-foreground"
+                : "bg-white text-muted-foreground border border-amber-500/15 hover:bg-blue-500/[0.06] hover:text-foreground"
             }`}
           >
             {opt.label}
@@ -305,7 +305,7 @@ export default function ActivityPage() {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md overflow-hidden"
+          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md overflow-hidden"
         >
           {filtered.length === 0 ? (
             <div className="p-12 text-center text-muted-foreground text-sm">
@@ -359,7 +359,7 @@ export default function ActivityPage() {
                     className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium flex-shrink-0 ${
                       a.status === "completed"
                         ? "bg-emerald-500/15 text-emerald-400"
-                        : "bg-amber-500/15 text-amber-400"
+                        : "bg-amber-500/[0.06]0/15 text-amber-400"
                     }`}
                   >
                     {a.status === "completed" ? t.statusCompleted : t.statusPending}

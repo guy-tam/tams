@@ -43,7 +43,7 @@ export default function VisionSection() {
       {/* אלמנטי רקע */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-900/[0.06] rounded-full blur-3xl" />
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-50 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-500/[0.06] rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -67,7 +67,7 @@ export default function VisionSection() {
               <motion.div
                 key={card.title}
                 variants={cardVariants}
-                className="group relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-amber-400/40 hover:bg-amber-50/30 hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] card-glow"
+                className="group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-amber-500/25 hover:bg-white/[0.04] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] card-glow"
               >
                 {/* קו גראדיינט עליון */}
                 <div
@@ -104,7 +104,7 @@ export default function VisionSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 max-w-3xl mx-auto text-center"
         >
-          <div className="relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-8 sm:p-10">
+          <div className="relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-8 sm:p-10">
             <Quote className="size-8 text-amber-500/30 mx-auto mb-4" />
             <blockquote className="text-lg sm:text-xl font-medium text-foreground leading-relaxed gradient-text">
               {t("homeVision.quote")}

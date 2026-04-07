@@ -27,7 +27,7 @@ const scenarios: ScenarioCardData[] = [
     id: "conservative",
     name: "אימוץ שמרני",
     icon: TrendingDown,
-    iconColor: "text-gray-500",
+    iconColor: "text-zinc-400",
     borderColor: "border-zinc-500/20",
     bgColor: "bg-gray-400/[0.03]",
     description:
@@ -120,7 +120,7 @@ function LevelIndicator({ level, delay = 0 }: { level: "low" | "moderate" | "hig
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: delay + i * 0.08, ease: "easeOut" }}
-          className={`h-1.5 w-4 rounded-full origin-left transition-colors duration-500 ${i <= filled ? colors[level] : "bg-amber-50/30"}`}
+          className={`h-1.5 w-4 rounded-full origin-left transition-colors duration-500 ${i <= filled ? colors[level] : "bg-white/[0.04]"}`}
         />
       ))}
     </div>
@@ -167,18 +167,18 @@ export default function ScenarioModel() {
           >
             {/* כותרת */}
             <div className="flex items-center gap-3 mb-4">
-              <div className={`rounded-lg bg-amber-50/30 border border-amber-200/40 p-2`}>
+              <div className={`rounded-lg bg-white/[0.04] border border-amber-500/15 p-2`}>
                 <scenario.icon className={`h-5 w-5 ${scenario.iconColor}`} />
               </div>
               <h3 className="text-sm font-semibold text-white">{scenarioNames[scenario.id] || scenario.name}</h3>
             </div>
 
             {/* תיאור */}
-            <p className="text-[11px] text-gray-500 leading-relaxed mb-4">{scenario.description}</p>
+            <p className="text-[11px] text-zinc-400 leading-relaxed mb-4">{scenario.description}</p>
 
             {/* הנחות — עם אנימציית כניסה מדורגת */}
             <div className="mb-4">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block mb-2">{t("proof.scenarios.keyAssumptions")}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 block mb-2">{t("proof.scenarios.keyAssumptions")}</span>
               <ul className="space-y-1.5">
                 {scenario.assumptions.map((a, j) => (
                   <motion.li
@@ -187,9 +187,9 @@ export default function ScenarioModel() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.12 + 0.2 + j * 0.06, duration: 0.35, ease: "easeOut" }}
-                    className="text-[10px] text-gray-400 leading-relaxed flex items-start gap-1.5"
+                    className="text-[10px] text-zinc-500 leading-relaxed flex items-start gap-1.5"
                   >
-                    <span className="text-gray-400 mt-1">·</span>
+                    <span className="text-zinc-500 mt-1">·</span>
                     {a}
                   </motion.li>
                 ))}
@@ -198,11 +198,11 @@ export default function ScenarioModel() {
 
             {/* גורמים */}
             <div className="mb-4">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block mb-2">{t("proof.scenarios.factorAssessment")}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 block mb-2">{t("proof.scenarios.factorAssessment")}</span>
               <div className="space-y-2">
                 {scenario.factors.map((f, k) => (
                   <div key={f.label} className="flex items-center justify-between">
-                    <span className="text-[10px] text-gray-500">{factorLabels[f.label] || f.label}</span>
+                    <span className="text-[10px] text-zinc-400">{factorLabels[f.label] || f.label}</span>
                     <LevelIndicator level={f.level} delay={i * 0.12 + 0.3 + k * 0.05} />
                   </div>
                 ))}
@@ -210,8 +210,8 @@ export default function ScenarioModel() {
             </div>
 
             {/* תוצאה */}
-            <div className="mt-auto pt-4 border-t border-amber-100/30">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block mb-2">{t("proof.scenarios.scenarioOutlook")}</span>
+            <div className="mt-auto pt-4 border-t border-white/[0.06]">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 block mb-2">{t("proof.scenarios.scenarioOutlook")}</span>
               <p className="text-[11px] text-gray-600 leading-relaxed">{scenario.outlook}</p>
             </div>
           </motion.div>
@@ -223,10 +223,10 @@ export default function ScenarioModel() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mt-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4"
+        className="mt-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-500/[0.06] p-4"
       >
         <AlertTriangle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-        <p className="text-[11px] text-gray-500 leading-relaxed">
+        <p className="text-[11px] text-zinc-400 leading-relaxed">
           {t("proof.scenarios.warning")}
         </p>
       </motion.div>

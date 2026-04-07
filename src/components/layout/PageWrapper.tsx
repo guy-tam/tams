@@ -64,12 +64,12 @@ export default function PageWrapper({
         {(title || subtitle) && (
           <header className="mb-10">
             {title && (
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 {title}
               </h1>
             )}
             {subtitle && (
-              <p className="mt-2 text-base text-gray-500 max-w-2xl">
+              <p className="mt-2 text-base text-zinc-400 max-w-2xl">
                 {subtitle}
               </p>
             )}

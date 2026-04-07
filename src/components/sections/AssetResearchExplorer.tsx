@@ -96,7 +96,7 @@ export default function AssetResearchExplorer() {
             placeholder="Search assets by name or ticker..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="ps-10 h-10 bg-white border-amber-200/40 backdrop-blur-sm focus:border-blue-500/30"
+            className="ps-10 h-10 bg-white border-amber-500/15 backdrop-blur-sm focus:border-blue-500/30"
           />
           {search && (
             <button
@@ -119,7 +119,7 @@ export default function AssetResearchExplorer() {
                 ${
                   activeCategory === cat
                     ? "bg-blue-500/10 border-blue-500/20 text-blue-400"
-                    : "bg-amber-50/20 border-amber-200/40 text-muted-foreground hover:bg-amber-50/30 hover:text-foreground"
+                    : "bg-white/[0.03] border-amber-500/15 text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
                 }
               `}
             >
@@ -147,7 +147,7 @@ export default function AssetResearchExplorer() {
                 variants={cardVariants}
                 layout
                 onClick={() => openDetail(asset)}
-                className="text-left group relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-5 transition-all hover:border-amber-400/40 hover:bg-amber-50/30 focus-visible:ring-2 focus-visible:ring-ring"
+                className="text-left group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 transition-all hover:border-amber-500/25 hover:bg-white/[0.04] focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {/* כותרת עם טיקר */}
                 <div className="flex items-start justify-between mb-3">
@@ -168,7 +168,7 @@ export default function AssetResearchExplorer() {
                 {/* תג קטגוריה */}
                 <Badge
                   variant="outline"
-                  className="mb-3 text-[10px] border-amber-200/40"
+                  className="mb-3 text-[10px] border-amber-500/15"
                   style={{ color: catColor }}
                 >
                   {asset.category}
@@ -181,7 +181,7 @@ export default function AssetResearchExplorer() {
 
                 {/* שווי שוק */}
                 {asset.marketCap && (
-                  <div className="mt-3 pt-3 border-t border-amber-100/30 flex items-center justify-between">
+                  <div className="mt-3 pt-3 border-t border-white/[0.06] flex items-center justify-between">
                     <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
                       Market Cap
                     </span>
@@ -207,11 +207,11 @@ export default function AssetResearchExplorer() {
       <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
         <SheetContent
           side="right"
-          className="w-full sm:max-w-lg overflow-y-auto bg-card border-amber-200/40"
+          className="w-full sm:max-w-lg overflow-y-auto bg-card border-amber-500/15"
         >
           {selectedAsset && (
             <>
-              <SheetHeader className="pb-4 border-b border-amber-200/40">
+              <SheetHeader className="pb-4 border-b border-amber-500/15">
                 <div className="flex items-center gap-3">
                   <span
                     className="text-2xl font-bold"
@@ -224,7 +224,7 @@ export default function AssetResearchExplorer() {
                   </span>
                   <Badge
                     variant="outline"
-                    className="text-[10px] border-amber-200/40"
+                    className="text-[10px] border-amber-500/15"
                   >
                     {selectedAsset.category}
                   </Badge>
@@ -297,7 +297,7 @@ export default function AssetResearchExplorer() {
               <div className="mt-8">
                 <Button
                   variant="outline"
-                  className="w-full border-amber-200/40"
+                  className="w-full border-amber-500/15"
                   onClick={() => setSheetOpen(false)}
                 >
                   Close

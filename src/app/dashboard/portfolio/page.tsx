@@ -117,7 +117,7 @@ export default function PortfolioPage() {
         className="rounded-2xl border border-amber-500/25 bg-gradient-to-br from-[#1a1a0f] to-[#1a2030] backdrop-blur-md p-6 shadow-lg shadow-amber-900/10"
       >
         <div className="flex items-center gap-3 mb-3">
-          <div className="size-10 rounded-xl bg-amber-500/12 flex items-center justify-center">
+          <div className="size-10 rounded-xl bg-amber-500/[0.06]0/12 flex items-center justify-center">
             <Shield className="size-5 text-amber-400" />
           </div>
           <div>
