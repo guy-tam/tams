@@ -241,7 +241,7 @@ function CategoryRow({ category, name }: { category: CategoryBase; name: string 
       {/* שורת קטגוריה */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-3 p-4 rounded-xl border border-gray-200 bg-white backdrop-blur-md hover:bg-gray-50 hover:border-amber-400/40 transition-colors text-right relative overflow-hidden group"
+        className="w-full flex items-center gap-3 p-4 rounded-xl border border-amber-200/40 bg-white backdrop-blur-md hover:bg-amber-50/30 hover:border-amber-400/40 transition-colors text-right relative overflow-hidden group"
       >
         {/* פס צבעוני בצד ימין */}
         <div
@@ -370,7 +370,7 @@ export default function DetailedPortfolioTable() {
         className="mb-8 space-y-4"
       >
         {/* נכסים בטוחים */}
-        <div className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4">
+        <div className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <Shield className="size-4 text-amber-400" />
@@ -385,7 +385,7 @@ export default function DetailedPortfolioTable() {
               </span>
             </div>
           </div>
-          <div className="w-full h-2.5 rounded-full bg-gray-50 overflow-hidden">
+          <div className="w-full h-2.5 rounded-full bg-amber-50/30 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "32%" }}
@@ -397,7 +397,7 @@ export default function DetailedPortfolioTable() {
         </div>
 
         {/* נכסים דיגיטליים */}
-        <div className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4">
+        <div className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <Coins className="size-4 text-blue-400" />
@@ -412,7 +412,7 @@ export default function DetailedPortfolioTable() {
               </span>
             </div>
           </div>
-          <div className="w-full h-2.5 rounded-full bg-gray-50 overflow-hidden">
+          <div className="w-full h-2.5 rounded-full bg-amber-50/30 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "68%" }}
@@ -436,7 +436,7 @@ export default function DetailedPortfolioTable() {
           <Shield className="size-4" />
           {t.safeAssetsSection} ({formatILS(3_200_000)})
         </h3>
-        <div className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 relative overflow-hidden">
+        <div className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4 relative overflow-hidden">
           {/* פס צבעוני */}
           <div className="absolute right-0 top-0 bottom-0 w-1 rounded-r-xl bg-amber-400" />
           <div className="flex items-center justify-between mr-3">
@@ -483,7 +483,7 @@ export default function DetailedPortfolioTable() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 flex gap-3 items-start"
+        className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4 flex gap-3 items-start"
       >
         <Info className="size-5 text-amber-400 shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground leading-relaxed">

@@ -47,7 +47,7 @@ function Toggle({
     <button
       onClick={() => onChange(!enabled)}
       className={`relative w-10 h-5 rounded-full flex items-center px-0.5 transition-colors ${
-        enabled ? "bg-emerald-500/30" : "bg-gray-100"
+        enabled ? "bg-emerald-500/30" : "bg-amber-50/50"
       }`}
     >
       <div
@@ -94,7 +94,7 @@ export default function SettingsPage() {
         {/* פרופיל */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6"
+          className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <User className="size-5 text-blue-400" />
@@ -125,7 +125,7 @@ export default function SettingsPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="rounded-xl border border-gray-100 bg-gray-50/50 p-4"
+                className="rounded-xl border border-amber-100/30 bg-amber-50/20 p-4"
               >
                 <div className="flex items-center gap-2 mb-1">
                   <item.icon className="size-3.5 text-blue-300/50" />
@@ -144,7 +144,7 @@ export default function SettingsPage() {
         {/* העדפות */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6"
+          className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <Globe className="size-5 text-amber-400" />
@@ -152,7 +152,7 @@ export default function SettingsPage() {
           </h2>
           <div className="space-y-4">
             {/* בחירת שפה */}
-            <div className="flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/50 p-4">
+            <div className="flex items-center justify-between rounded-xl border border-amber-100/30 bg-amber-50/20 p-4">
               <div className="flex items-center gap-3">
                 <Globe className="size-4 text-muted-foreground" />
                 <div>
@@ -165,7 +165,7 @@ export default function SettingsPage() {
               <select
                 value={language}
                 onChange={(e) => setAppLanguage(e.target.value as Language)}
-                className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-foreground outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20"
+                className="bg-amber-50/30 border border-amber-200/40 rounded-lg px-3 py-1.5 text-sm text-foreground outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20"
               >
                 <option value="he">עברית</option>
                 <option value="en">English</option>
@@ -208,7 +208,7 @@ export default function SettingsPage() {
             ].map((pref, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/50 p-4"
+                className="flex items-center justify-between rounded-xl border border-amber-100/30 bg-amber-50/20 p-4"
               >
                 <div className="flex items-center gap-3">
                   <pref.icon className="size-4 text-muted-foreground" />
@@ -230,25 +230,25 @@ export default function SettingsPage() {
         {/* אבטחה */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6"
+          className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <Lock className="size-5 text-amber-400" />
             אבטחה
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-xl border border-gray-100 bg-gray-50/50 p-4">
+            <div className="rounded-xl border border-amber-100/30 bg-amber-50/20 p-4">
               <div className="text-sm font-medium text-foreground mb-1">
                 שינוי סיסמה
               </div>
               <div className="text-xs text-muted-foreground mb-3">
                 עדכון סיסמת הכניסה לחשבון
               </div>
-              <button className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 text-blue-300/60 hover:text-blue-200 transition-colors">
+              <button className="text-xs px-3 py-1.5 rounded-lg border border-amber-200/40 text-blue-300/60 hover:text-blue-200 transition-colors">
                 עדכון
               </button>
             </div>
-            <div className="rounded-xl border border-gray-100 bg-gray-50/50 p-4">
+            <div className="rounded-xl border border-amber-100/30 bg-amber-50/20 p-4">
               <div className="text-sm font-medium text-foreground mb-1">
                 אימות דו-שלבי (2FA)
               </div>

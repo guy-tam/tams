@@ -84,7 +84,7 @@ export default function FinalCTASection() {
                 href={card.href}
                 variants={cardVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group relative rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-400/40 hover:bg-gray-50 hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] block"
+                className="group relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-400/40 hover:bg-amber-50/30 hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] block"
               >
                 {/* גלאו עליון */}
                 <div
@@ -131,7 +131,7 @@ export default function FinalCTASection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-xl border border-gray-100 bg-gray-50/50 p-6 text-center"
+          className="rounded-xl border border-amber-100/30 bg-amber-50/20 p-6 text-center"
         >
           <p className="text-xs text-muted-foreground/60 leading-relaxed max-w-3xl mx-auto">
             {t("home.cta.disclaimer")}

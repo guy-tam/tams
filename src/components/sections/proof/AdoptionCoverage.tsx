@@ -120,7 +120,7 @@ function CustomPieTooltip({ active, payload }: any) {
   if (!active || !payload?.[0]) return null;
   const { name, value, payload: entry } = payload[0];
   return (
-    <div className="rounded-lg border border-gray-200 bg-white/95 px-3 py-2 shadow-xl text-xs">
+    <div className="rounded-lg border border-amber-200/40 bg-white/95 px-3 py-2 shadow-xl text-xs">
       <div className="font-semibold text-white">{name}</div>
       <div className="text-gray-500 mt-0.5">{value} records ({entry.pct}%)</div>
     </div>
@@ -216,7 +216,7 @@ export default function AdoptionCoverage() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
+          className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-6"
         >
           <div className="flex items-center gap-2 mb-5">
             <Globe className="h-4 w-4 text-blue-400" />
@@ -245,7 +245,7 @@ export default function AdoptionCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
+          className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-6"
         >
           <div className="flex items-center gap-2 mb-5">
             <Building2 className="h-4 w-4 text-amber-400" />
@@ -284,7 +284,7 @@ export default function AdoptionCoverage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
-        className="mt-6 rounded-xl border border-gray-200 bg-gray-50/50 p-6"
+        className="mt-6 rounded-xl border border-amber-200/40 bg-amber-50/20 p-6"
       >
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
@@ -327,7 +327,7 @@ export default function AdoptionCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
+          className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-6"
         >
           <div className="flex items-center gap-2 mb-4">
             <ShieldCheck className="h-4 w-4 text-blue-400" />
@@ -367,7 +367,7 @@ export default function AdoptionCoverage() {
                   <span className="text-[10px] text-gray-400">({d.value})</span>
                 </div>
               ))}
-              <div className="pt-2 border-t border-gray-100">
+              <div className="pt-2 border-t border-amber-100/30">
                 <span className="text-[10px] text-gray-400">{analysis.total} {t("proof.coverage.records")}</span>
               </div>
             </div>
@@ -380,7 +380,7 @@ export default function AdoptionCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.25 }}
-          className="rounded-xl border border-gray-200 bg-gray-50/50 p-6"
+          className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-6"
         >
           <div className="flex items-center gap-2 mb-4">
             <Activity className="h-4 w-4 text-green-400" />

@@ -55,7 +55,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="border-b border-gray-100 last:border-b-0">
+    <div className="border-b border-amber-100/30 last:border-b-0">
       {/* שורה ראשית */}
       <button
         onClick={() => setExpanded(!expanded)}
@@ -78,7 +78,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
         </div>
 
         {/* סוג קשר */}
-        <span className="hidden md:inline-block text-[10px] text-gray-500 bg-white border border-gray-200 rounded-full px-2 py-0.5 shrink-0">
+        <span className="hidden md:inline-block text-[10px] text-gray-500 bg-white border border-amber-200/40 rounded-full px-2 py-0.5 shrink-0">
           {relationshipTypeLabels[record.relationshipType]}
         </span>
 
@@ -106,7 +106,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
             className="overflow-hidden"
           >
             <div className="px-4 pb-4 pt-1 ms-12">
-              <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 space-y-3">
+              <div className="rounded-lg border border-amber-200/40 bg-amber-50/20 p-4 space-y-3">
                 {/* תיאור */}
                 <p className="text-xs text-gray-600 leading-relaxed">{record.description}</p>
 
@@ -117,7 +117,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
                 </div>
 
                 {/* מטא-דאטה */}
-                <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 border-t border-gray-100">
+                <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 border-t border-amber-100/30">
                   <div className="flex items-center gap-1.5">
                     <Building2 className="h-3 w-3 text-gray-400" />
                     <span className="text-[10px] text-gray-400">{organizationTypeLabels[record.organizationType]}</span>
@@ -253,7 +253,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
               placeholder={t("proof.evidence.searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-gray-200 bg-white ps-10 pe-4 py-2.5 text-sm text-white placeholder:text-gray-400 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
+              className="w-full rounded-lg border border-amber-200/40 bg-white ps-10 pe-4 py-2.5 text-sm text-white placeholder:text-gray-400 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
             />
           </div>
           <button
@@ -261,7 +261,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
             className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors ${
               showFilters
                 ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-                : "border-gray-200 bg-white text-gray-500 hover:text-white"
+                : "border-amber-200/40 bg-white text-gray-500 hover:text-white"
             }`}
           >
             <Filter className="h-4 w-4" />
@@ -279,14 +279,14 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 p-4 rounded-xl border border-gray-200 bg-gray-50/50">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 p-4 rounded-xl border border-amber-200/40 bg-amber-50/20">
                 {/* נכס */}
                 <div>
                   <label className="text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 block">{t("proof.evidence.filterAsset")}</label>
                   <select
                     value={assetFilter}
                     onChange={(e) => setAssetFilter(e.target.value as AssetTicker | "all")}
-                    className="w-full rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-200/40 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allAssets")}</option>
                     {allAssets.map((a) => (
@@ -301,7 +301,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={regionFilter}
                     onChange={(e) => setRegionFilter(e.target.value as Region | "all")}
-                    className="w-full rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-200/40 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allRegions")}</option>
                     {allRegions.map((r) => (
@@ -316,7 +316,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={confidenceFilter}
                     onChange={(e) => setConfidenceFilter(e.target.value as ConfidenceLevel | "all")}
-                    className="w-full rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-200/40 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allLevels")}</option>
                     {allConfidence.map((c) => (
@@ -331,7 +331,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value as EvidenceStatus | "all")}
-                    className="w-full rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-200/40 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allStatuses")}</option>
                     {allStatuses.map((s) => (
@@ -346,7 +346,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={sortField}
                     onChange={(e) => setSortField(e.target.value as SortField)}
-                    className="w-full rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-200/40 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="asset">{t("proof.evidence.sortAsset")}</option>
                     <option value="confidence">{t("proof.evidence.sortConfidence")}</option>
@@ -366,7 +366,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
       </div>
 
       {/* טבלת ראיות */}
-      <div className="rounded-xl border border-gray-200 bg-gray-50/50 overflow-hidden">
+      <div className="rounded-xl border border-amber-200/40 bg-amber-50/20 overflow-hidden">
         {filtered.length === 0 ? (
           <div className="p-12 text-center">
             <p className="text-sm text-gray-400">{t("proof.evidence.noRecords")}</p>

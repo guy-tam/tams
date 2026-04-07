@@ -70,7 +70,7 @@ export default function MarketUnderpricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.06 }}
-            className="rounded-xl border border-gray-200 bg-gray-50/50 p-6 hover:border-gray-300 transition-colors duration-300"
+            className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-6 hover:border-amber-300/40 transition-colors duration-300"
           >
             <div className="flex items-start gap-4">
               <div className="rounded-lg bg-blue-500/10 border border-blue-500/15 p-2.5 shrink-0">
@@ -79,7 +79,7 @@ export default function MarketUnderpricing() {
               <div className="flex-1">
                 <h3 className="text-base font-semibold text-white mb-2">{fw.title}</h3>
                 <p className="text-xs text-gray-500 leading-relaxed mb-3">{fw.description}</p>
-                <div className="flex items-start gap-2 rounded-lg bg-white border border-gray-200 p-3">
+                <div className="flex items-start gap-2 rounded-lg bg-white border border-amber-200/40 p-3">
                   <ArrowRight className={`h-3.5 w-3.5 text-amber-400 mt-0.5 shrink-0 ${isRTL ? "rotate-180" : ""}`} />
                   <p className="text-xs text-gray-600 leading-relaxed">{fw.insight}</p>
                 </div>

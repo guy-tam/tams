@@ -120,7 +120,7 @@ function LevelIndicator({ level, delay = 0 }: { level: "low" | "moderate" | "hig
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: delay + i * 0.08, ease: "easeOut" }}
-          className={`h-1.5 w-4 rounded-full origin-left transition-colors duration-500 ${i <= filled ? colors[level] : "bg-gray-50"}`}
+          className={`h-1.5 w-4 rounded-full origin-left transition-colors duration-500 ${i <= filled ? colors[level] : "bg-amber-50/30"}`}
         />
       ))}
     </div>
@@ -167,7 +167,7 @@ export default function ScenarioModel() {
           >
             {/* כותרת */}
             <div className="flex items-center gap-3 mb-4">
-              <div className={`rounded-lg bg-gray-50 border border-gray-200 p-2`}>
+              <div className={`rounded-lg bg-amber-50/30 border border-amber-200/40 p-2`}>
                 <scenario.icon className={`h-5 w-5 ${scenario.iconColor}`} />
               </div>
               <h3 className="text-sm font-semibold text-white">{scenarioNames[scenario.id] || scenario.name}</h3>
@@ -210,7 +210,7 @@ export default function ScenarioModel() {
             </div>
 
             {/* תוצאה */}
-            <div className="mt-auto pt-4 border-t border-gray-100">
+            <div className="mt-auto pt-4 border-t border-amber-100/30">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block mb-2">{t("proof.scenarios.scenarioOutlook")}</span>
               <p className="text-[11px] text-gray-600 leading-relaxed">{scenario.outlook}</p>
             </div>

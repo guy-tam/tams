@@ -30,7 +30,7 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
   return (
     <div className="flex items-center gap-2">
       <span className="text-[10px] text-gray-400 w-24 shrink-0">{label}</span>
-      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-amber-50/50 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${value * 10}%` }}
@@ -53,7 +53,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="rounded-xl border border-gray-200 bg-gray-50/50 backdrop-blur-sm overflow-hidden hover:border-gray-300 transition-colors duration-300"
+      className="rounded-xl border border-amber-200/40 bg-amber-50/20 backdrop-blur-sm overflow-hidden hover:border-amber-300/40 transition-colors duration-300"
     >
       <div className="p-5">
         {/* כותרת */}
@@ -87,7 +87,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
         {/* נושאי אימוץ */}
         <div className="flex flex-wrap gap-1.5 mb-4">
           {profile.adoptionThemes.map((theme) => (
-            <span key={theme} className="text-[10px] text-gray-500 bg-white border border-gray-200 rounded-full px-2 py-0.5">
+            <span key={theme} className="text-[10px] text-gray-500 bg-white border border-amber-200/40 rounded-full px-2 py-0.5">
               {theme}
             </span>
           ))}
@@ -121,7 +121,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 pt-1 border-t border-gray-100">
+            <div className="px-5 pb-5 pt-1 border-t border-amber-100/30">
               <div className="flex items-start gap-2 mt-3">
                 <AlertTriangle className="h-3.5 w-3.5 text-amber-400 mt-0.5 shrink-0" />
                 <p className="text-[11px] text-gray-400 leading-relaxed">{profile.riskNote}</p>

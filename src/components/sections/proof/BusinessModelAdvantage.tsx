@@ -98,7 +98,7 @@ export default function BusinessModelAdvantage() {
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-10 rounded-xl border border-blue-500/[0.1] bg-gray-50/50 p-6"
+        className="mt-10 rounded-xl border border-blue-500/[0.1] bg-amber-50/20 p-6"
       >
         <h3 className="text-sm font-semibold text-white mb-6 text-center">{t("proof.businessModel.valueCaptureFlow")}</h3>
         <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 text-center">

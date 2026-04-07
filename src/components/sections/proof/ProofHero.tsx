@@ -59,7 +59,7 @@ export default function ProofHero() {
             { value: evidenceStats.uniqueCountries, label: t("proof.hero.statsCountries") },
             { value: evidenceStats.byConfidence.high, label: t("proof.hero.statsHighConfidence") },
           ].map((stat, i) => (
-            <div key={i} className="rounded-xl border border-gray-200 bg-blue-500/[0.04] backdrop-blur-sm p-4">
+            <div key={i} className="rounded-xl border border-amber-200/40 bg-blue-500/[0.04] backdrop-blur-sm p-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -88,7 +88,7 @@ export default function ProofHero() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + i * 0.07 }}
-                className="rounded-xl border border-gray-200 bg-gray-50/50 p-4 text-left hover:border-amber-400/40 hover:bg-white transition-all duration-300"
+                className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-4 text-left hover:border-amber-400/40 hover:bg-white transition-all duration-300"
               >
                 <engine.icon className="h-4 w-4 text-blue-400 mb-2" />
                 <div className="text-sm font-medium text-white mb-1">{engine.label}</div>

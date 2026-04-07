@@ -34,7 +34,7 @@ export default function HoldingsPage() {
       <section className="pb-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, i) => (
-            <motion.div key={stat.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 text-center shadow-sm">
+            <motion.div key={stat.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4 text-center shadow-sm">
               <div className="text-3xl font-bold mb-1" style={{ color: stat.color }}>{stat.value}</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </motion.div>

@@ -52,7 +52,7 @@ export default function ArchitecturePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 shadow-sm"
+                className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4 shadow-sm"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="size-3 rounded-full" style={{ background: divisionColors[i] }} />

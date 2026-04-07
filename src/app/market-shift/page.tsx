@@ -53,7 +53,7 @@ export default function MarketShiftPage() {
       </section>
 
       <section className="py-16 max-w-3xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-gray-200 bg-gradient-to-br from-tams-blue/[0.05] to-tams-purple/[0.05] backdrop-blur-md p-8 text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-200/40 bg-gradient-to-br from-tams-blue/[0.05] to-tams-purple/[0.05] backdrop-blur-md p-8 text-center">
           <p className="text-lg text-foreground font-medium leading-relaxed mb-4">&ldquo;{t("marketShift.quote.text")}&rdquo;</p>
           <p className="text-sm text-muted-foreground">— {t("marketShift.quote.source")}</p>
         </motion.div>

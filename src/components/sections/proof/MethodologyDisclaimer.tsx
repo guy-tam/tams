@@ -83,7 +83,7 @@ export default function MethodologyDisclaimer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            className="rounded-xl border border-gray-200 bg-gray-50/50 p-5"
+            className="rounded-xl border border-amber-200/40 bg-amber-50/20 p-5"
           >
             <div className="flex items-center gap-2 mb-3">
               <item.icon className="h-4 w-4 text-blue-400" />

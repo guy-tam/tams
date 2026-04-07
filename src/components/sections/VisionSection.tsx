@@ -67,7 +67,7 @@ export default function VisionSection() {
               <motion.div
                 key={card.title}
                 variants={cardVariants}
-                className="group relative rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-amber-400/40 hover:bg-gray-50 hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] card-glow"
+                className="group relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6 sm:p-8 transition-all duration-300 hover:border-amber-400/40 hover:bg-amber-50/30 hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] card-glow"
               >
                 {/* קו גראדיינט עליון */}
                 <div
@@ -104,7 +104,7 @@ export default function VisionSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 max-w-3xl mx-auto text-center"
         >
-          <div className="relative rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-8 sm:p-10">
+          <div className="relative rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-8 sm:p-10">
             <Quote className="size-8 text-amber-500/30 mx-auto mb-4" />
             <blockquote className="text-lg sm:text-xl font-medium text-foreground leading-relaxed gradient-text">
               {t("homeVision.quote")}

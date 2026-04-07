@@ -76,13 +76,13 @@ export default function CompanyPage() {
 
       <section className="py-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-8 shadow-sm">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-8 shadow-sm">
             <div className="size-12 rounded-xl bg-tams-blue/15 flex items-center justify-center mb-5"><Eye className="size-6 text-tams-blue" /></div>
             <h3 className="text-xl font-semibold text-foreground mb-3">{t("company.vision.title")}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("company.vision.content")}</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-8 shadow-sm">
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-8 shadow-sm">
             <div className="size-12 rounded-xl bg-tams-purple/15 flex items-center justify-center mb-5"><Target className="size-6 text-tams-purple" /></div>
             <h3 className="text-xl font-semibold text-foreground mb-3">{t("company.mission.title")}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("company.mission.content")}</p>
@@ -105,7 +105,7 @@ export default function CompanyPage() {
                 <div className="flex-shrink-0 size-14 rounded-2xl flex items-center justify-center border" style={{ background: `${stepColors[i]}10`, borderColor: `${stepColors[i]}25` }}>
                   <Icon className="size-6" style={{ color: stepColors[i] }} />
                 </div>
-                <div className="flex-1 rounded-xl border border-gray-200 bg-white backdrop-blur-md p-5 shadow-sm">
+                <div className="flex-1 rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-5 shadow-sm">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider" style={{ color: stepColors[i] }}>0{i + 1}</span>
                     <span className="text-sm font-semibold text-foreground">{title}</span>
@@ -139,7 +139,7 @@ export default function CompanyPage() {
       </section>
 
       <section className="py-12 max-w-3xl mx-auto">
-        <div className="rounded-xl border border-gray-100 bg-gray-50/50 p-6 text-center">
+        <div className="rounded-xl border border-amber-100/30 bg-amber-50/20 p-6 text-center">
           <p className="text-xs text-muted-foreground/60 leading-relaxed">{t("company.note")}</p>
         </div>
       </section>

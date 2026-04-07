@@ -37,7 +37,7 @@ export default function StrategyPage() {
         <SectionHeader badge={t("strategy.pos.badge")} title={t("strategy.pos.title")} subtitle={t("strategy.pos.subtitle")} />
         <div className="space-y-4">
           {[0, 1, 2, 3].map((i) => (
-            <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex gap-4 items-start rounded-xl border border-gray-200 bg-white backdrop-blur-md p-5">
+            <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex gap-4 items-start rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-5">
               <CheckCircle className="size-5 text-tams-green flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-sm font-semibold text-foreground mb-1">{t(`strategy.posItems.${i}.title`)}</h4>
@@ -52,7 +52,7 @@ export default function StrategyPage() {
         <SectionHeader badge={t("strategy.poc.badge")} title={t("strategy.poc.title")} subtitle={t("strategy.poc.subtitle")} />
         <div className="space-y-4">
           {[0, 1, 2, 3].map((i) => (
-            <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex gap-4 items-start rounded-xl border border-gray-200 bg-white backdrop-blur-md p-5">
+            <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex gap-4 items-start rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-5">
               <Lightbulb className="size-5 text-tams-amber flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-sm font-semibold text-foreground mb-1">{t(`strategy.pocItems.${i}.title`)}</h4>
@@ -69,7 +69,7 @@ export default function StrategyPage() {
           {advantages.map((adv, i) => {
             const Icon = adv.icon;
             return (
-              <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-6">
+              <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-6">
                 <div className="size-12 rounded-xl flex items-center justify-center mb-4" style={{ background: `${adv.accent}15` }}>
                   <Icon className="size-6" style={{ color: adv.accent }} />
                 </div>

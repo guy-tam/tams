@@ -197,10 +197,10 @@ export default function InvestorTiers() {
               <motion.div
                 key={meta.key}
                 variants={cardVariants}
-                className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-gray-50 ${
+                className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-amber-50/30 ${
                   meta.key === "visionary"
                     ? "border border-amber-500/25 bg-white hover:border-amber-500/40 shadow-[0_0_40px_-12px_rgba(212,168,83,0.12)]"
-                    : "border border-gray-200 bg-white hover:border-gray-300"
+                    : "border border-amber-200/40 bg-white hover:border-amber-300/40"
                 }`}
               >
                 {/* כותרת הדרגה */}

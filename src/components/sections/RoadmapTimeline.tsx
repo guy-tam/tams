@@ -79,7 +79,7 @@ export default function RoadmapTimeline() {
               </div>
 
               {/* כרטיס שלב */}
-              <div className="flex-1 rounded-2xl border border-gray-200 bg-white backdrop-blur-md p-5 sm:p-6 hover:border-amber-400/40 transition-colors">
+              <div className="flex-1 rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md p-5 sm:p-6 hover:border-amber-400/40 transition-colors">
                 {/* כותרת ורבעון */}
                 <div className="flex items-start justify-between mb-3">
                   <div>

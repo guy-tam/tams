@@ -58,23 +58,23 @@
 }
 
 .dark {
-  --background: oklch(0.97 0.005 80);
+  --background: oklch(0.96 0.015 85);
   --foreground: oklch(0.15 0.02 250);
-  --card: oklch(1.0 0 0);
-  --card-foreground: oklch(0.15 0.02 250);
+  --card: oklch(0.98 0.01 85);
+  --card-foreground: oklch(0.18 0.02 250);
   --popover: oklch(1.0 0 0);
   --popover-foreground: oklch(0.15 0.02 250);
   --primary: oklch(0.50 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.94 0.01 80);
   --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.94 0.008 80);
-  --muted-foreground: oklch(0.45 0.02 250);
+  --muted: oklch(0.93 0.015 80);
+  --muted-foreground: oklch(0.45 0.02 80);
   --accent: oklch(0.95 0.01 80);
   --accent-foreground: oklch(0.15 0.02 250);
   --destructive: oklch(0.55 0.22 25);
-  --border: oklch(0.88 0.01 80);
-  --input: oklch(0.95 0.005 80);
+  --border: oklch(0.86 0.03 80);
+  --input: oklch(0.94 0.01 80);
   --ring: oklch(0.50 0.20 255);
   --chart-1: oklch(0.50 0.20 255);
   --chart-2: oklch(0.65 0.15 80);
@@ -93,23 +93,23 @@
 }
 
 :root {
-  --background: oklch(0.97 0.005 80);
+  --background: oklch(0.96 0.015 85);
   --foreground: oklch(0.15 0.02 250);
-  --card: oklch(1.0 0 0);
-  --card-foreground: oklch(0.15 0.02 250);
+  --card: oklch(0.98 0.01 85);
+  --card-foreground: oklch(0.18 0.02 250);
   --popover: oklch(1.0 0 0);
   --popover-foreground: oklch(0.15 0.02 250);
   --primary: oklch(0.50 0.20 255);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.94 0.01 80);
   --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.94 0.008 80);
-  --muted-foreground: oklch(0.45 0.02 250);
+  --muted: oklch(0.93 0.015 80);
+  --muted-foreground: oklch(0.45 0.02 80);
   --accent: oklch(0.95 0.01 80);
   --accent-foreground: oklch(0.15 0.02 250);
   --destructive: oklch(0.55 0.22 25);
-  --border: oklch(0.88 0.01 80);
-  --input: oklch(0.95 0.005 80);
+  --border: oklch(0.86 0.03 80);
+  --input: oklch(0.94 0.01 80);
   --ring: oklch(0.50 0.20 255);
   --chart-1: oklch(0.50 0.20 255);
   --chart-2: oklch(0.65 0.15 80);
@@ -133,7 +133,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: radial-gradient(ellipse at 50% 0%, rgba(30, 64, 175, 0.03) 0%, transparent 50%), var(--background);
+    background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.05) 0%, rgba(30, 64, 175, 0.02) 30%, transparent 60%), var(--background);
   }
   html {
     @apply font-sans scroll-smooth;
@@ -142,22 +142,22 @@
 
 /* גלס-מורפיזם עדין - גוון כחול פרימיום */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 250, 240, 0.75);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(212, 168, 83, 0.12);
+  box-shadow: 0 4px 24px rgba(180, 150, 80, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 250, 240, 0.88);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(212, 168, 83, 0.18);
+  box-shadow: 0 8px 32px rgba(180, 150, 80, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 /* גראדיינט טקסט - כחול לזהב פרימיום */
 .gradient-text {
-  background: linear-gradient(135deg, #1e40af 0%, #b8923d 100%);
+  background: linear-gradient(135deg, #1a3a7a 0%, #b8923d 60%, #d4a853 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -195,7 +195,7 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(212, 168, 83, 0.06), rgba(30, 64, 175, 0.08));
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.1), rgba(184, 146, 61, 0.06), rgba(212, 168, 83, 0.1));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -206,19 +206,27 @@
 
 /* כרטיס פרימיום - שכבות עומק יוקרתיות */
 .card-premium {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 24px rgba(0, 0, 0, 0.03);
+  background: linear-gradient(145deg, rgba(255, 252, 245, 0.95), rgba(255, 248, 235, 0.9));
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  box-shadow:
+    0 1px 2px rgba(180, 146, 61, 0.04),
+    0 4px 16px rgba(180, 146, 61, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(212, 168, 83, 0.05);
 }
 .card-premium:hover {
-  border-color: rgba(212, 168, 83, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
+  border-color: rgba(212, 168, 83, 0.35);
+  box-shadow:
+    0 2px 4px rgba(180, 146, 61, 0.06),
+    0 8px 24px rgba(180, 146, 61, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(212, 168, 83, 0.08);
 }
 
 /* קו מפריד פרימיום */
 .divider-premium {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.4), rgba(184, 146, 61, 0.2), transparent);
 }
 
 /* אנימציות */
@@ -261,8 +269,8 @@
 /* גריד רקע */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(180, 146, 61, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 146, 61, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -274,9 +282,36 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.12);
+  background: rgba(180, 146, 61, 0.15);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 168, 83, 0.4);
+  background: rgba(212, 168, 83, 0.35);
+}
+
+/* כרטיס מעוטר - מסגרת זהב יוקרתית */
+.card-ornate {
+  background: linear-gradient(160deg, rgba(255, 253, 248, 0.97), rgba(255, 249, 238, 0.93));
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.05),
+    0 2px 8px rgba(180, 146, 61, 0.04),
+    0 8px 32px rgba(180, 146, 61, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 20px rgba(212, 168, 83, 0.02);
+}
+.card-ornate:hover {
+  border-color: rgba(212, 168, 83, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.08),
+    0 4px 12px rgba(180, 146, 61, 0.06),
+    0 12px 40px rgba(180, 146, 61, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 0 30px rgba(212, 168, 83, 0.03);
+}
+
+/* רקע חם עם זוהר זהב עדין */
+.bg-warm {
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.04) 0%, transparent 70%);
 }

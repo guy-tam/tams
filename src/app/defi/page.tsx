@@ -41,7 +41,7 @@ export default function DeFiPage() {
       <section className="pb-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {metrics.map((m, i) => (
-            <motion.div key={m.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-gray-200 bg-white backdrop-blur-md p-4 text-center">
+            <motion.div key={m.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-amber-200/40 bg-white backdrop-blur-md p-4 text-center">
               <div className="text-2xl font-bold mb-1" style={{ color: m.color }}>{m.value}</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider">{m.label}</div>
             </motion.div>

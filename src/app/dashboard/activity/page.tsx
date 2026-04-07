@@ -289,7 +289,7 @@ export default function ActivityPage() {
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filter === opt.key
                 ? "bg-blue-500/[0.12] text-foreground border border-blue-500/20"
-                : "bg-white text-muted-foreground border border-gray-200 hover:bg-blue-500/[0.06] hover:text-foreground"
+                : "bg-white text-muted-foreground border border-amber-200/40 hover:bg-blue-500/[0.06] hover:text-foreground"
             }`}
           >
             {opt.label}
@@ -305,7 +305,7 @@ export default function ActivityPage() {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="rounded-2xl border border-gray-200 bg-white backdrop-blur-md overflow-hidden"
+          className="rounded-2xl border border-amber-200/40 bg-white backdrop-blur-md overflow-hidden"
         >
           {filtered.length === 0 ? (
             <div className="p-12 text-center text-muted-foreground text-sm">
