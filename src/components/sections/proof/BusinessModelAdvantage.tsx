@@ -55,7 +55,7 @@ const engines = [
 ];
 
 export default function BusinessModelAdvantage() {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
 
   // מנועי רווח עם כותרות מתורגמות
   const engineTitles = [
@@ -113,7 +113,7 @@ export default function BusinessModelAdvantage() {
                 <div className="text-xs font-medium text-white">{step.label}</div>
                 <div className="text-[10px] text-zinc-500 mt-0.5">{step.sub}</div>
               </div>
-              {i < 3 && <ArrowRight className="h-4 w-4 text-amber-500/60 shrink-0 hidden md:block" />}
+              {i < 3 && <ArrowRight className={`h-4 w-4 text-amber-500/60 shrink-0 hidden md:block ${isRTL ? "rotate-180" : ""}`} />}
               {i < 3 && <ArrowDown className="h-4 w-4 text-amber-500/60 shrink-0 md:hidden" />}
             </div>
           ))}

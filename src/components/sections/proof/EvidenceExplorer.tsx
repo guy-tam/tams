@@ -59,7 +59,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
       {/* שורה ראשית */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full text-left px-4 py-3 hover:bg-blue-500/[0.03] transition-colors flex items-center gap-3"
+        className="w-full text-start px-4 py-3 hover:bg-blue-500/[0.03] transition-colors flex items-center gap-3"
       >
         {/* טיקר */}
         <span className="text-xs font-bold text-white w-12 shrink-0">{record.asset}</span>
@@ -105,7 +105,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-4 pt-1 ml-12">
+            <div className="px-4 pb-4 pt-1 ms-12">
               <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4 space-y-3">
                 {/* תיאור */}
                 <p className="text-xs text-zinc-300 leading-relaxed">{record.description}</p>
@@ -247,13 +247,13 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
         {/* חיפוש */}
         <div className="flex gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+            <Search className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <input
               type="text"
               placeholder={t("proof.evidence.searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
+              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] ps-10 pe-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
             />
           </div>
           <button

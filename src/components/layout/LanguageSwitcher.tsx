@@ -51,7 +51,7 @@ export default function LanguageSwitcher() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute bottom-full mb-2 left-0 right-0 min-w-[160px] rounded-xl border border-white/[0.08] bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden z-50"
+            className="absolute bottom-full mb-2 start-0 end-0 min-w-[160px] rounded-xl border border-white/[0.08] bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden z-50"
           >
             {languages.map((lang) => (
               <button
@@ -72,7 +72,7 @@ export default function LanguageSwitcher() {
                 <span className="text-base">{lang.flag}</span>
                 <span className="font-medium">{lang.label}</span>
                 {language === lang.code && (
-                  <div className="ml-auto size-1.5 rounded-full bg-tams-cyan" />
+                  <div className="ms-auto size-1.5 rounded-full bg-tams-cyan" />
                 )}
               </button>
             ))}

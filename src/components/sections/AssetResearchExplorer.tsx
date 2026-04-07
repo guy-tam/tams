@@ -91,17 +91,17 @@ export default function AssetResearchExplorer() {
       <div className="space-y-4">
         {/* שדה חיפוש */}
         <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <Search className="absolute start-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
           <Input
             placeholder="Search assets by name or ticker..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10 h-10 bg-white/[0.04] border-white/[0.08] backdrop-blur-sm focus:border-blue-500/30"
+            className="ps-10 h-10 bg-white/[0.04] border-white/[0.08] backdrop-blur-sm focus:border-blue-500/30"
           />
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute end-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <X className="size-4" />
             </button>

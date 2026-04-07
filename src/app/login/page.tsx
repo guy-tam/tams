@@ -15,6 +15,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { useLanguage } from "@/lib/i18n";
 
 // --- כדורים צפים לרקע ---
 
@@ -97,6 +98,7 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { login, isAuthenticated, isLoading } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
 
   // אם המשתמש כבר מחובר, מפנים לדשבורד
@@ -113,7 +115,7 @@ export default function LoginPage() {
 
     // בדיקת תקינות אימייל בסיסית
     if (!email.includes("@")) {
-      setError("Please enter a valid email address");
+      setError(t("login.errorEmail"));
       return;
     }
 
@@ -124,10 +126,10 @@ export default function LoginPage() {
       if (success) {
         router.push("/dashboard");
       } else {
-        setError("Invalid credentials. Please try again.");
+        setError(t("login.errorCredentials"));
       }
     } catch {
-      setError("An error occurred. Please try again.");
+      setError(t("login.errorGeneral"));
     } finally {
       setIsSubmitting(false);
     }

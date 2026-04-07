@@ -16,6 +16,7 @@ export type TranslationStrings = {
     investor: string;
     proof: string;
     language: string;
+    investorPortal: string;
   };
   common: {
     conceptApp: string;
@@ -319,6 +320,34 @@ export type TranslationStrings = {
       disclaimersTitle: string;
       stamp: string;
     };
+  };
+  // מפתחות התחברות
+  login: {
+    errorEmail: string;
+    errorCredentials: string;
+    errorGeneral: string;
+  };
+  // תפריט תוכן עניינים - עמוד הוכחות
+  proof_toc: {
+    evidenceThesis: string;
+    assetMatrix: string;
+    evidenceExplorer: string;
+    globalCoverage: string;
+    marketAnalysis: string;
+    businessModel: string;
+    scenarios: string;
+    methodology: string;
+  };
+  // ניווט דשבורד
+  dashboard: {
+    overview: string;
+    portfolio: string;
+    performance: string;
+    defiPositions: string;
+    activity: string;
+    settings: string;
+    backToSite: string;
+    logout: string;
   };
   // מערכת דרגות משקיעים
   investorTiers: {

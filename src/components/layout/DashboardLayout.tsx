@@ -27,12 +27,12 @@ import type { ReactNode } from "react";
 // --- פריטי ניווט הדשבורד ---
 
 const dashboardNavItems = [
-  { label: "סקירה כללית", href: "/dashboard", icon: LayoutDashboard },
-  { label: "תיק השקעות", href: "/dashboard/portfolio", icon: Briefcase },
-  { label: "ביצועים", href: "/dashboard/performance", icon: LineChart },
-  { label: "פוזיציות DeFi", href: "/dashboard/defi", icon: Coins },
-  { label: "פעילות", href: "/dashboard/activity", icon: Activity },
-  { label: "הגדרות", href: "/dashboard/settings", icon: Settings },
+  { labelKey: "dashboard.overview", href: "/dashboard", icon: LayoutDashboard },
+  { labelKey: "dashboard.portfolio", href: "/dashboard/portfolio", icon: Briefcase },
+  { labelKey: "dashboard.performance", href: "/dashboard/performance", icon: LineChart },
+  { labelKey: "dashboard.defiPositions", href: "/dashboard/defi", icon: Coins },
+  { labelKey: "dashboard.activity", href: "/dashboard/activity", icon: Activity },
+  { labelKey: "dashboard.settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 // --- אנימציות ---
@@ -79,7 +79,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
   // מצב פתוח/סגור של תפריט מובייל
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const { isRTL } = useLanguage();
+  const { t, isRTL } = useLanguage();
   const { user, logout } = useAuth();
 
   // סגירת תפריט מובייל בעת שינוי נתיב
@@ -154,7 +154,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
                 />
               )}
               <item.icon className="relative z-10 h-4 w-4 shrink-0" />
-              <span className="relative z-10">{item.label}</span>
+              <span className="relative z-10">{t(item.labelKey)}</span>
               {/* פס אינדיקטור בצד */}
               {active && (
                 <motion.div
@@ -181,7 +181,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
           <p className="text-[10px] uppercase tracking-widest text-zinc-500">
-            Investor Portal
+            {t("nav.investorPortal")}
           </p>
         </div>
       </div>
@@ -205,8 +205,8 @@ function DashboardShell({ children }: { children: ReactNode }) {
       <div className="px-3 py-3 space-y-1">
         <Link href="/">
           <div className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:text-blue-300 hover:bg-blue-400/10 transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            <span>חזרה לאתר הראשי</span>
+            <ArrowLeft className={`h-4 w-4 ${isRTL ? "rotate-180" : ""}`} />
+            <span>{t("dashboard.backToSite")}</span>
           </div>
         </Link>
         <button
@@ -214,7 +214,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors"
         >
           <LogOut className="h-4 w-4" />
-          <span>התנתקות</span>
+          <span>{t("dashboard.logout")}</span>
         </button>
       </div>
     </div>
@@ -294,12 +294,12 @@ function DashboardShell({ children }: { children: ReactNode }) {
             <div className="h-7 w-7 rounded-md bg-gradient-to-br from-blue-600 to-amber-500 flex items-center justify-center mr-8">
               <span className="text-xs font-bold text-white">T</span>
             </div>
-            <span className="text-sm font-bold text-white">TAMS Investor Portal</span>
+            <span className="text-sm font-bold text-white">TAMS {t("nav.investorPortal")}</span>
           </div>
 
           {/* כותרת בדסקטופ */}
           <div className="hidden lg:block">
-            <span className="text-sm font-medium text-zinc-400">TAMS Investor Portal</span>
+            <span className="text-sm font-medium text-zinc-400">TAMS {t("nav.investorPortal")}</span>
           </div>
 
           {/* פרטי משתמש בבר עליון */}

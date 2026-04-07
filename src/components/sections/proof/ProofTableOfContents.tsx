@@ -3,21 +3,23 @@
 // תפריט תוכן עניינים צף — ניווט מהיר בין סקציות עמוד ההוכחות
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/lib/i18n";
 
-const sections = [
-  { id: "evidence-thesis", label: "Evidence Thesis" },
-  { id: "asset-matrix", label: "Asset Matrix" },
-  { id: "evidence-explorer", label: "Evidence Explorer" },
-  { id: "global-coverage", label: "Global Coverage" },
-  { id: "market-analysis", label: "Market Analysis" },
-  { id: "business-model", label: "Business Model" },
-  { id: "scenarios", label: "Scenarios" },
-  { id: "methodology", label: "Methodology" },
+const sectionDefs = [
+  { id: "evidence-thesis", labelKey: "proof_toc.evidenceThesis" },
+  { id: "asset-matrix", labelKey: "proof_toc.assetMatrix" },
+  { id: "evidence-explorer", labelKey: "proof_toc.evidenceExplorer" },
+  { id: "global-coverage", labelKey: "proof_toc.globalCoverage" },
+  { id: "market-analysis", labelKey: "proof_toc.marketAnalysis" },
+  { id: "business-model", labelKey: "proof_toc.businessModel" },
+  { id: "scenarios", labelKey: "proof_toc.scenarios" },
+  { id: "methodology", labelKey: "proof_toc.methodology" },
 ];
 
 export default function ProofTableOfContents() {
   const [activeId, setActiveId] = useState<string>("");
   const [visible, setVisible] = useState(false);
+  const { t, isRTL } = useLanguage();
 
   useEffect(() => {
     // הצגת ה-TOC רק אחרי גלילה מעבר להירו
@@ -50,7 +52,7 @@ export default function ProofTableOfContents() {
     );
 
     // צפה בכל הסקציות
-    const elements = sections
+    const elements = sectionDefs
       .map((s) => document.getElementById(s.id))
       .filter(Boolean) as HTMLElement[];
 
@@ -76,16 +78,16 @@ export default function ProofTableOfContents() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 24 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed top-1/2 -translate-y-1/2 right-6 z-50 hidden xl:flex flex-col gap-1 rounded-xl bg-[#0a1628]/80 border border-white/[0.06] backdrop-blur-md p-3 shadow-lg shadow-black/20"
+          className={`fixed top-1/2 -translate-y-1/2 ${isRTL ? "left-6" : "right-6"} z-50 hidden xl:flex flex-col gap-1 rounded-xl bg-[#0a1628]/80 border border-white/[0.06] backdrop-blur-md p-3 shadow-lg shadow-black/20`}
         >
-          {sections.map((section) => {
+          {sectionDefs.map((section) => {
             const isActive = activeId === section.id;
             return (
               <button
                 key={section.id}
                 onClick={() => scrollTo(section.id)}
                 className={`
-                  relative text-left text-[11px] font-medium tracking-wide px-3 py-1.5 rounded-lg
+                  relative text-start text-[11px] font-medium tracking-wide px-3 py-1.5 rounded-lg
                   transition-all duration-200 cursor-pointer
                   ${
                     isActive
@@ -98,11 +100,11 @@ export default function ProofTableOfContents() {
                 {isActive && (
                   <motion.div
                     layoutId="toc-indicator"
-                    className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-amber-400"
+                    className={`absolute ${isRTL ? "right-0" : "left-0"} top-1 bottom-1 w-[2px] rounded-full bg-amber-400`}
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
-                {section.label}
+                {t(section.labelKey)}
               </button>
             );
           })}
