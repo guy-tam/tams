@@ -27,7 +27,7 @@ const divisions = [
     label: "DeFi Yield",
     allocation: "25%",
     icon: Coins,
-    color: "#06b6d4",
+    color: "#3b82f6",
     description: "Lending, LP, Staking",
   },
   {
@@ -164,7 +164,7 @@ export default function CapitalFlowDiagram() {
               key={div.id}
               variants={itemVariants}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-5 text-center transition-colors hover:border-white/[0.12]"
+              className="relative rounded-2xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-5 text-center transition-colors hover:border-amber-500/15"
             >
               {/* פס צבעוני עליון */}
               <div

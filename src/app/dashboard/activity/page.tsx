@@ -157,7 +157,7 @@ function getActivityIcon(type: string) {
     case "sell":
       return <ArrowRightLeft className="size-4 text-red-400" />;
     case "stake":
-      return <Layers className="size-4 text-cyan-400" />;
+      return <Layers className="size-4 text-blue-400" />;
     case "unstake":
       return <Layers className="size-4 text-orange-400" />;
     case "yield":
@@ -179,7 +179,7 @@ function getActivityBg(type: string) {
     case "sell":
       return "bg-red-400/10";
     case "stake":
-      return "bg-cyan-400/10";
+      return "bg-blue-400/10";
     case "unstake":
       return "bg-orange-400/10";
     case "yield":
@@ -201,7 +201,7 @@ function getTypeLabelColor(type: string) {
     case "sell":
       return "bg-red-500/15 text-red-400";
     case "stake":
-      return "bg-cyan-500/15 text-cyan-400";
+      return "bg-blue-500/15 text-blue-400";
     case "unstake":
       return "bg-orange-500/15 text-orange-400";
     case "yield":
@@ -288,8 +288,8 @@ export default function ActivityPage() {
             onClick={() => setFilter(opt.key)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filter === opt.key
-                ? "bg-white/[0.1] text-foreground border border-white/[0.12]"
-                : "bg-white/[0.03] text-muted-foreground border border-white/[0.06] hover:bg-white/[0.06] hover:text-foreground"
+                ? "bg-blue-500/[0.12] text-foreground border border-blue-500/20"
+                : "bg-white/[0.04] text-muted-foreground border border-white/[0.08] hover:bg-blue-500/[0.06] hover:text-foreground"
             }`}
           >
             {opt.label}
@@ -305,7 +305,7 @@ export default function ActivityPage() {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md overflow-hidden"
+          className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md overflow-hidden"
         >
           {filtered.length === 0 ? (
             <div className="p-12 text-center text-muted-foreground text-sm">
@@ -317,7 +317,7 @@ export default function ActivityPage() {
                 <motion.div
                   key={a.id}
                   variants={listItemVariants}
-                  className="flex items-center gap-4 px-5 py-4 hover:bg-white/[0.02] transition-colors"
+                  className="flex items-center gap-4 px-5 py-4 hover:bg-blue-500/[0.03] transition-colors"
                 >
                   {/* אייקון סוג */}
                   <div

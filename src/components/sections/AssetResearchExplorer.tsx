@@ -23,7 +23,7 @@ const categoryColors: Record<string, string> = {
   Payments: "#f59e0b",
   Infrastructure: "#10b981",
   Enterprise: "#8b5cf6",
-  RWA: "#06b6d4",
+  RWA: "#3b82f6",
   "AI & Compute": "#f43f5e",
 };
 
@@ -96,7 +96,7 @@ export default function AssetResearchExplorer() {
             placeholder="Search assets by name or ticker..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10 h-10 bg-white/[0.03] border-white/[0.08] backdrop-blur-sm"
+            className="pl-10 h-10 bg-white/[0.04] border-white/[0.08] backdrop-blur-sm focus:border-blue-500/30"
           />
           {search && (
             <button
@@ -118,7 +118,7 @@ export default function AssetResearchExplorer() {
                 px-3 py-1.5 rounded-full text-xs font-medium transition-all border
                 ${
                   activeCategory === cat
-                    ? "bg-white/10 border-white/20 text-foreground"
+                    ? "bg-blue-500/10 border-blue-500/20 text-blue-400"
                     : "bg-white/[0.02] border-white/[0.06] text-muted-foreground hover:bg-white/[0.05] hover:text-foreground"
                 }
               `}
@@ -147,7 +147,7 @@ export default function AssetResearchExplorer() {
                 variants={cardVariants}
                 layout
                 onClick={() => openDetail(asset)}
-                className="text-left group relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-5 transition-all hover:border-white/[0.12] hover:bg-white/[0.05] focus-visible:ring-2 focus-visible:ring-ring"
+                className="text-left group relative rounded-2xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-5 transition-all hover:border-amber-500/15 hover:bg-white/[0.06] focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {/* כותרת עם טיקר */}
                 <div className="flex items-start justify-between mb-3">

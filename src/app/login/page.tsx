@@ -76,8 +76,8 @@ function StatCard({
       transition={{ delay, duration: 0.6, ease: "easeOut" as const }}
       className="glass rounded-xl px-5 py-4 flex items-center gap-4"
     >
-      <div className="size-10 rounded-lg bg-gradient-to-br from-tams-blue/20 to-tams-cyan/20 flex items-center justify-center shrink-0">
-        <Icon className="size-5 text-tams-cyan" />
+      <div className="size-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-amber-500/15 flex items-center justify-center shrink-0">
+        <Icon className="size-5 text-amber-400" />
       </div>
       <div>
         <p className="text-white font-semibold text-sm">{value}</p>
@@ -162,7 +162,7 @@ export default function LoginPage() {
       {/* --- צד שמאל: מיתוג ואינפורמציה (דסקטופ בלבד) --- */}
       <div className="hidden lg:flex lg:w-[60%] relative overflow-hidden flex-col justify-between p-12">
         {/* רקע גראדיינט */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1e] via-[#0d1528] to-[#091020]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1a30] to-[#091225]" />
 
         {/* גריד רקע */}
         <div className="absolute inset-0 bg-grid opacity-30" />
@@ -177,14 +177,14 @@ export default function LoginPage() {
         />
         <FloatingOrb
           size={300}
-          color="radial-gradient(circle, #8b5cf6, transparent)"
+          color="radial-gradient(circle, #d4a853, transparent)"
           x="55%"
           y="5%"
           delay={2}
         />
         <FloatingOrb
           size={350}
-          color="radial-gradient(circle, #06b6d4, transparent)"
+          color="radial-gradient(circle, #2563eb, transparent)"
           x="60%"
           y="55%"
           delay={4}
@@ -199,7 +199,7 @@ export default function LoginPage() {
             className="flex items-center gap-4 mb-16"
           >
             {/* לוגו T */}
-            <div className="size-12 rounded-xl bg-gradient-to-br from-tams-blue to-tams-cyan flex items-center justify-center shadow-lg shadow-tams-blue/20">
+            <div className="size-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center shadow-lg shadow-blue-500/20">
               <span className="text-white font-bold text-xl">T</span>
             </div>
             <div>
@@ -264,7 +264,7 @@ export default function LoginPage() {
       <div className="w-full lg:w-[40%] flex items-center justify-center p-6 sm:p-12 relative">
         {/* רקע עדין למובייל */}
         <div className="absolute inset-0 lg:hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1e] via-background to-background" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-background to-background" />
           <FloatingOrb
             size={250}
             color="radial-gradient(circle, #3b82f6, transparent)"
@@ -274,7 +274,7 @@ export default function LoginPage() {
           />
           <FloatingOrb
             size={200}
-            color="radial-gradient(circle, #8b5cf6, transparent)"
+            color="radial-gradient(circle, #d4a853, transparent)"
             x="60%"
             y="60%"
             delay={3}
@@ -289,14 +289,14 @@ export default function LoginPage() {
         >
           {/* לוגו במובייל */}
           <div className="lg:hidden flex items-center gap-3 mb-10">
-            <div className="size-10 rounded-xl bg-gradient-to-br from-tams-blue to-tams-cyan flex items-center justify-center">
+            <div className="size-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center">
               <span className="text-white font-bold text-lg">T</span>
             </div>
             <span className="text-white font-bold text-lg">TAMS</span>
           </div>
 
           {/* כרטיס הטופס */}
-          <div className="glass-strong rounded-2xl p-8">
+          <div className="rounded-2xl p-8 bg-[rgba(30,50,80,0.4)] backdrop-blur-xl border border-white/[0.08]">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-white mb-2">Sign In</h2>
               <p className="text-sm text-muted-foreground">
@@ -324,7 +324,7 @@ export default function LoginPage() {
                       setError("");
                     }}
                     placeholder="you@company.com"
-                    className="w-full h-11 pl-10 pr-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-tams-blue/50 focus:border-tams-blue/50 transition-all"
+                    className="w-full h-11 pl-10 pr-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all"
                     autoComplete="email"
                     required
                   />
@@ -347,7 +347,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
-                    className="w-full h-11 pl-10 pr-11 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-tams-blue/50 focus:border-tams-blue/50 transition-all"
+                    className="w-full h-11 pl-10 pr-11 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all"
                     autoComplete="current-password"
                     required
                   />
@@ -383,7 +383,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-11 rounded-lg bg-gradient-to-r from-tams-blue to-tams-cyan text-white font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full h-11 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 text-gray-900 font-semibold text-sm flex items-center justify-center gap-2 hover:from-amber-400 hover:to-amber-300 transition-all shadow-lg shadow-amber-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <motion.div
@@ -407,7 +407,7 @@ export default function LoginPage() {
             {/* מפריד */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-white/10" />
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
               </div>
               <div className="relative flex justify-center text-xs">
                 <span className="bg-[rgba(255,255,255,0.06)] px-3 text-muted-foreground">
@@ -422,7 +422,7 @@ export default function LoginPage() {
               onClick={fillDemo}
               className="w-full h-11 rounded-lg border border-white/10 bg-white/5 text-white font-medium text-sm flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
             >
-              <Shield className="size-4 text-tams-cyan" />
+              <Shield className="size-4 text-blue-400" />
               Demo Access
             </button>
 

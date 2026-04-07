@@ -132,7 +132,7 @@ const texts = {
 const marketBase = [
   { name: "TAM", value: 2500, color: "#3b82f6" },
   { name: "SAM", value: 400, color: "#8b5cf6" },
-  { name: "SOM", value: 50, color: "#06b6d4" },
+  { name: "SOM", value: 50, color: "#d4a853" },
 ];
 
 // טולטיפ מותאם
@@ -179,7 +179,7 @@ export default function TAMSAMSOMPanel() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* גרף */}
-        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6">
+        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-6">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -223,7 +223,7 @@ export default function TAMSAMSOMPanel() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-4"
+              className="rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4 hover:border-amber-500/15 transition-colors"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div

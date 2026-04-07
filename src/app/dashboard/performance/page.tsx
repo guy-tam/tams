@@ -65,7 +65,7 @@ function ChartTooltip({
 const walletPerformance = [
   { name: "Long-Term Holdings", contribution: 5.2, color: "#3b82f6" },
   { name: "Active Trading", contribution: 3.8, color: "#8b5cf6" },
-  { name: "DeFi Yield", contribution: 2.4, color: "#06b6d4" },
+  { name: "DeFi Yield", contribution: 2.4, color: "#d4a853" },
   { name: "Operations", contribution: 0.9, color: "#10b981" },
 ];
 
@@ -85,7 +85,7 @@ function PerfStatCard({
     <motion.div
       variants={itemVariants}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-5 group relative overflow-hidden"
+      className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-5 group relative overflow-hidden"
     >
       <div
         className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100"
@@ -129,7 +129,7 @@ export default function PerformancePage() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+        className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
       >
         <h3 className="text-base font-semibold text-foreground mb-1">
           ביצועי תיק — 12 חודשים
@@ -195,7 +195,7 @@ export default function PerformancePage() {
           label="תשואה שבועית"
           value={`+${portfolioSummary.weeklyChange}%`}
           icon={Calendar}
-          color="#06b6d4"
+          color="#d4a853"
         />
         <PerfStatCard
           label="תשואה חודשית"
@@ -207,7 +207,7 @@ export default function PerformancePage() {
           label="תשואה כוללת"
           value={`+${portfolioSummary.allTimeReturn}%`}
           icon={BarChart3}
-          color="#8b5cf6"
+          color="#d4a853"
         />
       </motion.div>
 
@@ -216,7 +216,7 @@ export default function PerformancePage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+        className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
       >
         <h3 className="text-base font-semibold text-foreground mb-1">
           תרומת ארנקים לביצועים

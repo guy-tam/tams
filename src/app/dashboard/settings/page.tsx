@@ -47,14 +47,14 @@ function Toggle({
     <button
       onClick={() => onChange(!enabled)}
       className={`relative w-10 h-5 rounded-full flex items-center px-0.5 transition-colors ${
-        enabled ? "bg-emerald-500/30" : "bg-zinc-700"
+        enabled ? "bg-emerald-500/30" : "bg-white/[0.08]"
       }`}
     >
       <div
         className={`size-4 rounded-full transition-transform ${
           enabled
             ? "translate-x-5 bg-emerald-400"
-            : "translate-x-0 bg-zinc-500"
+            : "translate-x-0 bg-white/20"
         }`}
       />
     </button>
@@ -94,7 +94,7 @@ export default function SettingsPage() {
         {/* פרופיל */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <User className="size-5 text-blue-400" />
@@ -128,8 +128,8 @@ export default function SettingsPage() {
                 className="rounded-xl border border-white/[0.04] bg-white/[0.02] p-4"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <item.icon className="size-3.5 text-zinc-500" />
-                  <span className="text-[10px] text-zinc-500 uppercase tracking-wider">
+                  <item.icon className="size-3.5 text-blue-300/50" />
+                  <span className="text-[10px] text-blue-300/50 uppercase tracking-wider">
                     {item.label}
                   </span>
                 </div>
@@ -144,10 +144,10 @@ export default function SettingsPage() {
         {/* העדפות */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Globe className="size-5 text-cyan-400" />
+            <Globe className="size-5 text-amber-400" />
             העדפות
           </h2>
           <div className="space-y-4">
@@ -165,7 +165,7 @@ export default function SettingsPage() {
               <select
                 value={language}
                 onChange={(e) => setAppLanguage(e.target.value as Language)}
-                className="bg-white/[0.05] border border-white/[0.08] rounded-lg px-3 py-1.5 text-sm text-foreground outline-none focus:border-blue-500/50"
+                className="bg-white/[0.05] border border-white/[0.08] rounded-lg px-3 py-1.5 text-sm text-foreground outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20"
               >
                 <option value="he">עברית</option>
                 <option value="en">English</option>
@@ -230,10 +230,10 @@ export default function SettingsPage() {
         {/* אבטחה */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-6"
+          className="rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Lock className="size-5 text-purple-400" />
+            <Lock className="size-5 text-amber-400" />
             אבטחה
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -244,7 +244,7 @@ export default function SettingsPage() {
               <div className="text-xs text-muted-foreground mb-3">
                 עדכון סיסמת הכניסה לחשבון
               </div>
-              <button className="text-xs px-3 py-1.5 rounded-lg border border-white/10 text-zinc-400 hover:text-white transition-colors">
+              <button className="text-xs px-3 py-1.5 rounded-lg border border-white/10 text-blue-300/60 hover:text-blue-200 transition-colors">
                 עדכון
               </button>
             </div>

@@ -77,7 +77,7 @@ const riskCategoriesData: Record<Language, RiskCategory[]> = {
       icon: Droplets,
       title: "Liquidity Risk",
       level: "medium",
-      color: "#06b6d4",
+      color: "#3b82f6",
       description:
         "Risk of being unable to exit positions at expected prices. Includes impermanent loss in AMM pools, slippage in large trades, and lock-up period constraints.",
       mitigations: [
@@ -139,7 +139,7 @@ const riskCategoriesData: Record<Language, RiskCategory[]> = {
       icon: Droplets,
       title: "סיכון נזילות",
       level: "medium",
-      color: "#06b6d4",
+      color: "#3b82f6",
       description:
         "סיכון של חוסר יכולת לצאת מפוזיציות במחירים צפויים. כולל הפסד זמני (impermanent loss) בבריכות AMM, החלקה בעסקאות גדולות ומגבלות תקופות נעילה.",
       mitigations: [
@@ -201,7 +201,7 @@ const riskCategoriesData: Record<Language, RiskCategory[]> = {
       icon: Droplets,
       title: "مخاطر السيولة",
       level: "medium",
-      color: "#06b6d4",
+      color: "#3b82f6",
       description:
         "مخاطر عدم القدرة على الخروج من المراكز بالأسعار المتوقعة. تشمل الخسارة المؤقتة في مجمعات AMM، والانزلاق في الصفقات الكبيرة، وقيود فترات الإغلاق.",
       mitigations: [
@@ -263,7 +263,7 @@ const riskCategoriesData: Record<Language, RiskCategory[]> = {
       icon: Droplets,
       title: "Риск ликвидности",
       level: "medium",
-      color: "#06b6d4",
+      color: "#3b82f6",
       description:
         "Риск невозможности закрыть позиции по ожидаемым ценам. Включает непостоянные потери в пулах AMM, проскальзывание в крупных сделках и ограничения периодов блокировки.",
       mitigations: [
@@ -325,7 +325,7 @@ const riskCategoriesData: Record<Language, RiskCategory[]> = {
       icon: Droplets,
       title: "Riesgo de Liquidez",
       level: "medium",
-      color: "#06b6d4",
+      color: "#3b82f6",
       description:
         "Riesgo de no poder cerrar posiciones a precios esperados. Incluye pérdida impermanente en pools de AMM, deslizamiento en operaciones grandes y restricciones de períodos de bloqueo.",
       mitigations: [
@@ -437,7 +437,7 @@ export default function DeFiRiskFramework() {
               key={risk.id}
               variants={cardVariants}
               whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md overflow-hidden"
+              className="relative rounded-2xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md overflow-hidden hover:border-amber-500/15 transition-colors"
             >
               {/* פס צבעוני עליון */}
               <div

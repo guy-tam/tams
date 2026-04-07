@@ -193,7 +193,7 @@ const eventMeta = [
   { year: "2020", icon: Building2, color: "#f59e0b" },
   { year: "2021", icon: Globe, color: "#3b82f6" },
   { year: "2022", icon: Coins, color: "#8b5cf6" },
-  { year: "2023", icon: Landmark, color: "#06b6d4" },
+  { year: "2023", icon: Landmark, color: "#3b82f6" },
   { year: "2024", icon: TrendingUp, color: "#10b981" },
   { year: "2025-26", icon: Shield, color: "#f43f5e" },
 ];
@@ -249,7 +249,7 @@ export default function MarketShiftTimeline() {
                 </div>
 
                 {/* כרטיס אירוע */}
-                <div className="flex-1 rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md p-4">
+                <div className="flex-1 rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-md p-4 hover:border-amber-500/15 transition-colors">
                   <div className="flex items-center gap-3 mb-2">
                     <span
                       className="text-sm font-bold"
