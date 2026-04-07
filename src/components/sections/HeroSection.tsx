@@ -112,7 +112,7 @@ export default function HeroSection({
           </motion.div>
 
           {/* כותרת ראשית */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-normal leading-[1.2] mb-6">
             <span className="gradient-text">{title}</span>
           </h1>
 

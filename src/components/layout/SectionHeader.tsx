@@ -46,7 +46,7 @@ export default function SectionHeader({
       )}
 
       {/* כותרת */}
-      <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+      <h2 className="text-2xl font-bold tracking-normal text-white sm:text-3xl">
         {title}
       </h2>
 

@@ -212,7 +212,7 @@ export default function ScenarioModel() {
             {/* תוצאה */}
             <div className="mt-auto pt-4 border-t border-white/[0.06]">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 block mb-2">{t("proof.scenarios.scenarioOutlook")}</span>
-              <p className="text-[11px] text-gray-600 leading-relaxed">{scenario.outlook}</p>
+              <p className="text-[11px] text-zinc-400 leading-relaxed">{scenario.outlook}</p>
             </div>
           </motion.div>
         ))}

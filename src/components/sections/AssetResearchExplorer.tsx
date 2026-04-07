@@ -96,7 +96,7 @@ export default function AssetResearchExplorer() {
             placeholder="Search assets by name or ticker..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="ps-10 h-10 bg-white border-amber-500/15 backdrop-blur-sm focus:border-blue-500/30"
+            className="ps-10 h-10 bg-white/[0.06] border-amber-500/15 backdrop-blur-sm focus:border-blue-500/30"
           />
           {search && (
             <button
@@ -147,7 +147,7 @@ export default function AssetResearchExplorer() {
                 variants={cardVariants}
                 layout
                 onClick={() => openDetail(asset)}
-                className="text-left group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 transition-all hover:border-amber-500/25 hover:bg-white/[0.04] focus-visible:ring-2 focus-visible:ring-ring"
+                className="text-left group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 transition-all hover:border-amber-500/25 hover:bg-white/[0.08] focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {/* כותרת עם טיקר */}
                 <div className="flex items-start justify-between mb-3">

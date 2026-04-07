@@ -87,7 +87,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
         {/* נושאי אימוץ */}
         <div className="flex flex-wrap gap-1.5 mb-4">
           {profile.adoptionThemes.map((theme) => (
-            <span key={theme} className="text-[10px] text-zinc-400 bg-white border border-amber-500/15 rounded-full px-2 py-0.5">
+            <span key={theme} className="text-[10px] text-zinc-400 bg-white/[0.06] border border-amber-500/15 rounded-full px-2 py-0.5">
               {theme}
             </span>
           ))}
@@ -104,7 +104,7 @@ function AssetCard({ profile, onAssetClick, t }: { profile: AssetThesisProfile; 
         {/* כפתור פתיחה */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 text-[11px] text-zinc-500 hover:text-gray-600 transition-colors"
+          className="flex items-center gap-1.5 text-[11px] text-zinc-500 hover:text-zinc-400 transition-colors"
         >
           <ChevronDown className={`h-3.5 w-3.5 transition-transform ${expanded ? "rotate-180" : ""}`} />
           {expanded ? t("proof.assetGrid.hideDetails") : t("proof.assetGrid.riskCaveats")}

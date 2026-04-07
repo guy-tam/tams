@@ -1,6 +1,7 @@
 "use client";
 
 // דף משקיע - מפת דרכים, גילוי סיכונים, דרגות משקיעים וסיכום
+import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import RoadmapTimeline from "@/components/sections/RoadmapTimeline";
@@ -18,9 +19,20 @@ const highlightKeys = ["structured", "research", "risk", "horizon"] as const;
 export default function InvestorPage() {
   const { t } = useLanguage();
 
+  const investorSections = [
+    { id: "investor-hero", label: "למשקיע" },
+    { id: "investor-highlights", label: "נקודות מפתח" },
+    { id: "investor-roadmap", label: "מפת דרכים" },
+    { id: "investor-risk", label: "גילוי סיכונים" },
+    { id: "investor-tiers", label: "דרגות השקעה" },
+    { id: "investor-conclusion", label: "סיכום" },
+  ];
+
   return (
     <PageWrapper bgGrid>
-      <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
+      <PageTableOfContents sections={investorSections} />
+
+      <section id="investor-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">{t("investor.badge")}</span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6"><span className="gradient-text">{t("investor.title")}</span></h1>
@@ -28,12 +40,12 @@ export default function InvestorPage() {
         </motion.div>
       </section>
 
-      <section className="pb-12 max-w-7xl mx-auto">
+      <section id="investor-highlights" className="pb-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {highlightKeys.map((key, i) => {
             const Icon = highlightIcons[i];
             return (
-              <motion.div key={key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-amber-500/15 bg-white backdrop-blur-md p-5 text-center">
+              <motion.div key={key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 text-center">
                 <div className="size-10 rounded-xl mx-auto flex items-center justify-center mb-3" style={{ background: `${highlightColors[i]}15` }}>
                   <Icon className="size-5" style={{ color: highlightColors[i] }} />
                 </div>
@@ -46,19 +58,21 @@ export default function InvestorPage() {
         </div>
       </section>
 
-      <section className="py-12 max-w-7xl mx-auto">
+      <section id="investor-roadmap" className="py-12 max-w-7xl mx-auto">
         <SectionHeader badge={t("investor.roadmap.badge")} title={t("investor.roadmap.title")} subtitle={t("investor.roadmap.subtitle")} />
         <RoadmapTimeline />
       </section>
 
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="investor-risk" className="py-16 max-w-7xl mx-auto">
         <SectionHeader badge={t("investor.riskDisclosure.badge")} title={t("investor.riskDisclosure.title")} subtitle={t("investor.riskDisclosure.subtitle")} />
         <RiskDisclosureAccordion />
       </section>
 
-      <InvestorTiers />
+      <div id="investor-tiers">
+        <InvestorTiers />
+      </div>
 
-      <section className="py-12 max-w-3xl mx-auto">
+      <section id="investor-conclusion" className="py-12 max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-500/15 bg-gradient-to-br from-blue-500/[0.05] to-amber-500/[0.03] backdrop-blur-md p-8 text-center">
           <h3 className="text-xl font-bold text-foreground mb-3">{t("investor.conclusion.title")}</h3>
           <p className="text-sm text-muted-foreground leading-relaxed mb-4">{t("investor.conclusion.content")}</p>

@@ -234,7 +234,7 @@ export default function OperatingModel() {
               key={div.id}
               variants={cardVariants}
               whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md overflow-hidden"
+              className="relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md overflow-hidden"
             >
               {/* פס צבעוני עליון */}
               <div
@@ -310,7 +310,7 @@ export default function OperatingModel() {
       {/* נקודות מפתח */}
       <motion.div
         variants={cardVariants}
-        className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5"
+        className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5"
       >
         <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider font-semibold mb-3">
           {t.keyPointsTitle}

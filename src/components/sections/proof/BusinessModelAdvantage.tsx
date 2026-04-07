@@ -109,7 +109,7 @@ export default function BusinessModelAdvantage() {
             { label: t("proof.businessModel.flowStep4Label"), sub: t("proof.businessModel.flowStep4Sub") },
           ].map((step, i) => (
             <div key={step.label} className="flex items-center gap-3 md:gap-4">
-              <div className="rounded-lg border border-blue-500/[0.1] bg-white px-4 py-3 min-w-[160px]">
+              <div className="rounded-lg border border-blue-500/[0.1] bg-white/[0.04] px-4 py-3 min-w-[160px]">
                 <div className="text-xs font-medium text-white">{step.label}</div>
                 <div className="text-[10px] text-zinc-500 mt-0.5">{step.sub}</div>
               </div>

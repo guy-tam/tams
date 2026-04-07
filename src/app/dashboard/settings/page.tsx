@@ -94,7 +94,7 @@ export default function SettingsPage() {
         {/* פרופיל */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6"
+          className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <User className="size-5 text-blue-400" />
@@ -144,7 +144,7 @@ export default function SettingsPage() {
         {/* העדפות */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6"
+          className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <Globe className="size-5 text-amber-400" />
@@ -230,7 +230,7 @@ export default function SettingsPage() {
         {/* אבטחה */}
         <motion.div
           variants={itemVariants}
-          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6"
+          className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6"
         >
           <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
             <Lock className="size-5 text-amber-400" />

@@ -1,6 +1,7 @@
 "use client";
 
 // דף הבית - חזון החברה, מבוא, ומערכת משקיעים
+import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import HeroSection from "@/components/sections/HeroSection";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
 import VisionSection from "@/components/sections/VisionSection";
@@ -29,16 +30,28 @@ export default function HomePage() {
     { icon: Lock, title: t("home.cards.institutional.title"), description: t("home.cards.institutional.description"), accent: "#fb7185" },
   ];
 
+  const homeSections = [
+    { id: "hero", label: "ראשי" },
+    { id: "thesis", label: "תזה" },
+    { id: "vision", label: "חזון" },
+    { id: "tiers", label: "דרגות" },
+    { id: "cta", label: "סיכום" },
+  ];
+
   return (
     <div className="min-h-screen">
-      <HeroSection
-        title={t("home.hero.title")}
-        subtitle={t("home.hero.subtitle")}
-        ctaText={t("home.hero.cta1")}
-        ctaHref="/architecture"
-      />
+      <PageTableOfContents sections={homeSections} />
 
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div id="hero">
+        <HeroSection
+          title={t("home.hero.title")}
+          subtitle={t("home.hero.subtitle")}
+          ctaText={t("home.hero.cta1")}
+          ctaHref="/architecture"
+        />
+      </div>
+
+      <section id="thesis" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <SectionHeader
           badge={t("home.thesis.badge")}
           title={t("home.thesis.title")}
@@ -47,11 +60,17 @@ export default function HomePage() {
         <ThesisCardGrid cards={thesisCards} />
       </section>
 
-      <VisionSection />
+      <div id="vision">
+        <VisionSection />
+      </div>
 
-      <InvestorTiers />
+      <div id="tiers">
+        <InvestorTiers />
+      </div>
 
-      <FinalCTASection />
+      <div id="cta">
+        <FinalCTASection />
+      </div>
     </div>
   );
 }

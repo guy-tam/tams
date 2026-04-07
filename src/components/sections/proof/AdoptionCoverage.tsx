@@ -120,7 +120,7 @@ function CustomPieTooltip({ active, payload }: any) {
   if (!active || !payload?.[0]) return null;
   const { name, value, payload: entry } = payload[0];
   return (
-    <div className="rounded-lg border border-amber-500/15 bg-white/95 px-3 py-2 shadow-xl text-xs">
+    <div className="rounded-lg border border-amber-500/15 bg-[#0a1628]/95 px-3 py-2 shadow-xl text-xs">
       <div className="font-semibold text-white">{name}</div>
       <div className="text-zinc-400 mt-0.5">{value} records ({entry.pct}%)</div>
     </div>
@@ -262,7 +262,7 @@ export default function AdoptionCoverage() {
                 className="flex items-center gap-3"
               >
                 <span className="text-[11px] text-zinc-400 w-36 shrink-0 truncate">{organizationTypeLabels[item.type]}</span>
-                <div className="flex-1 h-2 bg-white rounded-full overflow-hidden">
+                <div className="flex-1 h-2 bg-white/[0.06] rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${(item.count / analysis.orgTypes[0].count) * 100}%` }}
@@ -362,7 +362,7 @@ export default function AdoptionCoverage() {
                     className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                     style={{ background: d.color }}
                   />
-                  <span className="text-xs text-gray-600 flex-1">{d.name}</span>
+                  <span className="text-xs text-zinc-400 flex-1">{d.name}</span>
                   <span className="text-xs font-mono text-zinc-400">{d.pct}%</span>
                   <span className="text-[10px] text-zinc-500">({d.value})</span>
                 </div>
@@ -415,7 +415,7 @@ export default function AdoptionCoverage() {
                     className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                     style={{ background: d.color }}
                   />
-                  <span className="text-xs text-gray-600 flex-1">{d.name}</span>
+                  <span className="text-xs text-zinc-400 flex-1">{d.name}</span>
                   <span className="text-xs font-mono text-zinc-400">{d.pct}%</span>
                   <span className="text-[10px] text-zinc-500">({d.value})</span>
                 </div>

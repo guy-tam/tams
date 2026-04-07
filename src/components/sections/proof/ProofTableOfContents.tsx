@@ -92,7 +92,7 @@ export default function ProofTableOfContents() {
                   ${
                     isActive
                       ? "text-blue-400 bg-blue-500/[0.08]"
-                      : "text-zinc-400 hover:text-zinc-200 hover:bg-white"
+                      : "text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.08]"
                   }
                 `}
               >

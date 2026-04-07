@@ -190,7 +190,7 @@ export default function DefiPage() {
         <motion.div
           variants={itemVariants}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
-          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 group relative overflow-hidden"
+          className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 group relative overflow-hidden"
         >
           <div className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-l from-transparent via-blue-500/40 to-transparent" />
           <div className="size-10 rounded-xl bg-blue-500/15 flex items-center justify-center mb-3">
@@ -207,7 +207,7 @@ export default function DefiPage() {
         <motion.div
           variants={itemVariants}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
-          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 group relative overflow-hidden"
+          className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 group relative overflow-hidden"
         >
           <div className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-l from-transparent via-emerald-500/40 to-transparent" />
           <div className="size-10 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-3">
@@ -224,7 +224,7 @@ export default function DefiPage() {
         <motion.div
           variants={itemVariants}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
-          className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 group relative overflow-hidden"
+          className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 group relative overflow-hidden"
         >
           <div className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-l from-transparent via-amber-500/40 to-transparent" />
           <div className="size-10 rounded-xl bg-amber-500/[0.06]0/15 flex items-center justify-center mb-3">
@@ -251,7 +251,7 @@ export default function DefiPage() {
             key={i}
             variants={itemVariants}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className="group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 transition-colors hover:border-amber-500/25 hover:bg-white/[0.04]"
+            className="group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 transition-colors hover:border-amber-500/25 hover:bg-white/[0.06]"
           >
             {/* גלאו עליון */}
             <div

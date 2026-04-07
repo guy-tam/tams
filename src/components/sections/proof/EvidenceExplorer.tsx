@@ -78,7 +78,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
         </div>
 
         {/* סוג קשר */}
-        <span className="hidden md:inline-block text-[10px] text-zinc-400 bg-white border border-amber-500/15 rounded-full px-2 py-0.5 shrink-0">
+        <span className="hidden md:inline-block text-[10px] text-zinc-400 bg-white/[0.06] border border-amber-500/15 rounded-full px-2 py-0.5 shrink-0">
           {relationshipTypeLabels[record.relationshipType]}
         </span>
 
@@ -108,7 +108,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
             <div className="px-4 pb-4 pt-1 ms-12">
               <div className="rounded-lg border border-amber-500/15 bg-white/[0.03] p-4 space-y-3">
                 {/* תיאור */}
-                <p className="text-xs text-gray-600 leading-relaxed">{record.description}</p>
+                <p className="text-xs text-zinc-400 leading-relaxed">{record.description}</p>
 
                 {/* למה זה חשוב */}
                 <div>
@@ -253,7 +253,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
               placeholder={t("proof.evidence.searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-amber-500/15 bg-white ps-10 pe-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
+              className="w-full rounded-lg border border-amber-500/15 bg-white/[0.06] ps-10 pe-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
             />
           </div>
           <button
@@ -261,7 +261,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
             className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors ${
               showFilters
                 ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-                : "border-amber-500/15 bg-white text-zinc-400 hover:text-white"
+                : "border-amber-500/15 bg-white/[0.06] text-zinc-400 hover:text-white"
             }`}
           >
             <Filter className="h-4 w-4" />
@@ -286,7 +286,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={assetFilter}
                     onChange={(e) => setAssetFilter(e.target.value as AssetTicker | "all")}
-                    className="w-full rounded-md border border-amber-500/15 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-500/15 bg-white/[0.06] px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allAssets")}</option>
                     {allAssets.map((a) => (
@@ -301,7 +301,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={regionFilter}
                     onChange={(e) => setRegionFilter(e.target.value as Region | "all")}
-                    className="w-full rounded-md border border-amber-500/15 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-500/15 bg-white/[0.06] px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allRegions")}</option>
                     {allRegions.map((r) => (
@@ -316,7 +316,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={confidenceFilter}
                     onChange={(e) => setConfidenceFilter(e.target.value as ConfidenceLevel | "all")}
-                    className="w-full rounded-md border border-amber-500/15 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-500/15 bg-white/[0.06] px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allLevels")}</option>
                     {allConfidence.map((c) => (
@@ -331,7 +331,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value as EvidenceStatus | "all")}
-                    className="w-full rounded-md border border-amber-500/15 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-500/15 bg-white/[0.06] px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="all">{t("proof.evidence.allStatuses")}</option>
                     {allStatuses.map((s) => (
@@ -346,7 +346,7 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
                   <select
                     value={sortField}
                     onChange={(e) => setSortField(e.target.value as SortField)}
-                    className="w-full rounded-md border border-amber-500/15 bg-white px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
+                    className="w-full rounded-md border border-amber-500/15 bg-white/[0.06] px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500/30"
                   >
                     <option value="asset">{t("proof.evidence.sortAsset")}</option>
                     <option value="confidence">{t("proof.evidence.sortConfidence")}</option>

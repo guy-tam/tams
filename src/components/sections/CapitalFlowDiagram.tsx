@@ -164,7 +164,7 @@ export default function CapitalFlowDiagram() {
               key={div.id}
               variants={itemVariants}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 text-center transition-colors hover:border-amber-500/25"
+              className="relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 text-center transition-colors hover:border-amber-500/25"
             >
               {/* פס צבעוני עליון */}
               <div

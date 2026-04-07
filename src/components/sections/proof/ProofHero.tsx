@@ -32,7 +32,7 @@ export default function ProofHero() {
             {t("proof.hero.badge")}
           </span>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-normal leading-[1.2] mb-8">
             <span className="text-white">{t("proof.hero.title")}</span>
             <span className="gradient-text">{t("proof.hero.titleHighlight")}</span>
           </h1>
@@ -88,7 +88,7 @@ export default function ProofHero() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + i * 0.07 }}
-                className="rounded-xl border border-amber-500/15 bg-white/[0.03] p-4 text-left hover:border-amber-500/25 hover:bg-white transition-all duration-300"
+                className="rounded-xl border border-amber-500/15 bg-white/[0.03] p-4 text-left hover:border-amber-500/25 hover:bg-white/[0.06] transition-all duration-300"
               >
                 <engine.icon className="h-4 w-4 text-blue-400 mb-2" />
                 <div className="text-sm font-medium text-white mb-1">{engine.label}</div>

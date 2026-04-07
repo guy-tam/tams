@@ -79,9 +79,9 @@ export default function MarketUnderpricing() {
               <div className="flex-1">
                 <h3 className="text-base font-semibold text-white mb-2">{fw.title}</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed mb-3">{fw.description}</p>
-                <div className="flex items-start gap-2 rounded-lg bg-white border border-amber-500/15 p-3">
+                <div className="flex items-start gap-2 rounded-lg bg-white/[0.04] border border-amber-500/15 p-3">
                   <ArrowRight className={`h-3.5 w-3.5 text-amber-400 mt-0.5 shrink-0 ${isRTL ? "rotate-180" : ""}`} />
-                  <p className="text-xs text-gray-600 leading-relaxed">{fw.insight}</p>
+                  <p className="text-xs text-zinc-400 leading-relaxed">{fw.insight}</p>
                 </div>
               </div>
             </div>

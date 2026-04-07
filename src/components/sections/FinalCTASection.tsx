@@ -84,7 +84,7 @@ export default function FinalCTASection() {
                 href={card.href}
                 variants={cardVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/25 hover:bg-white/[0.04] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] block"
+                className="group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/25 hover:bg-white/[0.06] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] block"
               >
                 {/* גלאו עליון */}
                 <div

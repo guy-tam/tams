@@ -1,6 +1,7 @@
 "use client";
 
 // דף החברה - חזון, מודל עסקי, וכיצד TAMS פועל
+import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
@@ -54,9 +55,20 @@ export default function CompanyPage() {
     t("company.steps.3.description"),
   ];
 
+  const companySections = [
+    { id: "company-hero", label: "אודות" },
+    { id: "company-vision-mission", label: "חזון ומשימה" },
+    { id: "company-principles", label: "עקרונות" },
+    { id: "company-process", label: "תהליך" },
+    { id: "company-partnership", label: "מבנה שותפות" },
+    { id: "company-operating", label: "מודל תפעול" },
+  ];
+
   return (
     <PageWrapper bgGrid>
-      <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
+      <PageTableOfContents sections={companySections} />
+
+      <section id="company-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,15 +86,15 @@ export default function CompanyPage() {
         </motion.div>
       </section>
 
-      <section className="py-12 max-w-7xl mx-auto">
+      <section id="company-vision-mission" className="py-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-8 shadow-sm">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-8 shadow-sm">
             <div className="size-12 rounded-xl bg-tams-blue/15 flex items-center justify-center mb-5"><Eye className="size-6 text-tams-blue" /></div>
             <h3 className="text-xl font-semibold text-foreground mb-3">{t("company.vision.title")}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("company.vision.content")}</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-8 shadow-sm">
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-8 shadow-sm">
             <div className="size-12 rounded-xl bg-tams-purple/15 flex items-center justify-center mb-5"><Target className="size-6 text-tams-purple" /></div>
             <h3 className="text-xl font-semibold text-foreground mb-3">{t("company.mission.title")}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("company.mission.content")}</p>
@@ -90,12 +102,12 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="py-12 max-w-7xl mx-auto">
+      <section id="company-principles" className="py-12 max-w-7xl mx-auto">
         <SectionHeader badge={t("company.principles.badge")} title={t("company.principles.title")} subtitle={t("company.principles.subtitle")} />
         <ThesisCardGrid cards={principles} />
       </section>
 
-      <section className="py-16 max-w-4xl mx-auto">
+      <section id="company-process" className="py-16 max-w-4xl mx-auto">
         <SectionHeader badge={t("company.process.badge")} title={t("company.process.title")} subtitle={t("company.process.subtitle")} />
         <div className="space-y-6">
           {steps.map((title, i) => {
@@ -105,7 +117,7 @@ export default function CompanyPage() {
                 <div className="flex-shrink-0 size-14 rounded-2xl flex items-center justify-center border" style={{ background: `${stepColors[i]}10`, borderColor: `${stepColors[i]}25` }}>
                   <Icon className="size-6" style={{ color: stepColors[i] }} />
                 </div>
-                <div className="flex-1 rounded-xl border border-amber-500/15 bg-white backdrop-blur-md p-5 shadow-sm">
+                <div className="flex-1 rounded-xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 shadow-sm">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider" style={{ color: stepColors[i] }}>0{i + 1}</span>
                     <span className="text-sm font-semibold text-foreground">{title}</span>
@@ -119,7 +131,7 @@ export default function CompanyPage() {
       </section>
 
       {/* מבנה שותפות LP/GP */}
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="company-partnership" className="py-16 max-w-7xl mx-auto">
         <SectionHeader
           badge="Partnership Structure"
           title="מבנה השותפות"
@@ -129,7 +141,7 @@ export default function CompanyPage() {
       </section>
 
       {/* מודל תפעול */}
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="company-operating" className="py-16 max-w-7xl mx-auto">
         <SectionHeader
           badge="Operating Model"
           title="מודל תפעול"

@@ -1,6 +1,7 @@
 "use client";
 
 // דף ארכיטקטורה - מבנה ארנקים, זרימת הון, והקצאת פורטפוליו
+import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import WalletArchitectureMap from "@/components/sections/WalletArchitectureMap";
@@ -16,9 +17,19 @@ const divisionPcts = ["40%", "25%", "25%", "10%"];
 export default function ArchitecturePage() {
   const { t } = useLanguage();
 
+  const archSections = [
+    { id: "arch-hero", label: "ארכיטקטורה" },
+    { id: "arch-wallets", label: "מבנה ארנקים" },
+    { id: "arch-flow", label: "זרימת הון" },
+    { id: "arch-allocation", label: "הקצאת פורטפוליו" },
+    { id: "arch-breakdown", label: "פירוט תיק" },
+  ];
+
   return (
     <PageWrapper bgGrid>
-      <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
+      <PageTableOfContents sections={archSections} />
+
+      <section id="arch-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">
             {t("architecture.badge")}
@@ -30,17 +41,17 @@ export default function ArchitecturePage() {
         </motion.div>
       </section>
 
-      <section className="py-12 max-w-7xl mx-auto">
+      <section id="arch-wallets" className="py-12 max-w-7xl mx-auto">
         <SectionHeader badge={t("architecture.wallet.badge")} title={t("architecture.wallet.title")} subtitle={t("architecture.wallet.subtitle")} />
         <WalletArchitectureMap />
       </section>
 
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="arch-flow" className="py-16 max-w-7xl mx-auto">
         <SectionHeader badge={t("architecture.flow.badge")} title={t("architecture.flow.title")} subtitle={t("architecture.flow.subtitle")} />
         <CapitalFlowDiagram />
       </section>
 
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="arch-allocation" className="py-16 max-w-7xl mx-auto">
         <SectionHeader badge={t("architecture.allocation.badge")} title={t("architecture.allocation.title")} subtitle={t("architecture.allocation.subtitle")} />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <AllocationChart />
@@ -52,7 +63,7 @@ export default function ArchitecturePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="rounded-xl border border-amber-500/15 bg-white backdrop-blur-md p-4 shadow-sm"
+                className="rounded-xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-4 shadow-sm"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="size-3 rounded-full" style={{ background: divisionColors[i] }} />
@@ -66,7 +77,7 @@ export default function ArchitecturePage() {
         </div>
       </section>
       {/* הקצאת תיק מפורטת */}
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="arch-breakdown" className="py-16 max-w-7xl mx-auto">
         <SectionHeader
           badge="Portfolio Breakdown"
           title="הקצאת תיק מפורטת"

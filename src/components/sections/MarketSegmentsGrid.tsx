@@ -186,7 +186,7 @@ export default function MarketSegmentsGrid() {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-amber-500/15 bg-white px-4 py-1.5">
+        <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-amber-500/15 bg-white/[0.04] px-4 py-1.5">
           <Globe className="size-4 text-blue-400" />
           <span className="text-sm text-muted-foreground">{t.badge}</span>
         </div>
@@ -216,7 +216,7 @@ export default function MarketSegmentsGrid() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="group relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-5 transition-colors hover:border-amber-500/25 hover:bg-white/[0.04]"
+              className="group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-5 transition-colors hover:border-amber-500/25 hover:bg-white/[0.06]"
             >
               {/* גלאו עליון בהובר */}
               <div

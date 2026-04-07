@@ -179,7 +179,7 @@ export default function TAMSAMSOMPanel() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* גרף */}
-        <div className="rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md p-6">
+        <div className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -223,7 +223,7 @@ export default function TAMSAMSOMPanel() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-xl border border-amber-500/15 bg-white backdrop-blur-md p-4 hover:border-amber-500/25 transition-colors"
+              className="rounded-xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-4 hover:border-amber-500/25 transition-colors"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div

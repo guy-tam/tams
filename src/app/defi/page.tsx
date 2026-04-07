@@ -1,6 +1,7 @@
 "use client";
 
 // דף DeFi - אסטרטגיית תשואה מבוזרת ומסגרת סיכונים
+import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import DeFiRiskFramework from "@/components/sections/DeFiRiskFramework";
@@ -28,9 +29,18 @@ export default function DeFiPage() {
     { label: t("defi.metrics.allocation"), value: "25%", color: "#f59e0b" },
   ];
 
+  const defiSections = [
+    { id: "defi-hero", label: "DeFi" },
+    { id: "defi-metrics", label: "מדדים" },
+    { id: "defi-strategies", label: "אסטרטגיות" },
+    { id: "defi-risk", label: "מסגרת סיכונים" },
+  ];
+
   return (
     <PageWrapper bgGrid>
-      <section className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
+      <PageTableOfContents sections={defiSections} />
+
+      <section id="defi-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">{t("defi.badge")}</span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6"><span className="gradient-text">{t("defi.title")}</span></h1>
@@ -38,10 +48,10 @@ export default function DeFiPage() {
         </motion.div>
       </section>
 
-      <section className="pb-12 max-w-7xl mx-auto">
+      <section id="defi-metrics" className="pb-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {metrics.map((m, i) => (
-            <motion.div key={m.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-amber-500/15 bg-white backdrop-blur-md p-4 text-center">
+            <motion.div key={m.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: i * 0.08 }} className="rounded-xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-4 text-center">
               <div className="text-2xl font-bold mb-1" style={{ color: m.color }}>{m.value}</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider">{m.label}</div>
             </motion.div>
@@ -49,12 +59,12 @@ export default function DeFiPage() {
         </div>
       </section>
 
-      <section className="py-12 max-w-7xl mx-auto">
+      <section id="defi-strategies" className="py-12 max-w-7xl mx-auto">
         <SectionHeader badge={t("defi.strategies.badge")} title={t("defi.strategies.title")} subtitle={t("defi.strategies.subtitle")} />
         <ThesisCardGrid cards={strategies} />
       </section>
 
-      <section className="py-16 max-w-7xl mx-auto">
+      <section id="defi-risk" className="py-16 max-w-7xl mx-auto">
         <SectionHeader badge={t("defi.risk.badge")} title={t("defi.risk.title")} subtitle={t("defi.risk.subtitle")} />
         <DeFiRiskFramework />
       </section>

@@ -437,7 +437,7 @@ export default function DeFiRiskFramework() {
               key={risk.id}
               variants={cardVariants}
               whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className="relative rounded-2xl border border-amber-500/15 bg-white backdrop-blur-md overflow-hidden hover:border-amber-500/25 transition-colors"
+              className="relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md overflow-hidden hover:border-amber-500/25 transition-colors"
             >
               {/* פס צבעוני עליון */}
               <div
