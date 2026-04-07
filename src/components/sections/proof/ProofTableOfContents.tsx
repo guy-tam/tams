@@ -10,9 +10,6 @@ const sectionDefs = [
   { id: "asset-matrix", labelKey: "proof_toc.assetMatrix" },
   { id: "evidence-explorer", labelKey: "proof_toc.evidenceExplorer" },
   { id: "global-coverage", labelKey: "proof_toc.globalCoverage" },
-  { id: "market-analysis", labelKey: "proof_toc.marketAnalysis" },
-  { id: "business-model", labelKey: "proof_toc.businessModel" },
-  { id: "scenarios", labelKey: "proof_toc.scenarios" },
   { id: "methodology", labelKey: "proof_toc.methodology" },
 ];
 

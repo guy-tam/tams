@@ -7,9 +7,6 @@ import ProofHero from "@/components/sections/proof/ProofHero";
 import AssetThesisGrid from "@/components/sections/proof/AssetThesisGrid";
 import EvidenceExplorer from "@/components/sections/proof/EvidenceExplorer";
 import AdoptionCoverage from "@/components/sections/proof/AdoptionCoverage";
-import MarketUnderpricing from "@/components/sections/proof/MarketUnderpricing";
-import BusinessModelAdvantage from "@/components/sections/proof/BusinessModelAdvantage";
-import ScenarioModel from "@/components/sections/proof/ScenarioModel";
 import MethodologyDisclaimer from "@/components/sections/proof/MethodologyDisclaimer";
 import ProofTableOfContents from "@/components/sections/proof/ProofTableOfContents";
 
@@ -50,24 +47,6 @@ export default function ProofPage() {
 
         <div id="global-coverage">
           <AdoptionCoverage />
-        </div>
-
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
-
-        <div id="market-analysis">
-          <MarketUnderpricing />
-        </div>
-
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
-
-        <div id="business-model">
-          <BusinessModelAdvantage />
-        </div>
-
-        <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
-
-        <div id="scenarios">
-          <ScenarioModel />
         </div>
 
         <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />

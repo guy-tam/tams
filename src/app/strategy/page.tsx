@@ -1,10 +1,13 @@
 "use client";
 
-// דף אסטרטגיה - POS / POC / TAM / SAM / SOM וניתוח עסקי
+// דף אסטרטגיה — ניתוח שוק, תזת ערך, מודל עסקי, תרחישים, ויתרון תחרותי
 import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import TAMSAMSOMPanel from "@/components/sections/TAMSAMSOMPanel";
+import MarketUnderpricing from "@/components/sections/proof/MarketUnderpricing";
+import BusinessModelAdvantage from "@/components/sections/proof/BusinessModelAdvantage";
+import ScenarioModel from "@/components/sections/proof/ScenarioModel";
 import { useLanguage } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { Target, CheckCircle, Lightbulb, TrendingUp, Users, Zap } from "lucide-react";
@@ -24,6 +27,9 @@ export default function StrategyPage() {
     { id: "strategy-tam", label: "TAM/SAM/SOM" },
     { id: "strategy-pos", label: "הוכחת גודל" },
     { id: "strategy-poc", label: "הוכחת מושג" },
+    { id: "strategy-underpricing", label: "תמחור חסר" },
+    { id: "strategy-model", label: "מודל עסקי" },
+    { id: "strategy-scenarios", label: "תרחישים" },
     { id: "strategy-edge", label: "יתרון תחרותי" },
   ];
 
@@ -73,6 +79,28 @@ export default function StrategyPage() {
           ))}
         </div>
       </section>
+
+      {/* ─── סקציות שהועברו מעמוד ההוכחות — תזת ערך ומודל עסקי ─── */}
+
+      <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-8" />
+
+      <div id="strategy-underpricing">
+        <MarketUnderpricing />
+      </div>
+
+      <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
+
+      <div id="strategy-model">
+        <BusinessModelAdvantage />
+      </div>
+
+      <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-4" />
+
+      <div id="strategy-scenarios">
+        <ScenarioModel />
+      </div>
+
+      <div className="max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent my-8" />
 
       <section id="strategy-edge" className="py-16 max-w-7xl mx-auto">
         <SectionHeader badge={t("strategy.edge.badge")} title={t("strategy.edge.title")} subtitle={t("strategy.edge.subtitle")} />
