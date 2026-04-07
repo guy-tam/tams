@@ -17,6 +17,7 @@ import {
   Menu,
   X,
   LogIn,
+  ShieldCheck,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -30,6 +31,7 @@ const navItems = [
   { labelKey: "nav.defi", href: "/defi", icon: Coins },
   { labelKey: "nav.marketShift", href: "/market-shift", icon: TrendingUp },
   { labelKey: "nav.strategy", href: "/strategy", icon: Target },
+  { labelKey: "nav.proof", href: "/proof", icon: ShieldCheck },
   { labelKey: "nav.investor", href: "/investor", icon: Users },
 ];
 

@@ -14,6 +14,7 @@ export type TranslationStrings = {
     marketShift: string;
     strategy: string;
     investor: string;
+    proof: string;
     language: string;
   };
   common: {
@@ -187,6 +188,137 @@ export type TranslationStrings = {
     investorFirst: { title: string; description: string };
     globalAccess: { title: string; description: string };
     quote: string;
+  };
+  // עמוד הוכחות ואימוץ מוסדי
+  proof: {
+    hero: {
+      badge: string;
+      title: string;
+      titleHighlight: string;
+      description: string;
+      subdescription: string;
+      statsEvidenceRecords: string;
+      statsOrganizations: string;
+      statsCountries: string;
+      statsHighConfidence: string;
+      enginesTitle: string;
+      engineTreasuryLabel: string;
+      engineTreasuryDesc: string;
+      engineDefiLabel: string;
+      engineDefiDesc: string;
+      engineTradingLabel: string;
+      engineTradingDesc: string;
+      engineRotationLabel: string;
+      engineRotationDesc: string;
+      engineRiskLabel: string;
+      engineRiskDesc: string;
+      engineInfraLabel: string;
+      engineInfraDesc: string;
+    };
+    assetGrid: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      scoreFinance: string;
+      scoreAdoption: string;
+      scoreEcosystem: string;
+      scoreConfidence: string;
+      evidence: string;
+      view: string;
+      hideDetails: string;
+      riskCaveats: string;
+    };
+    evidence: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      searchPlaceholder: string;
+      filters: string;
+      filterAsset: string;
+      filterRegion: string;
+      filterConfidence: string;
+      filterStatus: string;
+      filterSort: string;
+      allAssets: string;
+      allRegions: string;
+      allLevels: string;
+      allStatuses: string;
+      sortAsset: string;
+      sortConfidence: string;
+      sortOrganization: string;
+      sortRegion: string;
+      showing: string;
+      of: string;
+      records: string;
+      noRecords: string;
+      whyItMatters: string;
+      source: string;
+      caveat: string;
+    };
+    coverage: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      geoDistribution: string;
+      orgTypes: string;
+      assetConcentration: string;
+      records: string;
+    };
+    underpricing: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      important: string;
+      importantText: string;
+    };
+    businessModel: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      engineTreasuryTitle: string;
+      engineDefiTitle: string;
+      engineTradingTitle: string;
+      engineRotationTitle: string;
+      engineRiskTitle: string;
+      engineInfraTitle: string;
+      valueCaptureFlow: string;
+      flowStep1Label: string;
+      flowStep1Sub: string;
+      flowStep2Label: string;
+      flowStep2Sub: string;
+      flowStep3Label: string;
+      flowStep3Sub: string;
+      flowStep4Label: string;
+      flowStep4Sub: string;
+    };
+    scenarios: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      conservative: string;
+      moderate: string;
+      accelerated: string;
+      keyAssumptions: string;
+      factorAssessment: string;
+      scenarioOutlook: string;
+      factorAdoption: string;
+      factorTreasury: string;
+      factorYield: string;
+      factorTrading: string;
+      factorDownside: string;
+      warning: string;
+    };
+    methodology: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      confidenceTitle: string;
+      relationshipTitle: string;
+      evidenceTitle: string;
+      notEvidenceTitle: string;
+      disclaimersTitle: string;
+      stamp: string;
+    };
   };
   // מערכת דרגות משקיעים
   investorTiers: {
