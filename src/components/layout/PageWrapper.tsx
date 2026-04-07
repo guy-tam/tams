@@ -3,6 +3,7 @@
 // עטיפת עמוד - אנימציית מעבר ומבנה אחיד
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import TamsLogo from "./TamsLogo";
 
 interface PageWrapperProps {
   children: ReactNode;
@@ -57,6 +58,9 @@ export default function PageWrapper({
           }}
         />
       )}
+
+      {/* לוגו עץ מוזהב — פינה שמאלית עליונה */}
+      <TamsLogo />
 
       {/* תוכן העמוד */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">

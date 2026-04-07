@@ -9,7 +9,6 @@ import CapitalFlowDiagram from "@/components/sections/CapitalFlowDiagram";
 import AllocationChart from "@/components/charts/AllocationChart";
 import DetailedPortfolioTable from "@/components/sections/DetailedPortfolioTable";
 import { useLanguage } from "@/lib/i18n";
-import TamsLogo from "@/components/layout/TamsLogo";
 import { motion } from "framer-motion";
 
 const divisionColors = ["#3b82f6", "#8b5cf6", "#06b6d4", "#10b981"];
@@ -32,9 +31,6 @@ export default function ArchitecturePage() {
 
       <section id="arch-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <div className="flex justify-center mb-6">
-            <TamsLogo size="md" showText={false} />
-          </div>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">
             {t("architecture.badge")}
           </span>

@@ -6,7 +6,6 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import SectionHeader from "@/components/layout/SectionHeader";
 import TAMSAMSOMPanel from "@/components/sections/TAMSAMSOMPanel";
 import { useLanguage } from "@/lib/i18n";
-import TamsLogo from "@/components/layout/TamsLogo";
 import { motion } from "framer-motion";
 import { Target, CheckCircle, Lightbulb, TrendingUp, Users, Zap } from "lucide-react";
 
@@ -34,9 +33,6 @@ export default function StrategyPage() {
 
       <section id="strategy-hero" className="py-16 sm:py-24 text-center max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <div className="flex justify-center mb-6">
-            <TamsLogo size="md" showText={false} />
-          </div>
           <span className="inline-block rounded-full bg-amber-500/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-amber-700 border border-amber-200 mb-6">{t("strategy.badge")}</span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6"><span className="gradient-text">{t("strategy.title")}</span></h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">{t("strategy.subtitle")}</p>

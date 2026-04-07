@@ -22,7 +22,6 @@ import {
 import { useLanguage } from "@/lib/i18n";
 import { useAuth } from "@/lib/auth";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
-import TamsLogo from "./TamsLogo";
 import type { ReactNode } from "react";
 
 // --- פריטי ניווט הדשבורד ---
@@ -176,7 +175,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
     <div className="flex h-full flex-col">
       {/* לוגו ומותג - פורטל משקיע */}
       <div className="flex items-center gap-3 px-6 py-5">
-        <TamsLogo size="sm" showText={false} />
+        <img src="/tams-logo.png" alt="TAMS" className="h-9 w-9 mix-blend-lighten opacity-90" />
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
           <p className="text-[10px] uppercase tracking-widest text-zinc-500">
@@ -290,7 +289,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-zinc-800/40 bg-[#0a1628]/80 backdrop-blur-md px-4 sm:px-6">
           {/* לוגו בבר עליון - נראה רק במובייל */}
           <div className="flex items-center gap-2 lg:hidden">
-            <TamsLogo size="sm" showText={false} />
+            <img src="/tams-logo.png" alt="TAMS" className="h-9 w-9 mix-blend-lighten opacity-90" />
             <span className="text-sm font-bold text-white">TAMS {t("nav.investorPortal")}</span>
           </div>
 

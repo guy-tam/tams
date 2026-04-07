@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { useLanguage } from "@/lib/i18n";
-import TamsLogo from "@/components/layout/TamsLogo";
 
 // --- כדורים צפים לרקע ---
 
@@ -300,9 +299,6 @@ export default function LoginPage() {
 
           {/* כרטיס הטופס */}
           <div className="rounded-2xl p-8 bg-[rgba(30,50,80,0.4)] backdrop-blur-xl border border-amber-500/15">
-            <div className="flex justify-center mb-6">
-              <TamsLogo size="md" />
-            </div>
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-white mb-2">Sign In</h2>
               <p className="text-sm text-muted-foreground">

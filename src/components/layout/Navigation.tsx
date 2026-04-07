@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
-import TamsLogo from "./TamsLogo";
 
 // מפתחות ניווט עם אייקונים ונתיבים
 const navItems = [
@@ -119,7 +118,7 @@ export default function Navigation() {
     <div className="flex h-full flex-col">
       {/* לוגו ומותג */}
       <div className="flex items-center gap-3 px-6 py-6">
-        <TamsLogo size="sm" showText={false} />
+        <img src="/tams-logo.png" alt="TAMS" className="h-9 w-9 mix-blend-lighten opacity-90" />
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
           <p className="text-[10px] uppercase tracking-widest text-blue-400/40">
