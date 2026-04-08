@@ -314,6 +314,252 @@ const directQAs: DirectQA[] = [
       category: "concept",
     }),
   },
+
+  // הקצאה / allocation
+  {
+    patterns: ["what is the allocation", "portfolio allocation", "מה ההקצאה", "הקצאת תיק", "חלוקת התיק"],
+    response: () => ({
+      answer: "**TAMS Portfolio Allocation:**\n\n**By wallet division:**\n• Long-Term Holdings: **40%** — quality asset appreciation\n• Active Trading: **25%** — tactical positions\n• DeFi Yield: **25%** — protocol returns (4-12% APY)\n• Operations: **10%** — gas, buffers\n\n**By asset type:**\n• Precious Metals: **32%** (gold, silver, copper)\n• Digital Assets: **68%** across 7 categories\n\n**Digital asset breakdown:**\n• Smart Contracts: 36% (SOL, ADA, AVAX, HBAR, ONDO, HOLO)\n• Payments & Routing: 27% (XRP, XLM, XDC)\n• Data & Connectivity: 14% (LINK, QNT, FLR)\n• DeFi Protocols: 14% (AAVE, MKR)\n• Scaling: 7% (MATIC, ARB)\n• Storage: 7% (FIL, AR)\n• Privacy/Identity: 5% (WLD)\n\nFull visualization on the **Architecture** page (/architecture).",
+      answerHe: "**הקצאת תיק TAMS:**\n\n**לפי חטיבת ארנק:**\n• החזקות ארוכות טווח: **40%** — ייסוף נכסים איכותיים\n• מסחר אקטיבי: **25%** — פוזיציות טקטיות\n• תשואות DeFi: **25%** — תשואות פרוטוקול (4-12% APY)\n• תפעול: **10%** — gas, מאגרים\n\n**לפי סוג נכס:**\n• מתכות יקרות: **32%** (זהב, כסף, נחושת)\n• נכסים דיגיטליים: **68%** ב-7 קטגוריות\n\n**פירוט נכסים דיגיטליים:**\n• חוזים חכמים: 36% (SOL, ADA, AVAX, HBAR, ONDO, HOLO)\n• תשלומים וניתוב: 27% (XRP, XLM, XDC)\n• נתונים וקישוריות: 14% (LINK, QNT, FLR)\n• פרוטוקולי DeFi: 14% (AAVE, MKR)\n• סקלביליות: 7% (MATIC, ARB)\n• אחסון: 7% (FIL, AR)\n• פרטיות/זהות: 5% (WLD)\n\nהמחשה מלאה בעמוד **ארכיטקטורה** (/architecture).",
+      relevantPages: [
+        { route: "/architecture", name: "Architecture", nameHe: "ארכיטקטורה" },
+        { route: "/holdings", name: "Holdings", nameHe: "החזקות" },
+      ],
+      suggestedFollowUp: ["How are wallets structured?", "How many assets?", "What is the DeFi strategy?"],
+      suggestedFollowUpHe: ["מה מבנה הארנקים?", "כמה נכסים?", "מה אסטרטגיית DeFi?"],
+      category: "concept",
+    }),
+  },
+
+  // האם זה ייעוץ השקעות
+  {
+    patterns: ["is this investment advice", "investment advice", "האם זה ייעוץ השקעות", "ייעוץ השקעות", "not investment advice"],
+    response: () => ({
+      answer: "**No.** TAMS is **not investment advice**.\n\nAll content on this site is for **research and educational purposes only**. Key disclaimers:\n\n• Not an offer to buy or sell securities\n• No recommendation to purchase or hold assets\n• Past performance does not guarantee future results\n• You must obtain independent professional advice\n• Crypto markets are young and volatile\n• Risk scores are indicative, not deterministic\n\nFull legal disclosure on the **Legal** page (/legal).\nRisk details on the **Investor** page (/investor).",
+      answerHe: "**לא.** TAMS **אינה ייעוץ השקעות**.\n\nכל התוכן באתר הוא למטרות **מחקר וחינוך בלבד**. גילויים מרכזיים:\n\n• לא הצעה לקנות או למכור ניירות ערך\n• אין המלצה לרכוש או להחזיק נכסים\n• ביצועי עבר אינם מבטיחים תוצאות עתידיות\n• יש לקבל ייעוץ מקצועי עצמאי\n• שוקי הקריפטו צעירים ותנודתיים\n• ניקוד סיכון הוא אינדיקטיבי, לא דטרמיניסטי\n\nגילוי משפטי מלא בעמוד **משפטי** (/legal).\nפרטי סיכון בעמוד **משקיעים** (/investor).",
+      relevantPages: [
+        { route: "/legal", name: "Legal", nameHe: "משפטי" },
+        { route: "/investor", name: "Investor", nameHe: "משקיעים" },
+      ],
+      suggestedFollowUp: ["What are the risks?", "How do I invest?", "What is TAMS?"],
+      suggestedFollowUpHe: ["מה הסיכונים?", "איך משקיעים?", "מה זה TAMS?"],
+      category: "concept",
+    }),
+  },
+
+  // מי בצוות / who is on the team
+  {
+    patterns: ["who is on the team", "team", "who manages", "מי בצוות", "מי מנהל", "צוות"],
+    response: () => ({
+      answer: "The TAMS **team structure** is organized around **4 pillars**:\n\n1. **Research** — macro, micro, and on-chain analysis\n2. **Trading** — spot, derivatives, DeFi strategies\n3. **Infrastructure** — secure digital asset management\n4. **Compliance & Regulation** — KYC/AML, regulatory reporting\n\nThere's also an **Advisory Board** of blockchain, finance, and compliance experts (full profiles available to KYC-verified investors).\n\n**Core values:** Institutional Rigor, Transparency, Risk Management, Compliance First.\n\n**Contact:** contact@tams.earth\n\nFull details on the **Team** page (/team).",
+      answerHe: "**מבנה הצוות** של TAMS מאורגן סביב **4 עמודי תווך**:\n\n1. **מחקר** — ניתוח מאקרו, מיקרו ו-on-chain\n2. **מסחר** — ספוט, נגזרים, אסטרטגיות DeFi\n3. **תשתית** — ניהול נכסים דיגיטליים מאובטח\n4. **ציות ורגולציה** — KYC/AML, דיווח רגולטורי\n\nיש גם **מועצה מייעצת** של מומחי בלוקצ'יין, פיננסים וציות (פרופילים מלאים זמינים למשקיעים מאומתי KYC).\n\n**ערכי ליבה:** קפדנות מוסדית, שקיפות, ניהול סיכונים, ציות בראש סדר העדיפויות.\n\n**קשר:** contact@tams.earth\n\nכל הפרטים בעמוד **צוות** (/team).",
+      relevantPages: [
+        { route: "/team", name: "Team", nameHe: "צוות" },
+        { route: "/company", name: "Company", nameHe: "חברה" },
+      ],
+      suggestedFollowUp: ["What is the vision?", "How is the fund structured?", "What are the principles?"],
+      suggestedFollowUpHe: ["מה החזון?", "מה מבנה הקרן?", "מה העקרונות?"],
+      category: "concept",
+    }),
+  },
+
+  // מה ה-APY
+  {
+    patterns: ["what is the apy", "target apy", "apy", "מה ה-apy", "יעד apy", "כמה תשואה", "תשואה"],
+    response: () => ({
+      answer: "The TAMS DeFi strategy targets **4-12% APY** (Annual Percentage Yield).\n\nThis is generated through:\n• **Lending** on Aave, Compound\n• **Staking** (native + liquid)\n• **Liquidity Pools** on Uniswap, Curve\n\n**Risk controls:**\n• Max **10%** exposure per protocol\n• DeFi is **25%** of total portfolio\n• Smart contract audit requirements\n• Multi-chain diversification (3+ chains)\n\nThe APY target is conservative by crypto standards — prioritizing capital preservation over maximum yield.\n\nDetails on the **DeFi** page (/defi).",
+      answerHe: "אסטרטגיית DeFi של TAMS מכוונת ל-**4-12% APY** (תשואה שנתית).\n\nזה מיוצר דרך:\n• **הלוואות** ב-Aave, Compound\n• **סטייקינג** (מקורי + נזיל)\n• **מאגרי נזילות** ב-Uniswap, Curve\n\n**בקרות סיכון:**\n• חשיפה מקסימלית **10%** לפרוטוקול\n• DeFi הוא **25%** מהתיק הכולל\n• דרישות ביקורת חוזים חכמים\n• פיזור רב-שרשרתי (3+ רשתות)\n\nיעד ה-APY שמרני לפי סטנדרטים של קריפטו — מעדיף שימור הון על פני תשואה מקסימלית.\n\nפרטים בעמוד **DeFi** (/defi).",
+      relevantPages: [
+        { route: "/defi", name: "DeFi", nameHe: "DeFi" },
+      ],
+      suggestedFollowUp: ["What protocols are used?", "How is risk managed?", "What is the wallet structure?"],
+      suggestedFollowUpHe: ["אילו פרוטוקולים בשימוש?", "איך מנוהל סיכון?", "מה מבנה הארנקים?"],
+      category: "concept",
+    }),
+  },
+
+  // שאלות נפוצות / FAQ
+  {
+    patterns: ["faq", "frequently asked", "common questions", "שאלות נפוצות", "שאלות ותשובות"],
+    response: () => ({
+      answer: "The **FAQ** page (/faq) covers 4 categories:\n\n1. **About TAMS** — what it is, the thesis, asset count, risks\n2. **Investments & Portfolio** — selection methodology, confidence ratings\n3. **Research & Evidence** — 259 records, evidence hierarchy, update frequency\n4. **Access & Security** — portal access, security standards\n\nYou can also ask me directly! I know all the site content.",
+      answerHe: "עמוד **שאלות נפוצות** (/faq) מכסה 4 קטגוריות:\n\n1. **אודות TAMS** — מה זה, התזה, כמות נכסים, סיכונים\n2. **השקעות ותיק** — מתודולוגיית בחירה, דירוגי ביטחון\n3. **מחקר וראיות** — 259 רשומות, היררכיית ראיות, תדירות עדכון\n4. **גישה ואבטחה** — גישה לפורטל, סטנדרטי אבטחה\n\nאפשר גם לשאול אותי ישירות! אני מכיר את כל תוכן האתר.",
+      relevantPages: [
+        { route: "/faq", name: "FAQ", nameHe: "שאלות נפוצות" },
+      ],
+      suggestedFollowUp: ["What is TAMS?", "How many assets?", "Is this investment advice?"],
+      suggestedFollowUpHe: ["מה זה TAMS?", "כמה נכסים?", "האם זה ייעוץ השקעות?"],
+      category: "navigation",
+    }),
+  },
+
+  // מבנה הקרן / fund structure
+  {
+    patterns: ["fund structure", "how is the fund structured", "gp lp", "מבנה הקרן", "מה מבנה הקרן"],
+    response: () => ({
+      answer: "TAMS uses a **GP/LP fund structure**:\n\n• **GP (General Partner)** — fund manager, makes investment decisions\n• **LP (Limited Partners)** — investors, provide capital\n\n**Infrastructure partners:**\n• **Fordefi** — institutional-grade portfolio management platform\n• **Ledger Flex** — hardware custody for digital assets\n• **Multi-Sig** — multiple approvals required for all transactions\n\n**Operating model allocation:**\n• Custody: 50% (Ledger + Multi-Sig)\n• Risk Management: 20% (weekly monitoring)\n• Staking/Lending: 20% (yield generation)\n• Governance: 10% (control & reporting)\n\nFull details on the **Company** page (/company).",
+      answerHe: "TAMS משתמשת ב**מבנה קרן GP/LP**:\n\n• **GP (שותף כללי)** — מנהל הקרן, מקבל החלטות השקעה\n• **LP (שותפים מוגבלים)** — משקיעים, מספקים הון\n\n**שותפי תשתית:**\n• **Fordefi** — פלטפורמת ניהול תיק ברמה מוסדית\n• **Ledger Flex** — משמורת חומרתית לנכסים דיגיטליים\n• **Multi-Sig** — אישורים מרובים נדרשים לכל עסקה\n\n**הקצאת מודל תפעול:**\n• משמורת: 50% (Ledger + Multi-Sig)\n• ניהול סיכונים: 20% (ניטור שבועי)\n• סטייקינג/הלוואות: 20% (יצירת תשואה)\n• ממשל: 10% (בקרה ודיווח)\n\nכל הפרטים בעמוד **חברה** (/company).",
+      relevantPages: [
+        { route: "/company", name: "Company", nameHe: "חברה" },
+      ],
+      suggestedFollowUp: ["What is the vision?", "Who manages the fund?", "What are the principles?"],
+      suggestedFollowUpHe: ["מה החזון?", "מי מנהל את הקרן?", "מה העקרונות?"],
+      category: "concept",
+    }),
+  },
+
+  // עקרונות / principles
+  {
+    patterns: ["principles", "core principles", "what are the principles", "עקרונות", "מה העקרונות", "עקרונות מרכזיים"],
+    response: () => ({
+      answer: "TAMS operates by **4 core principles**:\n\n1. **Research-Driven Analysis** — every decision backed by data, not hype\n2. **Risk-First Management** — protect capital before seeking returns\n3. **Institutional Discipline** — matching traditional finance standards\n4. **Transparency & Communication** — regular reporting, real-time data access\n\nThese principles drive the 4-step process: **Identify → Evaluate → Allocate → Execute**.\n\nSee them in context on the **Company** page (/company).",
+      answerHe: "TAMS פועלת לפי **4 עקרונות מרכזיים**:\n\n1. **ניתוח מבוסס מחקר** — כל החלטה מגובה בנתונים, לא בהייפ\n2. **ניהול סיכונים ראשוני** — הגנה על ההון לפני חיפוש תשואה\n3. **משמעת מוסדית** — התאמה לסטנדרטים של פיננסים מסורתיים\n4. **שקיפות ותקשורת** — דיווח קבוע, גישה לנתונים בזמן אמת\n\nעקרונות אלה מניעים את התהליך ב-4 שלבים: **זיהוי → הערכה → הקצאה → ביצוע**.\n\nראה אותם בהקשר בעמוד **חברה** (/company).",
+      relevantPages: [
+        { route: "/company", name: "Company", nameHe: "חברה" },
+      ],
+      suggestedFollowUp: ["What is the vision?", "How is the fund structured?", "What is the methodology?"],
+      suggestedFollowUpHe: ["מה החזון?", "מה מבנה הקרן?", "מה המתודולוגיה?"],
+      category: "concept",
+    }),
+  },
+
+  // קטליסטורים
+  {
+    patterns: ["catalysts", "market catalysts", "what are the catalysts", "קטליסטורים", "מה הקטליסטורים"],
+    response: () => ({
+      answer: "**6 market catalysts** driving institutional blockchain adoption:\n\n1. **ETF Approvals** — Bitcoin & Ethereum ETFs opening regulated access\n2. **Regulatory Clarity** — clearer legal frameworks worldwide\n3. **Corporate Treasury Adoption** — companies adding crypto to balance sheets\n4. **RWA Tokenization** — $16T+ potential in tokenized real-world assets\n5. **DeFi Maturation** — institutional-grade protocols emerging\n6. **Infrastructure Growth** — blockchain becoming enterprise-ready\n\nThese catalysts are converging now, which is why TAMS sees an **asymmetric opportunity**.\n\nFull analysis on the **Market Shift** page (/market-shift).",
+      answerHe: "**6 קטליסטורים** שמניעים אימוץ מוסדי של בלוקצ'יין:\n\n1. **אישורי ETF** — ETFs של Bitcoin ו-Ethereum פותחים גישה מוסדרת\n2. **בהירות רגולטורית** — מסגרות משפטיות ברורות יותר עולמית\n3. **אימוץ אוצר תאגידי** — חברות מוסיפות קריפטו למאזנים\n4. **טוקניזציית RWA** — פוטנציאל $16T+ בנכסים מטוקניים\n5. **הבשלת DeFi** — פרוטוקולים ברמה מוסדית צצים\n6. **צמיחת תשתית** — בלוקצ'יין הופך מוכן לארגונים\n\nקטליסטורים אלה מתכנסים עכשיו, ולכן TAMS רואה **הזדמנות א-סימטרית**.\n\nניתוח מלא בעמוד **מהפך שוק** (/market-shift).",
+      relevantPages: [
+        { route: "/market-shift", name: "Market Shift", nameHe: "מהפך שוק" },
+      ],
+      suggestedFollowUp: ["How big is the market?", "What is the thesis?", "What is the strategy?"],
+      suggestedFollowUpHe: ["כמה גדול השוק?", "מה התזה?", "מה האסטרטגיה?"],
+      category: "concept",
+    }),
+  },
+
+  // כמה גדול השוק
+  {
+    patterns: ["how big is the market", "market size", "כמה גדול השוק", "גודל השוק"],
+    response: () => ({
+      answer: "**Massive markets** being disrupted by blockchain:\n\n• Cross-border payments: **$1,000T**\n• Managed assets: **$147T**\n• Pension funds: **$58.5T**\n• BlackRock/Vanguard: **$20T**\n• Insurance: **$7T**\n• Tokenized Real Estate: **$4.3T**\n• ETFs: **$2T**\n\n**TAMS market sizing:**\n• TAM: $2-3T\n• SAM: $300-500B\n• SOM: $25-75M\n\nThe thesis: blockchain infrastructure will capture a growing share of these traditional markets.\n\nFull data on the **Market Shift** page (/market-shift).",
+      answerHe: "**שווקים עצומים** שמופרעים על ידי בלוקצ'יין:\n\n• תשלומים בינלאומיים: **$1,000T**\n• נכסים מנוהלים: **$147T**\n• קרנות פנסיה: **$58.5T**\n• BlackRock/Vanguard: **$20T**\n• ביטוח: **$7T**\n• נדל\"ן מטוקנייז: **$4.3T**\n• ETFs: **$2T**\n\n**גודל שוק TAMS:**\n• TAM: $2-3T\n• SAM: $300-500B\n• SOM: $25-75M\n\nהתזה: תשתית בלוקצ'יין תלכוד נתח הולך וגדל מהשווקים המסורתיים הללו.\n\nכל הנתונים בעמוד **מהפך שוק** (/market-shift).",
+      relevantPages: [
+        { route: "/market-shift", name: "Market Shift", nameHe: "מהפך שוק" },
+        { route: "/strategy", name: "Strategy", nameHe: "אסטרטגיה" },
+      ],
+      suggestedFollowUp: ["What are the catalysts?", "What is the TAM?", "Why invest now?"],
+      suggestedFollowUpHe: ["מה הקטליסטורים?", "מה ה-TAM?", "למה להשקיע עכשיו?"],
+      category: "concept",
+    }),
+  },
+
+  // איך ליצור קשר
+  {
+    patterns: ["contact", "how to contact", "email", "קשר", "איך ליצור קשר", "מייל", "אימייל"],
+    response: () => ({
+      answer: "**Contact TAMS:**\n\n• Email: **contact@tams.earth**\n• Private access request: **/access** page\n• Team responds within **48 hours**\n\nFor qualified investors, submit a confidential review request at **/access** with your investor type and investment range.",
+      answerHe: "**יצירת קשר עם TAMS:**\n\n• אימייל: **contact@tams.earth**\n• בקשת גישה פרטית: עמוד **/access**\n• הצוות מגיב תוך **48 שעות**\n\nלמשקיעים מוסמכים, הגישו בקשה לסקירה חסויה ב-**/access** עם סוג המשקיע וטווח ההשקעה.",
+      relevantPages: [
+        { route: "/access", name: "Access", nameHe: "גישה פרטית" },
+        { route: "/investor", name: "Investor", nameHe: "משקיעים" },
+      ],
+      suggestedFollowUp: ["What are the investor tiers?", "How do I invest?", "What are the risks?"],
+      suggestedFollowUpHe: ["מה דרגות המשקיעים?", "איך משקיעים?", "מה הסיכונים?"],
+      category: "navigation",
+    }),
+  },
+
+  // שאלות שיחתיות — תודה / thanks
+  {
+    patterns: ["thank", "thanks", "תודה", "תודה רבה", "מעולה", "great", "awesome", "perfect"],
+    response: () => ({
+      answer: "You're welcome! Feel free to ask anything else about the TAMS site. I'm here to help you understand the opportunity.\n\nSome areas you might want to explore:\n• The investment strategy and business model\n• The 259 evidence records backing the thesis\n• The portfolio architecture and asset selection\n• How to start the investment process",
+      answerHe: "בשמחה! אל תהסס לשאול כל שאלה נוספת על אתר TAMS. אני כאן לעזור לך להבין את ההזדמנות.\n\nתחומים שאולי תרצה לחקור:\n• אסטרטגיית ההשקעה והמודל העסקי\n• 259 רשומות הראיות שתומכות בתזה\n• ארכיטקטורת התיק ובחירת הנכסים\n• איך להתחיל את תהליך ההשקעה",
+      relevantPages: [],
+      suggestedFollowUp: ["What is the strategy?", "Show me the evidence", "How do I invest?"],
+      suggestedFollowUpHe: ["מה האסטרטגיה?", "תראה לי את הראיות", "איך משקיעים?"],
+      category: "concept",
+    }),
+  },
+
+  // שלום / hello
+  {
+    patterns: ["hello", "hi", "hey", "שלום", "היי", "הי", "בוקר טוב", "ערב טוב", "good morning"],
+    response: () => ({
+      answer: "Hello! I'm the TAMS Investor Guide. I can help you understand:\n\n• **What TAMS is** and its investment thesis\n• **The portfolio** — 16 assets across 7 categories\n• **The evidence** — 259 verified institutional records\n• **How to invest** — tiers, process, and access\n• **Any page or section** on this site\n\nWhat would you like to know?",
+      answerHe: "שלום! אני מדריך המשקיעים של TAMS. אני יכול לעזור לך להבין:\n\n• **מה זה TAMS** ותזת ההשקעה שלה\n• **התיק** — 16 נכסים ב-7 קטגוריות\n• **הראיות** — 259 רשומות מוסדיות מאומתות\n• **איך להשקיע** — דרגות, תהליך וגישה\n• **כל עמוד או סעיף** באתר הזה\n\nמה תרצה לדעת?",
+      relevantPages: [],
+      suggestedFollowUp: ["What is TAMS?", "Where should I start?", "What is the strategy?", "How do I invest?"],
+      suggestedFollowUpHe: ["מה זה TAMS?", "מאיפה להתחיל?", "מה האסטרטגיה?", "איך משקיעים?"],
+      category: "orientation",
+    }),
+  },
+
+  // ספר לי עוד / tell me more
+  {
+    patterns: ["tell me more", "explain more", "more details", "ספר לי עוד", "עוד פרטים", "תרחיב", "הסבר נוסף"],
+    response: () => ({
+      answer: "I'd be happy to go deeper! What topic interests you most?\n\n• **Strategy** — the 6-engine business model and market thesis\n• **Portfolio** — the 16 assets and how they're selected\n• **Evidence** — 259 verified records and the methodology\n• **DeFi** — yield strategies and risk management\n• **Market opportunity** — why now and what's driving adoption\n• **Investing** — tiers, process, and what to expect\n\nJust ask about any of these, or about a specific page!",
+      answerHe: "אשמח להעמיק! איזה נושא מעניין אותך הכי הרבה?\n\n• **אסטרטגיה** — המודל העסקי 6-מנועי ותזת השוק\n• **תיק** — 16 הנכסים ואיך הם נבחרים\n• **ראיות** — 259 רשומות מאומתות והמתודולוגיה\n• **DeFi** — אסטרטגיות תשואה וניהול סיכון\n• **הזדמנות שוק** — למה עכשיו ומה מניע אימוץ\n• **השקעה** — דרגות, תהליך ומה לצפות\n\nפשוט שאל על כל אחד מאלה, או על עמוד ספציפי!",
+      relevantPages: [
+        { route: "/strategy", name: "Strategy", nameHe: "אסטרטגיה" },
+        { route: "/proof", name: "Proof", nameHe: "הוכחות" },
+        { route: "/holdings", name: "Holdings", nameHe: "החזקות" },
+      ],
+      suggestedFollowUp: ["What is the business model?", "How are assets selected?", "Show me the evidence"],
+      suggestedFollowUpHe: ["מה המודל העסקי?", "איך נבחרים נכסים?", "תראה לי את הראיות"],
+      category: "orientation",
+    }),
+  },
+
+  // מפת דרכים / roadmap
+  {
+    patterns: ["roadmap", "development roadmap", "milestones", "מפת דרכים", "אבני דרך", "שלבי פיתוח"],
+    response: () => ({
+      answer: "The TAMS **development roadmap** is on the **Investor** page (/investor).\n\nIt shows multi-phase development with:\n• **Completed milestones** — already achieved\n• **In Progress** — currently being built\n• **Upcoming** — planned next steps\n\nEach phase includes specific milestones with completion tracking.\n\nVisit the **Investor** page to see the full timeline.",
+      answerHe: "**מפת הדרכים** של TAMS נמצאת בעמוד **משקיעים** (/investor).\n\nהיא מציגה פיתוח רב-שלבי עם:\n• **אבני דרך שהושלמו** — כבר הושגו\n• **בתהליך** — נבנה כרגע\n• **מתוכנן** — צעדים הבאים\n\nכל שלב כולל אבני דרך ספציפיות עם מעקב השלמה.\n\nבקר בעמוד **משקיעים** לראות את לוח הזמנים המלא.",
+      relevantPages: [
+        { route: "/investor", name: "Investor", nameHe: "משקיעים" },
+      ],
+      suggestedFollowUp: ["How do I invest?", "What are the tiers?", "What is the strategy?"],
+      suggestedFollowUpHe: ["איך משקיעים?", "מה הדרגות?", "מה האסטרטגיה?"],
+      category: "concept",
+    }),
+  },
+
+  // אבטחה / security
+  {
+    patterns: ["security", "how secure", "custody", "אבטחה", "כמה מאובטח", "משמורת"],
+    response: () => ({
+      answer: "TAMS uses **institutional-grade security**:\n\n• **Ledger Flex** — hardware custody for digital assets\n• **Multi-Sig** — multiple signatures required for every transaction\n• **Fordefi** — institutional management platform\n• **4-wallet separation** — different wallets for different functions\n• **KYC/AML compliance** — full regulatory framework\n• **End-to-end encryption** — for all data\n\nThe custody division alone accounts for **50%** of the operating model focus.\n\nDetails on **Architecture** (/architecture) and **Company** (/company) pages.",
+      answerHe: "TAMS משתמשת ב**אבטחה ברמה מוסדית**:\n\n• **Ledger Flex** — משמורת חומרתית לנכסים דיגיטליים\n• **Multi-Sig** — חתימות מרובות נדרשות לכל עסקה\n• **Fordefi** — פלטפורמת ניהול מוסדית\n• **הפרדת 4 ארנקים** — ארנקים שונים לפונקציות שונות\n• **ציות KYC/AML** — מסגרת רגולטורית מלאה\n• **הצפנה מקצה לקצה** — לכל הנתונים\n\nחטיבת המשמורת לבדה מהווה **50%** ממיקוד מודל התפעול.\n\nפרטים בעמודי **ארכיטקטורה** (/architecture) ו**חברה** (/company).",
+      relevantPages: [
+        { route: "/architecture", name: "Architecture", nameHe: "ארכיטקטורה" },
+        { route: "/company", name: "Company", nameHe: "חברה" },
+      ],
+      suggestedFollowUp: ["How are wallets structured?", "What is the fund structure?", "What are the risks?"],
+      suggestedFollowUpHe: ["מה מבנה הארנקים?", "מה מבנה הקרן?", "מה הסיכונים?"],
+      category: "concept",
+    }),
+  },
+
+  // סיכום / summary
+  {
+    patterns: ["summarize", "summary", "quick summary", "תסכם", "סיכום", "סיכום מהיר", "בקצרה"],
+    response: () => ({
+      answer: "**TAMS in a nutshell:**\n\nAn institutional blockchain investment infrastructure holding **16 assets** across 7 categories, managed through a **4-wallet architecture** with 3 strategies:\n\n1. **Long-term holdings** (40%) — quality asset appreciation\n2. **Active trading** (25%) — tactical alpha\n3. **DeFi yield** (25%) — 4-12% APY target\n\nBacked by **259 verified evidence records** from 125+ organizations. Targeting a **$25-75M** obtainable market within a $2-3T TAM.\n\n4 investor tiers: $10K → $1M+\nContact: contact@tams.earth\n\n**Key pages:** Strategy (/strategy), Proof (/proof), Investor (/investor)",
+      answerHe: "**TAMS בקצרה:**\n\nתשתית השקעות מוסדית בבלוקצ'יין המחזיקה **16 נכסים** ב-7 קטגוריות, מנוהלת דרך **ארכיטקטורת 4 ארנקים** עם 3 אסטרטגיות:\n\n1. **החזקות ארוכות טווח** (40%) — ייסוף נכסים איכותיים\n2. **מסחר אקטיבי** (25%) — אלפא טקטי\n3. **תשואות DeFi** (25%) — יעד 4-12% APY\n\nמגובה ב-**259 רשומות ראיות מאומתות** מ-125+ ארגונים. מכוונת ל**$25-75M** שוק בר-השגה בתוך TAM של $2-3T.\n\n4 דרגות משקיעים: $10K → $1M+\nקשר: contact@tams.earth\n\n**עמודים מרכזיים:** אסטרטגיה (/strategy), הוכחות (/proof), משקיעים (/investor)",
+      relevantPages: [
+        { route: "/strategy", name: "Strategy", nameHe: "אסטרטגיה" },
+        { route: "/proof", name: "Proof", nameHe: "הוכחות" },
+        { route: "/investor", name: "Investor", nameHe: "משקיעים" },
+      ],
+      suggestedFollowUp: ["Tell me more about the strategy", "Show me the evidence", "How do I invest?"],
+      suggestedFollowUpHe: ["ספר לי עוד על האסטרטגיה", "תראה לי את הראיות", "איך משקיעים?"],
+      category: "concept",
+    }),
+  },
 ];
 
 // === שמות נכסים בתיק ===
