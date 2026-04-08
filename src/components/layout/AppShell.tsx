@@ -10,6 +10,7 @@ import type { Language, TranslationStrings } from "@/lib/i18n";
 import Navigation from "./Navigation";
 import TamsLogo from "./TamsLogo";
 import { ToastProvider } from "@/components/ui/toast";
+import InvestorGuide from "@/components/ai-guide/InvestorGuide";
 
 // ייבוא תרגומים
 import en from "@/lib/i18n/locales/en";
@@ -43,6 +44,8 @@ function ShellInner({ children }: { children: ReactNode }) {
         </div>
         {children}
       </div>
+      {/* מדריך AI למשקיעים — כפתור צף בכל העמודים הציבוריים */}
+      <InvestorGuide />
     </>
   );
 }
