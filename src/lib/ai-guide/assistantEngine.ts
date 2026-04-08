@@ -316,10 +316,156 @@ const directQAs: DirectQA[] = [
   },
 ];
 
+// === שמות נכסים בתיק ===
+
+const ASSET_TICKERS = new Set([
+  "eth", "sol", "avax", "algo", "sui", "arb", "op", "apt",
+  "aevo", "enso", "mkr", "aave", "uni", "ondo", "usdt", "btc",
+  "xrp", "xlm", "xdc", "ada", "hbar", "holo", "link", "qnt",
+  "flr", "matic", "fil", "ar", "wld",
+  "ethereum", "bitcoin", "solana", "avalanche", "ripple", "cardano",
+  "chainlink", "polygon", "filecoin", "arweave",
+]);
+
+const ASSET_CATEGORIES: Record<string, { en: string; he: string }> = {
+  xrp: { en: "Payments & Routing (27%)", he: "תשלומים וניתוב (27%)" },
+  xlm: { en: "Payments & Routing (27%)", he: "תשלומים וניתוב (27%)" },
+  xdc: { en: "Payments & Routing (27%)", he: "תשלומים וניתוב (27%)" },
+  ripple: { en: "Payments & Routing (27%)", he: "תשלומים וניתוב (27%)" },
+  sol: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  ada: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  avax: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  hbar: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  ondo: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  holo: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  solana: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  avalanche: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  cardano: { en: "Smart Contracts (36%)", he: "חוזים חכמים (36%)" },
+  link: { en: "Data & Connectivity (14%)", he: "נתונים וקישוריות (14%)" },
+  qnt: { en: "Data & Connectivity (14%)", he: "נתונים וקישוריות (14%)" },
+  flr: { en: "Data & Connectivity (14%)", he: "נתונים וקישוריות (14%)" },
+  chainlink: { en: "Data & Connectivity (14%)", he: "נתונים וקישוריות (14%)" },
+  matic: { en: "Scaling Solutions (7%)", he: "פתרונות סקלביליות (7%)" },
+  arb: { en: "Scaling Solutions (7%)", he: "פתרונות סקלביליות (7%)" },
+  polygon: { en: "Scaling Solutions (7%)", he: "פתרונות סקלביליות (7%)" },
+  fil: { en: "Storage & Data (7%)", he: "אחסון ונתונים (7%)" },
+  ar: { en: "Storage & Data (7%)", he: "אחסון ונתונים (7%)" },
+  filecoin: { en: "Storage & Data (7%)", he: "אחסון ונתונים (7%)" },
+  arweave: { en: "Storage & Data (7%)", he: "אחסון ונתונים (7%)" },
+  aave: { en: "DeFi Protocols (14%)", he: "פרוטוקולי DeFi (14%)" },
+  mkr: { en: "DeFi Protocols (14%)", he: "פרוטוקולי DeFi (14%)" },
+  uni: { en: "DeFi Protocols (14%)", he: "פרוטוקולי DeFi (14%)" },
+  eth: { en: "Core Infrastructure", he: "תשתית ליבה" },
+  ethereum: { en: "Core Infrastructure", he: "תשתית ליבה" },
+  btc: { en: "Digital Gold / Store of Value", he: "זהב דיגיטלי / מאגר ערך" },
+  bitcoin: { en: "Digital Gold / Store of Value", he: "זהב דיגיטלי / מאגר ערך" },
+  usdt: { en: "Stablecoin / Liquidity", he: "סטייבלקוין / נזילות" },
+};
+
+// בודק אם השאלה על נכס ספציפי
+function findAssetInQuery(query: string): string | null {
+  const tokens = query.toLowerCase().split(/\s+/);
+  for (const token of tokens) {
+    const clean = token.replace(/[?!.,;:'"()]/g, "");
+    if (ASSET_TICKERS.has(clean)) return clean;
+  }
+  return null;
+}
+
+function buildAssetAnswer(asset: string): GuideResponse {
+  const ticker = asset.toUpperCase();
+  const category = ASSET_CATEGORIES[asset.toLowerCase()];
+  const catEn = category?.en ?? "one of the portfolio categories";
+  const catHe = category?.he ?? "אחת מקטגוריות התיק";
+
+  return {
+    answer: `**${ticker}** is part of the TAMS portfolio, classified under **${catEn}**.\n\nThe portfolio holds **16 research-backed assets** across 7 categories. Each asset is selected based on 5 criteria: financial relevance, institutional adoption, regulatory clarity, technology maturity, and ecosystem strength.\n\nTo see the full research on ${ticker} — including thesis alignment, risk scoring, and institutional adoption evidence — visit the **Holdings** page (/holdings) and explore the **Asset Research Explorer**.\n\nYou can also see the evidence supporting ${ticker} on the **Proof** page (/proof).`,
+    answerHe: `**${ticker}** הוא חלק מתיק TAMS, מסווג תחת **${catHe}**.\n\nהתיק מחזיק **16 נכסים מגובי מחקר** ב-7 קטגוריות. כל נכס נבחר לפי 5 קריטריונים: רלוונטיות פיננסית, אימוץ מוסדי, בהירות רגולטורית, בשלות טכנולוגית וחוסן אקו-סיסטם.\n\nלסקירת המחקר המלאה על ${ticker} — כולל התאמת תזה, ניקוד סיכון וראיות אימוץ מוסדי — בקר בעמוד **החזקות** (/holdings) וחקור את **סייר מחקר הנכסים**.\n\nאפשר גם לראות את הראיות התומכות ב-${ticker} בעמוד **הוכחות** (/proof).`,
+    relevantPages: [
+      { route: "/holdings", name: "Holdings", nameHe: "החזקות" },
+      { route: "/proof", name: "Proof", nameHe: "הוכחות" },
+    ],
+    suggestedFollowUp: ["How many assets in the portfolio?", "How are assets selected?", "What is the methodology?"],
+    suggestedFollowUpHe: ["כמה נכסים בתיק?", "איך נבחרים נכסים?", "מה המתודולוגיה?"],
+    category: "concept",
+  };
+}
+
+// === "מה ההבדל בין" ===
+
+const PAGE_COMPARISONS: Record<string, { en: string; he: string }> = {
+  "proof|strategy": {
+    en: "**Proof vs. Strategy** — Two different perspectives:\n\n**Strategy** (/strategy) is about the **plan** — the business model, market sizing (TAM/SAM/SOM), scenario projections, and competitive advantages. It answers: *What is TAMS going to do and why?*\n\n**Proof** (/proof) is about the **evidence** — 259 verified records, institutional adoption data, and confidence scoring. It answers: *What data supports the thesis?*\n\nIn short: Strategy = the plan. Proof = the data backing it.",
+    he: "**הוכחות לעומת אסטרטגיה** — שתי נקודות מבט שונות:\n\n**אסטרטגיה** (/strategy) עוסקת ב**תוכנית** — המודל העסקי, גודל שוק (TAM/SAM/SOM), תחזיות תרחישים ויתרונות תחרותיים. היא עונה: *מה TAMS הולכת לעשות ולמה?*\n\n**הוכחות** (/proof) עוסקת ב**ראיות** — 259 רשומות מאומתות, נתוני אימוץ מוסדי וניקוד ביטחון. היא עונה: *אילו נתונים תומכים בתזה?*\n\nבקצרה: אסטרטגיה = התוכנית. הוכחות = הנתונים שתומכים בה.",
+  },
+  "holdings|architecture": {
+    en: "**Holdings vs. Architecture** — What vs. How:\n\n**Holdings** (/holdings) shows **what** assets are in the portfolio — all 16 assets with research, thesis alignment, and scoring.\n\n**Architecture** (/architecture) shows **how** the portfolio is structured — the 4-wallet system, capital flow, and allocation percentages.\n\nHoldings = the assets. Architecture = the infrastructure.",
+    he: "**החזקות לעומת ארכיטקטורה** — מה לעומת איך:\n\n**החזקות** (/holdings) מציגות **אילו** נכסים בתיק — כל 16 הנכסים עם מחקר, התאמת תזה וניקוד.\n\n**ארכיטקטורה** (/architecture) מציגה **איך** התיק בנוי — מערכת 4 הארנקים, זרימת הון ואחוזי הקצאה.\n\nהחזקות = הנכסים. ארכיטקטורה = התשתית.",
+  },
+  "company|team": {
+    en: "**Company vs. Team:**\n\n**Company** (/company) covers the vision, mission, core principles, operating process, partnership structure (GP/LP), and operating model.\n\n**Team** (/team) focuses on the organizational structure — the 4 pillars (Research, Trading, Infrastructure, Compliance), advisory board, and core values.\n\nCompany = what we do. Team = who does it.",
+    he: "**חברה לעומת צוות:**\n\n**חברה** (/company) מכסה את החזון, המשימה, העקרונות, תהליך הפעולה, מבנה השותפות (GP/LP) ומודל התפעול.\n\n**צוות** (/team) מתמקד במבנה הארגוני — 4 עמודי התווך (מחקר, מסחר, תשתית, ציות), מועצה מייעצת וערכי ליבה.\n\nחברה = מה אנחנו עושים. צוות = מי עושה את זה.",
+  },
+  "strategy|market-shift": {
+    en: "**Strategy vs. Market Shift:**\n\n**Market Shift** (/market-shift) explains **why now** — the catalysts, market segments, timing, and institutional adoption trends.\n\n**Strategy** (/strategy) explains **what to do about it** — the business model, TAM/SAM/SOM, scenarios, and competitive advantages.\n\nMarket Shift = the opportunity. Strategy = the plan to capture it.",
+    he: "**אסטרטגיה לעומת מהפך שוק:**\n\n**מהפך שוק** (/market-shift) מסביר **למה עכשיו** — קטליסטורים, מגזרי שוק, תזמון ומגמות אימוץ מוסדי.\n\n**אסטרטגיה** (/strategy) מסבירה **מה לעשות עם זה** — מודל עסקי, TAM/SAM/SOM, תרחישים ויתרונות תחרותיים.\n\nמהפך שוק = ההזדמנות. אסטרטגיה = התוכנית ללכוד אותה.",
+  },
+  "defi|architecture": {
+    en: "**DeFi vs. Architecture:**\n\n**DeFi** (/defi) explains the **yield strategies** — lending, staking, liquidity pools, protocols used, and risk framework (4-12% APY target).\n\n**Architecture** (/architecture) shows the **overall structure** — all 4 wallet divisions including DeFi (25%), plus long-term holdings (40%), trading (25%), and operations (10%).\n\nDeFi = the yield engine details. Architecture = the full portfolio blueprint.",
+    he: "**DeFi לעומת ארכיטקטורה:**\n\n**DeFi** (/defi) מסביר את **אסטרטגיות התשואה** — הלוואות, סטייקינג, מאגרי נזילות, פרוטוקולים בשימוש ומסגרת סיכון (יעד 4-12% APY).\n\n**ארכיטקטורה** (/architecture) מציגה את **המבנה הכולל** — כל 4 חטיבות הארנק כולל DeFi (25%), בתוספת החזקות ארוכות טווח (40%), מסחר (25%) ותפעול (10%).\n\nDeFi = פרטי מנוע התשואה. ארכיטקטורה = השרטוט המלא של התיק.",
+  },
+  "methodology|proof": {
+    en: "**Methodology vs. Proof:**\n\n**Methodology** (/methodology) explains **how** research is done — asset selection criteria, evidence classification tiers, risk scoring, and portfolio construction rules.\n\n**Proof** (/proof) shows **what was found** — the 259 evidence records, adoption coverage, and asset thesis grid.\n\nMethodology = the research process. Proof = the research results.",
+    he: "**מתודולוגיה לעומת הוכחות:**\n\n**מתודולוגיה** (/methodology) מסבירה **איך** המחקר נעשה — קריטריונים לבחירת נכסים, שכבות סיווג ראיות, ניקוד סיכון וכללי בניית תיק.\n\n**הוכחות** (/proof) מציגות **מה נמצא** — 259 רשומות ראיות, כיסוי אימוץ ורשת תזות נכסים.\n\nמתודולוגיה = תהליך המחקר. הוכחות = תוצאות המחקר.",
+  },
+};
+
+function findComparisonAnswer(query: string): GuideResponse | null {
+  const q = query.toLowerCase();
+  // חיפוש מילות השוואה
+  if (!q.includes("difference") && !q.includes("הבדל") && !q.includes("לעומת") && !q.includes(" vs ") && !q.includes("compared")) {
+    return null;
+  }
+
+  for (const [key, comparison] of Object.entries(PAGE_COMPARISONS)) {
+    const [a, b] = key.split("|");
+    const pageA = sitePages.find((p) => p.route === `/${a}`);
+    const pageB = sitePages.find((p) => p.route === `/${b}`);
+    if (!pageA || !pageB) continue;
+
+    const names = [a, b, pageA.name.toLowerCase(), pageA.nameHe, pageB.name.toLowerCase(), pageB.nameHe];
+    const matchCount = names.filter((n) => q.includes(n)).length;
+    if (matchCount >= 2) {
+      return {
+        answer: comparison.en,
+        answerHe: comparison.he,
+        relevantPages: [
+          { route: pageA.route, name: pageA.name, nameHe: pageA.nameHe },
+          { route: pageB.route, name: pageB.name, nameHe: pageB.nameHe },
+        ],
+        suggestedFollowUp: [`What is the ${pageA.name} page about?`, `What is the ${pageB.name} page about?`],
+        suggestedFollowUpHe: [`על מה עמוד ${pageA.nameHe}?`, `על מה עמוד ${pageB.nameHe}?`],
+        category: "concept",
+      };
+    }
+  }
+  return null;
+}
+
 // === חיפוש Q&A ישיר ===
 
 function findDirectQA(query: string): GuideResponse | null {
   const q = query.toLowerCase().trim();
+
+  // 1. בדיקה אם שאלה על נכס ספציפי
+  const asset = findAssetInQuery(query);
+  if (asset) return buildAssetAnswer(asset);
+
+  // 2. בדיקה אם שאלת השוואה
+  const comparison = findComparisonAnswer(query);
+  if (comparison) return comparison;
+
+  // 3. Q&A ישירים
   for (const qa of directQAs) {
     for (const pattern of qa.patterns) {
       if (q === pattern || q.includes(pattern) || pattern.includes(q)) {
@@ -574,10 +720,17 @@ function buildGlossaryAnswer(query: string): GuideResponse | null {
   };
 }
 
-function buildFallback(): GuideResponse {
+function buildFallback(query?: string): GuideResponse {
+  const qNote = query
+    ? `\n\nI couldn't find a specific answer for "${query}" in the site content.`
+    : "";
+  const qNoteHe = query
+    ? `\n\nלא מצאתי תשובה ספציפית ל-"${query}" בתוכן האתר.`
+    : "";
+
   return {
-    answer: "I can help you understand the TAMS site — the strategy, portfolio, evidence base, and investor access. Try asking a specific question or use the suggested questions below.",
-    answerHe: "אני יכול לעזור לך להבין את אתר TAMS — האסטרטגיה, התיק, בסיס הראיות וגישת המשקיעים. נסה לשאול שאלה ספציפית או השתמש בשאלות המוצעות.",
+    answer: `I'm a guide for the TAMS site and can answer questions about the investment strategy, portfolio, evidence base, DeFi approach, and investor access.${qNote}\n\nTry one of the suggested questions below, or ask about a specific page or topic.`,
+    answerHe: `אני מדריך לאתר TAMS ויכול לענות על שאלות על אסטרטגיית ההשקעה, התיק, בסיס הראיות, גישת DeFi וגישת המשקיעים.${qNoteHe}\n\nנסה אחת מהשאלות המוצעות למטה, או שאל על עמוד או נושא ספציפי.`,
     relevantPages: [
       { route: "/", name: "Home", nameHe: "דף הבית" },
       { route: "/strategy", name: "Strategy", nameHe: "אסטרטגיה" },
@@ -629,7 +782,7 @@ export function askGuide(query: string, currentRoute?: string): GuideResponse {
     }
   }
 
-  return buildFallback();
+  return buildFallback(query);
 }
 
 // === שאלות מוצעות לפי עמוד ===

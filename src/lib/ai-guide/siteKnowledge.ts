@@ -379,6 +379,11 @@ export const sitePages: PageKnowledge[] = [
     keywords: [
       "holdings", "assets", "portfolio", "research", "crypto", "tokens",
       "החזקות", "נכסים", "תיק", "מחקר", "קריפטו",
+      "ETH", "SOL", "AVAX", "ALGO", "SUI", "ARB", "OP", "APT",
+      "AEVO", "ENSO", "MKR", "AAVE", "UNI", "ONDO", "USDT", "BTC",
+      "XRP", "XLM", "XDC", "ADA", "HBAR", "HOLO", "LINK", "QNT",
+      "FLR", "MATIC", "FIL", "AR", "WLD",
+      "ethereum", "bitcoin", "solana", "avalanche", "ripple",
     ],
   },
 
