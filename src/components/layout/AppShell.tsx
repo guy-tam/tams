@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/i18n";
 import type { Language, TranslationStrings } from "@/lib/i18n";
 import dynamic from "next/dynamic";
 import Navigation from "./Navigation";
+import Footer from "./Footer";
 import TamsLogo from "./TamsLogo";
 import { ToastProvider } from "@/components/ui/toast";
 
@@ -48,6 +49,8 @@ function ShellInner({ children }: { children: ReactNode }) {
           <TamsLogo />
         </div>
         {children}
+        {/* פוטר גלובלי — מוצג רק בעמודים ציבוריים */}
+        <Footer />
       </div>
       {/* מדריך AI למשקיעים — כפתור צף בכל העמודים הציבוריים */}
       <InvestorGuide />

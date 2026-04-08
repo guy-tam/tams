@@ -1,11 +1,11 @@
 "use client";
 
 // אקספלורר ראיות — טבלה חיפושית ומסננת עם 100+ רשומות
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Filter, ChevronDown, ChevronUp, ExternalLink,
-  Shield, AlertCircle, HelpCircle, Globe, Building2, Link2
+  Shield, AlertCircle, HelpCircle, Globe, Building2, Link2, Download
 } from "lucide-react";
 import { evidenceRecords, evidenceStats } from "@/data/adoption/evidence";
 import {
@@ -26,7 +26,7 @@ function StatusBadge({ status }: { status: EvidenceStatus }) {
     historical: "bg-gray-400/15 text-zinc-400 border-zinc-500/20",
     announced: "bg-purple-500/15 text-purple-400 border-purple-500/20",
     "ecosystem-support": "bg-cyan-500/15 text-cyan-400 border-cyan-500/20",
-    indirect: "bg-amber-500/[0.06]0/15 text-amber-400 border-amber-200",
+    indirect: "bg-amber-500/[0.06] text-amber-400 border-amber-200",
   };
   return (
     <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium border ${colors[status]}`}>
@@ -51,14 +51,37 @@ function ConfidenceBadge({ level }: { level: ConfidenceLevel }) {
 }
 
 // ─── שורת ראיה מורחבת ───
-function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) => string }) {
-  const [expanded, setExpanded] = useState(false);
+function EvidenceRow({
+  record,
+  t,
+  expanded,
+  onToggle,
+}: {
+  record: EvidenceRecord;
+  t: (key: string) => string;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  // גלילה אוטומטית כאשר הרשומה מורחבת מה-hash
+  useEffect(() => {
+    if (expanded && rowRef.current) {
+      rowRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    // רק בעת הרחבה ראשונית
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className={`border-b border-white/[0.06] last:border-b-0 transition-all duration-300 ${expanded ? "border-s-2 border-s-amber-500/20 border-e-2 border-e-amber-500/20" : ""}`}>
+    <div
+      ref={rowRef}
+      id={record.id}
+      className={`border-b border-white/[0.06] last:border-b-0 transition-all duration-300 ${expanded ? "border-s-2 border-s-amber-500/20 border-e-2 border-e-amber-500/20" : ""}`}
+    >
       {/* שורה ראשית */}
       <button
-        onClick={() => setExpanded(!expanded)}
+        onClick={onToggle}
         className="w-full text-start px-4 py-3 hover:bg-blue-500/[0.03] transition-colors flex items-center gap-3"
       >
         {/* טיקר */}
@@ -157,7 +180,7 @@ function EvidenceRow({ record, t }: { record: EvidenceRecord; t: (key: string) =
 
                 {/* הערות */}
                 {record.notes && (
-                  <div className="rounded-md bg-amber-500/[0.06]0/[0.05] border border-amber-200 p-2.5">
+                  <div className="rounded-md bg-amber-500/[0.06] border border-amber-200 p-2.5">
                     <p className="text-[10px] text-amber-400/80 leading-relaxed">
                       <strong>{t("proof.evidence.caveat")}:</strong> {record.notes}
                     </p>
@@ -178,7 +201,44 @@ const allRegions: Region[] = ["North America", "Europe", "Asia Pacific", "Global
 const allConfidence: ConfidenceLevel[] = ["high", "medium", "low"];
 const allStatuses: EvidenceStatus[] = ["active", "pilot", "historical", "announced", "ecosystem-support", "indirect"];
 
+const RECORDS_PER_PAGE = 30;
+
 type SortField = "asset" | "confidence" | "organization" | "region";
+
+// ─── ייצוא CSV ───
+function exportToCSV(records: EvidenceRecord[]) {
+  const headers = [
+    "asset", "organization", "organizationType", "country", "region",
+    "relationshipType", "status", "description", "whyItMatters",
+    "confidence", "sourceLabel", "sourceUrl", "sourceDate", "notes",
+  ];
+
+  // פונקציה לטיפול בערכים עם פסיקים ומרכאות
+  const escapeCSV = (value: string | undefined) => {
+    if (!value) return "";
+    const str = String(value);
+    if (str.includes(",") || str.includes('"') || str.includes("\n")) {
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+
+  const csvRows = [
+    headers.join(","),
+    ...records.map((r) =>
+      headers.map((h) => escapeCSV(r[h as keyof EvidenceRecord] as string)).join(",")
+    ),
+  ];
+
+  const csvString = "\uFEFF" + csvRows.join("\n"); // BOM לתמיכה ב-UTF-8 בעברית
+  const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "evidence-records.csv";
+  link.click();
+  URL.revokeObjectURL(url);
+}
 
 export default function EvidenceExplorer({ initialAsset }: { initialAsset?: string | null }) {
   const { t } = useLanguage();
@@ -189,6 +249,8 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
   const [statusFilter, setStatusFilter] = useState<EvidenceStatus | "all">("all");
   const [sortField, setSortField] = useState<SortField>("asset");
   const [showFilters, setShowFilters] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // כאשר נבחר נכס מ-AssetThesisGrid, עדכן את הפילטר
   useEffect(() => {
@@ -197,6 +259,18 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
       setShowFilters(true);
     }
   }, [initialAsset]);
+
+  // hash permalink — קריאה מה-URL בעת טעינה
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const matchingRecord = evidenceRecords.find((r) => r.id === hash);
+      if (matchingRecord) {
+        setExpandedId(hash);
+        // מציאת העמוד של הרשומה — נעשה אחרי שה-filtered ייבנה
+      }
+    }
+  }, []);
 
   const filtered = useMemo(() => {
     let result = [...evidenceRecords];
@@ -234,6 +308,58 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
     return result;
   }, [search, assetFilter, regionFilter, confidenceFilter, statusFilter, sortField]);
 
+  // איפוס עמוד כאשר הפילטרים משתנים
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, assetFilter, regionFilter, confidenceFilter, statusFilter, sortField]);
+
+  // כאשר expandedId מוגדר מ-hash, מצא את העמוד הנכון
+  useEffect(() => {
+    if (expandedId) {
+      const idx = filtered.findIndex((r) => r.id === expandedId);
+      if (idx >= 0) {
+        const targetPage = Math.floor(idx / RECORDS_PER_PAGE) + 1;
+        setCurrentPage(targetPage);
+      }
+    }
+  }, [expandedId, filtered]);
+
+  // חישובי עימוד
+  const totalPages = Math.max(1, Math.ceil(filtered.length / RECORDS_PER_PAGE));
+  const startIdx = (currentPage - 1) * RECORDS_PER_PAGE;
+  const endIdx = Math.min(startIdx + RECORDS_PER_PAGE, filtered.length);
+  const paginatedRecords = filtered.slice(startIdx, endIdx);
+
+  // טיפול בהרחבה/כיווץ של שורה + עדכון hash
+  const handleToggle = useCallback((recordId: string) => {
+    setExpandedId((prev) => {
+      const newId = prev === recordId ? null : recordId;
+      if (newId) {
+        window.history.replaceState(null, "", `#${newId}`);
+      } else {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+      return newId;
+    });
+  }, []);
+
+  // יצירת מספרי עמודים להצגה
+  const getPageNumbers = () => {
+    const pages: (number | "...")[] = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push("...");
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      if (currentPage < totalPages - 2) pages.push("...");
+      pages.push(totalPages);
+    }
+    return pages;
+  };
+
   return (
     <section className="py-16 max-w-7xl mx-auto">
       <SectionHeader
@@ -256,6 +382,14 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
               className="w-full rounded-lg border border-amber-500/15 bg-white/[0.06] ps-10 pe-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-blue-500/30 focus:ring-1 focus:ring-blue-500/20 transition-colors"
             />
           </div>
+          {/* כפתור ייצוא CSV */}
+          <button
+            onClick={() => exportToCSV(filtered)}
+            className="flex items-center gap-2 rounded-lg border border-amber-500/15 bg-white/[0.06] px-4 py-2.5 text-sm text-zinc-400 hover:text-amber-400 hover:border-amber-500/30 transition-colors"
+          >
+            <Download className="h-4 w-4" />
+            <span className="hidden sm:inline">ייצוא CSV</span>
+          </button>
           <button
             onClick={() => setShowFilters(!showFilters)}
             className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors ${
@@ -372,11 +506,67 @@ export default function EvidenceExplorer({ initialAsset }: { initialAsset?: stri
             <p className="text-sm text-zinc-500">{t("proof.evidence.noRecords")}</p>
           </div>
         ) : (
-          filtered.map((record) => (
-            <EvidenceRow key={record.id} record={record} t={t} />
+          paginatedRecords.map((record) => (
+            <EvidenceRow
+              key={record.id}
+              record={record}
+              t={t}
+              expanded={expandedId === record.id}
+              onToggle={() => handleToggle(record.id)}
+            />
           ))
         )}
       </div>
+
+      {/* עימוד */}
+      {filtered.length > RECORDS_PER_PAGE && (
+        <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          {/* מציג X-Y מתוך Z רשומות */}
+          <div className="text-[11px] text-zinc-500">
+            מציג {startIdx + 1}-{endIdx} מתוך {filtered.length} רשומות
+          </div>
+
+          {/* כפתורי עימוד */}
+          <div className="flex items-center gap-1">
+            {/* הקודם */}
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="rounded-md border border-amber-500/15 bg-white/[0.06] px-3 py-1.5 text-xs text-zinc-400 hover:text-white hover:border-amber-500/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              הקודם
+            </button>
+
+            {/* מספרי עמודים */}
+            {getPageNumbers().map((page, idx) =>
+              page === "..." ? (
+                <span key={`dots-${idx}`} className="px-2 text-xs text-zinc-500">...</span>
+              ) : (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`rounded-md border px-3 py-1.5 text-xs transition-colors ${
+                    currentPage === page
+                      ? "border-amber-500/30 bg-amber-500/15 text-amber-400 font-medium"
+                      : "border-amber-500/15 bg-white/[0.06] text-zinc-400 hover:text-white hover:border-amber-500/30"
+                  }`}
+                >
+                  {page}
+                </button>
+              )
+            )}
+
+            {/* הבא */}
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="rounded-md border border-amber-500/15 bg-white/[0.06] px-3 py-1.5 text-xs text-zinc-400 hover:text-white hover:border-amber-500/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              הבא
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

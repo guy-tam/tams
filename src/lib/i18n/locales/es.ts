@@ -530,6 +530,82 @@ const es: TranslationStrings = {
     backToSite: "Volver al sitio principal",
     logout: "Cerrar sesión",
   },
+  faq: {
+    pageTitle: "Preguntas Frecuentes",
+    pageSubtitle: "Respuestas a las preguntas más comunes sobre TAMS, la metodología, el portafolio y el acceso para inversores",
+    categories: {
+      about: {
+        title: "Sobre TAMS",
+        items: [
+          {
+            question: "¿Qué es TAMS?",
+            answer: "TAMS es una empresa de infraestructura de inversión en blockchain. La empresa construye un portafolio de investigación basado en el análisis sistemático de infraestructura financiera descentralizada, con énfasis en activos con potencial de adopción institucional.",
+          },
+          {
+            question: "¿Cuál es la tesis central?",
+            answer: "La tesis central de TAMS se centra en la adopción institucional de infraestructura financiera basada en blockchain. El enfoque identifica activos que se espera se beneficien de la entrada institucional al espacio — bancos, fondos e instituciones financieras grandes.",
+          },
+          {
+            question: "¿Cuántos activos hay en el portafolio?",
+            answer: "El portafolio incluye 16 activos distribuidos en múltiples categorías de tesis — infraestructura central, DeFi institucional, pagos, almacenamiento de datos y más. Cada activo se selecciona con base en una metodología estructurada.",
+          },
+        ],
+      },
+      investment: {
+        title: "Inversiones y Portafolio",
+        items: [
+          {
+            question: "¿Cómo se seleccionan los activos?",
+            answer: "Los activos se seleccionan con base en una metodología sistemática que incluye puntuación de evidencia (Evidence Scoring). Cada activo pasa por una evaluación estructurada que examina evidencia institucional, fortaleza tecnológica, posicionamiento de mercado y tendencias de adopción.",
+          },
+          {
+            question: "¿Cuáles son los niveles de confianza?",
+            answer: "El sistema califica cada activo según su nivel de confianza — alto, medio o bajo. La calificación se basa en la cantidad y calidad de la evidencia institucional, el historial de rendimiento y la alineación con la tesis central.",
+          },
+          {
+            question: "¿Cuáles son los riesgos?",
+            answer: "La inversión en activos digitales conlleva riesgos significativos — alta volatilidad en mercados cripto, riesgos regulatorios cambiantes y riesgos tecnológicos que incluyen errores en contratos inteligentes y brechas de seguridad. Todos los riesgos deben considerarse antes de cualquier decisión.",
+          },
+          {
+            question: "¿Es esto asesoría de inversión?",
+            answer: "No. El contenido de TAMS es únicamente con fines de investigación y no constituye asesoría de inversión, recomendación u oferta de compra o venta de activos. Cada decisión de inversión es responsabilidad exclusiva del inversor.",
+          },
+        ],
+      },
+      research: {
+        title: "Investigación y Evidencia",
+        items: [
+          {
+            question: "¿Cuántos registros de evidencia institucional hay en el sistema?",
+            answer: "El sistema contiene 259 registros de evidencia institucional distribuidos en 16 activos. La evidencia incluye colaboraciones, inversiones institucionales, integraciones tecnológicas y aprobaciones regulatorias.",
+          },
+          {
+            question: "¿De dónde provienen las fuentes?",
+            answer: "TAMS prioriza fuentes primarias — anuncios oficiales, informes regulatorios y documentos directos. Las fuentes se clasifican mediante un sistema de niveles (Tier System) basado en la confiabilidad y proximidad de la información.",
+          },
+          {
+            question: "¿Con qué frecuencia se actualizan los datos?",
+            answer: "Los datos se someten a revisión periódica. Se agregan nuevas evidencias a medida que se publican, y los niveles de confianza se actualizan según los cambios en el panorama institucional y regulatorio.",
+          },
+        ],
+      },
+      access: {
+        title: "Acceso y Seguridad",
+        items: [
+          {
+            question: "¿Cómo obtengo acceso al portal?",
+            answer: "El acceso al portal de inversores está condicionado a la verificación de identidad. Los inversores verificados obtienen acceso a datos completos del portafolio, análisis profundos de evidencia e informes de investigación detallados.",
+          },
+          {
+            question: "¿Cuál es el nivel de seguridad?",
+            answer: "TAMS opera con estándares de seguridad institucional — cifrado de datos, autenticación multifactor y segregación de permisos. El sistema está diseñado para cumplir con los requisitos de seguridad de inversores profesionales.",
+          },
+        ],
+      },
+    },
+    notFound: "¿No encontraste respuesta? Contáctanos a través de la página de",
+    notFoundLink: "acceso para inversores",
+  },
   investorTiers: {
     badge: "Círculo de Inversores",
     title: "Niveles exclusivos de inversores",
@@ -561,6 +637,73 @@ const es: TranslationStrings = {
       },
     },
     cta: "Solicitar acceso",
+  },
+  team: {
+    badge: "Equipo y estructura",
+    title: "Equipo y estructura organizacional",
+    subtitle: "TAMS está construida como una organización profesional con una estructura institucional clara — división de roles, controles internos y procesos ordenados para la gestión de infraestructura de inversión en activos digitales.",
+    vision: {
+      title: "Visión",
+      content: "Construir la infraestructura de inversión institucional líder en activos digitales — una infraestructura que conecte el mundo cripto con los estándares del mercado de capitales tradicional, permitiendo a inversores institucionales y privados por igual un acceso seguro y gestionado al mercado.",
+    },
+    mission: {
+      title: "Misión",
+      content: "Proporcionar infraestructura profesional para la gestión de inversiones en activos digitales — incluyendo investigación profunda, ejecución de trading avanzada, gestión de riesgos rigurosa y un marco integral de cumplimiento regulatorio. Todo manteniendo total transparencia hacia los inversores.",
+    },
+    pillars: {
+      badge: "Pilares organizacionales",
+      title: "Pilares organizacionales",
+      subtitle: "Cuatro dominios fundamentales que componen la estructura organizacional y aseguran operaciones ordenadas y profesionales.",
+      research: {
+        title: "Investigación",
+        description: "Análisis macro, micro y on-chain en profundidad. Mapeo de oportunidades basado en datos cuantitativos e investigación fundamental de protocolos y tendencias del mercado.",
+      },
+      trading: {
+        title: "Trading",
+        description: "Ejecución de estrategias de trading diversas — spot, derivados y DeFi — con gestión de riesgos rigurosa y asignación dinámica de capital.",
+      },
+      infrastructure: {
+        title: "Infraestructura",
+        description: "Infraestructura tecnológica segura para la gestión de activos digitales: custodia, ejecución de operaciones, monitoreo en tiempo real y reportes transparentes.",
+      },
+      compliance: {
+        title: "Cumplimiento y regulación",
+        description: "Marco de cumplimiento integral que incluye KYC/AML, reportes regulatorios y controles internos de acuerdo con estándares institucionales.",
+      },
+    },
+    advisory: {
+      badge: "Consejo asesor",
+      title: "Consejo asesor y equipo directivo",
+      subtitle: "El equipo incluye expertos en blockchain, finanzas, cumplimiento regulatorio y tecnología.",
+      restricted: "Los detalles completos del equipo están disponibles para inversores verificados",
+      restrictedDetails: "Por razones de seguridad y privacidad, los perfiles completos de los miembros del equipo, miembros del consejo asesor y consultores externos están disponibles solo para inversores que han completado el proceso de verificación (KYC). Para obtener acceso, por favor contacte al equipo.",
+    },
+    values: {
+      badge: "Valores fundamentales",
+      title: "Valores fundamentales",
+      subtitle: "Los principios que guían cada decisión y acción en la organización.",
+      rigor: {
+        title: "Rigor institucional",
+        description: "Procesos de trabajo, controles y estándares que se equiparan con los de las instituciones financieras tradicionales.",
+      },
+      transparency: {
+        title: "Transparencia",
+        description: "Reportes periódicos detallados, acceso a datos en tiempo real y comunicación abierta con los inversores.",
+      },
+      riskManagement: {
+        title: "Gestión de riesgos",
+        description: "Enfoque conservador en la gestión de riesgos con límites de exposición claros, protecciones de capital y planes de contingencia.",
+      },
+      complianceFirst: {
+        title: "Cumplimiento ante todo",
+        description: "El cumplimiento regulatorio no es un complemento — es la base. Toda actividad pasa por una revisión completa de cumplimiento antes de su ejecución.",
+      },
+    },
+    contact: {
+      title: "Contacto profesional",
+      subtitle: "Para consultas comerciales, preguntas sobre la estructura organizacional o solicitudes de información adicional — nuestro equipo profesional está a su servicio.",
+    },
+    disclaimer: "La información en esta página es solo de carácter general y no constituye una oferta, asesoría de inversión o solicitud. Los detalles completos sobre el equipo y la estructura organizacional están disponibles solo para inversores calificados sujetos a un proceso de verificación.",
   },
   proof: {
     hero: {
@@ -701,6 +844,21 @@ const es: TranslationStrings = {
       disclaimersTitle: "Descargos de responsabilidad importantes",
       stamp: "Base de datos de evidencia TAMS · Clasificación v1.0 · Última actualización: abril 2026",
     },
+  },
+  // Página 404
+  // פוטר גלובלי
+  footer: {
+    faq: "Preguntas frecuentes",
+    legal: "Legal",
+    team: "Equipo",
+    methodology: "Metodología",
+    contact: "Contacto",
+    rights: "Todos los derechos reservados.",
+  },
+  notFound: {
+    title: "Página no encontrada",
+    message: "La página que busca no existe o ha sido trasladada.",
+    backHome: "Volver al inicio",
   },
 };
 

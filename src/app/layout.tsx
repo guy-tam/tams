@@ -23,8 +23,35 @@ const heebo = Heebo({
 // מטא-דאטה של האפליקציה
 export const metadata: Metadata = {
   title: "TAMS | Blockchain Investment Infrastructure",
-  description:
-    "TAMS is a premium concept app showcasing blockchain-based investment infrastructure, DeFi strategy, and institutional-grade portfolio management.",
+  description: "TAMS — תשתית השקעות בלוקצ'יין ברמה מוסדית. 259 ראיות מאומתות על פני 16 נכסים. מחקר שמרני, סיווג מוסדי, שקיפות מלאה.",
+  keywords: ["blockchain", "institutional investment", "tokenization", "RWA", "DeFi", "TAMS"],
+  authors: [{ name: "TAMS" }],
+  openGraph: {
+    type: "website",
+    locale: "he_IL",
+    url: "https://tams.vercel.app",
+    siteName: "TAMS",
+    title: "TAMS | Blockchain Investment Infrastructure",
+    description: "תשתית השקעות בלוקצ'יין ברמה מוסדית — מחקר מוסדי, 259 ראיות מאומתות, 16 נכסים",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TAMS — Blockchain Investment Infrastructure",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TAMS | Blockchain Investment Infrastructure",
+    description: "תשתית השקעות בלוקצ'יין ברמה מוסדית — מחקר מוסדי, 259 ראיות מאומתות",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

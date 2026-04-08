@@ -533,6 +533,82 @@ const en: TranslationStrings = {
     backToSite: "Back to main site",
     logout: "Log out",
   },
+  faq: {
+    pageTitle: "Frequently Asked Questions",
+    pageSubtitle: "Answers to the most common questions about TAMS, the methodology, the portfolio, and investor access",
+    categories: {
+      about: {
+        title: "About TAMS",
+        items: [
+          {
+            question: "What is TAMS?",
+            answer: "TAMS is a blockchain investment infrastructure company. The company builds a research portfolio based on systematic analysis of decentralized financial infrastructure, with an emphasis on assets with institutional adoption potential.",
+          },
+          {
+            question: "What is the core thesis?",
+            answer: "The core thesis of TAMS focuses on institutional adoption of blockchain-based financial infrastructure. The approach identifies assets expected to benefit from institutional entry into the space — banks, funds, and large financial institutions.",
+          },
+          {
+            question: "How many assets are in the portfolio?",
+            answer: "The portfolio includes 16 assets spread across multiple thesis categories — core infrastructure, institutional DeFi, payments, data storage, and more. Each asset is selected based on a structured methodology.",
+          },
+        ],
+      },
+      investment: {
+        title: "Investments & Portfolio",
+        items: [
+          {
+            question: "How are assets selected?",
+            answer: "Assets are selected based on a systematic methodology that includes Evidence Scoring. Each asset undergoes a structured evaluation examining institutional evidence, technological strength, market positioning, and adoption trends.",
+          },
+          {
+            question: "What are the confidence levels?",
+            answer: "The system rates each asset by confidence level — high, medium, or low. The rating is based on the quantity and quality of institutional evidence, performance history, and alignment with the core thesis.",
+          },
+          {
+            question: "What are the risks?",
+            answer: "Investing in digital assets involves significant risks — high volatility in crypto markets, changing regulatory risks, and technological risks including smart contract bugs and security breaches. All risks should be considered before any decision.",
+          },
+          {
+            question: "Is this investment advice?",
+            answer: "No. The content on TAMS is for research purposes only and does not constitute investment advice, a recommendation, or an offer to buy or sell any assets. Every investment decision is solely the responsibility of the investor.",
+          },
+        ],
+      },
+      research: {
+        title: "Research & Evidence",
+        items: [
+          {
+            question: "How many institutional evidence records are in the system?",
+            answer: "The system contains 259 institutional evidence records spread across 16 assets. The evidence includes collaborations, institutional investments, technology integrations, and regulatory approvals.",
+          },
+          {
+            question: "Where do the sources come from?",
+            answer: "TAMS prioritizes primary sources — official announcements, regulatory filings, and direct documents. Sources are ranked using a Tier System based on the reliability and directness of the information.",
+          },
+          {
+            question: "How often is the data updated?",
+            answer: "Data undergoes periodic review. New evidence is added as it is published, and confidence levels are updated according to changes in the institutional and regulatory landscape.",
+          },
+        ],
+      },
+      access: {
+        title: "Access & Security",
+        items: [
+          {
+            question: "How do I get access to the portal?",
+            answer: "Access to the investor portal is conditional on identity verification. Verified investors receive access to complete portfolio data, in-depth evidence analysis, and detailed research reports.",
+          },
+          {
+            question: "What is the security level?",
+            answer: "TAMS operates at institutional security standards — data encryption, multi-factor authentication, and permission segregation. The system is designed to meet the security requirements of professional investors.",
+          },
+        ],
+      },
+    },
+    notFound: "Didn't find an answer? Contact us through the",
+    notFoundLink: "investor access page",
+  },
   investorTiers: {
     badge: "Investor Circle",
     title: "Exclusive Investor Tiers",
@@ -564,6 +640,73 @@ const en: TranslationStrings = {
       },
     },
     cta: "Apply for Access",
+  },
+  team: {
+    badge: "Team & Structure",
+    title: "Team & Organizational Structure",
+    subtitle: "TAMS is built as a professional organization with a clear institutional structure — role division, internal controls, and orderly processes for managing digital asset investment infrastructure.",
+    vision: {
+      title: "Vision",
+      content: "To build the leading institutional investment infrastructure for digital assets — an infrastructure that bridges the crypto world with traditional capital market standards, enabling both institutional and private investors secure and managed access to the market.",
+    },
+    mission: {
+      title: "Mission",
+      content: "To provide professional infrastructure for digital asset investment management — including deep research, advanced trading execution, rigorous risk management, and a comprehensive regulatory compliance framework. All while maintaining full transparency toward investors.",
+    },
+    pillars: {
+      badge: "Organizational Pillars",
+      title: "Organizational Pillars",
+      subtitle: "Four core domains that comprise the organizational structure and ensure orderly, professional operations.",
+      research: {
+        title: "Research",
+        description: "In-depth macro, micro, and on-chain analysis. Mapping opportunities based on quantitative data and fundamental research of protocols and market trends.",
+      },
+      trading: {
+        title: "Trading",
+        description: "Execution of diverse trading strategies — spot, derivatives, and DeFi — with rigorous risk management and dynamic capital allocation.",
+      },
+      infrastructure: {
+        title: "Infrastructure",
+        description: "Secure technological infrastructure for digital asset management: custody, trade execution, real-time monitoring, and transparent reporting.",
+      },
+      compliance: {
+        title: "Compliance & Regulation",
+        description: "Comprehensive compliance framework including KYC/AML, regulatory reporting, and internal controls in accordance with institutional standards.",
+      },
+    },
+    advisory: {
+      badge: "Advisory Board",
+      title: "Advisory Board & Senior Team",
+      subtitle: "The team includes experts in blockchain, finance, regulatory compliance, and technology.",
+      restricted: "Full team details are available to verified investors",
+      restrictedDetails: "For security and privacy reasons, full profiles of team members, advisory board members, and external consultants are available only to investors who have completed the verification (KYC) process. To gain access, please contact the team.",
+    },
+    values: {
+      badge: "Core Values",
+      title: "Core Values",
+      subtitle: "The principles guiding every decision and action in the organization.",
+      rigor: {
+        title: "Institutional Rigor",
+        description: "Work processes, controls, and standards that parallel those of traditional financial institutions.",
+      },
+      transparency: {
+        title: "Transparency",
+        description: "Detailed periodic reporting, real-time data access, and open communication with investors.",
+      },
+      riskManagement: {
+        title: "Risk Management",
+        description: "Conservative approach to risk management with clear exposure limits, capital protections, and contingency plans.",
+      },
+      complianceFirst: {
+        title: "Compliance First",
+        description: "Regulatory compliance is not an add-on — it is the foundation. Every activity undergoes full compliance screening before execution.",
+      },
+    },
+    contact: {
+      title: "Professional Contact",
+      subtitle: "For business inquiries, questions about the organizational structure, or requests for additional information — our professional team is at your service.",
+    },
+    disclaimer: "The information on this page is general only and does not constitute an offer, investment advice, or solicitation. Full details about the team and organizational structure are available only to qualified investors subject to a verification process.",
   },
   proof: {
     hero: {
@@ -704,6 +847,21 @@ const en: TranslationStrings = {
       disclaimersTitle: "Important Disclaimers",
       stamp: "TAMS Evidence Database · Classification v1.0 · Last Updated April 2026",
     },
+  },
+  // פוטר גלובלי
+  footer: {
+    faq: "FAQ",
+    legal: "Legal",
+    team: "Team",
+    methodology: "Methodology",
+    contact: "Contact",
+    rights: "All rights reserved.",
+  },
+  // דף 404
+  notFound: {
+    title: "Page Not Found",
+    message: "The page you are looking for does not exist or has been moved.",
+    backHome: "Return to Home",
   },
 };
 

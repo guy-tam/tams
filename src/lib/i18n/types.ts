@@ -321,6 +321,44 @@ export type TranslationStrings = {
       stamp: string;
     };
   };
+  // דף צוות ומבנה ארגוני
+  team: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    vision: { title: string; content: string };
+    mission: { title: string; content: string };
+    pillars: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      research: { title: string; description: string };
+      trading: { title: string; description: string };
+      infrastructure: { title: string; description: string };
+      compliance: { title: string; description: string };
+    };
+    advisory: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      restricted: string;
+      restrictedDetails: string;
+    };
+    values: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      rigor: { title: string; description: string };
+      transparency: { title: string; description: string };
+      riskManagement: { title: string; description: string };
+      complianceFirst: { title: string; description: string };
+    };
+    contact: {
+      title: string;
+      subtitle: string;
+    };
+    disclaimer: string;
+  };
   // מפתחות התחברות
   login: {
     errorEmail: string;
@@ -349,6 +387,31 @@ export type TranslationStrings = {
     backToSite: string;
     logout: string;
   };
+  // עמוד שאלות נפוצות
+  faq: {
+    pageTitle: string;
+    pageSubtitle: string;
+    categories: {
+      about: {
+        title: string;
+        items: Array<{ question: string; answer: string }>;
+      };
+      investment: {
+        title: string;
+        items: Array<{ question: string; answer: string }>;
+      };
+      research: {
+        title: string;
+        items: Array<{ question: string; answer: string }>;
+      };
+      access: {
+        title: string;
+        items: Array<{ question: string; answer: string }>;
+      };
+    };
+    notFound: string;
+    notFoundLink: string;
+  };
   // מערכת דרגות משקיעים
   investorTiers: {
     badge: string;
@@ -361,6 +424,21 @@ export type TranslationStrings = {
       visionary: { name: string; description: string; minInvestment: string; benefits: string[] };
     };
     cta: string;
+  };
+  // פוטר גלובלי
+  footer: {
+    faq: string;
+    legal: string;
+    team: string;
+    methodology: string;
+    contact: string;
+    rights: string;
+  };
+  // דף 404
+  notFound: {
+    title: string;
+    message: string;
+    backHome: string;
   };
 };
 
