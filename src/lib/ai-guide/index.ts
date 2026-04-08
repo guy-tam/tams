@@ -3,3 +3,4 @@ export { askGuide, getSuggestedQuestions, explainCurrentPage } from "./assistant
 export type { GuideResponse } from "./assistantEngine";
 export { sitePages, topicMap, glossary, navigationFlows } from "./siteKnowledge";
 export type { PageKnowledge, TopicEntry, GlossaryEntry, NavigationFlow } from "./siteKnowledge";
+export { buildSystemPrompt } from "./systemPrompt";
