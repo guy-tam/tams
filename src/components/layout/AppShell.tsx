@@ -7,10 +7,15 @@ import { AuthProvider } from "@/lib/auth";
 import { LanguageProvider } from "@/lib/i18n";
 import { useLanguage } from "@/lib/i18n";
 import type { Language, TranslationStrings } from "@/lib/i18n";
+import dynamic from "next/dynamic";
 import Navigation from "./Navigation";
 import TamsLogo from "./TamsLogo";
 import { ToastProvider } from "@/components/ui/toast";
-import InvestorGuide from "@/components/ai-guide/InvestorGuide";
+
+// טעינה עצלה של המדריך — לא מאט את הטעינה הראשונית
+const InvestorGuide = dynamic(() => import("@/components/ai-guide/InvestorGuide"), {
+  ssr: false,
+});
 
 // ייבוא תרגומים
 import en from "@/lib/i18n/locales/en";
