@@ -215,10 +215,7 @@ html[lang="he"] nav,
 html[lang="he"] button,
 html[lang="he"] a,
 html[lang="he"] label,
-html[lang="he"] .text-xs,
-html[lang="he"] .text-\\[10px\\],
-html[lang="he"] .text-\\[11px\\],
-html[lang="he"] .text-\\[9px\\] {
+html[lang="he"] .text-xs {
   font-family: var(--font-heebo), var(--font-geist-sans), system-ui, sans-serif;
 }
 

@@ -425,6 +425,67 @@ export type TranslationStrings = {
     };
     cta: string;
   };
+  // דף גישה פרטית ויצירת קשר
+  access: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    trustSignals: {
+      framework: { title: string; description: string };
+      evidence: { title: string; description: string };
+      management: { title: string; description: string };
+      confidential: { title: string; description: string };
+    };
+    form: {
+      title: string;
+      subtitle: string;
+      fullName: string;
+      fullNamePlaceholder: string;
+      email: string;
+      emailPlaceholder: string;
+      phone: string;
+      phonePlaceholder: string;
+      investorType: string;
+      investorTypePlaceholder: string;
+      investmentRange: string;
+      investmentRangePlaceholder: string;
+      areaOfInterest: string;
+      areaOfInterestPlaceholder: string;
+      accreditedConfirm: string;
+      submit: string;
+      submitting: string;
+    };
+    investorTypes: {
+      individual: string;
+      familyOffice: string;
+      institutional: string;
+      corporate: string;
+      wealthAdvisor: string;
+      other: string;
+    };
+    investmentRanges: {
+      range1: string;
+      range2: string;
+      range3: string;
+      range4: string;
+      range5: string;
+    };
+    errors: {
+      fullName: string;
+      email: string;
+      emailInvalid: string;
+      investorType: string;
+      investmentRange: string;
+      accredited: string;
+      submitFailed: string;
+    };
+    success: {
+      title: string;
+      message: string;
+      note: string;
+    };
+    disclaimer: string;
+  };
   // פוטר גלובלי
   footer: {
     faq: string;

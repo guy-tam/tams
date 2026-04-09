@@ -16,6 +16,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import { useLanguage } from "@/lib/i18n/context";
 
 // --- אנימציות כניסה מדורגות ---
 const stagger = {
@@ -34,48 +35,9 @@ const fadeUp = {
   },
 };
 
-// --- כרטיסי אמון ---
-const trustSignals = [
-  {
-    icon: Network,
-    title: "Institutional Framework",
-    description: "Multi-wallet architecture with risk isolation",
-  },
-  {
-    icon: Shield,
-    title: "Evidence-Based Selection",
-    description: "125+ verified institutional relationships",
-  },
-  {
-    icon: BarChart3,
-    title: "Active Management",
-    description: "Treasury + DeFi + Trading multi-engine model",
-  },
-  {
-    icon: Lock,
-    title: "Confidential Process",
-    description: "Discreet review with dedicated relationship manager",
-  },
-];
-
-// --- סוגי משקיעים ---
-const investorTypes = [
-  "Individual Investor",
-  "Family Office",
-  "Institutional Fund",
-  "Corporate Treasury",
-  "Wealth Advisor",
-  "Other",
-];
-
-// --- טווחי השקעה ---
-const investmentRanges = [
-  "$100K - $500K",
-  "$500K - $1M",
-  "$1M - $5M",
-  "$5M - $25M",
-  "$25M+",
-];
+// --- אייקונים לכרטיסי אמון ---
+const trustIcons = [Network, Shield, BarChart3, Lock] as const;
+const trustKeys = ["framework", "evidence", "management", "confidential"] as const;
 
 // --- שדה קלט פרימיום ---
 function PremiumInput({
@@ -140,7 +102,7 @@ function PremiumSelect({
   placeholder: string;
   value: string;
   onChange: (v: string) => void;
-  options: string[];
+  options: { value: string; label: string }[];
   required?: boolean;
   error?: string;
 }) {
@@ -165,8 +127,8 @@ function PremiumSelect({
             {placeholder}
           </option>
           {options.map((opt) => (
-            <option key={opt} value={opt} className="bg-[#0d1a30] text-white">
-              {opt}
+            <option key={opt.value} value={opt.value} className="bg-[#0d1a30] text-white">
+              {opt.label}
             </option>
           ))}
         </select>
@@ -179,6 +141,7 @@ function PremiumSelect({
 
 // --- דף הגישה הפרטית ---
 export default function AccessPage() {
+  const { t } = useLanguage();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -189,27 +152,46 @@ export default function AccessPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  // אפשרויות מתורגמות
+  const investorTypeOptions = [
+    { value: "individual", label: t("access.investorTypes.individual") },
+    { value: "familyOffice", label: t("access.investorTypes.familyOffice") },
+    { value: "institutional", label: t("access.investorTypes.institutional") },
+    { value: "corporate", label: t("access.investorTypes.corporate") },
+    { value: "wealthAdvisor", label: t("access.investorTypes.wealthAdvisor") },
+    { value: "other", label: t("access.investorTypes.other") },
+  ];
+
+  const investmentRangeOptions = [
+    { value: "range1", label: t("access.investmentRanges.range1") },
+    { value: "range2", label: t("access.investmentRanges.range2") },
+    { value: "range3", label: t("access.investmentRanges.range3") },
+    { value: "range4", label: t("access.investmentRanges.range4") },
+    { value: "range5", label: t("access.investmentRanges.range5") },
+  ];
 
   // אימות טופס
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};
 
     if (!fullName.trim()) {
-      newErrors.fullName = "Full name is required";
+      newErrors.fullName = t("access.errors.fullName");
     }
     if (!email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("access.errors.email");
     } else if (!email.includes("@") || !email.includes(".")) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t("access.errors.emailInvalid");
     }
     if (!investorType) {
-      newErrors.investorType = "Please select an investor type";
+      newErrors.investorType = t("access.errors.investorType");
     }
     if (!investmentRange) {
-      newErrors.investmentRange = "Please select an investment range";
+      newErrors.investmentRange = t("access.errors.investmentRange");
     }
     if (!accredited) {
-      newErrors.accredited = "Please confirm your accredited investor status";
+      newErrors.accredited = t("access.errors.accredited");
     }
 
     setErrors(newErrors);
@@ -222,33 +204,50 @@ export default function AccessPage() {
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // שמירה ב-localStorage
+    // מציאת הטקסט המתורגם לשליחה במייל
+    const investorTypeLabel = investorTypeOptions.find(o => o.value === investorType)?.label ?? investorType;
+    const investmentRangeLabel = investmentRangeOptions.find(o => o.value === investmentRange)?.label ?? investmentRange;
+
     const submission = {
       fullName,
       email,
       phone,
-      investorType,
-      investmentRange,
+      investorType: investorTypeLabel,
+      investmentRange: investmentRangeLabel,
       message,
-      accredited,
-      submittedAt: new Date().toISOString(),
     };
 
     try {
-      const existing = JSON.parse(
-        localStorage.getItem("tams-access-requests") || "[]"
-      );
-      existing.push(submission);
-      localStorage.setItem("tams-access-requests", JSON.stringify(existing));
-    } catch {
-      // אם localStorage לא זמין, ממשיכים
-    }
+      // שליחה ל-API שישלח מייל
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submission),
+      });
 
-    // סימולציה של עיכוב רשת
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setIsSubmitting(false);
-    setSubmitted(true);
+      if (!res.ok) {
+        throw new Error("API error");
+      }
+
+      // שמירה גם ב-localStorage כגיבוי
+      try {
+        const existing = JSON.parse(
+          localStorage.getItem("tams-access-requests") || "[]"
+        );
+        existing.push({ ...submission, accredited, submittedAt: new Date().toISOString() });
+        localStorage.setItem("tams-access-requests", JSON.stringify(existing));
+      } catch {
+        // אם localStorage לא זמין, ממשיכים
+      }
+
+      setIsSubmitting(false);
+      setSubmitted(true);
+    } catch {
+      setIsSubmitting(false);
+      setSubmitError(t("access.errors.submitFailed"));
+    }
   };
 
   return (
@@ -265,7 +264,7 @@ export default function AccessPage() {
           <motion.div variants={fadeUp} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest border border-amber-500/20 bg-amber-500/[0.06] text-amber-400">
               <Lock className="size-3" />
-              Private Capital Access
+              {t("access.badge")}
             </span>
           </motion.div>
 
@@ -274,7 +273,7 @@ export default function AccessPage() {
             variants={fadeUp}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
           >
-            <span className="gradient-text">Request Confidential Review</span>
+            <span className="gradient-text">{t("access.title")}</span>
           </motion.h1>
 
           {/* תת-כותרת */}
@@ -282,9 +281,7 @@ export default function AccessPage() {
             variants={fadeUp}
             className="text-lg sm:text-xl text-zinc-400 leading-relaxed max-w-2xl mx-auto"
           >
-            Exclusive access to TAMS institutional-grade digital asset strategy.
-            A structured, research-backed framework designed for sophisticated
-            allocators seeking exposure to blockchain infrastructure.
+            {t("access.subtitle")}
           </motion.p>
         </motion.div>
 
@@ -303,23 +300,26 @@ export default function AccessPage() {
           animate="visible"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full mb-16"
         >
-          {trustSignals.map((signal) => (
-            <motion.div
-              key={signal.title}
-              variants={fadeUp}
-              className="card-premium rounded-2xl p-6 hover-lift"
-            >
-              <div className="size-10 rounded-xl bg-gradient-to-br from-amber-500/15 to-blue-500/10 flex items-center justify-center mb-4">
-                <signal.icon className="size-5 text-amber-400" />
-              </div>
-              <h3 className="text-sm font-semibold text-white mb-1.5">
-                {signal.title}
-              </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                {signal.description}
-              </p>
-            </motion.div>
-          ))}
+          {trustKeys.map((key, i) => {
+            const Icon = trustIcons[i];
+            return (
+              <motion.div
+                key={key}
+                variants={fadeUp}
+                className="card-premium rounded-2xl p-6 hover-lift"
+              >
+                <div className="size-10 rounded-xl bg-gradient-to-br from-amber-500/15 to-blue-500/10 flex items-center justify-center mb-4">
+                  <Icon className="size-5 text-amber-400" />
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-1.5">
+                  {t(`access.trustSignals.${key}.title`)}
+                </h3>
+                <p className="text-xs text-zinc-500 leading-relaxed">
+                  {t(`access.trustSignals.${key}.description`)}
+                </p>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* --- קו מפריד זהוב --- */}
@@ -342,16 +342,14 @@ export default function AccessPage() {
               <CheckCircle2 className="size-8 text-amber-400" />
             </div>
             <h2 className="text-2xl font-bold text-white mb-3">
-              Request Received
+              {t("access.success.title")}
             </h2>
             <p className="text-zinc-400 leading-relaxed mb-6">
-              Your request has been received. A member of our team will reach out
-              within 48 hours for a confidential discussion.
+              {t("access.success.message")}
             </p>
             <div className="divider-premium mb-6" />
             <p className="text-xs text-zinc-600">
-              For immediate inquiries, please contact your designated relationship
-              manager directly.
+              {t("access.success.note")}
             </p>
           </motion.div>
         ) : (
@@ -364,22 +362,29 @@ export default function AccessPage() {
             {/* כותרת הטופס */}
             <div className="text-center mb-8">
               <h2 className="text-xl font-bold text-white mb-2">
-                Private Inquiry
+                {t("access.form.title")}
               </h2>
               <p className="text-sm text-zinc-500">
-                All information is treated with the highest level of confidentiality
+                {t("access.form.subtitle")}
               </p>
             </div>
 
             <div className="divider-premium mb-8" />
+
+            {/* הודעת שגיאת שליחה */}
+            {submitError && (
+              <div className="mb-6 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center">
+                {submitError}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* שורה ראשונה - שם ואימייל */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <PremiumInput
                   id="fullName"
-                  label="Full Name"
-                  placeholder="Your full name"
+                  label={t("access.form.fullName")}
+                  placeholder={t("access.form.fullNamePlaceholder")}
                   value={fullName}
                   onChange={(v) => {
                     setFullName(v);
@@ -391,9 +396,9 @@ export default function AccessPage() {
                 />
                 <PremiumInput
                   id="email"
-                  label="Email"
+                  label={t("access.form.email")}
                   type="email"
-                  placeholder="you@company.com"
+                  placeholder={t("access.form.emailPlaceholder")}
                   value={email}
                   onChange={(v) => {
                     setEmail(v);
@@ -408,9 +413,9 @@ export default function AccessPage() {
               {/* טלפון */}
               <PremiumInput
                 id="phone"
-                label="Phone"
+                label={t("access.form.phone")}
                 type="tel"
-                placeholder="+1 (555) 000-0000"
+                placeholder={t("access.form.phonePlaceholder")}
                 value={phone}
                 onChange={setPhone}
                 icon={Phone}
@@ -420,27 +425,27 @@ export default function AccessPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <PremiumSelect
                   id="investorType"
-                  label="Investor Type"
-                  placeholder="Select type"
+                  label={t("access.form.investorType")}
+                  placeholder={t("access.form.investorTypePlaceholder")}
                   value={investorType}
                   onChange={(v) => {
                     setInvestorType(v);
                     if (errors.investorType) setErrors((prev) => ({ ...prev, investorType: "" }));
                   }}
-                  options={investorTypes}
+                  options={investorTypeOptions}
                   required
                   error={errors.investorType}
                 />
                 <PremiumSelect
                   id="investmentRange"
-                  label="Investment Range"
-                  placeholder="Select range"
+                  label={t("access.form.investmentRange")}
+                  placeholder={t("access.form.investmentRangePlaceholder")}
                   value={investmentRange}
                   onChange={(v) => {
                     setInvestmentRange(v);
                     if (errors.investmentRange) setErrors((prev) => ({ ...prev, investmentRange: "" }));
                   }}
-                  options={investmentRanges}
+                  options={investmentRangeOptions}
                   required
                   error={errors.investmentRange}
                 />
@@ -452,13 +457,13 @@ export default function AccessPage() {
                   htmlFor="message"
                   className="text-xs font-medium text-zinc-400 uppercase tracking-wider"
                 >
-                  Area of Interest
+                  {t("access.form.areaOfInterest")}
                 </label>
                 <textarea
                   id="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Brief message or area of interest..."
+                  placeholder={t("access.form.areaOfInterestPlaceholder")}
                   rows={3}
                   className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-amber-500/15 text-white placeholder:text-zinc-600 text-sm
                     focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30 transition-all resize-none"
@@ -508,9 +513,7 @@ export default function AccessPage() {
                     </div>
                   </div>
                   <span className="text-xs text-zinc-400 leading-relaxed">
-                    I confirm this inquiry is confidential and I am an accredited
-                    investor or equivalent as defined by applicable securities
-                    regulations.
+                    {t("access.form.accreditedConfirm")}
                   </span>
                 </label>
                 {errors.accredited && (
@@ -540,7 +543,7 @@ export default function AccessPage() {
                 ) : (
                   <>
                     <Send className="size-4" />
-                    Request Private Access
+                    {t("access.form.submit")}
                   </>
                 )}
               </button>
@@ -556,12 +559,7 @@ export default function AccessPage() {
           className="max-w-2xl text-center mt-12"
         >
           <p className="text-[11px] text-zinc-600 leading-relaxed">
-            This page does not constitute an offer to sell or a solicitation of an offer to
-            buy any securities, tokens, or digital assets. TAMS is a concept application
-            designed for demonstration purposes. No investment is being offered, and no
-            funds are being raised through this application. All inquiries are treated
-            confidentially and are subject to review. By submitting this form you agree
-            to be contacted by a TAMS representative.
+            {t("access.disclaimer")}
           </p>
         </motion.div>
       </div>
