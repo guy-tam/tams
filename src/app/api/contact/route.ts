@@ -4,6 +4,24 @@ import { Resend } from "resend";
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "xrptam2@gmail.com";
 
+// --- מגבלות אורך שדות ---
+const MAX_LENGTHS = {
+  fullName: 100,
+  email: 255,
+  phone: 20,
+  message: 5000,
+  investorType: 100,
+  investmentRange: 100,
+} as const;
+
+// ביטוי רגולרי לבדיקת תקינות אימייל
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+// הסרת תגיות HTML מהקלט — מניעת הזרקת HTML
+function stripHtmlTags(str: string): string {
+  return str.replace(/<[^>]*>/g, "");
+}
+
 // --- הגבלת קצב שליחה (Rate Limiting) ---
 // מקסימום 3 שליחות לשעה לכל כתובת IP
 const RATE_LIMIT_MAX = 3;
@@ -79,18 +97,68 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    // ולידציה בסיסית
+    // --- שכבה 3: ולידציה של שדות חובה ---
     if (!fullName || !email || !investorType || !investmentRange) {
       return NextResponse.json({ error: "missing_fields" }, { status: 400 });
     }
+
+    // --- שכבה 4: בדיקת סוג — כל השדות חייבים להיות מחרוזות ---
+    if (
+      typeof fullName !== "string" ||
+      typeof email !== "string" ||
+      typeof investorType !== "string" ||
+      typeof investmentRange !== "string" ||
+      (phone !== undefined && phone !== null && typeof phone !== "string") ||
+      (message !== undefined && message !== null && typeof message !== "string")
+    ) {
+      return NextResponse.json(
+        { error: "invalid_types", message: "כל השדות חייבים להיות מחרוזות טקסט." },
+        { status: 400 }
+      );
+    }
+
+    // --- שכבה 5: בדיקת אורך מקסימלי ---
+    const lengthChecks: { field: string; value: string | undefined | null; max: number }[] = [
+      { field: "fullName", value: fullName, max: MAX_LENGTHS.fullName },
+      { field: "email", value: email, max: MAX_LENGTHS.email },
+      { field: "phone", value: phone, max: MAX_LENGTHS.phone },
+      { field: "message", value: message, max: MAX_LENGTHS.message },
+      { field: "investorType", value: investorType, max: MAX_LENGTHS.investorType },
+      { field: "investmentRange", value: investmentRange, max: MAX_LENGTHS.investmentRange },
+    ];
+
+    for (const check of lengthChecks) {
+      if (check.value && check.value.length > check.max) {
+        return NextResponse.json(
+          { error: "field_too_long", field: check.field, max: check.max, message: `השדה ${check.field} חורג מהאורך המרבי (${check.max} תווים).` },
+          { status: 400 }
+        );
+      }
+    }
+
+    // --- שכבה 6: בדיקת תקינות אימייל ---
+    if (!EMAIL_REGEX.test(email)) {
+      return NextResponse.json(
+        { error: "invalid_email", message: "כתובת אימייל לא תקינה." },
+        { status: 400 }
+      );
+    }
+
+    // --- שכבה 7: הסרת תגיות HTML מכל הקלטים ---
+    const cleanFullName = stripHtmlTags(fullName);
+    const cleanEmail = stripHtmlTags(email);
+    const cleanPhone = phone ? stripHtmlTags(phone) : undefined;
+    const cleanInvestorType = stripHtmlTags(investorType);
+    const cleanInvestmentRange = stripHtmlTags(investmentRange);
+    const cleanMessage = message ? stripHtmlTags(message) : undefined;
 
     const resend = new Resend(apiKey);
 
     const { error } = await resend.emails.send({
       from: "TAMS Access <onboarding@resend.dev>",
       to: CONTACT_EMAIL,
-      replyTo: email,
-      subject: `🔒 TAMS Access Request — ${fullName}`,
+      replyTo: cleanEmail,
+      subject: `🔒 TAMS Access Request — ${cleanFullName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #1a1a2e; border-bottom: 2px solid #d4a843; padding-bottom: 10px;">
@@ -100,28 +168,28 @@ export async function POST(req: NextRequest) {
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <tr>
               <td style="padding: 8px 12px; font-weight: bold; color: #555; width: 140px;">Full Name</td>
-              <td style="padding: 8px 12px;">${escapeHtml(fullName)}</td>
+              <td style="padding: 8px 12px;">${escapeHtml(cleanFullName)}</td>
             </tr>
             <tr style="background: #f9f9f9;">
               <td style="padding: 8px 12px; font-weight: bold; color: #555;">Email</td>
-              <td style="padding: 8px 12px;"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td>
+              <td style="padding: 8px 12px;"><a href="mailto:${escapeHtml(cleanEmail)}">${escapeHtml(cleanEmail)}</a></td>
             </tr>
             <tr>
               <td style="padding: 8px 12px; font-weight: bold; color: #555;">Phone</td>
-              <td style="padding: 8px 12px;">${phone ? escapeHtml(phone) : "—"}</td>
+              <td style="padding: 8px 12px;">${cleanPhone ? escapeHtml(cleanPhone) : "—"}</td>
             </tr>
             <tr style="background: #f9f9f9;">
               <td style="padding: 8px 12px; font-weight: bold; color: #555;">Investor Type</td>
-              <td style="padding: 8px 12px;">${escapeHtml(investorType)}</td>
+              <td style="padding: 8px 12px;">${escapeHtml(cleanInvestorType)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 12px; font-weight: bold; color: #555;">Investment Range</td>
-              <td style="padding: 8px 12px;">${escapeHtml(investmentRange)}</td>
+              <td style="padding: 8px 12px;">${escapeHtml(cleanInvestmentRange)}</td>
             </tr>
-            ${message ? `
+            ${cleanMessage ? `
             <tr style="background: #f9f9f9;">
               <td style="padding: 8px 12px; font-weight: bold; color: #555; vertical-align: top;">Message</td>
-              <td style="padding: 8px 12px;">${escapeHtml(message)}</td>
+              <td style="padding: 8px 12px;">${escapeHtml(cleanMessage)}</td>
             </tr>` : ""}
           </table>
 

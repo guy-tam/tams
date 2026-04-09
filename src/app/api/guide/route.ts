@@ -2,6 +2,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { buildSystemPrompt } from "@/lib/ai-guide/systemPrompt";
 
+// --- קבועי ולידציה ---
+const MAX_MESSAGES = 50; // מקסימום הודעות בשיחה
+const MAX_CONTENT_LENGTH = 2000; // אורך מקסימלי לתוכן הודעה בודדת
+const MAX_ROUTE_LENGTH = 100; // אורך מקסימלי לנתיב
+const MAX_BODY_SIZE = 50 * 1024; // 50KB — גודל מקסימלי לגוף הבקשה
+const ALLOWED_ROLES = ["user", "assistant"] as const; // תפקידים מותרים
+const ALLOWED_LANGS = ["he", "en", "ar", "ru", "es"] as const; // שפות מותרות
+
 export async function POST(req: NextRequest) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -9,13 +17,111 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { messages, currentRoute, lang } = await req.json();
+    // --- בדיקת גודל גוף הבקשה ---
+    const contentLength = req.headers.get("content-length");
+    if (contentLength && parseInt(contentLength, 10) > MAX_BODY_SIZE) {
+      return NextResponse.json(
+        { error: "body_too_large", message: "גוף הבקשה חורג מהגודל המרבי (50KB)." },
+        { status: 400 }
+      );
+    }
 
-    const systemPrompt = buildSystemPrompt(currentRoute, lang ?? "he");
+    // קריאת הגוף כטקסט לבדיקת גודל בפועל, ואז פרסור
+    const rawBody = await req.text();
+    if (rawBody.length > MAX_BODY_SIZE) {
+      return NextResponse.json(
+        { error: "body_too_large", message: "גוף הבקשה חורג מהגודל המרבי (50KB)." },
+        { status: 400 }
+      );
+    }
+
+    let body: Record<string, unknown>;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return NextResponse.json(
+        { error: "invalid_json", message: "גוף הבקשה אינו JSON תקין." },
+        { status: 400 }
+      );
+    }
+
+    const { messages, currentRoute, lang } = body;
+
+    // --- ולידציה: messages חייב להיות מערך ---
+    if (!Array.isArray(messages)) {
+      return NextResponse.json(
+        { error: "invalid_messages", message: "השדה messages חייב להיות מערך." },
+        { status: 400 }
+      );
+    }
+
+    // --- ולידציה: מקסימום הודעות ---
+    if (messages.length > MAX_MESSAGES) {
+      return NextResponse.json(
+        { error: "too_many_messages", message: `מקסימום ${MAX_MESSAGES} הודעות בשיחה.` },
+        { status: 400 }
+      );
+    }
+
+    // --- ולידציה: כל הודעה חייבת לכלול role ו-content תקינים ---
+    for (let i = 0; i < messages.length; i++) {
+      const m = messages[i];
+
+      if (!m || typeof m !== "object") {
+        return NextResponse.json(
+          { error: "invalid_message", index: i, message: "כל הודעה חייבת להיות אובייקט." },
+          { status: 400 }
+        );
+      }
+
+      // בדיקת תפקיד — חייב להיות user או assistant
+      if (!(ALLOWED_ROLES as readonly string[]).includes(m.role)) {
+        return NextResponse.json(
+          { error: "invalid_role", index: i, message: `תפקיד לא חוקי. מותר רק: ${ALLOWED_ROLES.join(", ")}.` },
+          { status: 400 }
+        );
+      }
+
+      // בדיקת תוכן — חייב להיות מחרוזת באורך סביר
+      if (typeof m.content !== "string") {
+        return NextResponse.json(
+          { error: "invalid_content", index: i, message: "תוכן ההודעה חייב להיות מחרוזת." },
+          { status: 400 }
+        );
+      }
+
+      if (m.content.length > MAX_CONTENT_LENGTH) {
+        return NextResponse.json(
+          { error: "content_too_long", index: i, message: `תוכן ההודעה חורג מהאורך המרבי (${MAX_CONTENT_LENGTH} תווים).` },
+          { status: 400 }
+        );
+      }
+    }
+
+    // --- ולידציה: שפה ---
+    const validatedLang = lang ?? "he";
+    if (!(ALLOWED_LANGS as readonly string[]).includes(validatedLang as string)) {
+      return NextResponse.json(
+        { error: "invalid_lang", message: `שפה לא נתמכת. מותר רק: ${ALLOWED_LANGS.join(", ")}.` },
+        { status: 400 }
+      );
+    }
+
+    // --- ולידציה: נתיב נוכחי ---
+    if (currentRoute !== undefined && currentRoute !== null) {
+      if (typeof currentRoute !== "string" || currentRoute.length > MAX_ROUTE_LENGTH) {
+        return NextResponse.json(
+          { error: "invalid_route", message: `נתיב לא תקין או חורג מהאורך המרבי (${MAX_ROUTE_LENGTH} תווים).` },
+          { status: 400 }
+        );
+      }
+    }
+
+    const systemPrompt = buildSystemPrompt(currentRoute as string, validatedLang as "he" | "en");
 
     const openaiMessages = [
       { role: "system" as const, content: systemPrompt },
-      ...messages.map((m: { role: string; content: string }) => ({
+      ...(messages as { role: string; content: string }[]).map((m) => ({
         role: m.role as "user" | "assistant",
         content: m.content,
       })),
