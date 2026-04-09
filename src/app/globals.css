@@ -138,8 +138,9 @@
   body {
     @apply bg-background text-foreground;
     background:
-      radial-gradient(ellipse at 20% 0%, rgba(201, 168, 76, 0.02) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 10%, rgba(58, 123, 232, 0.015) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 0%, rgba(201, 168, 76, 0.04) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 10%, rgba(58, 123, 232, 0.03) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, rgba(201, 168, 76, 0.02) 0%, transparent 50%),
       var(--background);
   }
   html {
@@ -401,13 +402,13 @@ html[lang="ar"] a {
   background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
 }
 
-/* אנימציית זוהר איטית לטקסט — עדינה מאוד */
+/* אנימציית זוהר איטית לטקסט */
 @keyframes text-glow {
-  0%, 100% { text-shadow: 0 0 30px rgba(212, 168, 83, 0); }
-  50% { text-shadow: 0 0 60px rgba(212, 168, 83, 0.06); }
+  0%, 100% { text-shadow: 0 0 20px rgba(212, 168, 83, 0); }
+  50% { text-shadow: 0 0 40px rgba(212, 168, 83, 0.12); }
 }
 .animate-text-glow {
-  animation: text-glow 6s ease-in-out infinite;
+  animation: text-glow 4s ease-in-out infinite;
 }
 
 /* אנימציית פולס איטי לנקודות */

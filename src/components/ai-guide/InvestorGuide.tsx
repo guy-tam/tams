@@ -222,17 +222,18 @@ export default function InvestorGuide() {
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             onClick={() => setIsOpen(true)}
             className={`fixed bottom-6 ${isRTL ? "left-6" : "right-6"} z-50
-              h-12 w-12 rounded-full
-              bg-white/[0.06] backdrop-blur-xl
-              border border-white/[0.1]
-              shadow-lg shadow-black/20
+              h-14 w-14 rounded-full
+              bg-gradient-to-br from-amber-400/90 via-amber-500 to-blue-600/80
+              shadow-lg shadow-amber-500/25
               flex items-center justify-center
-              hover:bg-white/[0.1] hover:border-white/[0.15]
-              hover:scale-105
-              transition-all duration-500`}
+              hover:shadow-xl hover:shadow-amber-400/35
+              hover:scale-110
+              transition-all duration-300
+              border border-amber-300/30
+              backdrop-blur-sm`}
             aria-label="Open investor guide"
           >
-            <Sparkles className="h-5 w-5 text-zinc-300" />
+            <Sparkles className="h-6 w-6 text-white drop-shadow-[0_0_4px_rgba(251,191,36,0.4)]" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -257,10 +258,10 @@ export default function InvestorGuide() {
             dir={isRTL ? "rtl" : "ltr"}
           >
             {/* כותרת */}
-            <div className="relative flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">
+            <div className="relative flex items-center justify-between px-5 py-4 border-b border-amber-500/10 bg-gradient-to-r from-amber-500/[0.06] via-transparent to-blue-600/[0.06]">
               <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center">
-                  <Sparkles className="h-4 w-4 text-zinc-400" />
+                <div className="h-9 w-9 rounded-full bg-gradient-to-br from-amber-400 to-blue-500 shadow-md shadow-amber-500/20 flex items-center justify-center">
+                  <Sparkles className="h-4 w-4 text-white" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-white">

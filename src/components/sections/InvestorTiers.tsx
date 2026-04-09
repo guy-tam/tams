@@ -200,10 +200,12 @@ export default function InvestorTiers() {
                 key={meta.key}
                 variants={cardVariants}
                 custom={tierIndex}
-                className={`group relative flex flex-col rounded-2xl transition-all duration-500 ${
+                className={`group relative flex flex-col rounded-2xl backdrop-blur-lg overflow-hidden transition-all duration-400 shadow-lg shadow-black/5 ${
                   isVisionary
-                    ? "border border-amber-400/20 bg-white/[0.04] hover:border-amber-400/30 hover:bg-white/[0.06]"
-                    : "border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.04]"
+                    ? "card-ornate border border-amber-400/30 bg-white/[0.07] hover:border-amber-400/50 hover:bg-white/[0.09] shadow-[0_0_50px_-12px_rgba(212,168,83,0.18)] hover:shadow-[0_0_60px_-10px_rgba(212,168,83,0.25)] hover:scale-[1.02]"
+                    : meta.key === "architect"
+                    ? "border border-amber-400/20 bg-white/[0.05] hover:border-amber-400/35 hover:bg-white/[0.07] hover:shadow-[0_0_36px_-10px_rgba(212,168,83,0.1)]"
+                    : "border border-amber-500/15 bg-white/[0.04] hover:border-amber-400/25 hover:bg-white/[0.06] hover:shadow-[0_0_24px_-8px_rgba(212,168,83,0.08)]"
                 }`}
               >
                 {/* כותרת הדרגה */}
@@ -216,31 +218,31 @@ export default function InvestorTiers() {
                     }}
                   />
 
-                  {/* באדג׳ */}
+                  {/* באדג׳ פרימיום */}
                   {BadgeIcon && (
-                    <div className="absolute top-4 end-4">
-                      <BadgeIcon className="size-4 opacity-40" style={{ color: meta.color }} />
+                    <div className="absolute top-3 end-3 transition-transform duration-300 group-hover:scale-110">
+                      <BadgeIcon className="size-5 drop-shadow-[0_0_6px_rgba(212,168,83,0.4)]" style={{ color: meta.color }} />
                     </div>
                   )}
 
-                  {/* אייקון */}
+                  {/* אייקון עם זוהר */}
                   <div
-                    className="mb-5 inline-flex items-center justify-center size-11 rounded-xl"
+                    className="mb-4 inline-flex items-center justify-center size-14 rounded-xl transition-all duration-300 group-hover:scale-105"
                     style={{
-                      background: `${meta.color}08`,
-                      border: `1px solid ${meta.color}15`,
+                      background: `${meta.color}15`,
+                      boxShadow: `0 0 0 2px ${meta.color}25, 0 0 24px -4px ${meta.color}15`,
                     }}
                   >
-                    <Icon className="size-5" style={{ color: meta.color, opacity: 0.7 }} />
+                    <Icon className="size-7" style={{ color: meta.color }} />
                   </div>
 
                   {/* שם */}
-                  <h3 className="text-base font-semibold text-white/90 tracking-tight">{tier.name}</h3>
+                  <h3 className="text-lg font-bold text-foreground tracking-tight">{tier.name}</h3>
 
                   {/* סף כניסה */}
                   <div
-                    className="text-xl font-semibold mt-2 tracking-tight"
-                    style={{ color: meta.color }}
+                    className="text-2xl font-bold mt-1.5 tracking-tight"
+                    style={{ color: meta.color, textShadow: `0 0 20px ${meta.color}30` }}
                   >
                     {tier.minInvestment}
                   </div>

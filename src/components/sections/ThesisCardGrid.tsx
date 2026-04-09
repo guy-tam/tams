@@ -1,6 +1,6 @@
 "use client";
 
-// רשת כרטיסי תזה — נקי ומאופק
+// רשת כרטיסי תזה — מוזהב וחי עם גופן מלכותי
 import { motion } from "framer-motion";
 import { type LucideIcon } from "lucide-react";
 
@@ -20,14 +20,14 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.12,
       delayChildren: 0.1,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -42,7 +42,7 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
     >
       {cards.map((card, index) => {
         const Icon = card.icon;
@@ -52,37 +52,44 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
           <motion.div
             key={index}
             variants={cardVariants}
-            className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 transition-all duration-500 hover:border-white/[0.12] hover:bg-white/[0.04]"
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            className="group relative rounded-2xl border border-amber-400/15 bg-white/[0.04] backdrop-blur-lg p-7 transition-all duration-400 hover:border-amber-400/30 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-amber-500/10 shadow-lg shadow-black/5"
           >
-            {/* קו עליון עדין בהאבר */}
+            {/* קו גרדיאנט עליון בהאבר */}
             <div
-              className="absolute top-0 left-4 right-4 h-px opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+              className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               style={{
-                background: `linear-gradient(90deg, transparent, ${accentColor}30, transparent)`,
+                background: `linear-gradient(90deg, transparent, ${accentColor}60, transparent)`,
+              }}
+            />
+            {/* זוהר עדין בהאבר */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+              style={{
+                boxShadow: `inset 0 1px 0 0 rgba(212,168,83,0.06), 0 0 32px -8px ${accentColor}12`,
               }}
             />
 
-            {/* אייקון */}
+            {/* אייקון עם עיגול רקע מוזהב */}
             <div
-              className="mb-5 inline-flex items-center justify-center size-11 rounded-xl transition-colors duration-500"
+              className="mb-5 inline-flex items-center justify-center size-13 rounded-xl"
               style={{
-                background: `${accentColor}0a`,
-                border: `1px solid ${accentColor}15`,
+                background: `${accentColor}15`,
+                boxShadow: `0 0 28px ${accentColor}18, 0 0 0 1px ${accentColor}20`,
               }}
             >
               <Icon
-                className="size-5"
-                style={{ color: accentColor, opacity: 0.8 }}
+                className="size-6 transition-transform duration-300 group-hover:scale-110"
+                style={{ color: accentColor }}
               />
             </div>
 
             {/* כותרת */}
-            <h3 className="text-base font-semibold text-white/90 mb-2 tracking-tight">
+            <h3 className="text-lg font-bold text-foreground mb-2.5 tracking-tight">
               {card.title}
             </h3>
 
             {/* תיאור */}
-            <p className="text-sm text-zinc-500 leading-[1.7]">
+            <p className="text-sm text-muted-foreground/90 leading-relaxed">
               {card.description}
             </p>
           </motion.div>

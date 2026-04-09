@@ -1,6 +1,6 @@
 "use client";
 
-// כותרת מקטע — מאופקת ובוטחת
+// כותרת מקטע — מסגרת מנורה זהובה עם גופן מלכותי
 import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
@@ -11,11 +11,11 @@ interface SectionHeaderProps {
 }
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const },
+    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] as const },
   },
 };
 
@@ -33,24 +33,24 @@ export default function SectionHeader({
       viewport={{ once: true, margin: "-40px" }}
       className={`mb-12 ${className}`}
     >
-      {/* תג עליון — עדין וקטן */}
+      {/* תג עליון — באדג׳ מוזהב עם מסגרת */}
       {badge && (
-        <span className="mb-4 inline-block text-[11px] font-medium uppercase tracking-[0.2em] text-amber-400/60">
+        <span className="mb-4 inline-block rounded-full bg-amber-500/[0.08] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-400/90 border border-amber-400/20 shadow-[0_0_12px_-3px_rgba(212,168,83,0.15)] backdrop-blur-sm">
           {badge}
         </span>
       )}
 
-      {/* כותרת — לבנה עם נגיעת חמימות */}
-      <h2 className="text-2xl font-semibold tracking-[-0.01em] text-white sm:text-3xl lg:text-4xl">
+      {/* כותרת — גרדיאנט זהוב-לבן מלכותי */}
+      <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl bg-gradient-to-r from-white via-amber-100/80 to-white bg-clip-text text-transparent">
         {title}
       </h2>
 
-      {/* קו גרדיאנט מתחת — עדין */}
-      <div className="mt-5 h-px w-16 bg-gradient-to-r from-amber-400/40 to-transparent" />
+      {/* קו גרדיאנט מנורה — כחול→זהב→זהב→כחול */}
+      <div className="mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-blue-500 via-amber-400/80 to-amber-500 shadow-[0_0_8px_rgba(212,168,83,0.3)]" />
 
       {/* תת-כותרת */}
       {subtitle && (
-        <p className="mt-5 text-sm leading-[1.7] text-zinc-500 max-w-xl">
+        <p className="mt-4 text-sm leading-[1.7] text-zinc-400/90 max-w-xl">
           {subtitle}
         </p>
       )}
