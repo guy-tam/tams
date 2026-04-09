@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tams.vercel.app/sitemap.xml
+Sitemap: https://tams-two.vercel.app/sitemap.xml

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "he_IL",
-    url: "https://tams.vercel.app",
+    url: "https://tams-two.vercel.app",
     siteName: "TAMS",
     title: "TAMS | Blockchain Investment Infrastructure",
     description: "תשתית השקעות בלוקצ'יין ברמה מוסדית — מחקר מוסדי, 259 ראיות מאומתות, 16 נכסים",

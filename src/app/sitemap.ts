@@ -1,7 +1,7 @@
 // מפת אתר דינמית — מגדיר את כל הנתיבים הציבוריים עבור מנועי חיפוש
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://tams.vercel.app'
+const BASE_URL = 'https://tams-two.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
