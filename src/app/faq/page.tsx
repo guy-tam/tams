@@ -3,7 +3,7 @@
 // עמוד שאלות נפוצות — אקורדיון לפי קטגוריות
 import { useState } from "react";
 import PageWrapper from "@/components/layout/PageWrapper";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
@@ -21,33 +21,33 @@ interface FaqCategory {
 
 /* ────────────────────────────── אנימציות ────────────────────────────── */
 
-const answerVariants = {
+const answerVariants: Variants = {
   collapsed: { height: 0, opacity: 0 },
   expanded: {
     height: "auto",
     opacity: 1,
-    transition: { duration: 0.3, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 0.3, ease: [0.25, 0.4, 0.25, 1] as const },
   },
   exit: {
     height: 0,
     opacity: 0,
-    transition: { duration: 0.2, ease: "easeIn" },
+    transition: { duration: 0.2, ease: "easeIn" as const },
   },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.08 },
   },
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: "easeOut" },
+    transition: { duration: 0.45, ease: "easeOut" as const },
   },
 };
 

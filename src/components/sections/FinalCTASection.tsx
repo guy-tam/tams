@@ -1,21 +1,20 @@
 "use client";
 
-// סקשן CTA סופי - קריאה לפעולה עם כרטיסים
+// סקשן CTA סופי — מאופק ואלגנטי
 import { motion } from "framer-motion";
-import { BookOpen, LayoutGrid, TrendingUp } from "lucide-react";
+import { BookOpen, LayoutGrid, TrendingUp, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
-// אנימציית כניסה מדורגת
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12 },
+    transition: { staggerChildren: 0.08 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -35,36 +34,31 @@ export default function FinalCTASection() {
       title: t("home.ctaCards.architecture.title"),
       description: t("home.ctaCards.architecture.description"),
       href: "/architecture",
-      color: "#3b6fd4",
+      color: "#8ba4c4",
     },
     {
       icon: TrendingUp,
       title: t("home.ctaCards.opportunity.title"),
       description: t("home.ctaCards.opportunity.description"),
       href: "/market-shift",
-      color: "#d4a853",
+      color: "#c9a84c",
     },
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/[0.04] to-amber-500/[0.02]" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/[0.06]0/[0.05] rounded-full blur-3xl" />
-      </div>
-
+    <section className="relative py-28 overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="gradient-text">{t("home.cta.title")}</span>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.01em] text-white mb-5">
+            {t("home.cta.title")}
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
+          <p className="text-zinc-500 max-w-lg mx-auto leading-[1.7]">
             {t("home.cta.subtitle")}
           </p>
         </motion.div>
@@ -74,7 +68,7 @@ export default function FinalCTASection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20"
         >
           {ctaCards.map((card) => {
             const Icon = card.icon;
@@ -83,42 +77,30 @@ export default function FinalCTASection() {
                 key={card.title}
                 href={card.href}
                 variants={cardVariants}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group relative rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6 transition-all duration-300 hover:border-amber-500/25 hover:bg-white/[0.06] hover:shadow-[0_0_30px_-10px_rgba(212,168,83,0.08)] block"
+                className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 transition-all duration-500 hover:border-white/[0.12] hover:bg-white/[0.04] block"
               >
-                {/* גלאו עליון */}
-                <div
-                  className="absolute -top-px left-4 right-4 h-px opacity-0 transition-opacity group-hover:opacity-100"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${card.color}40, transparent)`,
-                  }}
-                />
-
                 {/* אייקון */}
                 <div
-                  className="mb-4 inline-flex items-center justify-center size-12 rounded-xl"
-                  style={{ background: `${card.color}15` }}
+                  className="mb-5 inline-flex items-center justify-center size-11 rounded-xl"
+                  style={{
+                    background: `${card.color}08`,
+                    border: `1px solid ${card.color}15`,
+                  }}
                 >
-                  <Icon
-                    className="size-6"
-                    style={{ color: card.color }}
-                  />
+                  <Icon className="size-5" style={{ color: card.color, opacity: 0.7 }} />
                 </div>
 
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-base font-semibold text-white/90 mb-2 tracking-tight">
                   {card.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-zinc-500 leading-[1.7]">
                   {card.description}
                 </p>
 
                 {/* חץ */}
-                <div
-                  className="mt-4 text-sm font-medium flex items-center gap-1 transition-transform group-hover:translate-x-1"
-                  style={{ color: card.color }}
-                >
+                <div className="mt-5 flex items-center gap-1.5 text-sm text-zinc-600 group-hover:text-zinc-400 transition-colors duration-500">
                   {t("common.learnMore")}
-                  <span>&rarr;</span>
+                  <ArrowRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" />
                 </div>
               </motion.a>
             );
@@ -130,10 +112,10 @@ export default function FinalCTASection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-6 text-center"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center"
         >
-          <p className="text-xs text-muted-foreground/60 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-[11px] text-zinc-700 leading-relaxed max-w-2xl mx-auto">
             {t("home.cta.disclaimer")}
           </p>
         </motion.div>

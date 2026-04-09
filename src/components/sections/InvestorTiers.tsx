@@ -1,12 +1,11 @@
 "use client";
 
-// מערכת דרגות משקיעים - מעגל השקעה היררכי
+// מערכת דרגות משקיעים — עיצוב מאופק של מועדון פרטי
 import { motion } from "framer-motion";
 import { Compass, Hammer, Building2, Eye, Check, Star, Crown } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import type { Language } from "@/lib/i18n";
 import SectionHeader from "@/components/layout/SectionHeader";
-import { Button } from "@/components/ui/button";
 
 interface TierData {
   name: string;
@@ -15,7 +14,6 @@ interface TierData {
   benefits: string[];
 }
 
-// נתוני דרגות לפי שפה
 const tierTexts: Record<Language, Record<string, TierData>> = {
   en: {
     explorer: {
@@ -152,17 +150,16 @@ const tierTexts: Record<Language, Record<string, TierData>> = {
 const tierMeta = [
   { key: "explorer", icon: Compass, color: "#6b9bd2", badge: null },
   { key: "builder", icon: Hammer, color: "#4f8ff7", badge: null },
-  { key: "architect", icon: Building2, color: "#3b6fd4", badge: Star },
-  { key: "visionary", icon: Eye, color: "#d4a853", badge: Crown },
+  { key: "architect", icon: Building2, color: "#8ba4c4", badge: Star },
+  { key: "visionary", icon: Eye, color: "#c9a84c", badge: Crown },
 ] as const;
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: { duration: 0.5, delay: i * 0.1 },
+    transition: { duration: 0.5, delay: i * 0.08 },
   }),
 };
 
@@ -171,11 +168,11 @@ export default function InvestorTiers() {
   const tiers = tierTexts[language] || tierTexts.en;
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* רקע */}
+    <section className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* רקע עדין */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/[0.06] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-900/[0.05] rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-amber-500/[0.02] rounded-full blur-[160px]" />
+        <div className="absolute bottom-0 right-1/3 w-[500px] h-[500px] bg-blue-900/[0.03] rounded-full blur-[140px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -185,104 +182,103 @@ export default function InvestorTiers() {
           subtitle={t("investorTiers.subtitle")}
         />
 
-        {/* גריד דרגות */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{ staggerChildren: 0.12 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12"
+          transition={{ staggerChildren: 0.08 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-14"
         >
           {tierMeta.map((meta, tierIndex) => {
             const Icon = meta.icon;
             const tier = tiers[meta.key];
             const BadgeIcon = meta.badge;
+            const isVisionary = meta.key === "visionary";
 
             return (
               <motion.div
                 key={meta.key}
                 variants={cardVariants}
                 custom={tierIndex}
-                className={`group relative flex flex-col rounded-2xl backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-white/[0.04] ${
-                  meta.key === "visionary"
-                    ? "card-ornate border border-amber-500/25 bg-white/[0.06] hover:border-amber-500/40 shadow-[0_0_40px_-12px_rgba(212,168,83,0.12)]"
-                    : "border border-amber-500/15 bg-white/[0.04] hover:border-amber-500/25"
+                className={`group relative flex flex-col rounded-2xl transition-all duration-500 ${
+                  isVisionary
+                    ? "border border-amber-400/20 bg-white/[0.04] hover:border-amber-400/30 hover:bg-white/[0.06]"
+                    : "border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.04]"
                 }`}
               >
                 {/* כותרת הדרגה */}
-                <div
-                  className="relative p-6 pb-4"
-                  style={{
-                    background: `linear-gradient(180deg, ${meta.color}08 0%, transparent 100%)`,
-                  }}
-                >
-                  {/* גראדיינט עליון */}
+                <div className="relative p-7 pb-5">
+                  {/* קו עליון */}
                   <div
-                    className="absolute top-0 left-0 right-0 h-px"
+                    className="absolute top-0 left-6 right-6 h-px"
                     style={{
-                      background: `linear-gradient(90deg, transparent, ${meta.color}60, transparent)`,
+                      background: `linear-gradient(90deg, transparent, ${meta.color}20, transparent)`,
                     }}
                   />
 
-                  {/* באדג׳ פרימיום */}
+                  {/* באדג׳ */}
                   {BadgeIcon && (
-                    <div className="absolute top-3 end-3">
-                      <BadgeIcon className="size-4" style={{ color: meta.color }} />
+                    <div className="absolute top-4 end-4">
+                      <BadgeIcon className="size-4 opacity-40" style={{ color: meta.color }} />
                     </div>
                   )}
 
                   {/* אייקון */}
                   <div
-                    className="mb-4 inline-flex items-center justify-center size-14 rounded-xl"
+                    className="mb-5 inline-flex items-center justify-center size-11 rounded-xl"
                     style={{
-                      background: `${meta.color}12`,
-                      boxShadow: `0 0 0 2px ${meta.color}25`,
+                      background: `${meta.color}08`,
+                      border: `1px solid ${meta.color}15`,
                     }}
                   >
-                    <Icon className="size-7" style={{ color: meta.color }} />
+                    <Icon className="size-5" style={{ color: meta.color, opacity: 0.7 }} />
                   </div>
 
-                  {/* שם וסף כניסה */}
-                  <h3 className="text-lg font-bold text-foreground">{tier.name}</h3>
+                  {/* שם */}
+                  <h3 className="text-base font-semibold text-white/90 tracking-tight">{tier.name}</h3>
+
+                  {/* סף כניסה */}
                   <div
-                    className="text-2xl font-bold mt-1"
+                    className="text-xl font-semibold mt-2 tracking-tight"
                     style={{ color: meta.color }}
                   >
                     {tier.minInvestment}
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+
+                  {/* תיאור */}
+                  <p className="text-sm text-zinc-500 mt-3 leading-[1.7] font-serif-he">
                     {tier.description}
                   </p>
                 </div>
 
                 {/* הטבות */}
-                <div className="flex-1 p-6 pt-2">
-                  <div className="space-y-2.5">
+                <div className="flex-1 px-7 pb-7 pt-1">
+                  <div className="h-px w-full bg-white/[0.04] mb-5" />
+                  <div className="space-y-3">
                     {tier.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-sm">
                         <Check
-                          className="size-4 mt-0.5 flex-shrink-0"
+                          className="size-3.5 mt-0.5 flex-shrink-0 opacity-50"
                           style={{ color: meta.color }}
                         />
-                        <span className="text-muted-foreground">{benefit}</span>
+                        <span className="text-zinc-500 text-[13px] leading-relaxed">{benefit}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* כפתור */}
-                <div className="p-6 pt-0">
-                  <Button
-                    className="w-full text-sm font-medium"
-                    style={{
-                      background: `${meta.color}15`,
-                      color: meta.color,
-                      borderColor: `${meta.color}30`,
-                    }}
-                    variant="outline"
+                {/* כפתור — רק Visionary מקבל כפתור בולט */}
+                <div className="px-7 pb-7">
+                  <a
+                    href="/investor"
+                    className={`block w-full text-center text-sm font-medium py-2.5 rounded-lg transition-all duration-500 ${
+                      isVisionary
+                        ? "bg-amber-400/[0.08] text-amber-400/80 border border-amber-400/15 hover:bg-amber-400/[0.12] hover:border-amber-400/25"
+                        : "text-zinc-500 hover:text-zinc-300"
+                    }`}
                   >
                     {t("investorTiers.cta")}
-                  </Button>
+                  </a>
                 </div>
               </motion.div>
             );

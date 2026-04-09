@@ -222,18 +222,17 @@ export default function InvestorGuide() {
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             onClick={() => setIsOpen(true)}
             className={`fixed bottom-6 ${isRTL ? "left-6" : "right-6"} z-50
-              h-14 w-14 rounded-full
-              bg-gradient-to-br from-amber-500/90 to-blue-600/90
-              shadow-lg shadow-amber-500/20
+              h-12 w-12 rounded-full
+              bg-white/[0.06] backdrop-blur-xl
+              border border-white/[0.1]
+              shadow-lg shadow-black/20
               flex items-center justify-center
-              hover:shadow-xl hover:shadow-amber-500/30
+              hover:bg-white/[0.1] hover:border-white/[0.15]
               hover:scale-105
-              transition-all duration-200
-              border border-amber-400/20
-              backdrop-blur-sm`}
+              transition-all duration-500`}
             aria-label="Open investor guide"
           >
-            <Sparkles className="h-6 w-6 text-white" />
+            <Sparkles className="h-5 w-5 text-zinc-300" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -250,17 +249,18 @@ export default function InvestorGuide() {
               w-[400px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-2rem)]
               sm:w-[400px] sm:h-[600px]
               rounded-2xl overflow-hidden
-              bg-[#0b1a2e]/95 backdrop-blur-2xl
-              border border-zinc-700/40
-              shadow-2xl shadow-black/40
+              bg-[#0b1a2e]/97 backdrop-blur-2xl
+              border border-zinc-700/30
+              shadow-2xl shadow-black/50
+              ring-1 ring-amber-500/5
               flex flex-col`}
             dir={isRTL ? "rtl" : "ltr"}
           >
             {/* כותרת */}
-            <div className="relative flex items-center justify-between px-5 py-4 border-b border-zinc-700/40 bg-gradient-to-r from-amber-500/5 to-blue-500/5">
+            <div className="relative flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">
               <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-gradient-to-br from-amber-500/80 to-blue-500/80 flex items-center justify-center">
-                  <Sparkles className="h-4.5 w-4.5 text-white" />
+                <div className="h-8 w-8 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center">
+                  <Sparkles className="h-4 w-4 text-zinc-400" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-white">
@@ -319,8 +319,8 @@ export default function InvestorGuide() {
             </div>
 
             {/* שורת קלט */}
-            <div className="px-4 py-3 border-t border-zinc-700/40 bg-[#0a1628]/80">
-              <div className="flex items-center gap-2 bg-zinc-800/50 rounded-xl px-3 py-2.5 border border-zinc-700/30 focus-within:border-amber-500/30 transition-colors">
+            <div className="px-4 py-3 border-t border-amber-500/10 bg-gradient-to-t from-[#0a1628]/90 to-[#0b1a2e]/60">
+              <div className="flex items-center gap-2 bg-zinc-800/40 rounded-xl px-3 py-2.5 border border-zinc-700/25 focus-within:border-amber-500/30 focus-within:ring-1 focus-within:ring-amber-500/10 transition-all duration-300">
                 <input
                   ref={inputRef}
                   type="text"
@@ -400,14 +400,14 @@ function WelcomeView({
   onExplainPage: () => void;
 }) {
   return (
-    <div className="flex flex-col items-center text-center pt-4">
-      <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-blue-500/20 border border-amber-500/10 flex items-center justify-center mb-4">
-        <Sparkles className="h-7 w-7 text-amber-400" />
+    <div className="flex flex-col items-center text-center pt-6">
+      <div className="relative h-14 w-14 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-5">
+        <Sparkles className="h-6 w-6 text-zinc-400" />
       </div>
-      <h4 className="text-base font-semibold text-white mb-1">
+      <h4 className="text-base font-semibold text-white mb-1.5 tracking-wide">
         {isRTL ? "מדריך משקיעים TAMS" : "TAMS Investor Guide"}
       </h4>
-      <p className="text-xs text-zinc-400 mb-5 max-w-[280px]">
+      <p className="text-xs text-zinc-400 mb-6 max-w-[280px] leading-relaxed">
         {isAI
           ? (isRTL
             ? "שאל אותי כל שאלה על האתר, האסטרטגיה, התיק או ההשקעה. אני מבין את כל התוכן באתר."
@@ -421,14 +421,14 @@ function WelcomeView({
       <div className="w-full flex gap-2 mb-4">
         <button
           onClick={onExplainPage}
-          className="flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/15 hover:bg-amber-500/20 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-medium bg-white/[0.04] text-zinc-300 border border-white/[0.08] hover:bg-white/[0.07] hover:border-white/[0.12] transition-all duration-400"
         >
           <BookOpen className="h-3.5 w-3.5" />
           {isRTL ? "מה בעמוד הזה?" : "What's on this page?"}
         </button>
         <button
           onClick={() => onAsk(isRTL ? "מאיפה להתחיל?" : "Where should I start?")}
-          className="flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/15 hover:bg-blue-500/20 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-medium bg-white/[0.04] text-zinc-300 border border-white/[0.08] hover:bg-white/[0.07] hover:border-white/[0.12] transition-all duration-400"
         >
           <Compass className="h-3.5 w-3.5" />
           {isRTL ? "הדרך אותי" : "Guide me"}
@@ -437,14 +437,14 @@ function WelcomeView({
 
       {/* שאלות מוצעות */}
       <div className="w-full space-y-2">
-        <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2">
+        <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-500/80 mb-3 font-medium">
           {isRTL ? "שאלות מוצעות" : "Suggested questions"}
         </p>
         {suggestedQuestions.map((q) => (
           <button
             key={q}
             onClick={() => onAsk(q)}
-            className="w-full text-start rounded-lg px-3 py-2.5 text-xs text-zinc-300 bg-zinc-800/30 border border-zinc-700/20 hover:bg-zinc-800/60 hover:text-white hover:border-zinc-600/40 transition-all"
+            className="w-full text-start rounded-xl px-3.5 py-3 text-xs text-zinc-400 bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] hover:text-zinc-200 hover:border-white/[0.1] transition-all duration-400"
           >
             {q}
           </button>
@@ -477,8 +477,8 @@ function MessageBubble({
       <div
         className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
           isUser
-            ? "bg-gradient-to-r from-amber-500/15 to-blue-500/10 text-white border border-amber-500/10"
-            : "bg-zinc-800/40 text-zinc-200 border border-zinc-700/20"
+            ? "bg-white/[0.06] text-white border border-white/[0.08]"
+            : "bg-white/[0.02] text-zinc-300 border border-white/[0.05]"
         }`}
       >
         {/* תוכן — עיבוד markdown בסיסי */}

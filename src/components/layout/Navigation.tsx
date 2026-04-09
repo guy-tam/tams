@@ -85,7 +85,7 @@ export default function Navigation() {
                 ${
                   active
                     ? "text-white"
-                    : "text-zinc-400 hover:text-blue-200"
+                    : "text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03]"
                 }
               `}
             >
@@ -93,7 +93,7 @@ export default function Navigation() {
               {active && (
                 <motion.div
                   layoutId="activeNav"
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/15 to-amber-500/10 border border-blue-500/15"
+                  className="absolute inset-0 rounded-lg bg-white/[0.05] border border-white/[0.08]"
                   transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}
@@ -103,7 +103,7 @@ export default function Navigation() {
               {active && (
                 <motion.div
                   layoutId="activeIndicator"
-                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-full bg-gradient-to-b from-blue-400 to-amber-400 shadow-sm shadow-amber-400/20`}
+                  className={`absolute ${isRTL ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 h-5 w-[2px] rounded-full bg-amber-400/60`}
                   transition={{ type: "spring" as const, stiffness: 350, damping: 30 }}
                 />
               )}
@@ -122,14 +122,14 @@ export default function Navigation() {
         <TamsLogo variant="sidebar" />
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
-          <p className="text-[10px] uppercase tracking-widest text-blue-400/40">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-600">
             {t("common.conceptApp")}
           </p>
         </div>
       </div>
 
-      {/* קו הפרדה */}
-      <div className="mx-4 mb-4 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
+      {/* קו הפרדה מוזהב מתחת ללוגו */}
+      <div className="mx-4 mb-4 h-px bg-white/[0.05]" />
 
       {/* קישורי ניווט */}
       <div className="flex-1 overflow-y-auto">
@@ -139,7 +139,7 @@ export default function Navigation() {
       {/* כפתור כניסה לפורטל משקיעים */}
       <div className="mx-3 mb-2">
         <Link href="/login">
-          <div className="flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-medium bg-gradient-to-r from-amber-500/10 to-blue-500/10 border border-amber-500/15 text-amber-400 hover:from-amber-500/20 hover:to-blue-500/20 hover:text-amber-300 transition-all">
+          <div className="flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-medium bg-white/[0.04] border border-white/[0.08] text-zinc-300 hover:bg-white/[0.07] hover:border-white/[0.12] hover:text-white transition-all duration-400">
             <LogIn className="size-4" />
             <span>Investor Portal</span>
           </div>
@@ -161,10 +161,10 @@ export default function Navigation() {
       </div>
 
       {/* תחתית הסיידבר */}
-      <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
+      <div className="mx-4 mt-2 mb-2 h-px bg-white/[0.04]" />
       <div className="px-6 py-4">
-        <p className="text-[10px] text-blue-400/30 uppercase tracking-widest">
-          {t("common.conceptApp")} &middot; v0.1
+        <p className="text-[10px] text-zinc-700 tracking-[0.1em]">
+          v0.1
         </p>
       </div>
     </div>
@@ -186,11 +186,8 @@ export default function Navigation() {
       {/* סיידבר קבוע לדסקטופ */}
       <aside
         className={`hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-40
-          bg-[#0a1628]/90 backdrop-blur-2xl
-          ${isRTL ? "border-l" : "border-r"} border-zinc-800/40`}
-        style={{
-          borderImage: "linear-gradient(to bottom, transparent, rgba(212, 168, 83, 0.15), rgba(79, 143, 247, 0.15), transparent) 1",
-        }}
+          bg-[#060b14]/95 backdrop-blur-2xl
+          ${isRTL ? "border-l" : "border-r"} border-white/[0.04]`}
       >
         <SidebarContent />
       </aside>
@@ -218,7 +215,7 @@ export default function Navigation() {
               animate="open"
               exit="closed"
               className={`fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-50 w-64 flex flex-col
-                bg-[#0a1628]/95 backdrop-blur-2xl ${isRTL ? "border-l" : "border-r"} border-zinc-800/40 lg:hidden`}
+                bg-[#070e1a]/95 backdrop-blur-2xl ${isRTL ? "border-l" : "border-r"} border-zinc-800/40 lg:hidden`}
             >
               {/* כפתור סגירה */}
               <button

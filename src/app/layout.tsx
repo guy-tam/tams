@@ -1,6 +1,6 @@
 // תבנית ראשית - מבנה האפליקציה עם ניווט צדדי, מצב כהה ותמיכה בריבוי שפות
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Heebo } from "next/font/google";
+import { Geist, Geist_Mono, Heebo, Frank_Ruhl_Libre, Noto_Serif_Hebrew } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/layout/AppShell";
 
@@ -16,6 +16,18 @@ const geistMono = Geist_Mono({
 
 const heebo = Heebo({
   variable: "--font-heebo",
+  subsets: ["hebrew", "latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+const frankRuhl = Frank_Ruhl_Libre({
+  variable: "--font-frank-ruhl",
+  subsets: ["hebrew", "latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+const notoSerifHebrew = Noto_Serif_Hebrew({
+  variable: "--font-noto-serif-he",
   subsets: ["hebrew", "latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
@@ -63,7 +75,7 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
-      className={`${geistSans.variable} ${geistMono.variable} ${heebo.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${heebo.variable} ${frankRuhl.variable} ${notoSerifHebrew.variable} dark h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground flex">
         <AppShell>{children}</AppShell>

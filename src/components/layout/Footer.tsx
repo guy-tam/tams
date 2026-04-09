@@ -1,6 +1,6 @@
 "use client";
 
-// פוטר גלובלי — עיצוב פרימיום עדין התואם את הסיידבר
+// פוטר — מינימלי ובוטח
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
 
@@ -17,47 +17,45 @@ export default function Footer() {
   return (
     <footer
       dir={isRTL ? "rtl" : "ltr"}
-      className="relative mt-20 w-full border-t border-zinc-800/40"
-      style={{
-        borderImage:
-          "linear-gradient(to right, transparent, rgba(212, 168, 83, 0.15), rgba(79, 143, 247, 0.15), transparent) 1",
-      }}
+      className="relative mt-32 w-full"
     >
-      <div className="mx-auto max-w-5xl px-6 py-8">
-        {/* שורה עליונה — קישורים + יצירת קשר */}
-        <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-          {/* קישורי ניווט */}
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+      {/* קו הפרדה */}
+      <div className="h-px w-full bg-white/[0.04]" />
+
+      <div className="mx-auto max-w-5xl px-8 pt-12 pb-10">
+        {/* קישורים */}
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between">
+          <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs text-zinc-500 transition-colors hover:text-blue-300"
+                className="text-xs text-zinc-600 transition-colors duration-400 hover:text-zinc-400"
               >
                 {t(link.labelKey)}
               </Link>
             ))}
           </nav>
 
-          {/* אימייל */}
           <a
             href="mailto:contact@tams.earth"
-            className="text-xs text-zinc-500 transition-colors hover:text-amber-400"
+            className="text-xs text-zinc-600 transition-colors duration-400 hover:text-zinc-400"
           >
             contact@tams.earth
           </a>
         </div>
 
         {/* קו הפרדה */}
-        <div className="my-5 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
+        <div className="my-8 h-px bg-white/[0.03]" />
 
-        {/* שורה תחתונה — מותג + גרסה */}
-        <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-between">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-600">
-            &copy; {new Date().getFullYear()} TAMS &middot;{" "}
+        {/* מותג */}
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+          <p className="text-[11px] text-zinc-700">
+            &copy; {new Date().getFullYear()}{" "}
+            <span className="text-zinc-500">TAMS</span> &middot;{" "}
             {t("footer.rights")}
           </p>
-          <p className="text-[10px] uppercase tracking-widest text-blue-400/30">
+          <p className="text-[11px] text-zinc-700">
             {t("common.conceptApp")} &middot; v0.1
           </p>
         </div>

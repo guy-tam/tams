@@ -51,7 +51,7 @@ export default function HomePage() {
         />
       </div>
 
-      <section id="thesis" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="thesis" className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <SectionHeader
           badge={t("home.thesis.badge")}
           title={t("home.thesis.title")}
