@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Heebo, Frank_Ruhl_Libre, Noto_Serif_Hebrew } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/layout/AppShell";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +79,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${heebo.variable} ${frankRuhl.variable} ${notoSerifHebrew.variable} dark h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground flex">
+        <GoogleAnalytics />
         <AppShell>{children}</AppShell>
       </body>
     </html>

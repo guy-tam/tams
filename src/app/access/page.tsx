@@ -153,6 +153,8 @@ export default function AccessPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  // שדה מלכודת דבש — נסתר מהמשתמש, רק בוטים ימלאו אותו
+  const [companyUrl, setCompanyUrl] = useState("");
 
   // אפשרויות מתורגמות
   const investorTypeOptions = [
@@ -217,6 +219,7 @@ export default function AccessPage() {
       investorType: investorTypeLabel,
       investmentRange: investmentRangeLabel,
       message,
+      company_url: companyUrl, // שדה מלכודת דבש — נשלח ריק על ידי משתמשים אמיתיים
     };
 
     try {
@@ -226,6 +229,12 @@ export default function AccessPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(submission),
       });
+
+      if (res.status === 429) {
+        setIsSubmitting(false);
+        setSubmitError("יותר מדי בקשות. נסה שוב מאוחר יותר. / Too many requests. Please try again later.");
+        return;
+      }
 
       if (!res.ok) {
         throw new Error("API error");
@@ -379,6 +388,23 @@ export default function AccessPage() {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* שדה מלכודת דבש — נסתר מהעין, בוטים ימלאו אותו אוטומטית */}
+              <div
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, height: 0, overflow: "hidden" }}
+              >
+                <label htmlFor="company_url">Company URL</label>
+                <input
+                  type="text"
+                  id="company_url"
+                  name="company_url"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={companyUrl}
+                  onChange={(e) => setCompanyUrl(e.target.value)}
+                />
+              </div>
+
               {/* שורה ראשונה - שם ואימייל */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <PremiumInput

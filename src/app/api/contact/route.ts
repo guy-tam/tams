@@ -4,7 +4,58 @@ import { Resend } from "resend";
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "xrptam2@gmail.com";
 
+// --- הגבלת קצב שליחה (Rate Limiting) ---
+// מקסימום 3 שליחות לשעה לכל כתובת IP
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // שעה אחת במילישניות
+
+// מפה לאחסון ספירת בקשות לפי IP
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+// ניקוי רשומות שפג תוקפן — רץ בכל בקשה
+function cleanupExpiredEntries() {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetTime) {
+      rateLimitMap.delete(ip);
+    }
+  }
+}
+
+// בדיקת הגבלת קצב — מחזיר true אם הבקשה חסומה
+function isRateLimited(ip: string): boolean {
+  cleanupExpiredEntries();
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetTime) {
+    // רשומה חדשה או שפג תוקפה — מאפסים
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX) {
+    // חריגה ממגבלת הבקשות
+    return true;
+  }
+
+  // מעדכנים את הספירה
+  entry.count += 1;
+  return false;
+}
+
 export async function POST(req: NextRequest) {
+  // --- שכבה 1: הגבלת קצב לפי IP ---
+  const forwarded = req.headers.get("x-forwarded-for");
+  const ip = forwarded?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "rate_limited", message: "יותר מדי בקשות. נסה שוב מאוחר יותר. / Too many requests. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: "no_api_key" }, { status: 501 });
@@ -18,7 +69,15 @@ export async function POST(req: NextRequest) {
       investorType,
       investmentRange,
       message,
+      company_url, // שדה מלכודת דבש — אמור להישאר ריק
     } = await req.json();
+
+    // --- שכבה 2: בדיקת מלכודת דבש (Honeypot) ---
+    // אם השדה הסמוי מלא — זה כנראה בוט. מחזירים הצלחה מזויפת בלי לשלוח מייל
+    if (company_url) {
+      console.warn("Honeypot triggered — bot submission blocked", { ip });
+      return NextResponse.json({ success: true });
+    }
 
     // ולידציה בסיסית
     if (!fullName || !email || !investorType || !investmentRange) {
