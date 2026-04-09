@@ -1,9 +1,10 @@
 "use client";
 
-// פאנל ניווט צדדי פרימיום — ברמת מוסדות פיננסיים עילית
+// פאנל ניווט — דסקטופ צדדי + כפתור מובייל עם תפריט נושאים
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
+import { List, X } from "lucide-react";
 
 interface TocSection {
   id: string;
@@ -19,9 +20,8 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
   const [activeId, setActiveId] = useState<string>("");
   const [visible, setVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // מעקב אחר התקדמות גלילה כללית
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -34,7 +34,6 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // מעקב אחר נראות סקציות בודדות עם פירוט התקדמות
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -42,9 +41,6 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
           }
-          // חישוב התקדמות סקציה
-          const ratio = Math.max(0, Math.min(1, entry.intersectionRatio));
-          setSectionProgress(prev => ({ ...prev, [entry.target.id]: entry.isIntersecting ? ratio : prev[entry.target.id] || 0 }));
         });
       },
       { rootMargin: "-15% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
@@ -61,105 +57,204 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setMobileOpen(false);
     }
   }, []);
 
   const activeIndex = sections.findIndex(s => s.id === activeId);
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: isRTL ? -30 : 30 }}
-          transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-          className={`fixed ${isRTL ? "left-5" : "right-5"} top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col items-center gap-0`}
-        >
-          {/* קו התקדמות אנכי */}
-          <div className="relative flex flex-col items-center">
-            {/* קו רקע אנכי */}
-            <div className="absolute top-0 bottom-0 w-[2px] bg-white/[0.06] rounded-full" />
+    <>
+      {/* ─── כפתור מובייל צף — תוכן עניינים ─── */}
+      <AnimatePresence>
+        {visible && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className={`fixed top-3 ${isRTL ? "left-16" : "right-3"} z-40 xl:hidden
+              h-11 w-11 rounded-lg
+              bg-zinc-900/90 backdrop-blur-md border border-zinc-800/60
+              flex items-center justify-center
+              text-zinc-400 hover:text-white transition-colors
+              shadow-lg shadow-black/20`}
+            aria-label="תוכן עניינים"
+          >
+            {mobileOpen ? <X className="size-4.5" /> : <List className="size-4.5" />}
+          </motion.button>
+        )}
+      </AnimatePresence>
 
-            {/* מילוי התקדמות */}
+      {/* ─── תפריט נושאים מובייל ─── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* רקע כהה */}
             <motion.div
-              className="absolute top-0 w-[2px] rounded-full bg-gradient-to-b from-blue-500 to-amber-500"
-              style={{ height: `${scrollProgress * 100}%` }}
-              transition={{ duration: 0.1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-35 bg-black/50 backdrop-blur-sm xl:hidden"
             />
 
-            {/* נקודות סקציה */}
-            <div className="relative flex flex-col gap-0">
-              {sections.map((section, i) => {
-                const isActive = activeId === section.id;
-                const isPast = activeIndex > i;
+            {/* פאנל נושאים */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              className={`fixed top-16 ${isRTL ? "left-3" : "right-3"} z-40 xl:hidden
+                w-56 rounded-xl
+                bg-[#0b1a2e]/95 backdrop-blur-2xl
+                border border-amber-400/15
+                shadow-2xl shadow-black/40
+                overflow-hidden`}
+              dir={isRTL ? "rtl" : "ltr"}
+            >
+              {/* כותרת */}
+              <div className="px-4 py-3 border-b border-white/[0.06]">
+                <p className="text-[10px] uppercase tracking-[0.15em] text-amber-400/60 font-medium">
+                  {isRTL ? "נושאים" : "Sections"}
+                </p>
+              </div>
 
-                return (
-                  <button
-                    key={section.id}
-                    onClick={() => scrollTo(section.id)}
-                    className="group relative flex items-center gap-3 py-3 cursor-pointer"
-                    title={section.label}
-                  >
-                    {/* נקודת סקציה */}
-                    <div className={`relative z-10 flex items-center justify-center transition-all duration-300 ${
-                      isActive
-                        ? "w-3 h-3"
-                        : "w-2 h-2"
-                    }`}>
-                      <div className={`rounded-full transition-all duration-500 ${
+              {/* רשימת נושאים */}
+              <div className="py-2">
+                {sections.map((section, i) => {
+                  const isActive = activeId === section.id;
+                  const isPast = activeIndex > i;
+
+                  return (
+                    <button
+                      key={section.id}
+                      onClick={() => scrollTo(section.id)}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-all duration-200 ${
                         isActive
-                          ? "w-3 h-3 bg-amber-400 shadow-lg shadow-amber-400/30"
+                          ? "text-amber-400 bg-amber-400/[0.06]"
                           : isPast
-                            ? "w-2 h-2 bg-blue-400/60"
-                            : "w-2 h-2 bg-white/20 group-hover:bg-white/40"
-                      }`} />
-
-                      {/* טבעת פעימה פעילה */}
-                      {isActive && (
-                        <motion.div
-                          initial={{ scale: 1, opacity: 0.6 }}
-                          animate={{ scale: 2, opacity: 0 }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                          className="absolute w-3 h-3 rounded-full bg-amber-400/30"
-                        />
-                      )}
-                    </div>
-
-                    {/* תווית — מופיעה בריחוף או כשפעילה */}
-                    <motion.span
-                      initial={false}
-                      animate={{
-                        opacity: isActive ? 1 : 0,
-                        x: isActive ? 0 : (isRTL ? 8 : -8),
-                      }}
-                      className={`absolute ${isRTL ? "right-8" : "left-8"} whitespace-nowrap text-[11px] font-medium transition-colors duration-300 ${
-                        isActive
-                          ? "text-amber-400"
-                          : "text-zinc-500"
-                      } group-hover:opacity-100 group-hover:translate-x-0 pointer-events-none`}
-                      style={{
-                        textShadow: isActive ? "0 0 20px rgba(212, 168, 83, 0.3)" : "none"
-                      }}
+                            ? "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
+                            : "text-zinc-500 hover:text-white hover:bg-white/[0.04]"
+                      }`}
                     >
-                      {section.label}
-                    </motion.span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+                      {/* אינדיקטור */}
+                      <div className={`size-2 rounded-full flex-shrink-0 transition-all duration-300 ${
+                        isActive
+                          ? "bg-amber-400 shadow-sm shadow-amber-400/30"
+                          : isPast
+                            ? "bg-blue-400/50"
+                            : "bg-white/15"
+                      }`} />
+                      <span className="font-medium">{section.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
 
-          {/* אחוז התקדמות תחתון */}
+              {/* אחוז התקדמות */}
+              <div className="px-4 py-2 border-t border-white/[0.06]">
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-blue-500 to-amber-500 rounded-full transition-all duration-300"
+                      style={{ width: `${scrollProgress * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-[9px] font-mono text-zinc-600 tabular-nums">
+                    {Math.round(scrollProgress * 100)}%
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ─── פאנל דסקטופ צדדי ─── */}
+      <AnimatePresence>
+        {visible && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-4 text-[9px] font-mono text-zinc-600 tabular-nums"
+            initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: isRTL ? -30 : 30 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+            className={`fixed ${isRTL ? "left-5" : "right-5"} top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col items-center gap-0`}
           >
-            {Math.round(scrollProgress * 100)}%
+            <div className="relative flex flex-col items-center">
+              <div className="absolute top-0 bottom-0 w-[2px] bg-white/[0.06] rounded-full" />
+
+              <motion.div
+                className="absolute top-0 w-[2px] rounded-full bg-gradient-to-b from-blue-500 to-amber-500"
+                style={{ height: `${scrollProgress * 100}%` }}
+                transition={{ duration: 0.1 }}
+              />
+
+              <div className="relative flex flex-col gap-0">
+                {sections.map((section, i) => {
+                  const isActive = activeId === section.id;
+                  const isPast = activeIndex > i;
+
+                  return (
+                    <button
+                      key={section.id}
+                      onClick={() => scrollTo(section.id)}
+                      className="group relative flex items-center gap-3 py-3 cursor-pointer"
+                      title={section.label}
+                    >
+                      <div className={`relative z-10 flex items-center justify-center transition-all duration-300 ${
+                        isActive ? "w-3 h-3" : "w-2 h-2"
+                      }`}>
+                        <div className={`rounded-full transition-all duration-500 ${
+                          isActive
+                            ? "w-3 h-3 bg-amber-400 shadow-lg shadow-amber-400/30"
+                            : isPast
+                              ? "w-2 h-2 bg-blue-400/60"
+                              : "w-2 h-2 bg-white/20 group-hover:bg-white/40"
+                        }`} />
+
+                        {isActive && (
+                          <motion.div
+                            initial={{ scale: 1, opacity: 0.6 }}
+                            animate={{ scale: 2, opacity: 0 }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                            className="absolute w-3 h-3 rounded-full bg-amber-400/30"
+                          />
+                        )}
+                      </div>
+
+                      <motion.span
+                        initial={false}
+                        animate={{
+                          opacity: isActive ? 1 : 0,
+                          x: isActive ? 0 : (isRTL ? 8 : -8),
+                        }}
+                        className={`absolute ${isRTL ? "right-8" : "left-8"} whitespace-nowrap text-[11px] font-medium transition-colors duration-300 ${
+                          isActive ? "text-amber-400" : "text-zinc-500"
+                        } group-hover:opacity-100 group-hover:translate-x-0 pointer-events-none`}
+                        style={{
+                          textShadow: isActive ? "0 0 20px rgba(212, 168, 83, 0.3)" : "none"
+                        }}
+                      >
+                        {section.label}
+                      </motion.span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-4 text-[9px] font-mono text-zinc-600 tabular-nums"
+            >
+              {Math.round(scrollProgress * 100)}%
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

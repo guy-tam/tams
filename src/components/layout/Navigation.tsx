@@ -170,8 +170,8 @@ export default function Navigation() {
       {/* המבורגר מובייל */}
       <button
         onClick={() => setMobileOpen(true)}
-        className={`fixed top-4 ${isRTL ? "right-4" : "left-4"} z-50 flex h-10 w-10 items-center justify-center rounded-lg
-          bg-zinc-900/80 backdrop-blur-md border border-zinc-800/60 text-zinc-400
+        className={`fixed top-3 ${isRTL ? "right-3" : "left-3"} z-50 flex h-11 w-11 items-center justify-center rounded-lg
+          bg-zinc-900/90 backdrop-blur-md border border-zinc-800/60 text-zinc-400
           hover:text-white transition-colors lg:hidden`}
         aria-label="פתיחת תפריט"
       >

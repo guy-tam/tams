@@ -187,7 +187,7 @@ export default function InvestorTiers() {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.08 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 mt-10 sm:mt-14"
         >
           {tierMeta.map((meta, tierIndex) => {
             const Icon = meta.icon;
@@ -209,7 +209,7 @@ export default function InvestorTiers() {
                 }`}
               >
                 {/* כותרת הדרגה */}
-                <div className="relative p-7 pb-5">
+                <div className="relative p-5 sm:p-7 pb-4 sm:pb-5">
                   {/* קו עליון */}
                   <div
                     className="absolute top-0 left-6 right-6 h-px"
@@ -254,7 +254,7 @@ export default function InvestorTiers() {
                 </div>
 
                 {/* הטבות */}
-                <div className="flex-1 px-7 pb-7 pt-1">
+                <div className="flex-1 px-5 sm:px-7 pb-5 sm:pb-7 pt-1">
                   <div className="h-px w-full bg-white/[0.04] mb-5" />
                   <div className="space-y-3">
                     {tier.benefits.map((benefit, i) => (
@@ -270,7 +270,7 @@ export default function InvestorTiers() {
                 </div>
 
                 {/* כפתור — רק Visionary מקבל כפתור בולט */}
-                <div className="px-7 pb-7">
+                <div className="px-5 sm:px-7 pb-5 sm:pb-7">
                   <a
                     href="/investor"
                     className={`block w-full text-center text-sm font-medium py-2.5 rounded-lg transition-all duration-500 ${

@@ -221,8 +221,8 @@ export default function InvestorGuide() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             onClick={() => setIsOpen(true)}
-            className={`fixed bottom-6 ${isRTL ? "left-6" : "right-6"} z-50
-              h-14 w-14 rounded-full
+            className={`fixed bottom-4 sm:bottom-6 ${isRTL ? "left-3 sm:left-6" : "right-3 sm:right-6"} z-50
+              h-12 w-12 sm:h-14 sm:w-14 rounded-full
               bg-gradient-to-br from-amber-400/90 via-amber-500 to-blue-600/80
               shadow-lg shadow-amber-500/25
               flex items-center justify-center
@@ -246,9 +246,9 @@ export default function InvestorGuide() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 350, damping: 30 }}
-            className={`fixed bottom-6 ${isRTL ? "left-6" : "right-6"} z-50
-              w-[400px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-2rem)]
-              sm:w-[400px] sm:h-[600px]
+            className={`fixed bottom-3 sm:bottom-6 ${isRTL ? "left-3 sm:left-6" : "right-3 sm:right-6"} z-50
+              w-[calc(100vw-1.5rem)] sm:w-[400px] h-[calc(100vh-6rem)] sm:h-[600px]
+              max-h-[600px]
               rounded-2xl overflow-hidden
               bg-[#0b1a2e]/97 backdrop-blur-2xl
               border border-zinc-700/30

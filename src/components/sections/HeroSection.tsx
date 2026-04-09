@@ -122,7 +122,7 @@ export default function HeroSection({
           {/* כותרת ראשית — גופן מלכותי עם גרדיאנט חם */}
           <motion.h1
             style={{ y: titleY }}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.15] mb-8"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.15] mb-6 sm:mb-8"
           >
             <span className="gradient-text animate-text-glow">{title}</span>
           </motion.h1>
@@ -132,7 +132,7 @@ export default function HeroSection({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg sm:text-xl lg:text-2xl text-muted-foreground/90 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-base sm:text-lg lg:text-2xl text-muted-foreground/90 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed font-light px-2 sm:px-0"
           >
             {subtitle}
           </motion.p>
@@ -147,7 +147,7 @@ export default function HeroSection({
             <a href={ctaHref}>
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 px-8 h-13 text-base gap-2 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-[1.02]"
+                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 px-6 sm:px-8 h-12 sm:h-13 text-sm sm:text-base gap-2 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-[1.02] w-full sm:w-auto"
               >
                 <Compass className="size-4" />
                 {ctaText}
@@ -157,7 +157,7 @@ export default function HeroSection({
               <Button
                 variant="outline"
                 size="lg"
-                className="px-8 h-13 text-base gap-2 border-amber-400/20 bg-white/[0.06] backdrop-blur-md hover:bg-white/[0.08] hover:border-amber-400/30 transition-all duration-300 shadow-lg shadow-black/10 hover:shadow-[0_0_24px_-6px_rgba(212,168,83,0.15)] hover:scale-[1.02]"
+                className="px-6 sm:px-8 h-12 sm:h-13 text-sm sm:text-base gap-2 border-amber-400/20 bg-white/[0.06] backdrop-blur-md hover:bg-white/[0.08] hover:border-amber-400/30 transition-all duration-300 shadow-lg shadow-black/10 hover:shadow-[0_0_24px_-6px_rgba(212,168,83,0.15)] hover:scale-[1.02] w-full sm:w-auto"
               >
                 <FileText className="size-4" />
                 {t("home.hero.cta2")}
