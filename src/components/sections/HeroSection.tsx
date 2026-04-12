@@ -38,16 +38,16 @@ export default function HeroSection({
       {/* תוכן מרכזי */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
+          initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1.6, ease: [0.19, 1, 0.22, 1] }}
         >
           {/* תג עליון — מוזהב עם מסגרת */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-white/[0.06] backdrop-blur-md px-5 py-2 text-sm text-muted-foreground mb-8 shadow-[0_0_20px_-5px_rgba(212,168,83,0.12)]"
+            transition={{ delay: 0.4, duration: 1.1, ease: [0.19, 1, 0.22, 1] }}
+            className="badge-seal mb-8"
           >
             <span className="size-2 rounded-full bg-amber-400 animate-slow-pulse" />
             {t("home.hero.badge")}
@@ -73,9 +73,9 @@ export default function HeroSection({
 
           {/* תת כותרת */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.8, duration: 1.4, ease: [0.19, 1, 0.22, 1] }}
             className="text-base sm:text-lg lg:text-2xl text-muted-foreground/90 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed font-light px-2 sm:px-0"
           >
             {subtitle}
@@ -85,7 +85,7 @@ export default function HeroSection({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            transition={{ delay: 1.2, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a href={ctaHref}>
@@ -115,15 +115,15 @@ export default function HeroSection({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
+        transition={{ delay: 2, duration: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-muted-foreground/50"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: [0.19, 1, 0.22, 1] }}
+          className="flex flex-col items-center gap-2 text-amber-200/40"
         >
-          <span className="text-xs uppercase tracking-widest">{t("home.hero.scroll")}</span>
+          <span className="text-[10px] uppercase tracking-[0.32em]">{t("home.hero.scroll")}</span>
           <ArrowDown className="size-4" />
         </motion.div>
       </motion.div>

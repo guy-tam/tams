@@ -69,17 +69,11 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
               }}
             />
 
-            {/* אייקון עם עיגול רקע מוזהב */}
-            <div
-              className="mb-5 inline-flex items-center justify-center size-13 rounded-xl"
-              style={{
-                background: `${accentColor}15`,
-                boxShadow: `0 0 28px ${accentColor}18, 0 0 0 1px ${accentColor}20`,
-              }}
-            >
+            {/* אמבלמה הרלדית — אייקון במסגרת זהב עם טבעת חיצונית וזנב זהוב */}
+            <div className="icon-emblem mb-6">
               <Icon
-                className="size-6 transition-transform duration-300 group-hover:scale-110"
-                style={{ color: accentColor }}
+                className="size-6 relative z-10"
+                style={{ color: accentColor, filter: `drop-shadow(0 0 10px ${accentColor}88)` }}
               />
             </div>
 

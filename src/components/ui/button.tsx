@@ -10,9 +10,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+        default:
+          "relative overflow-hidden text-amber-50 border border-amber-400/45 bg-[linear-gradient(180deg,rgba(212,168,83,0.18)_0%,rgba(168,135,46,0.12)_100%),linear-gradient(165deg,rgba(20,32,62,0.9)_0%,rgba(10,18,38,0.95)_100%)] shadow-[0_0_0_1px_rgba(212,168,83,0.1),inset_0_1px_0_rgba(212,168,83,0.25),inset_0_-1px_0_rgba(0,0,0,0.4),0_4px_20px_rgba(0,0,0,0.35),0_0_40px_-15px_rgba(212,168,83,0.4)] hover:border-amber-400/75 hover:-translate-y-px hover:shadow-[0_0_0_1px_rgba(212,168,83,0.25),inset_0_1px_0_rgba(212,168,83,0.4),inset_0_-1px_0_rgba(0,0,0,0.5),0_8px_28px_rgba(0,0,0,0.45),0_0_60px_-10px_rgba(212,168,83,0.55)]",
         outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+          "border border-amber-400/35 bg-[linear-gradient(180deg,rgba(20,32,62,0.4),rgba(10,18,38,0.6))] text-amber-100/90 hover:border-amber-400/60 hover:bg-[linear-gradient(180deg,rgba(25,40,78,0.55),rgba(12,22,48,0.75))] hover:text-amber-50 shadow-[inset_0_1px_0_rgba(212,168,83,0.15),0_2px_12px_rgba(0,0,0,0.25)]",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:

@@ -639,8 +639,43 @@ html[lang="ar"] a {
   opacity: 0.5;
 }
 .card-gilded > * { position: relative; z-index: 1; }
+/* פינות זהב מעוטרות — כל card-gilded מקבל מסגרת ציור קלאסית */
+.card-gilded > .corner-gold-tl,
+.card-gilded > .corner-gold-tr,
+.card-gilded > .corner-gold-bl,
+.card-gilded > .corner-gold-br {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  opacity: 0.65;
+  transition: opacity var(--dur-grace) var(--ease-ceremonial);
+  z-index: 2;
+}
+.card-gilded::after {
+  content: "";
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) left top no-repeat,
+    linear-gradient(-90deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) right top no-repeat,
+    linear-gradient(0deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) left top no-repeat,
+    linear-gradient(180deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) left bottom no-repeat,
+    linear-gradient(0deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) right top no-repeat,
+    linear-gradient(180deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) right bottom no-repeat,
+    linear-gradient(90deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) left bottom no-repeat,
+    linear-gradient(-90deg, rgba(212,168,83,0.4) 0 14px, transparent 14px) right bottom no-repeat;
+  background-size: 14px 1px, 14px 1px, 1px 14px, 14px 1px, 1px 14px, 1px 14px, 14px 1px, 1px 14px;
+  opacity: 0.6;
+  transition: opacity var(--dur-grace) var(--ease-ceremonial);
+  z-index: 2;
+}
+.card-gilded:hover::after {
+  opacity: 1;
+}
 .card-gilded:hover {
-  border-color: rgba(212, 168, 83, 0.32);
+  border-color: rgba(212, 168, 83, 0.45);
   box-shadow:
     0 0 0 1px rgba(212, 168, 83, 0.08),
     0 1px 0 rgba(212, 168, 83, 0.14) inset,
@@ -710,4 +745,326 @@ html[lang="he"] h1.heading-editorial,
 html[lang="he"] h2.heading-editorial {
   letter-spacing: 0.005em;
   line-height: 1.18;
+}
+
+/* ╔════════════════════════════════════════════════════════════════╗
+   ║       מערכת עיצוב מלכותית — שפה ויזואלית עולם-שלם            ║
+   ║  לא רק רקע: כפתורים, תגים, אייקונים, חיתוכים, אנימציות        ║
+   ╚════════════════════════════════════════════════════════════════╝ */
+
+/* ─── עקומות תנועה טקסיות — ceremonial easing ─── */
+:root {
+  --ease-ceremonial: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-noble: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-graceful: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --dur-ceremony: 900ms;
+  --dur-grace: 650ms;
+  --dur-royal: 450ms;
+}
+
+/* ─── טבעת פוקוס מלכותית — במקום הסטנדרטית ─── */
+:focus-visible {
+  outline: none !important;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.9),
+    0 0 0 4px rgba(212, 168, 83, 0.18),
+    0 0 20px rgba(212, 168, 83, 0.25) !important;
+  transition: box-shadow var(--dur-royal) var(--ease-ceremonial);
+}
+
+/* ─── כפתור מלכותי — פטנט חד-משמעי לכל CTA ─── */
+.btn-royal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #f5ecd3;
+  background:
+    linear-gradient(180deg, rgba(212, 168, 83, 0.18) 0%, rgba(168, 135, 46, 0.12) 100%),
+    linear-gradient(165deg, rgba(20, 32, 62, 0.9) 0%, rgba(10, 18, 38, 0.95) 100%);
+  border: 1px solid rgba(212, 168, 83, 0.45);
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.1),
+    0 1px 0 rgba(212, 168, 83, 0.25) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.4) inset,
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    0 0 40px -15px rgba(212, 168, 83, 0.4);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--dur-grace) var(--ease-ceremonial),
+    box-shadow var(--dur-grace) var(--ease-ceremonial),
+    border-color var(--dur-grace) var(--ease-ceremonial);
+}
+.btn-royal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 235, 180, 0.22) 48%,
+    rgba(255, 235, 180, 0.35) 50%,
+    rgba(255, 235, 180, 0.22) 52%,
+    transparent 70%
+  );
+  transform: translateX(-150%);
+  transition: transform 1300ms var(--ease-ceremonial);
+  pointer-events: none;
+}
+.btn-royal:hover::before { transform: translateX(150%); }
+.btn-royal:hover {
+  border-color: rgba(212, 168, 83, 0.75);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.25),
+    0 1px 0 rgba(212, 168, 83, 0.4) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.5) inset,
+    0 8px 28px rgba(0, 0, 0, 0.45),
+    0 0 60px -10px rgba(212, 168, 83, 0.55);
+}
+
+/* ─── תג חותם — royal seal ─── */
+.badge-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(235, 215, 155, 0.95);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.18) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(25, 40, 75, 0.45) 0%, rgba(12, 20, 40, 0.55) 100%);
+  border: 1px solid rgba(212, 168, 83, 0.35);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(212, 168, 83, 0.18) inset,
+    0 0 14px rgba(212, 168, 83, 0.1),
+    0 0 0 3px rgba(212, 168, 83, 0.05);
+  position: relative;
+}
+.badge-seal::before,
+.badge-seal::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #dbb85c 0%, #a8872e 70%, transparent 100%);
+  box-shadow: 0 0 6px rgba(212, 168, 83, 0.55);
+  flex-shrink: 0;
+}
+
+/* ─── אמבלמה הרלדית — מסגרת אייקון מלכותית ─── */
+.icon-emblem {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(212, 168, 83, 0.28) 0%, transparent 60%),
+    linear-gradient(160deg, rgba(25, 40, 78, 0.75) 0%, rgba(9, 16, 38, 0.95) 100%);
+  border: 1px solid rgba(212, 168, 83, 0.38);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.12),
+    0 0 0 5px rgba(212, 168, 83, 0.05),
+    0 1px 0 rgba(212, 168, 83, 0.2) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.4) inset,
+    0 6px 20px rgba(0, 0, 0, 0.45),
+    0 0 30px -8px rgba(212, 168, 83, 0.3);
+  transition:
+    transform var(--dur-grace) var(--ease-ceremonial),
+    box-shadow var(--dur-grace) var(--ease-ceremonial);
+}
+.icon-emblem::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 168, 83, 0.15);
+  pointer-events: none;
+}
+.icon-emblem::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 1px;
+  height: 6px;
+  background: linear-gradient(to bottom, rgba(212, 168, 83, 0.6), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.icon-emblem:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.28),
+    0 0 0 5px rgba(212, 168, 83, 0.1),
+    0 1px 0 rgba(212, 168, 83, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.5) inset,
+    0 12px 32px rgba(0, 0, 0, 0.55),
+    0 0 60px -10px rgba(212, 168, 83, 0.55);
+}
+
+/* ─── מפריד מעוטר — laurel + fleuron ─── */
+.divider-ornate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  pointer-events: none;
+}
+.divider-ornate::before,
+.divider-ornate::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  max-width: 200px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.55) 50%, transparent);
+}
+.divider-ornate > .fleuron-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(219, 184, 92, 0.85);
+}
+.divider-ornate > .fleuron-mark::before,
+.divider-ornate > .fleuron-mark::after {
+  content: "";
+  width: 6px;
+  height: 1px;
+  background: rgba(212, 168, 83, 0.6);
+}
+.divider-ornate > .fleuron-mark > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #dbb85c 0%, #a8872e 70%, transparent 100%);
+  box-shadow: 0 0 12px rgba(212, 168, 83, 0.7);
+}
+
+/* ─── פינות זהב מעוטרות — מסגרת ציור קלאסית ─── */
+.royal-corners {
+  position: relative;
+}
+.royal-corners::before,
+.royal-corners::after,
+.royal-corners > .corner-tl,
+.royal-corners > .corner-br {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.royal-corners::before {
+  top: 6px;
+  left: 6px;
+  border-top: 1px solid rgba(212, 168, 83, 0.55);
+  border-left: 1px solid rgba(212, 168, 83, 0.55);
+}
+.royal-corners::after {
+  top: 6px;
+  right: 6px;
+  border-top: 1px solid rgba(212, 168, 83, 0.55);
+  border-right: 1px solid rgba(212, 168, 83, 0.55);
+}
+
+/* ─── כותרת עם כתר — crown title ─── */
+.title-crowned {
+  position: relative;
+  display: inline-block;
+}
+.title-crowned::before {
+  content: "♛";
+  position: absolute;
+  top: -1.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55em;
+  color: rgba(219, 184, 92, 0.75);
+  text-shadow: 0 0 14px rgba(212, 168, 83, 0.6);
+  letter-spacing: 0;
+}
+
+/* ─── אנימציות טקסיות — ceremonial motion ─── */
+@keyframes graceful-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.reveal-graceful {
+  animation: graceful-reveal var(--dur-ceremony) var(--ease-ceremonial) both;
+}
+
+@keyframes royal-shimmer {
+  0% { background-position: -200% 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { background-position: 200% 0; opacity: 0; }
+}
+.royal-shimmer-layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 235, 180, 0.15) 48%,
+    rgba(255, 235, 180, 0.25) 50%,
+    rgba(255, 235, 180, 0.15) 52%,
+    transparent 70%
+  );
+  background-size: 220% 100%;
+  animation: royal-shimmer 5.5s var(--ease-ceremonial) infinite;
+  pointer-events: none;
+}
+
+@keyframes crown-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(212, 168, 83, 0.2)); }
+  50% { filter: drop-shadow(0 0 18px rgba(212, 168, 83, 0.55)); }
+}
+.crown-glow { animation: crown-glow 5s ease-in-out infinite; }
+
+@keyframes noble-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.noble-float { animation: noble-float 7s ease-in-out infinite; }
+
+/* ─── הרמה אצילית בריחוף — hover-noble ─── */
+.hover-noble {
+  transition:
+    transform var(--dur-grace) var(--ease-ceremonial),
+    box-shadow var(--dur-grace) var(--ease-ceremonial),
+    border-color var(--dur-grace) var(--ease-ceremonial);
+}
+.hover-noble:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.3),
+    0 20px 48px rgba(0, 0, 0, 0.5),
+    0 0 80px -15px rgba(212, 168, 83, 0.35);
+}
+
+/* ─── האטת כל המעברים הסטנדרטיים ל-ceremonial ─── */
+a, button, [role="button"], .transition-colors, .transition-all {
+  transition-timing-function: var(--ease-ceremonial) !important;
+  transition-duration: 450ms !important;
 }

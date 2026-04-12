@@ -11,11 +11,12 @@ interface SectionHeaderProps {
 }
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] as const },
+    filter: "blur(0px)",
+    transition: { duration: 1.3, ease: [0.19, 1, 0.22, 1] as const },
   },
 };
 
@@ -33,17 +34,20 @@ export default function SectionHeader({
       viewport={{ once: true, margin: "-40px" }}
       className={`mb-12 ${className}`}
     >
-      {/* תג עליון — באדג׳ מוזהב עם מסגרת */}
+      {/* חותם מלכותי — royal seal badge */}
       {badge && (
-        <span className="mb-4 inline-block rounded-full bg-amber-500/[0.08] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-400/90 border border-amber-400/20 shadow-[0_0_12px_-3px_rgba(212,168,83,0.15)] backdrop-blur-sm">
-          {badge}
+        <span className="badge-seal mb-5">
+          <span>{badge}</span>
         </span>
       )}
 
-      {/* כותרת — גרדיאנט זהוב-לבן מלכותי, ריווח עריכתי */}
-      <h2 className="heading-editorial text-2xl sm:text-3xl lg:text-4xl bg-gradient-to-br from-white via-amber-100/85 to-amber-200/70 bg-clip-text text-transparent">
-        {title}
-      </h2>
+      {/* כותרת עם כתר — royal crown title */}
+      <div className="relative inline-block">
+        <span aria-hidden="true" className="absolute -top-6 left-0 text-[1.1rem] text-amber-400/70 crown-glow" style={{ filter: "drop-shadow(0 0 12px rgba(212,168,83,0.5))" }}>⚜</span>
+        <h2 className="heading-editorial text-2xl sm:text-3xl lg:text-4xl bg-gradient-to-br from-white via-amber-100/85 to-amber-200/70 bg-clip-text text-transparent">
+          {title}
+        </h2>
+      </div>
 
       {/* עיטור פלרון זהוב — חילוף לקו הישן, נותן נוכחות גלריה */}
       <div className="mt-5 flex items-center gap-3 max-w-[220px]">

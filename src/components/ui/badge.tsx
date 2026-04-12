@@ -9,7 +9,8 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+        default:
+          "text-amber-100/95 tracking-[0.18em] uppercase border border-amber-400/35 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,168,83,0.18)_0%,transparent_70%),linear-gradient(180deg,rgba(25,40,75,0.45)_0%,rgba(12,20,40,0.55)_100%)] shadow-[inset_0_1px_0_rgba(212,168,83,0.18),0_0_14px_rgba(212,168,83,0.1),0_0_0_3px_rgba(212,168,83,0.05)]",
         secondary:
           "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80",
         destructive:
