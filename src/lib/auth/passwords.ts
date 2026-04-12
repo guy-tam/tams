@@ -56,7 +56,7 @@ async function derive(
     {
       name: "PBKDF2",
       hash: "SHA-256",
-      salt,
+      salt: salt as BufferSource,
       iterations,
     },
     baseKey,
