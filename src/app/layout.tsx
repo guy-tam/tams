@@ -82,10 +82,12 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} ${heebo.variable} ${frankRuhl.variable} ${notoSerifHebrew.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full bg-background text-foreground flex">
+      <body className="min-h-full bg-background text-foreground flex relative">
         <GoogleAnalytics />
         <AtmosphericBackdrop />
-        <AppShell>{children}</AppShell>
+        <div className="relative z-10 flex w-full">
+          <AppShell>{children}</AppShell>
+        </div>
       </body>
     </html>
   );
