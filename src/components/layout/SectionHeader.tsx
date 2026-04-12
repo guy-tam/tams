@@ -40,13 +40,17 @@ export default function SectionHeader({
         </span>
       )}
 
-      {/* כותרת — גרדיאנט זהוב-לבן מלכותי */}
-      <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl bg-gradient-to-r from-white via-amber-100/80 to-white bg-clip-text text-transparent">
+      {/* כותרת — גרדיאנט זהוב-לבן מלכותי, ריווח עריכתי */}
+      <h2 className="heading-editorial text-2xl sm:text-3xl lg:text-4xl bg-gradient-to-br from-white via-amber-100/85 to-amber-200/70 bg-clip-text text-transparent">
         {title}
       </h2>
 
-      {/* קו גרדיאנט מנורה — כחול→זהב→זהב→כחול */}
-      <div className="mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-blue-500 via-amber-400/80 to-amber-500 shadow-[0_0_8px_rgba(212,168,83,0.3)]" />
+      {/* עיטור פלרון זהוב — חילוף לקו הישן, נותן נוכחות גלריה */}
+      <div className="mt-5 flex items-center gap-3 max-w-[220px]">
+        <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-amber-400/50 to-amber-400/30" />
+        <span className="block w-[6px] h-[6px] rounded-full bg-[radial-gradient(circle,#dbb85c_0%,#a8872e_75%,transparent_100%)] shadow-[0_0_10px_rgba(212,168,83,0.55)]" />
+        <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-blue-400/25 to-blue-500/15" />
+      </div>
 
       {/* תת-כותרת */}
       {subtitle && (

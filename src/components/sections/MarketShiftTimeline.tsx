@@ -212,7 +212,7 @@ export default function MarketShiftTimeline() {
   }));
 
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className="section-plinth relative max-w-4xl mx-auto p-6 sm:p-10">
       {/* ציר אופקי על מסכים גדולים, אנכי על מובייל */}
 
       {/* תצוגה אנכית */}

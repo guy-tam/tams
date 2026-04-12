@@ -59,15 +59,31 @@ export default function Navigation() {
     setMobileOpen(false);
   }, [pathname]);
 
+  // נגישות: מקש Escape סוגר את תפריט המובייל
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const NavLinks = () => (
-    <nav className="flex flex-col gap-1 px-3">
+    // נגישות: תפריט ניווט ראשי עם תווית
+    <nav aria-label="ניווט ראשי" className="flex flex-col gap-1 px-3">
       {navItems.map((item) => {
         const active = isActive(item.href);
         return (
-          <Link key={item.href} href={item.href}>
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={active ? "page" : undefined}
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-lg"
+          >
             <motion.div
               variants={linkVariants}
               initial="idle"
@@ -130,7 +146,10 @@ export default function Navigation() {
 
       {/* כפתור כניסה — מוזהב */}
       <div className="mx-3 mb-2">
-        <Link href="/login">
+        <Link
+          href="/login"
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-xl block"
+        >
           <div className="flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-semibold bg-gradient-to-r from-amber-500/15 via-amber-400/10 to-blue-500/10 border border-amber-500/25 text-amber-400 hover:from-amber-500/25 hover:via-amber-400/15 hover:to-blue-500/15 hover:text-amber-300 hover:border-amber-400/35 hover:shadow-[0_0_16px_rgba(212,168,83,0.12)] transition-all duration-300">
             <LogIn className="size-4" />
             <span>Investor Portal</span>
@@ -140,7 +159,10 @@ export default function Navigation() {
 
       {/* גישה פרטית */}
       <div className="mx-3 mb-3">
-        <Link href="/access">
+        <Link
+          href="/access"
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-xl block"
+        >
           <div className="flex items-center gap-2.5 rounded-xl px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-amber-400 transition-colors">
             <span>{t("nav.investorPortal")}</span>
           </div>
@@ -168,12 +190,16 @@ export default function Navigation() {
   return (
     <>
       {/* המבורגר מובייל */}
+      {/* נגישות: כפתור המבורגר שולט בפאנל הניווט הנייד */}
       <button
+        type="button"
         onClick={() => setMobileOpen(true)}
+        aria-label="פתיחת תפריט"
+        aria-expanded={mobileOpen}
+        aria-controls="mobile-nav"
         className={`fixed top-3 ${isRTL ? "right-3" : "left-3"} z-50 flex h-11 w-11 items-center justify-center rounded-lg
           bg-zinc-900/90 backdrop-blur-md border border-zinc-800/60 text-zinc-400
-          hover:text-white transition-colors lg:hidden`}
-        aria-label="פתיחת תפריט"
+          hover:text-white transition-colors lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
       >
         <Menu className="h-5 w-5" />
       </button>
@@ -181,10 +207,12 @@ export default function Navigation() {
       {/* סיידבר דסקטופ — גבול מנורה מוזהב */}
       <aside
         className={`hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-40
-          bg-[#070e1a]/95 backdrop-blur-2xl
+          backdrop-blur-2xl
           ${isRTL ? "border-l" : "border-r"} border-zinc-800/40`}
         style={{
-          borderImage: "linear-gradient(to bottom, transparent 5%, rgba(212, 168, 83, 0.3) 30%, rgba(212, 168, 83, 0.2) 50%, rgba(79, 143, 247, 0.25) 70%, transparent 95%) 1",
+          background: "linear-gradient(180deg, rgba(8,15,28,0.96) 0%, rgba(6,12,24,0.97) 55%, rgba(5,10,20,0.98) 100%)",
+          borderImage: "linear-gradient(to bottom, transparent 5%, rgba(212, 168, 83, 0.36) 30%, rgba(212, 168, 83, 0.24) 50%, rgba(79, 143, 247, 0.28) 70%, transparent 95%) 1",
+          boxShadow: "inset 0 1px 0 rgba(212,168,83,0.1), inset 0 -1px 0 rgba(0,0,0,0.5), 0 0 80px -20px rgba(0,0,0,0.6)",
         }}
       >
         <SidebarContent />
@@ -203,8 +231,13 @@ export default function Navigation() {
               onClick={() => setMobileOpen(false)}
               className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
             />
+            {/* נגישות: פאנל הניווט הנייד משמש כ-dialog מודאלי */}
             <motion.aside
               key="mobile-sidebar"
+              id="mobile-nav"
+              role="dialog"
+              aria-modal="true"
+              aria-label="תפריט ניווט"
               variants={sidebarMobileVariants}
               initial="closed"
               animate="open"
@@ -213,10 +246,11 @@ export default function Navigation() {
                 bg-[#070e1a]/95 backdrop-blur-2xl ${isRTL ? "border-l" : "border-r"} border-zinc-800/40 lg:hidden`}
             >
               <button
+                type="button"
                 onClick={() => setMobileOpen(false)}
-                className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
-                  rounded-md text-zinc-500 hover:text-white transition-colors`}
                 aria-label="סגירת תפריט"
+                className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
+                  rounded-md text-zinc-500 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
               >
                 <X className="h-4 w-4" />
               </button>

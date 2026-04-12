@@ -69,7 +69,10 @@ export default function HeroSection({
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* רקע עם כדורים צפים — חיים ונשימה */}
+      {/* שכבה 1 — קרן אור קלאסית (godray) עליונה */}
+      <div aria-hidden="true" className="absolute inset-0 godray pointer-events-none" />
+
+      {/* שכבה 2 — כדורים צפים: חיים ונשימה ברוקיים */}
       <div className="absolute inset-0">
         <FloatingOrb
           size={650}
@@ -101,6 +104,12 @@ export default function HeroSection({
         />
       </div>
 
+      {/* שכבה 3 — דגן פיגמנט ציורי מעל הכדורים */}
+      <div aria-hidden="true" className="absolute inset-0 texture-grain opacity-50 pointer-events-none mix-blend-overlay" />
+
+      {/* שכבה 4 — וינייטה צ׳יארוסקורו למיקוד דרמטי */}
+      <div aria-hidden="true" className="absolute inset-0 chiaroscuro pointer-events-none" />
+
       {/* תוכן מרכזי */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
@@ -119,10 +128,20 @@ export default function HeroSection({
             {t("home.hero.badge")}
           </motion.div>
 
+          {/* פלרון קלאסי — עיטור זהב עדין מעל הכותרת */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0.6 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.25, duration: 0.8 }}
+            className="fleuron max-w-sm mx-auto mb-8"
+          >
+            <span />
+          </motion.div>
+
           {/* כותרת ראשית — גופן מלכותי עם גרדיאנט חם */}
           <motion.h1
             style={{ y: titleY }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.15] mb-6 sm:mb-8"
+            className="heading-editorial text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.15] mb-6 sm:mb-8"
           >
             <span className="gradient-text animate-text-glow">{title}</span>
           </motion.h1>

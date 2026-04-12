@@ -1,7 +1,11 @@
-// מפת אתר דינמית — מגדיר את כל הנתיבים הציבוריים עבור מנועי חיפוש
+// מפת אתר דינמית — מגדיר את כל הנתיבים הציבוריים עבור מנועי חיפוש.
+// כתובת הבסיס נשלטת על ידי NEXT_PUBLIC_SITE_URL — חשוב במיוחד לסביבות
+// staging/preview כדי שה-sitemap לא יפנה לפרודקשן.
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://tams-two.vercel.app'
+const BASE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://tams-two.vercel.app'
+).replace(/\/$/, '')
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()

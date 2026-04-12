@@ -1,6 +1,11 @@
 // API route — מדריך AI עם OpenAI GPT
 import { NextRequest, NextResponse } from "next/server";
 import { buildSystemPrompt } from "@/lib/ai-guide/systemPrompt";
+import { checkOrigin, getClientIp, rateLimit } from "@/lib/security";
+import { log } from "@/lib/logger";
+
+// שם הראוט — נכנס לכל רשומת לוג לצורכי חיפוש וסינון
+const ROUTE = "api/guide";
 
 // --- קבועי ולידציה ---
 const MAX_MESSAGES = 50; // מקסימום הודעות בשיחה
@@ -10,7 +15,43 @@ const MAX_BODY_SIZE = 50 * 1024; // 50KB — גודל מקסימלי לגוף ה
 const ALLOWED_ROLES = ["user", "assistant"] as const; // תפקידים מותרים
 const ALLOWED_LANGS = ["he", "en", "ar", "ru", "es"] as const; // שפות מותרות
 
+// --- Rate limit: 20 בקשות ל-IP בכל 10 דקות ---
+// AI calls יקרים — חייבים להגביל כדי למנוע ניצול לרעה של OpenAI credits.
+const RATE_LIMIT_MAX = 20;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
 export async function POST(req: NextRequest) {
+  // שליפת IP ו-requestId מוקדם — משמשים בכל רשומת לוג
+  const ip = getClientIp(req);
+  const requestId = req.headers.get("x-request-id") || undefined;
+  // הקשר בסיסי שנמשך לכל קריאת לוג בראוט הזה
+  const baseCtx = { route: ROUTE, ip, requestId };
+
+  // לוג כניסה — מאפשר לעקוב אחרי כל בקשה שנכנסה, גם אם נחסמה מיד
+  log.info("request received", baseCtx);
+
+  // --- שכבה 0: חסימת בקשות cross-origin ---
+  // ה-API נועד רק ל-frontend שלנו — אסור שמישהו יקרא אליו ישירות.
+  if (!checkOrigin(req)) {
+    log.warn("bad_origin rejected", baseCtx);
+    return NextResponse.json(
+      { error: "bad_origin", message: "Request origin not allowed." },
+      { status: 403 }
+    );
+  }
+
+  // --- שכבה 0.5: rate limiting לפי IP — הגנה על OpenAI credits ---
+  if (await rateLimit(`guide:${ip}`, { max: RATE_LIMIT_MAX, windowMs: RATE_LIMIT_WINDOW_MS })) {
+    log.warn("rate_limited", baseCtx);
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: "יותר מדי בקשות. נסה שוב בעוד כמה דקות. / Too many requests. Try again in a few minutes.",
+      },
+      { status: 429 }
+    );
+  }
+
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: "no_api_key" }, { status: 501 });
@@ -143,7 +184,7 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       const err = await response.text();
-      console.error("OpenAI error:", err);
+      log.error("openai upstream failed", { ...baseCtx, status: response.status, body: err });
       return NextResponse.json({ error: "openai_error" }, { status: 502 });
     }
 
@@ -152,7 +193,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ reply });
   } catch (e) {
-    console.error("Guide API error:", e);
+    log.error("guide handler threw", { ...baseCtx, err: e });
     return NextResponse.json({ error: "server_error" }, { status: 500 });
   }
 }

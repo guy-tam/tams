@@ -143,11 +143,14 @@
 
   body {
     @apply bg-background text-foreground;
+    /* רקע ציורי רב-שכבתי — דרמה ברוקית מרוסנת: זהב על כחול דיו עם עומק אפל בפינות */
     background:
-      radial-gradient(ellipse at 20% 0%, rgba(201, 168, 76, 0.04) 0%, transparent 45%),
-      radial-gradient(ellipse at 80% 10%, rgba(58, 123, 232, 0.03) 0%, transparent 45%),
-      radial-gradient(ellipse at 50% 100%, rgba(201, 168, 76, 0.02) 0%, transparent 50%),
-      var(--background);
+      radial-gradient(ellipse 80% 60% at 18% 8%, rgba(212, 168, 83, 0.075) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 55% at 82% 12%, rgba(58, 123, 232, 0.055) 0%, transparent 55%),
+      radial-gradient(ellipse 90% 70% at 50% 105%, rgba(212, 168, 83, 0.045) 0%, transparent 60%),
+      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 45%, rgba(0, 0, 0, 0.45) 100%),
+      linear-gradient(180deg, oklch(0.075 0.018 268) 0%, oklch(0.06 0.016 265) 50%, oklch(0.05 0.014 262) 100%);
+    background-attachment: fixed;
   }
   html {
     @apply font-sans scroll-smooth;
@@ -504,4 +507,208 @@ html[lang="ar"] a {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(201, 168, 76, 0.10) transparent;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   שכבות אמנותיות — השראה מאמני הזהב הישן (צ׳יארוסקורו, בד, זהב)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── טקסטורת בד/נייר עתיק — דגן עדין מאוד ─── */
+.texture-canvas {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.78  0 0 0 0 0.67  0 0 0 0 0.42  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+}
+
+/* ─── דגן פיגמנט ציורי — לעומק ורוגע חזותי ─── */
+.texture-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  background-size: 180px 180px;
+}
+
+/* ─── צ׳יארוסקורו — וינייטה דרמטית מרוסנת סביב התוכן ─── */
+.chiaroscuro {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 35%, transparent 0%, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+/* ─── קרן אור זהובה מלמעלה — godray עדין ─── */
+.godray {
+  background:
+    radial-gradient(ellipse 45% 80% at 50% -10%, rgba(212, 168, 83, 0.10) 0%, rgba(212, 168, 83, 0.04) 30%, transparent 70%);
+}
+
+/* ─── רקע ציורי רב-שכבתי — מקטעי עמוד עשירים ─── */
+.bg-painterly {
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 20%, rgba(58, 123, 232, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 85% 70%, rgba(212, 168, 83, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 80% at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.25) 100%);
+}
+
+/* ─── פלינט׳ — מעמד פרימיום למקטעים משמעותיים ─── */
+.section-plinth {
+  position: relative;
+  border-radius: 20px;
+  background:
+    linear-gradient(165deg, rgba(18, 28, 55, 0.55) 0%, rgba(10, 18, 40, 0.75) 55%, rgba(8, 14, 32, 0.8) 100%);
+  border-top: 1px solid rgba(212, 168, 83, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 1px 0 0 rgba(212, 168, 83, 0.08) inset,
+    0 30px 80px -30px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(212, 168, 83, 0.04);
+}
+
+/* ─── מסגרת קלאסית עם פינות זהובות — inspired by gilded gallery frames ─── */
+.ornate-frame {
+  position: relative;
+}
+.ornate-frame::before,
+.ornate-frame::after {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.ornate-frame::before {
+  top: 10px;
+  left: 10px;
+  border-top: 1px solid rgba(212, 168, 83, 0.45);
+  border-left: 1px solid rgba(212, 168, 83, 0.45);
+  border-top-left-radius: 10px;
+  box-shadow: -1px -1px 0 0 rgba(212, 168, 83, 0.12);
+}
+.ornate-frame::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1px solid rgba(212, 168, 83, 0.45);
+  border-right: 1px solid rgba(212, 168, 83, 0.45);
+  border-bottom-right-radius: 10px;
+  box-shadow: 1px 1px 0 0 rgba(212, 168, 83, 0.12);
+}
+
+/* ─── פלרון (ornament) קלאסי — מפריד מקטע כעיטור זהב עדין ─── */
+.fleuron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 1rem 0;
+}
+.fleuron::before,
+.fleuron::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.5), transparent);
+}
+.fleuron > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #dbb85c 0%, #a8872e 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(212, 168, 83, 0.55);
+}
+
+/* ─── כרטיס מוזהב — עומק זהב מלא יותר, רמת גלריה ─── */
+.card-gilded {
+  position: relative;
+  background:
+    linear-gradient(160deg, rgba(22, 34, 68, 0.72) 0%, rgba(13, 22, 50, 0.88) 55%, rgba(9, 16, 38, 0.92) 100%);
+  border: 1px solid rgba(212, 168, 83, 0.18);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.04),
+    0 1px 0 rgba(212, 168, 83, 0.1) inset,
+    0 2px 10px rgba(0, 0, 0, 0.35),
+    0 20px 60px -20px rgba(0, 0, 0, 0.55),
+    0 0 80px -30px rgba(212, 168, 83, 0.08) inset;
+  overflow: hidden;
+}
+.card-gilded::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='gg'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.035 0'/></filter><rect width='100%' height='100%' filter='url(%23gg)'/></svg>");
+  background-size: 180px 180px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+.card-gilded > * { position: relative; z-index: 1; }
+.card-gilded:hover {
+  border-color: rgba(212, 168, 83, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 83, 0.08),
+    0 1px 0 rgba(212, 168, 83, 0.14) inset,
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 28px 80px -20px rgba(0, 0, 0, 0.65),
+    0 0 120px -30px rgba(212, 168, 83, 0.18) inset;
+}
+
+/* ─── כותרת עריכתית מלכותית — small-caps מרווח רחב ─── */
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(219, 184, 92, 0.82);
+  font-weight: 600;
+}
+
+/* ─── אות פתיח מנורה (drop-cap) — לפסקאות מבוא ─── */
+.drop-cap::first-letter {
+  font-family: var(--font-frank-ruhl), serif;
+  float: inline-start;
+  font-size: 3.4em;
+  line-height: 0.85;
+  padding-inline-end: 0.12em;
+  padding-top: 0.08em;
+  background: linear-gradient(135deg, #e2d5b8 0%, #c9a84c 55%, #a8872e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* ─── שכבת אטמוספירה גלובלית — מורכבת מ-AtmosphericBackdrop ─── */
+.atmosphere-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.atmosphere-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='a'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23a)'/></svg>");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+  opacity: 0.85;
+}
+.atmosphere-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 90% at 50% -10%, rgba(212, 168, 83, 0.09) 0%, rgba(212, 168, 83, 0.03) 35%, transparent 70%),
+    radial-gradient(ellipse 130% 100% at 50% 55%, transparent 38%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+/* ─── טיפוגרפיה — כותרות עריכתיות עשירות יותר ─── */
+.heading-editorial {
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+/* ─── שיפור כותרות בעברית — ריווח מלכותי ─── */
+html[lang="he"] h1.heading-editorial,
+html[lang="he"] h2.heading-editorial {
+  letter-spacing: 0.005em;
+  line-height: 1.18;
 }

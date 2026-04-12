@@ -29,12 +29,13 @@ import {
 } from "lucide-react";
 
 import {
-  portfolioSummary,
-  holdings,
-  walletBalances,
-  recentActivity,
-  performanceHistory,
-} from "@/data/dashboard-mock";
+  getPortfolioSummary,
+  getHoldings,
+  getWalletBalances,
+  getRecentActivity,
+  getPerformanceHistory,
+} from "@/lib/portfolio";
+import type { WalletBalance } from "@/lib/portfolio";
 import { useLanguage } from "@/lib/i18n";
 
 // מפת תרגומים לכל הטקסטים בעמוד
@@ -299,7 +300,7 @@ function AllocationTooltip({
   payload,
 }: {
   active?: boolean;
-  payload?: Array<{ payload: (typeof walletBalances)[0] }>;
+  payload?: Array<{ payload: WalletBalance }>;
 }) {
   if (!active || !payload?.length) return null;
   const data = payload[0].payload;
@@ -379,6 +380,13 @@ function getActivityLabel(type: string, t: (typeof texts)["en"]) {
 export default function DashboardPage() {
   const { language } = useLanguage();
   const t = texts[language] || texts.en;
+
+  // שליפת כל הנתונים דרך שכבת ה-repository
+  const portfolioSummary = getPortfolioSummary();
+  const holdings = getHoldings();
+  const walletBalances = getWalletBalances();
+  const recentActivity = getRecentActivity();
+  const performanceHistory = getPerformanceHistory();
 
   const topHoldings = [...holdings]
     .sort((a, b) => b.valueILS - a.valueILS)

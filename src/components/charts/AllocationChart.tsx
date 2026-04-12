@@ -141,7 +141,7 @@ export default function AllocationChart() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="rounded-2xl border border-amber-500/15 bg-white/[0.04] backdrop-blur-md p-6 shadow-sm"
+      className="card-gilded p-6"
     >
       <h3 className="text-base font-semibold text-foreground mb-2 text-center">
         {loc.title}

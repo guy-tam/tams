@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Heebo, Frank_Ruhl_Libre, Noto_Serif_Hebrew } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/layout/AppShell";
+import AtmosphericBackdrop from "@/components/layout/AtmosphericBackdrop";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
@@ -83,6 +84,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-background text-foreground flex">
         <GoogleAnalytics />
+        <AtmosphericBackdrop />
         <AppShell>{children}</AppShell>
       </body>
     </html>

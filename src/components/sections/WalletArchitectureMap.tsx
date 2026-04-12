@@ -80,7 +80,7 @@ const fadeUp = {
 
 export default function WalletArchitectureMap() {
   return (
-    <div className="relative max-w-5xl mx-auto">
+    <div className="section-plinth relative max-w-5xl mx-auto p-6 sm:p-10">
       {/* צומת מאסטר - ראש ההיררכיה */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}

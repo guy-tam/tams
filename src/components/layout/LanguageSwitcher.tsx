@@ -33,11 +33,16 @@ export default function LanguageSwitcher() {
   const current = languages.find((l) => l.code === language) || languages[0];
 
   return (
-    <div ref={ref} className="relative">
+    // נגישות: אזור ניווט ייעודי לבחירת שפה
+    <nav aria-label="שפה" ref={ref} className="relative">
       {/* כפתור פתיחה */}
       <button
+        type="button"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06]"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={`שפה: ${current.label}`}
+        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
       >
         <Globe className="size-4" />
         <span className="text-xs font-medium">{current.flag} {current.label}</span>
@@ -56,12 +61,15 @@ export default function LanguageSwitcher() {
             {languages.map((lang) => (
               <button
                 key={lang.code}
+                type="button"
                 onClick={() => {
                   setLanguage(lang.code);
                   setOpen(false);
                 }}
+                aria-current={language === lang.code ? "true" : undefined}
+                lang={lang.code}
                 className={`
-                  w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors
+                  w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50
                   ${
                     language === lang.code
                       ? "bg-white/[0.08] text-white"
@@ -79,6 +87,6 @@ export default function LanguageSwitcher() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </nav>
   );
 }

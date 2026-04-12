@@ -1,6 +1,11 @@
 // API route — שליחת פניות יצירת קשר למייל
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { checkOrigin } from "@/lib/security";
+import { log } from "@/lib/logger";
+
+// שם הראוט — נכנס לכל רשומת לוג לצורכי חיפוש וסינון
+const ROUTE = "api/contact";
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "xrptam2@gmail.com";
 
@@ -63,11 +68,29 @@ function isRateLimited(ip: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
-  // --- שכבה 1: הגבלת קצב לפי IP ---
+  // שליפת IP ו-requestId מוקדם — משמשים בכל רשומת לוג
   const forwarded = req.headers.get("x-forwarded-for");
   const ip = forwarded?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
+  const requestId = req.headers.get("x-request-id") || undefined;
+  // הקשר בסיסי שנמשך לכל קריאת לוג בראוט הזה
+  const baseCtx = { route: ROUTE, ip, requestId };
 
-  if (isRateLimited(ip)) {
+  // לוג כניסה — מאפשר לעקוב אחרי כל בקשה שנכנסה, גם אם נחסמה מיד
+  log.info("request received", baseCtx);
+
+  // --- שכבה 0: בדיקת Origin / Referer — חסימת שליחות חוצה-מקור ---
+  // מונע שימוש לרעה של הטופס על ידי אתרי phishing או bots שרצים מחוץ לדומיין.
+  if (!checkOrigin(req)) {
+    log.warn("bad_origin rejected", baseCtx);
+    return NextResponse.json(
+      { error: "bad_origin", message: "Request origin not allowed." },
+      { status: 403 }
+    );
+  }
+
+  // --- שכבה 1: הגבלת קצב לפי IP ---
+  if (await isRateLimited(ip)) {
+    log.warn("rate_limited", baseCtx);
     return NextResponse.json(
       { error: "rate_limited", message: "יותר מדי בקשות. נסה שוב מאוחר יותר. / Too many requests. Please try again later." },
       { status: 429 }
@@ -93,7 +116,7 @@ export async function POST(req: NextRequest) {
     // --- שכבה 2: בדיקת מלכודת דבש (Honeypot) ---
     // אם השדה הסמוי מלא — זה כנראה בוט. מחזירים הצלחה מזויפת בלי לשלוח מייל
     if (company_url) {
-      console.warn("Honeypot triggered — bot submission blocked", { ip });
+      log.warn("honeypot triggered — bot submission blocked", baseCtx);
       return NextResponse.json({ success: true });
     }
 
@@ -201,13 +224,13 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      log.error("resend send failed", { ...baseCtx, err: error });
       return NextResponse.json({ error: "email_error" }, { status: 502 });
     }
 
     return NextResponse.json({ success: true });
   } catch (e) {
-    console.error("Contact API error:", e);
+    log.error("contact handler threw", { ...baseCtx, err: e });
     return NextResponse.json({ error: "server_error" }, { status: 500 });
   }
 }

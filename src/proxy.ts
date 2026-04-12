@@ -1,91 +1,102 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+// Proxy (middleware) — רץ בקצה לפני כל בקשה למסלולים הנבחרים.
+// ב-Next.js 16 הקובץ נקרא `proxy.ts` (הוחלף מ-middleware).
+// אחריות:
+//   1) חסימת user-agents של סורקים
+//   2) CSRF בסיסי לבקשות POST ל-API
+//   3) שער אימות למסלולי /dashboard/* (דורש עוגיית סשן תקפה)
+//   4) הוספת X-Request-ID לכל תגובה
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { SESSION_COOKIE_NAME, verifySessionToken } from "@/lib/auth/session";
 
-// רשימת דפוסי סוכני משתמש חשודים (בוטים וכלי סריקה)
+// רשימת דפוסי סוכני משתמש של כלי סריקה פוגעניים
 const BLOCKED_USER_AGENTS = [
-  'sqlmap',
-  'nikto',
-  'nmap',
-  'dirbuster',
-  'gobuster',
-  'masscan',
-  'nessus',
-  'openvas',
-  'havij',
-  'w3af',
-  'acunetix',
-  'burpsuite',
-]
+  "sqlmap",
+  "nikto",
+  "nmap",
+  "dirbuster",
+  "gobuster",
+  "masscan",
+  "nessus",
+  "openvas",
+  "havij",
+  "w3af",
+  "acunetix",
+  "burpsuite",
+];
 
 /**
- * יוצר מזהה ייחודי (UUID v4) לצורך מעקב אחרי בקשות
+ * מחולל מזהה בקשה ייחודי למעקב בלוגים (UUID v4).
  */
 function generateRequestId(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0
-    const v = c === 'x' ? r : (r & 0x3) | 0x8
-    return v.toString(16)
-  })
+  // שימוש ב-crypto.randomUUID אם זמין, אחרת fallback ל-pattern ידני
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return crypto.randomUUID();
+  }
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 }
 
 /**
- * פרוקסי אבטחה - רץ לפני כל בקשה לנתיבים מותאמים
- * כולל: הגנת CSRF, חסימת בוטים, ומזהה בקשה למעקב
+ * Proxy אבטחה — רץ לפני שהבקשה מגיעה ל-route handler.
  */
-export function proxy(request: NextRequest) {
-  const userAgent = request.headers.get('user-agent')?.toLowerCase() ?? ''
+export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const userAgent = request.headers.get("user-agent")?.toLowerCase() ?? "";
 
-  // בדיקת סוכני משתמש חשודים - חסימה מיידית
-  const isBlocked = BLOCKED_USER_AGENTS.some((bot) => userAgent.includes(bot))
-  if (isBlocked) {
-    return Response.json(
-      { error: 'גישה נדחתה' },
-      { status: 403 }
-    )
+  // --- 1) חסימת סוכני סריקה חשודים ---
+  if (BLOCKED_USER_AGENTS.some((bot) => userAgent.includes(bot))) {
+    return Response.json({ error: "forbidden" }, { status: 403 });
   }
 
-  // הגנת CSRF - רק על בקשות POST לנתיבי API
-  if (
-    request.method === 'POST' &&
-    request.nextUrl.pathname.startsWith('/api')
-  ) {
-    const origin = request.headers.get('origin')
-
-    // אם יש כותרת Origin, נוודא שהיא תואמת את המארח
+  // --- 2) הגנת CSRF בסיסית על POST ל-API ---
+  // מאמתים את כותרת Origin מול ה-host של הבקשה (כשיש Origin).
+  if (request.method === "POST" && pathname.startsWith("/api")) {
+    const origin = request.headers.get("origin");
     if (origin) {
-      const requestHost = request.headers.get('host') ?? request.nextUrl.host
-      let originHost: string
-
+      const requestHost = request.headers.get("host") ?? request.nextUrl.host;
       try {
-        originHost = new URL(origin).host
+        const originHost = new URL(origin).host;
+        if (originHost !== requestHost) {
+          return Response.json(
+            { error: "bad_origin", message: "Origin does not match host" },
+            { status: 403 }
+          );
+        }
       } catch {
-        // כתובת Origin לא תקינה - חסימה
         return Response.json(
-          { error: 'בקשה לא חוקית - Origin לא תקין' },
+          { error: "bad_origin", message: "Invalid Origin header" },
           { status: 403 }
-        )
-      }
-
-      if (originHost !== requestHost) {
-        // Origin לא תואם את המארח - חשד ל-CSRF
-        return Response.json(
-          { error: 'בקשה נדחתה - Origin לא תואם' },
-          { status: 403 }
-        )
+        );
       }
     }
-    // אם אין כותרת Origin - מאפשרים (תואמות לדפדפנים ישנים שלא שולחים Origin)
+    // ללא Origin — משאירים ל-route handler לבדוק (defense in depth).
   }
 
-  // הוספת מזהה בקשה ייחודי לכל תגובה למעקב
-  const requestId = generateRequestId()
-  const response = NextResponse.next()
-  response.headers.set('X-Request-ID', requestId)
+  // --- 3) שער אימות למסלולי /dashboard ---
+  // בודקים עוגיית סשן חתומה לפני שמגישים HTML של הדשבורד.
+  // אם אין עוגייה / לא תקפה — מפנים לדף ההתחברות עם returnTo.
+  if (pathname.startsWith("/dashboard")) {
+    const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
+    const payload = await verifySessionToken(token);
+    if (!payload) {
+      const loginUrl = new URL("/login", request.url);
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
 
-  return response
+  // --- 4) מזהה בקשה לכל תגובה — עוזר במעקב שגיאות בלוגים ---
+  const response = NextResponse.next();
+  response.headers.set("X-Request-ID", generateRequestId());
+  return response;
 }
 
-// הגדרת הנתיבים שעליהם רץ הפרוקסי
+// Matcher — אילו נתיבים מעוררים את ה-proxy.
+// כולל API, login, ו-dashboard על כל עומק.
 export const config = {
-  matcher: ['/api/:path*', '/login'],
-}
+  matcher: ["/api/:path*", "/login", "/dashboard/:path*"],
+};

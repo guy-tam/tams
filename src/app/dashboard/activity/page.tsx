@@ -15,8 +15,8 @@ import {
   Gift,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-import { recentActivity } from "@/data/dashboard-mock";
-import type { ActivityItem } from "@/data/dashboard-mock";
+import { getRecentActivity } from "@/lib/portfolio";
+import type { ActivityItem } from "@/lib/portfolio";
 
 // מפת תרגומים - כל הטקסטים הנראים בכל 5 השפות
 const texts = {
@@ -219,6 +219,9 @@ export default function ActivityPage() {
   const [filter, setFilter] = useState<FilterKey>("all");
   const { language } = useLanguage();
   const t = texts[language] || texts.en;
+
+  // שליפת יומן הפעילות דרך שכבת ה-repository
+  const recentActivity = getRecentActivity();
 
   // תוויות סינון בשפה הנוכחית
   const filterOptions: { key: FilterKey; label: string }[] = [

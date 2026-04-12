@@ -13,9 +13,9 @@ import {
 } from "recharts";
 import { TrendingUp, Calendar, Clock, BarChart3 } from "lucide-react";
 import {
-  portfolioSummary,
-  performanceHistory,
-} from "@/data/dashboard-mock";
+  getPortfolioSummary,
+  getPerformanceHistory,
+} from "@/lib/portfolio";
 
 // פורמט שקלים
 function formatILS(value: number) {
@@ -108,6 +108,10 @@ function PerfStatCard({
 }
 
 export default function PerformancePage() {
+  // שליפת הנתונים דרך שכבת ה-repository
+  const portfolioSummary = getPortfolioSummary();
+  const performanceHistory = getPerformanceHistory();
+
   return (
     <div className="min-h-screen p-4 md:p-8 space-y-6">
       {/* כותרת */}

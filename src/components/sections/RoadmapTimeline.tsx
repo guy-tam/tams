@@ -42,7 +42,7 @@ export default function RoadmapTimeline() {
   const labels = statusLabels[language];
 
   return (
-    <div className="relative max-w-3xl mx-auto">
+    <div className="section-plinth relative max-w-3xl mx-auto p-6 sm:p-10">
       {/* קו ציר הזמן */}
       <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-tams-green/40 via-tams-blue/40 to-white/10" />
 

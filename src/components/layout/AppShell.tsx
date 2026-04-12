@@ -42,13 +42,23 @@ function ShellInner({ children }: { children: ReactNode }) {
 
   return (
     <>
+      {/* נגישות: קישור דילוג לתוכן — מופיע בעת פוקוס מהמקלדת */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-[100] focus:rounded-lg focus:bg-zinc-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-400/60 focus:shadow-lg"
+      >
+        דלג לתוכן הראשי
+      </a>
       <Navigation />
       <div className={`flex-1 ${isRTL ? "lg:pr-64" : "lg:pl-64"}`}>
         {/* לוגו עץ מוזהב — קבוע, לא נטען מחדש בין עמודים */}
         <div className="hidden lg:block">
           <TamsLogo />
         </div>
-        {children}
+        {/* נגישות: מעטפת התוכן הראשי עם מזהה ליעד של skip link */}
+        <div id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </div>
         {/* פוטר גלובלי — מוצג רק בעמודים ציבוריים */}
         <Footer />
       </div>

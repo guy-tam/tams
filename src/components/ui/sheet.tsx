@@ -60,10 +60,13 @@ function SheetContent({
       >
         {children}
         {showCloseButton && (
+          // נגישות: כפתור הסגירה מקבל שם נגיש דרך sr-only
           <SheetPrimitive.Close
             data-slot="sheet-close"
+            aria-label="סגירה"
             render={
               <Button
+                type="button"
                 variant="ghost"
                 className="absolute top-3 right-3"
                 size="icon-sm"
@@ -72,7 +75,7 @@ function SheetContent({
           >
             <XIcon
             />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">סגירה</span>
           </SheetPrimitive.Close>
         )}
       </SheetPrimitive.Popup>

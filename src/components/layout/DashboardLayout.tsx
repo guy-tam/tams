@@ -88,6 +88,16 @@ function DashboardShell({ children }: { children: ReactNode }) {
     setMobileOpen(false);
   }, [pathname]);
 
+  // נגישות: מקש Escape סוגר את תפריט הדשבורד במובייל
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
+
   // בדיקה האם הקישור פעיל
   const isActive = (href: string) =>
     href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
@@ -116,7 +126,11 @@ function DashboardShell({ children }: { children: ReactNode }) {
           <p className="text-[10px] text-zinc-500 font-mono">{user?.investorId}</p>
         </div>
         {/* פעמון התראות */}
-        <button className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors">
+        <button
+          type="button"
+          aria-label="התראות"
+          className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
+        >
           <Bell className="h-4 w-4" />
           {/* נקודת אינדיקטור */}
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-amber-400 ring-2 ring-[#0a1628] shadow-sm shadow-amber-400/30" />
@@ -127,11 +141,17 @@ function DashboardShell({ children }: { children: ReactNode }) {
 
   // רשימת קישורי ניווט
   const NavLinks = () => (
-    <nav className="flex flex-col gap-1 px-3">
+    // נגישות: ניווט הדשבורד עם תווית
+    <nav aria-label="ניווט דשבורד" className="flex flex-col gap-1 px-3">
       {dashboardNavItems.map((item) => {
         const active = isActive(item.href);
         return (
-          <Link key={item.href} href={item.href}>
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={active ? "page" : undefined}
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-lg"
+          >
             <motion.div
               variants={linkVariants}
               initial="idle"
@@ -202,15 +222,19 @@ function DashboardShell({ children }: { children: ReactNode }) {
       {/* חזרה לאתר הראשי + התנתקות */}
       <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-amber-500/10 to-transparent" />
       <div className="px-3 py-3 space-y-1">
-        <Link href="/">
+        <Link
+          href="/"
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-lg block"
+        >
           <div className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:text-blue-300 hover:bg-blue-400/10 transition-colors">
             <ArrowLeft className={`h-4 w-4 ${isRTL ? "rotate-180" : ""}`} />
             <span>{t("dashboard.backToSite")}</span>
           </div>
         </Link>
         <button
+          type="button"
           onClick={logout}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
         >
           <LogOut className="h-4 w-4" />
           <span>{t("dashboard.logout")}</span>
@@ -222,12 +246,16 @@ function DashboardShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen w-full">
       {/* כפתור המבורגר למובייל */}
+      {/* נגישות: כפתור המבורגר שולט בפאנל הניווט של הדשבורד */}
       <button
+        type="button"
         onClick={() => setMobileOpen(true)}
+        aria-label="פתיחת תפריט דשבורד"
+        aria-expanded={mobileOpen}
+        aria-controls="mobile-nav"
         className={`fixed top-4 ${isRTL ? "right-4" : "left-4"} z-50 flex h-10 w-10 items-center justify-center rounded-lg
           bg-zinc-900/80 backdrop-blur-md border border-zinc-800/60 text-zinc-400
-          hover:text-white transition-colors lg:hidden`}
-        aria-label="פתיחת תפריט דשבורד"
+          hover:text-white transition-colors lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
       >
         <Menu className="h-5 w-5" />
       </button>
@@ -235,10 +263,12 @@ function DashboardShell({ children }: { children: ReactNode }) {
       {/* סיידבר קבוע לדסקטופ */}
       <aside
         className={`hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-40
-          bg-[#0a1628]/90 backdrop-blur-2xl
+          backdrop-blur-2xl
           ${isRTL ? "border-l" : "border-r"} border-zinc-800/40`}
         style={{
-          borderImage: "linear-gradient(to bottom, transparent, rgba(212, 168, 83, 0.15), rgba(79, 143, 247, 0.15), transparent) 1",
+          background: "linear-gradient(180deg, rgba(10,22,40,0.92) 0%, rgba(8,16,32,0.95) 100%)",
+          borderImage: "linear-gradient(to bottom, transparent, rgba(212, 168, 83, 0.22), rgba(79, 143, 247, 0.15), transparent) 1",
+          boxShadow: "inset 0 1px 0 rgba(212,168,83,0.08), 0 0 60px -10px rgba(0,0,0,0.5)",
         }}
       >
         <SidebarContent />
@@ -260,8 +290,13 @@ function DashboardShell({ children }: { children: ReactNode }) {
             />
 
             {/* סיידבר מובייל */}
+            {/* נגישות: פאנל הניווט הנייד משמש כ-dialog מודאלי */}
             <motion.aside
               key="dashboard-mobile-sidebar"
+              id="mobile-nav"
+              role="dialog"
+              aria-modal="true"
+              aria-label="תפריט דשבורד"
               variants={isRTL ? sidebarMobileVariantsRTL : sidebarMobileVariants}
               initial="closed"
               animate="open"
@@ -271,10 +306,11 @@ function DashboardShell({ children }: { children: ReactNode }) {
             >
               {/* כפתור סגירה */}
               <button
+                type="button"
                 onClick={() => setMobileOpen(false)}
-                className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
-                  rounded-md text-zinc-500 hover:text-white transition-colors`}
                 aria-label="סגירת תפריט דשבורד"
+                className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
+                  rounded-md text-zinc-500 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -287,7 +323,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
       {/* בר עליון + תוכן ראשי */}
       <div className={`flex-1 ${isRTL ? "lg:pr-64" : "lg:pl-64"} flex flex-col`}>
         {/* בר עליון */}
-        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-zinc-800/40 bg-[#0a1628]/80 backdrop-blur-md px-4 sm:px-6">
+        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-amber-500/[0.08] bg-[#0a1628]/80 backdrop-blur-md px-4 sm:px-6 shadow-[inset_0_1px_0_rgba(212,168,83,0.06)]">
           {/* לוגו בבר עליון - נראה רק במובייל */}
           <div className="flex items-center gap-2 lg:hidden">
             <TamsLogo variant="sidebar" />
@@ -302,7 +338,11 @@ function DashboardShell({ children }: { children: ReactNode }) {
           {/* פרטי משתמש בבר עליון */}
           <div className="flex items-center gap-3">
             {/* פעמון התראות */}
-            <button className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors">
+            <button
+              type="button"
+              aria-label="התראות"
+              className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
+            >
               <Bell className="h-4 w-4" />
               <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-amber-400 ring-2 ring-[#0a1628] shadow-sm shadow-amber-400/30" />
             </button>
@@ -317,8 +357,10 @@ function DashboardShell({ children }: { children: ReactNode }) {
 
             {/* כפתור יציאה */}
             <button
+              type="button"
               onClick={logout}
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+              aria-label="התנתקות"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
               title="התנתקות"
             >
               <LogOut className="h-4 w-4" />

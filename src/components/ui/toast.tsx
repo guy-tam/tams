@@ -124,8 +124,9 @@ function ToastCard({
 
       {/* כפתור סגירה */}
       <button
+        type="button"
         onClick={onClose}
-        className="mt-0.5 shrink-0 rounded-md p-0.5 text-zinc-500 transition-colors hover:text-zinc-300"
+        className="mt-0.5 shrink-0 rounded-md p-0.5 text-zinc-500 transition-colors hover:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
         aria-label="סגור התראה"
       >
         <X className="h-4 w-4" />
@@ -188,7 +189,11 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       {children}
 
       {/* מיכל ההתראות - ממוקם בפינה התחתונה */}
+      {/* נגישות: אזור live לקוראי מסך כך שהתראות חדשות יוקראו */}
       <div
+        role="region"
+        aria-live="polite"
+        aria-label="התראות"
         className={`pointer-events-none fixed bottom-4 z-[9999] flex flex-col-reverse gap-2 ${
           isRTL ? "left-4" : "right-4"
         }`}

@@ -67,7 +67,7 @@ export default function CapitalFlowDiagram() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
-      className="relative max-w-4xl mx-auto"
+      className="section-plinth relative max-w-4xl mx-auto p-6 sm:p-10"
     >
       {/* שלב 1 - כניסת הון מהמשקיע */}
       <motion.div variants={itemVariants} className="flex justify-center mb-6">

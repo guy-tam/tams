@@ -11,8 +11,8 @@ import {
   Shield,
   Coins,
 } from "lucide-react";
-import { holdings, safeAssetsValue } from "@/data/dashboard-mock";
-import type { HoldingPosition } from "@/data/dashboard-mock";
+import { getHoldings, getSafeAssetsValue } from "@/lib/portfolio";
+import type { Holding } from "@/lib/portfolio";
 
 // פורמט מספרים בשקלים
 function formatILS(value: number) {
@@ -38,7 +38,7 @@ const itemVariants = {
 };
 
 // סוג מיון
-type SortKey = keyof HoldingPosition;
+type SortKey = keyof Holding;
 
 // צבע קטגוריה
 const categoryColors: Record<string, string> = {
@@ -54,6 +54,10 @@ const categoryColors: Record<string, string> = {
 export default function PortfolioPage() {
   const [sortKey, setSortKey] = useState<SortKey>("valueILS");
   const [sortAsc, setSortAsc] = useState(false);
+
+  // שליפת האחזקות ושווי הנכסים הבטוחים דרך שכבת ה-repository
+  const holdings = getHoldings();
+  const safeAssetsValue = getSafeAssetsValue();
 
   // מיון אחזקות
   const sorted = [...holdings].sort((a, b) => {

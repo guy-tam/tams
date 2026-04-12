@@ -53,6 +53,16 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
     return () => observer.disconnect();
   }, [sections]);
 
+  // נגישות: מקש Escape סוגר את תפריט הנושאים במובייל
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
+
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -69,18 +79,21 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
       <AnimatePresence>
         {visible && (
           <motion.button
+            type="button"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="תוכן עניינים"
+            aria-expanded={mobileOpen}
+            aria-controls="page-toc-panel"
             className={`fixed top-3 ${isRTL ? "left-16" : "right-3"} z-40 xl:hidden
               h-11 w-11 rounded-lg
               bg-zinc-900/90 backdrop-blur-md border border-zinc-800/60
               flex items-center justify-center
               text-zinc-400 hover:text-white transition-colors
-              shadow-lg shadow-black/20`}
-            aria-label="תוכן עניינים"
+              shadow-lg shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
           >
             {mobileOpen ? <X className="size-4.5" /> : <List className="size-4.5" />}
           </motion.button>
@@ -101,7 +114,12 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
             />
 
             {/* פאנל נושאים */}
+            {/* נגישות: פאנל תוכן העניינים משמש כ-dialog מודאלי */}
             <motion.div
+              id="page-toc-panel"
+              role="dialog"
+              aria-modal="true"
+              aria-label={isRTL ? "תוכן עניינים" : "Table of contents"}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -130,8 +148,10 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
                   return (
                     <button
                       key={section.id}
+                      type="button"
                       onClick={() => scrollTo(section.id)}
-                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-all duration-200 ${
+                      aria-current={isActive ? "location" : undefined}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 ${
                         isActive
                           ? "text-amber-400 bg-amber-400/[0.06]"
                           : isPast
@@ -199,8 +219,11 @@ export default function PageTableOfContents({ sections }: PageTableOfContentsPro
                   return (
                     <button
                       key={section.id}
+                      type="button"
                       onClick={() => scrollTo(section.id)}
-                      className="group relative flex items-center gap-3 py-3 cursor-pointer"
+                      aria-label={section.label}
+                      aria-current={isActive ? "location" : undefined}
+                      className="group relative flex items-center gap-3 py-3 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded"
                       title={section.label}
                     >
                       <div className={`relative z-10 flex items-center justify-center transition-all duration-300 ${

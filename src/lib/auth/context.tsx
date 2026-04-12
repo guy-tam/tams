@@ -1,6 +1,7 @@
 "use client";
 
-// ניהול אימות משתמשים - קונטקסט דמו לאפליקציית TAMS
+// קונטקסט אימות - משתמש כעת ב-API צד שרת עם עוגיית סשן HttpOnly.
+// הלקוח כבר לא ניגש ל-localStorage לצורך אימות — זהו מעבר ל-auth אמיתי.
 import {
   createContext,
   useContext,
@@ -9,17 +10,13 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
+// טיפוס User מיובא מקובץ נפרד כדי שיוכל להיטען גם ב-edge runtime (proxy).
+import type { User } from "./types";
 
 // --- טיפוסים ---
 
-/** מבנה נתוני משתמש */
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: "investor" | "admin";
-  investorId: string;
-}
+// רה-אקספורט של User — שומר על ה-API הציבורי של המודול התואם לאחור.
+export type { User } from "./types";
 
 /** ערכי קונטקסט האימות */
 interface AuthContextValue {
@@ -27,89 +24,16 @@ interface AuthContextValue {
   user: User | null;
   /** האם המשתמש מאומת */
   isAuthenticated: boolean;
-  /** פונקציית התחברות */
+  /** פונקציית התחברות — קוראת ל-/api/auth/login */
   login: (email: string, password: string) => Promise<boolean>;
-  /** פונקציית התנתקות */
-  logout: () => void;
+  /** פונקציית התנתקות — קוראת ל-/api/auth/logout */
+  logout: () => Promise<void>;
   /** האם בתהליך טעינה */
   isLoading: boolean;
 }
 
-// מפתח לשמירת מצב האימות באחסון המקומי
-const STORAGE_KEY = "tams-auth";
-
 // יצירת הקונטקסט
 const AuthContext = createContext<AuthContextValue | null>(null);
-
-// --- פונקציות עזר ---
-
-/**
- * יוצרת משתמש דמו על בסיס כתובת אימייל
- * אם האימייל הוא demo@tams.io, נחזיר את המשתמש המוגדר מראש
- */
-function createDemoUser(email: string): User {
-  // משתמש דמו מוגדר מראש
-  if (email.toLowerCase() === "demo@tams.io") {
-    return {
-      id: "usr-001",
-      name: "David Cohen",
-      email: "demo@tams.io",
-      role: "investor" as const,
-      investorId: "INV-001",
-    };
-  }
-
-  // משתמש דינמי לפי האימייל
-  const namePart = email.split("@")[0];
-  const formattedName = namePart
-    .replace(/[._-]/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-
-  return {
-    id: `usr-${Date.now()}`,
-    name: formattedName,
-    email,
-    role: "investor" as const,
-    investorId: `INV-${Math.floor(Math.random() * 900) + 100}`,
-  };
-}
-
-/**
- * טוענת משתמש שמור מהאחסון המקומי
- */
-function loadSavedUser(): User | null {
-  if (typeof window === "undefined") return null;
-
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved) as User;
-      // בדיקה בסיסית שהנתונים תקינים
-      if (parsed.id && parsed.email && parsed.name) {
-        return parsed;
-      }
-    }
-  } catch {
-    // שגיאת קריאה מהאחסון - מתעלמים
-  }
-
-  return null;
-}
-
-/**
- * שומרת משתמש באחסון המקומי
- */
-function saveUser(user: User | null): void {
-  try {
-    if (user) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-    } else {
-      localStorage.removeItem(STORAGE_KEY);
-    }
-  } catch {
-    // שגיאת כתיבה לאחסון - מתעלמים
-  }
-}
 
 // --- ספק הקונטקסט ---
 
@@ -121,35 +45,60 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // טעינת סשן שמור בעת אתחול
+  // בעת אתחול — בודקים מול השרת אם יש סשן תקף
   useEffect(() => {
-    const savedUser = loadSavedUser();
-    if (savedUser) {
-      setUser(savedUser);
-    }
-    setIsLoading(false);
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/auth/me", {
+          method: "GET",
+          credentials: "same-origin",
+          cache: "no-store",
+        });
+        if (res.ok) {
+          const data = (await res.json()) as { user: User | null };
+          if (!cancelled) setUser(data.user);
+        }
+      } catch {
+        // חיבור נכשל — משאירים משתמש ריק
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // פונקציית התחברות - לדמו, מקבלת כל אימייל עם @
-  const login = useCallback(async (email: string, _password: string): Promise<boolean> => {
-    // בדיקה בסיסית - האם האימייל מכיל @
-    if (!email.includes("@")) {
+  // התחברות — שולחת לשרת ומקבלת עוגיית סשן חתומה
+  const login = useCallback(async (email: string, password: string): Promise<boolean> => {
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      if (!res.ok) return false;
+      const data = (await res.json()) as { user: User };
+      setUser(data.user);
+      return true;
+    } catch {
       return false;
     }
-
-    // סימולציה של עיכוב רשת
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    const newUser = createDemoUser(email);
-    setUser(newUser);
-    saveUser(newUser);
-    return true;
   }, []);
 
-  // פונקציית התנתקות
-  const logout = useCallback(() => {
+  // התנתקות — מוחקת את העוגייה בצד השרת
+  const logout = useCallback(async () => {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "same-origin",
+      });
+    } catch {
+      // גם אם נכשל — ננקה בצד הלקוח
+    }
     setUser(null);
-    saveUser(null);
   }, []);
 
   const value: AuthContextValue = {

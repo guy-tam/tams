@@ -60,10 +60,13 @@ function DialogContent({
       >
         {children}
         {showCloseButton && (
+          // נגישות: כפתור הסגירה מקבל שם נגיש דרך sr-only
           <DialogPrimitive.Close
             data-slot="dialog-close"
+            aria-label="סגירה"
             render={
               <Button
+                type="button"
                 variant="ghost"
                 className="absolute top-2 right-2"
                 size="icon-sm"
@@ -72,7 +75,7 @@ function DialogContent({
           >
             <XIcon
             />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">סגירה</span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Popup>

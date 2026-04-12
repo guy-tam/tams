@@ -12,12 +12,15 @@ interface TamsLogoProps {
 // עץ מוזהב בסגנון הלוגו המקורי — SVG נקי ללא רקע
 function GoldenTree({ size = 34 }: { size?: number }) {
   return (
+    // נגישות: ה-SVG דקורטיבי — הלוגו הסמנטי מוגדר ברכיב העוטף
     <svg
       width={size}
       height={size}
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
     >
       <defs>
         <linearGradient id="treeGold" x1="50%" y1="0%" x2="50%" y2="100%">
@@ -73,7 +76,8 @@ function GoldenTree({ size = 34 }: { size?: number }) {
 export default function TamsLogo({ variant = "page", className = "" }: TamsLogoProps) {
   if (variant === "sidebar") {
     return (
-      <div className={`relative shrink-0 ${className}`}>
+      // נגישות: הלוגו דקורטיבי — כותרת "TAMS" מוצגת בטקסט לצידו
+      <div className={`relative shrink-0 ${className}`} aria-hidden="true">
         <GoldenTree size={36} />
       </div>
     );
@@ -81,7 +85,11 @@ export default function TamsLogo({ variant = "page", className = "" }: TamsLogoP
 
   // variant === "page" — לוגו קבוע בפינה, ריחוף מתמשך ללא קפיצה
   return (
-    <div className={`fixed top-5 start-[calc(theme(spacing.64)+1.25rem)] z-20 flex items-center gap-2.5 pointer-events-none ${className}`}>
+    // נגישות: הלוגו דקורטיבי (יש טקסט "TAMS" גלוי לצידו), מוסתר מקוראי מסך
+    <div
+      className={`fixed top-5 start-[calc(theme(spacing.64)+1.25rem)] z-20 flex items-center gap-2.5 pointer-events-none ${className}`}
+      aria-hidden="true"
+    >
       {/* עץ מרחף — אנימציה מתמשכת בלבד, ללא initial */}
       <motion.div
         animate={{

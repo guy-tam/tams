@@ -26,12 +26,13 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl px-8 pt-10 pb-8">
         {/* קישורים */}
         <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between">
-          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+          {/* נגישות: תפריט הפוטר עם תווית */}
+          <nav aria-label="קישורי פוטר" className="flex flex-wrap justify-center gap-x-8 gap-y-3">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[11px] font-medium uppercase tracking-wider text-zinc-500 transition-all duration-300 hover:text-amber-400/90 hover:tracking-[0.15em]"
+                className="text-[11px] font-medium uppercase tracking-wider text-zinc-500 transition-all duration-300 hover:text-amber-400/90 hover:tracking-[0.15em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded"
               >
                 {t(link.labelKey)}
               </Link>
@@ -40,7 +41,7 @@ export default function Footer() {
 
           <a
             href="mailto:contact@tams.earth"
-            className="text-[11px] font-medium text-amber-500/70 tracking-wide transition-all duration-300 hover:text-amber-400 hover:tracking-wider"
+            className="text-[11px] font-medium text-amber-500/70 tracking-wide transition-all duration-300 hover:text-amber-400 hover:tracking-wider focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded"
           >
             contact@tams.earth
           </a>

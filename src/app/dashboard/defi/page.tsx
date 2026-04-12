@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import { Layers, TrendingUp, Coins, Lock, Zap } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-import { defiPositions } from "@/data/dashboard-mock";
+import { getDeFiPositions } from "@/lib/portfolio";
 
 // מפת תרגומים - כל הטקסטים הנראים בכל 5 השפות
 const texts = {
@@ -128,10 +128,6 @@ const itemVariants = {
   },
 };
 
-// חישוב ממוצע APY
-const avgApy =
-  defiPositions.reduce((s, p) => s + p.apy, 0) / defiPositions.length;
-
 // אייקון סוג פוזיציה
 function getTypeIcon(type: string) {
   switch (type) {
@@ -149,6 +145,13 @@ function getTypeIcon(type: string) {
 export default function DefiPage() {
   const { language } = useLanguage();
   const t = texts[language] || texts.en;
+
+  // שליפת פוזיציות ה-DeFi דרך שכבת ה-repository
+  const defiPositions = getDeFiPositions();
+
+  // חישוב ממוצע APY
+  const avgApy =
+    defiPositions.reduce((s, p) => s + p.apy, 0) / defiPositions.length;
 
   // תווית סוג פוזיציה בשפה הנוכחית
   function getTypeLabel(type: string) {

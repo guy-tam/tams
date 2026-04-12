@@ -53,7 +53,7 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
             key={index}
             variants={cardVariants}
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
-            className="group relative rounded-2xl border border-amber-400/15 bg-white/[0.04] backdrop-blur-lg p-5 sm:p-7 transition-all duration-400 hover:border-amber-400/30 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-amber-500/10 shadow-lg shadow-black/5"
+            className="card-gilded group relative p-5 sm:p-7 transition-all duration-400 hover-lift"
           >
             {/* קו גרדיאנט עליון בהאבר */}
             <div
@@ -63,7 +63,7 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
               }}
             />
             {/* זוהר עדין בהאבר */}
-            <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+            <div className="absolute inset-0 rounded-[14px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
               style={{
                 boxShadow: `inset 0 1px 0 0 rgba(212,168,83,0.06), 0 0 32px -8px ${accentColor}12`,
               }}
