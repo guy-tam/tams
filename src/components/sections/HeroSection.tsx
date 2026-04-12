@@ -14,45 +14,6 @@ interface HeroSectionProps {
   ctaHref?: string;
 }
 
-// כדורים צפים ברקע — נשימה ותנועה
-function FloatingOrb({
-  size,
-  color,
-  x,
-  y,
-  delay,
-}: {
-  size: number;
-  color: string;
-  x: string;
-  y: string;
-  delay: number;
-}) {
-  return (
-    <motion.div
-      className="absolute rounded-full blur-3xl opacity-20 pointer-events-none"
-      style={{
-        width: size,
-        height: size,
-        background: color,
-        left: x,
-        top: y,
-      }}
-      animate={{
-        y: [0, -25, 0, 25, 0],
-        x: [0, 15, 0, -15, 0],
-        scale: [1, 1.08, 1, 0.92, 1],
-      }}
-      transition={{
-        duration: 20,
-        repeat: Infinity,
-        delay,
-        ease: "easeInOut",
-      }}
-    />
-  );
-}
-
 export default function HeroSection({
   title,
   subtitle,
@@ -69,45 +30,9 @@ export default function HeroSection({
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* שכבה 1 — קרן אור קלאסית (godray) עליונה */}
+      {/* רקע Hero — שכבת האטמוספירה הגלובלית עם הציורים חי כאן בלי תחרות
+          רק קרן אור זהובה עדינה + וינייטה דרמטית מעל הציורים */}
       <div aria-hidden="true" className="absolute inset-0 godray pointer-events-none" />
-
-      {/* שכבה 2 — כדורים צפים: חיים ונשימה ברוקיים */}
-      <div className="absolute inset-0">
-        <FloatingOrb
-          size={650}
-          color="radial-gradient(circle, #1e3a7a, transparent)"
-          x="10%"
-          y="20%"
-          delay={0}
-        />
-        <FloatingOrb
-          size={500}
-          color="radial-gradient(circle, #c9a84c, transparent)"
-          x="60%"
-          y="10%"
-          delay={2}
-        />
-        <FloatingOrb
-          size={440}
-          color="radial-gradient(circle, #3b6fd4, transparent)"
-          x="70%"
-          y="60%"
-          delay={4}
-        />
-        <FloatingOrb
-          size={380}
-          color="radial-gradient(circle, #1a4a8a, transparent)"
-          x="20%"
-          y="70%"
-          delay={6}
-        />
-      </div>
-
-      {/* שכבה 3 — דגן פיגמנט ציורי מעל הכדורים */}
-      <div aria-hidden="true" className="absolute inset-0 texture-grain opacity-50 pointer-events-none mix-blend-overlay" />
-
-      {/* שכבה 4 — וינייטה צ׳יארוסקורו למיקוד דרמטי */}
       <div aria-hidden="true" className="absolute inset-0 chiaroscuro pointer-events-none" />
 
       {/* תוכן מרכזי */}

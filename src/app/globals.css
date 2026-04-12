@@ -143,13 +143,8 @@
 
   body {
     @apply bg-background text-foreground;
-    /* רקע ציורי רב-שכבתי — דרמה ברוקית מרוסנת: זהב על כחול דיו עם עומק אפל בפינות */
-    background:
-      radial-gradient(ellipse 80% 60% at 18% 8%, rgba(212, 168, 83, 0.075) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 55% at 82% 12%, rgba(58, 123, 232, 0.055) 0%, transparent 55%),
-      radial-gradient(ellipse 90% 70% at 50% 105%, rgba(212, 168, 83, 0.045) 0%, transparent 60%),
-      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 45%, rgba(0, 0, 0, 0.45) 100%),
-      linear-gradient(180deg, oklch(0.075 0.018 268) 0%, oklch(0.06 0.016 265) 50%, oklch(0.05 0.014 262) 100%);
+    /* רקע בסיס כהה — מתחת לציורים. הציורים (AtmosphericBackdrop) הם העולם הויזואלי */
+    background: linear-gradient(180deg, oklch(0.055 0.015 262) 0%, oklch(0.045 0.013 260) 100%);
     background-attachment: fixed;
   }
   html {
@@ -546,18 +541,20 @@ html[lang="ar"] a {
     radial-gradient(ellipse 100% 80% at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.25) 100%);
 }
 
-/* ─── פלינט׳ — מעמד פרימיום למקטעים משמעותיים ─── */
+/* ─── פלינט׳ — מעמד פרימיום, חצי-שקוף כדי שהציורים שמאחור יבצבצו ─── */
 .section-plinth {
   position: relative;
   border-radius: 20px;
   background:
-    linear-gradient(165deg, rgba(18, 28, 55, 0.55) 0%, rgba(10, 18, 40, 0.75) 55%, rgba(8, 14, 32, 0.8) 100%);
-  border-top: 1px solid rgba(212, 168, 83, 0.12);
+    linear-gradient(165deg, rgba(18, 28, 55, 0.35) 0%, rgba(10, 18, 40, 0.55) 55%, rgba(8, 14, 32, 0.62) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(212, 168, 83, 0.18);
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   box-shadow:
-    0 1px 0 0 rgba(212, 168, 83, 0.08) inset,
+    0 1px 0 0 rgba(212, 168, 83, 0.1) inset,
     0 30px 80px -30px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(212, 168, 83, 0.04);
+    0 0 0 1px rgba(212, 168, 83, 0.06);
 }
 
 /* ─── מסגרת קלאסית עם פינות זהובות — inspired by gilded gallery frames ─── */
@@ -618,8 +615,10 @@ html[lang="ar"] a {
 .card-gilded {
   position: relative;
   background:
-    linear-gradient(160deg, rgba(22, 34, 68, 0.72) 0%, rgba(13, 22, 50, 0.88) 55%, rgba(9, 16, 38, 0.92) 100%);
-  border: 1px solid rgba(212, 168, 83, 0.18);
+    linear-gradient(160deg, rgba(22, 34, 68, 0.5) 0%, rgba(13, 22, 50, 0.68) 55%, rgba(9, 16, 38, 0.75) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 168, 83, 0.22);
   border-radius: 14px;
   box-shadow:
     0 0 0 1px rgba(212, 168, 83, 0.04),
