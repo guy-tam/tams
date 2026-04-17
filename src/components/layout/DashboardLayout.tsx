@@ -322,8 +322,8 @@ function DashboardShell({ children }: { children: ReactNode }) {
 
       {/* בר עליון + תוכן ראשי */}
       <div className={`flex-1 ${isRTL ? "lg:pr-64" : "lg:pl-64"} flex flex-col`}>
-        {/* בר עליון */}
-        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-amber-500/[0.08] bg-[#0a1628]/80 backdrop-blur-md px-4 sm:px-6 shadow-[inset_0_1px_0_rgba(212,168,83,0.06)]">
+        {/* בר עליון — פרימיום עם מרקם זהוב */}
+        <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-amber-500/[0.12] bg-[#0a1628]/85 backdrop-blur-xl px-4 sm:px-6 shadow-[inset_0_1px_0_rgba(212,168,83,0.1),0_4px_20px_rgba(0,0,0,0.3)]">
           {/* לוגו בבר עליון - נראה רק במובייל */}
           <div className="flex items-center gap-2 lg:hidden">
             <TamsLogo variant="sidebar" />
@@ -368,9 +368,13 @@ function DashboardShell({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        {/* תוכן הדשבורד */}
-        <main className="flex-1">
-          {children}
+        {/* תוכן הדשבורד — שקוף חלקית כדי שהציור החי יבצבץ */}
+        <main className="flex-1 relative">
+          {/* שכבת מרקם — מחברת את הדשבורד לעולם הציורי */}
+          <div className="pointer-events-none absolute inset-0 texture-grain opacity-40" />
+          <div className="relative z-10">
+            {children}
+          </div>
         </main>
       </div>
     </div>

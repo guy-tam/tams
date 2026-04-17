@@ -225,20 +225,21 @@ function StatCard({
   return (
     <motion.div
       variants={itemVariants}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={`rounded-2xl backdrop-blur-md p-5 relative overflow-hidden group ${
+      whileHover={{ y: -4, transition: { duration: 0.3, ease: [0.19, 1, 0.22, 1] } }}
+      className={`rounded-2xl backdrop-blur-xl p-5 relative overflow-hidden group transition-all duration-500 ${
         isGold
-          ? "border border-amber-500/25 bg-gradient-to-br from-[#0f1d35] to-[#1a2744] shadow-lg shadow-amber-900/10"
-          : "border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36]"
+          ? "border border-amber-500/30 bg-gradient-to-br from-[#0f1d35]/80 to-[#1a2744]/85 shadow-lg shadow-amber-900/15 hover:border-amber-500/50 hover:shadow-[0_8px_32px_rgba(212,168,83,0.12)]"
+          : "border border-blue-500/15 bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 hover:border-blue-400/25 hover:shadow-[0_8px_32px_rgba(59,130,246,0.08)]"
       }`}
     >
-      {/* גלאו עליון פרימיום */}
+      {/* קו זהוב עליון — כמו מסגרת גלריה */}
       <div
-        className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity group-hover:opacity-100"
+        className="absolute top-0 left-2 right-2 h-px transition-opacity duration-500 group-hover:opacity-100"
         style={{
+          opacity: isGold ? 0.6 : 0,
           background: isGold
-            ? "linear-gradient(90deg, transparent, #d4a85380, transparent)"
-            : `linear-gradient(90deg, transparent, ${color}40, transparent)`,
+            ? "linear-gradient(90deg, transparent, rgba(212,168,83,0.6), transparent)"
+            : `linear-gradient(90deg, transparent, ${color}50, transparent)`,
         }}
       />
       <div className="flex items-start justify-between mb-3">
@@ -394,17 +395,17 @@ export default function DashboardPage() {
   const latestActivity = recentActivity.slice(0, 5);
 
   return (
-    <div className="min-h-screen p-4 md:p-8 space-y-6">
+    <div className="min-h-screen p-4 md:p-8 space-y-6 relative">
       {/* כותרת */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-2xl md:text-3xl font-bold text-white">
+        <h1 className="heading-editorial text-2xl md:text-3xl font-bold bg-gradient-to-br from-white via-amber-100/90 to-amber-200/70 bg-clip-text text-transparent">
           {t.pageTitle}
         </h1>
-        <p className="text-sm text-slate-400 mt-1">
+        <p className="text-sm text-zinc-400/80 mt-1 font-light">
           {t.pageSubtitle}
         </p>
       </motion.div>
@@ -454,7 +455,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-2 rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
+          className="lg:col-span-2 rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
         >
           <h3 className="text-base font-semibold text-white mb-1">
             {t.perfChartTitle}
@@ -503,7 +504,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
+          className="rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
         >
           <h3 className="text-base font-semibold text-white mb-1">
             {t.allocationTitle}
@@ -566,7 +567,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
+          className="rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
         >
           <h3 className="text-base font-semibold text-white mb-4">
             {t.topHoldings}
@@ -615,7 +616,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="rounded-2xl border border-blue-500/15 bg-gradient-to-br from-[#0c1829] to-[#111f36] backdrop-blur-md p-6 shadow-lg shadow-blue-950/20"
+          className="rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
         >
           <h3 className="text-base font-semibold text-white mb-4">
             {t.recentActivity}
