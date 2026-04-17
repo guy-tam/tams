@@ -53,20 +53,10 @@ export default function HeroSection({
             {t("home.hero.badge")}
           </motion.div>
 
-          {/* פלרון קלאסי — עיטור זהב עדין מעל הכותרת */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0.6 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 0.25, duration: 0.8 }}
-            className="fleuron max-w-sm mx-auto mb-8"
-          >
-            <span />
-          </motion.div>
-
-          {/* כותרת ראשית — גופן מלכותי עם גרדיאנט חם */}
+          {/* כותרת ראשית — היררכיה נקייה: Badge → Title → Subtitle */}
           <motion.h1
             style={{ y: titleY }}
-            className="heading-editorial text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.15] mb-6 sm:mb-8"
+            className="heading-editorial text-[2.2rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[5.2rem] xl:text-[6rem] tracking-tight leading-[1.08] mb-5 sm:mb-7"
           >
             <span className="gradient-text animate-text-glow">{title}</span>
           </motion.h1>

@@ -32,36 +32,33 @@ export default function SectionHeader({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
-      className={`mb-12 ${className}`}
+      className={`mb-14 flex flex-col items-start gap-5 ${className}`}
     >
       {/* חותם מלכותי — royal seal badge */}
       {badge && (
-        <span className="badge-seal mb-5">
+        <span className="badge-seal">
           <span>{badge}</span>
         </span>
       )}
 
-      {/* כותרת עם כתר — royal crown title */}
-      <div className="relative inline-block">
-        <span aria-hidden="true" className="absolute -top-6 left-0 text-[1.1rem] text-amber-400/70 crown-glow" style={{ filter: "drop-shadow(0 0 12px rgba(212,168,83,0.5))" }}>⚜</span>
-        <h2 className="heading-editorial text-2xl sm:text-3xl lg:text-4xl bg-gradient-to-br from-white via-amber-100/85 to-amber-200/70 bg-clip-text text-transparent">
-          {title}
-        </h2>
-      </div>
+      {/* כותרת ראשית — טיפוגרפיה נושאת הפאר לבדה */}
+      <h2 className="heading-editorial text-[1.75rem] sm:text-[2.15rem] lg:text-[2.6rem] leading-[1.1] tracking-tight bg-gradient-to-br from-white via-amber-100/90 to-amber-200/70 bg-clip-text text-transparent">
+        {title}
+      </h2>
 
-      {/* עיטור פלרון זהוב — חילוף לקו הישן, נותן נוכחות גלריה */}
-      <div className="mt-5 flex items-center gap-3 max-w-[220px]">
-        <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-amber-400/50 to-amber-400/30" />
-        <span className="block w-[6px] h-[6px] rounded-full bg-[radial-gradient(circle,#dbb85c_0%,#a8872e_75%,transparent_100%)] shadow-[0_0_10px_rgba(212,168,83,0.55)]" />
-        <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-blue-400/25 to-blue-500/15" />
-      </div>
-
-      {/* תת-כותרת */}
+      {/* תת-כותרת — ממוקמת מתחת לכותרת בהיררכיה נקייה */}
       {subtitle && (
-        <p className="mt-4 text-sm leading-[1.7] text-zinc-400/90 max-w-xl">
+        <p className="text-[0.95rem] sm:text-base leading-[1.75] text-zinc-300/85 max-w-2xl font-light">
           {subtitle}
         </p>
       )}
+
+      {/* עיטור פלרון זהוב — מעט מתחת, עדין, לא מתחרה */}
+      <div className="mt-1 flex items-center gap-3 max-w-[180px] w-full">
+        <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-amber-400/45 to-amber-400/25" />
+        <span className="block w-[5px] h-[5px] rounded-full bg-[radial-gradient(circle,#dbb85c_0%,#a8872e_75%,transparent_100%)] shadow-[0_0_10px_rgba(212,168,83,0.5)]" />
+        <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-blue-400/22 to-blue-500/12" />
+      </div>
     </motion.div>
   );
 }

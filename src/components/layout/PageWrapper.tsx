@@ -73,23 +73,21 @@ export default function PageWrapper({
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 xl:py-12">
         {(title || subtitle) && (
-          <header className="mb-14">
+          <header className="mb-14 flex flex-col gap-5">
             {title && (
-              <>
-                <h1 className="heading-editorial text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-br from-white via-amber-100/90 to-amber-200/70 bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(212,168,83,0.08)]">
-                  {title}
-                </h1>
-                {/* עיטור פלרון זהוב מתחת לכותרת */}
-                <div className="fleuron mt-5 max-w-md">
-                  <span />
-                </div>
-              </>
+              <h1 className="heading-editorial text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] leading-[1.08] tracking-tight bg-gradient-to-br from-white via-amber-100/90 to-amber-200/70 bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(212,168,83,0.08)]">
+                {title}
+              </h1>
             )}
             {subtitle && (
-              <p className="mt-4 text-base text-zinc-400/90 max-w-2xl leading-[1.85]">
+              <p className="text-base sm:text-lg text-zinc-300/85 max-w-2xl leading-[1.75] font-light">
                 {subtitle}
               </p>
             )}
+            {/* עיטור פלרון מתחת לכותרת ותת-כותרת */}
+            <div className="fleuron mt-2 max-w-sm">
+              <span />
+            </div>
           </header>
         )}
 
