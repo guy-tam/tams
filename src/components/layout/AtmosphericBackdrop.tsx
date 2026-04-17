@@ -1,11 +1,45 @@
-// Wallpaper-grade עולם ציורי — הציור הוא הטפט של האתר
-// רואים את הפרטים: דמויות, ספינות, אור, שמיים — כמו קיר בגלריה
-// 4 מאסטרי הזהב הישן נמסים יחד כטפט רציף אחד
+// ציור חי — סרטון ספינות ויקינג מצויר כשכבה ראשית
+// Edward Moran "Viking Armada" מונפש ב-Ken Burns כטפט חי
+// שכבות ציורי אמנים ישנים נמסות ביחד מעל ומסביב
+// האפקט: עולם ציורי שנושם — יצירת מופת בתנועה
 
 export default function AtmosphericBackdrop() {
   return (
     <>
-      {/* שכבה 1 — Turner (שקיעה) טפט מלא עיקרי, ברור ולא מטושטש */}
+      {/* שכבה 0 — סרטון ציור חי: ספינות ויקינג מפליגות בים סוער */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          disablePictureInPicture
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{
+            opacity: 0.62,
+            filter: "saturate(0.88) contrast(1.06) brightness(0.82)",
+          }}
+        >
+          <source src="/video/viking-voyage.webm" type="video/webm" />
+          <source src="/video/viking-voyage.mp4" type="video/mp4" />
+        </video>
+        {/* Fallback: ציור סטטי למקרה שהוידאו לא נטען */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url(/art/viking-armada-moran.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center 40%",
+            opacity: 0.65,
+            filter: "saturate(0.88) contrast(1.06) brightness(0.82)",
+          }}
+        />
+      </div>
+
+      {/* שכבה 1 — Turner (שקיעה) מתמזגת עם הסרטון כאור חם */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
@@ -13,98 +47,65 @@ export default function AtmosphericBackdrop() {
           backgroundImage: "url(/art/turner-temeraire.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center 35%",
-          opacity: 0.72,
-          filter: "saturate(0.92) contrast(1.08) brightness(0.85)",
+          opacity: 0.3,
+          mixBlendMode: "screen",
+          filter: "saturate(0.85) contrast(1.05)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 100% 80% at 50% 30%, black 0%, transparent 80%)",
+          maskImage:
+            "radial-gradient(ellipse 100% 80% at 50% 30%, black 0%, transparent 80%)",
         }}
       />
 
-      {/* שכבה 2 — Lorrain מתמזג ברצף בצד ימין */}
+      {/* שכבה 2 — Lorrain נמל קלאסי מתמזג בצד ימין */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           backgroundImage: "url(/art/lorrain-seaport.jpg)",
-          backgroundSize: "90% auto",
+          backgroundSize: "85% auto",
           backgroundPosition: "right center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.55,
+          opacity: 0.3,
           mixBlendMode: "screen",
-          filter: "saturate(0.9) contrast(1.05)",
+          filter: "saturate(0.85) contrast(1.02)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 80% 90% at 78% 50%, black 0%, black 30%, transparent 85%)",
+            "radial-gradient(ellipse 70% 85% at 82% 50%, black 0%, transparent 80%)",
           maskImage:
-            "radial-gradient(ellipse 80% 90% at 78% 50%, black 0%, black 30%, transparent 85%)",
+            "radial-gradient(ellipse 70% 85% at 82% 50%, black 0%, transparent 80%)",
         }}
       />
 
-      {/* שכבה 3 — Rembrandt פרטים בצד שמאל-תחתון, ברור לעין */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          backgroundImage: "url(/art/rembrandt-nightwatch.jpg)",
-          backgroundSize: "85% auto",
-          backgroundPosition: "left bottom",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.52,
-          mixBlendMode: "screen",
-          filter: "saturate(0.85) contrast(1.1)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 85% 85% at 22% 75%, black 0%, black 25%, transparent 80%)",
-          maskImage:
-            "radial-gradient(ellipse 85% 85% at 22% 75%, black 0%, black 25%, transparent 80%)",
-        }}
-      />
-
-      {/* שכבה 4 — Caravaggio דרמה צ׳יארוסקורו במרכז-ימין */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          backgroundImage: "url(/art/caravaggio-matthew.jpg)",
-          backgroundSize: "75% auto",
-          backgroundPosition: "85% 30%",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.4,
-          mixBlendMode: "screen",
-          filter: "saturate(0.85) contrast(1.08)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 85% at 85% 35%, black 0%, transparent 75%)",
-          maskImage:
-            "radial-gradient(ellipse 70% 85% at 85% 35%, black 0%, transparent 75%)",
-        }}
-      />
-
-      {/* שכבה 5 — וינייטה קלילה בלבד (לא מחשיכה את הציור) */}
+      {/* שכבה 3 — וינייטה עמוקה — מחשיכה קצוות לקריאות טקסט */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 120% 100% at 50% 50%, transparent 45%, rgba(0, 0, 0, 0.55) 100%)",
+            "radial-gradient(ellipse 110% 90% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.6) 100%)",
         }}
       />
 
-      {/* שכבה 6 — דגן פיגמנט — מוסיף מרקם בד של ציור אמיתי */}
+      {/* שכבה 4 — דגן פיגמנט — מרקם בד ציור אמיתי */}
       <div aria-hidden="true" className="atmosphere-layer" />
 
-      {/* שכבה 7 — קרני אור ברוקיות — מחזקות את האווירה של שקיעת Turner */}
+      {/* שכבה 5 — קרני אור זהובות מלמעלה */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% -5%, rgba(212, 168, 83, 0.22) 0%, transparent 55%)",
+            "radial-gradient(ellipse 55% 45% at 50% -5%, rgba(212, 168, 83, 0.2) 0%, transparent 55%)",
         }}
       />
 
-      {/* שכבה 8 — מסגרת גלריה עדינה סביב המסך */}
+      {/* שכבה 6 — מסגרת גלריה עדינה */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-3 z-0 rounded-[4px]"
         style={{
           boxShadow:
-            "0 0 0 1px rgba(212, 168, 83, 0.2), inset 0 0 180px rgba(0, 0, 0, 0.35)",
+            "0 0 0 1px rgba(212, 168, 83, 0.18), inset 0 0 200px rgba(0, 0, 0, 0.4)",
         }}
       />
     </>
