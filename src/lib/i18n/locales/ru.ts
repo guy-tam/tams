@@ -10,6 +10,7 @@ const ru: TranslationStrings = {
     defi: "DeFi",
     marketShift: "Рынок",
     strategy: "Стратегия",
+    businessModel: "Бизнес-модель",
     investor: "Инвестору",
     proof: "Доказательства",
     language: "Язык",
@@ -26,6 +27,20 @@ const ru: TranslationStrings = {
       "TAMS — это концептуальное приложение, разработанное для демонстрации принципов инвестиционной инфраструктуры блокчейна. Оно не является действующим фондом, кастодиальным решением или финансовым продуктом. Реальный капитал через это приложение не размещается.",
     readMore: "Читать далее",
   },
+  aria: {
+    mainNav: "Главная навигация",
+    dashboardNav: "Навигация панели",
+    openMenu: "Открыть меню",
+    closeMenu: "Закрыть меню",
+    openDashboardMenu: "Открыть меню панели",
+    closeDashboardMenu: "Закрыть меню панели",
+    dashboardMenu: "Меню панели",
+    notifications: "Уведомления",
+    closeNotification: "Закрыть уведомление",
+    logout: "Выйти",
+    close: "Закрыть",
+    openInvestorGuide: "Открыть руководство инвестора",
+  },
   home: {
     hero: {
       badge: "Institutional · Est. 2025",
@@ -35,6 +50,12 @@ const ru: TranslationStrings = {
       cta1: "Смотреть архитектуру",
       cta2: "Запросить документы",
       scroll: "Далее",
+      ribbon: {
+        wallet: "Мульти-кошелёк",
+        storage: "Холодное хранение",
+        methodology: "Аудированная методология",
+        accredited: "Только аккредитованные",
+      },
     },
     thesis: {
       badge: "Инвестиционная модель",

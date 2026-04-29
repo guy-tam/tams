@@ -13,6 +13,7 @@ export type TranslationStrings = {
     defi: string;
     marketShift: string;
     strategy: string;
+    businessModel: string;
     investor: string;
     proof: string;
     language: string;
@@ -28,6 +29,20 @@ export type TranslationStrings = {
     disclaimer: string;
     readMore: string;
   };
+  aria: {
+    mainNav: string;
+    dashboardNav: string;
+    openMenu: string;
+    closeMenu: string;
+    openDashboardMenu: string;
+    closeDashboardMenu: string;
+    dashboardMenu: string;
+    notifications: string;
+    closeNotification: string;
+    logout: string;
+    close: string;
+    openInvestorGuide: string;
+  };
   home: {
     hero: {
       badge: string;
@@ -36,6 +51,12 @@ export type TranslationStrings = {
       cta1: string;
       cta2: string;
       scroll: string;
+      ribbon: {
+        wallet: string;
+        storage: string;
+        methodology: string;
+        accredited: string;
+      };
     };
     thesis: {
       badge: string;

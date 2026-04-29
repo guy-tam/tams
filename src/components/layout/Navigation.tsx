@@ -18,6 +18,7 @@ import {
   X,
   LogIn,
   ShieldCheck,
+  Banknote,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -31,6 +32,7 @@ const navItems = [
   { labelKey: "nav.defi", href: "/defi", icon: Coins },
   { labelKey: "nav.marketShift", href: "/market-shift", icon: TrendingUp },
   { labelKey: "nav.strategy", href: "/strategy", icon: Target },
+  { labelKey: "nav.businessModel", href: "/business-model", icon: Banknote },
   { labelKey: "nav.proof", href: "/proof", icon: ShieldCheck },
   { labelKey: "nav.investor", href: "/investor", icon: Users },
 ];
@@ -74,7 +76,7 @@ export default function Navigation() {
 
   const NavLinks = () => (
     // נגישות: תפריט ניווט ראשי עם תווית
-    <nav aria-label="ניווט ראשי" className="flex flex-col gap-1 px-3">
+    <nav aria-label={t("aria.mainNav")} className="flex flex-col gap-1 px-3">
       {navItems.map((item) => {
         const active = isActive(item.href);
         return (
@@ -182,7 +184,7 @@ export default function Navigation() {
       <button
         type="button"
         onClick={() => setMobileOpen(true)}
-        aria-label="פתיחת תפריט"
+        aria-label={t("aria.openMenu")}
         aria-expanded={mobileOpen}
         aria-controls="mobile-nav"
         className={`fixed top-3 ${isRTL ? "right-3" : "left-3"} z-50 flex h-11 w-11 items-center justify-center rounded-lg
@@ -231,7 +233,7 @@ export default function Navigation() {
               id="mobile-nav"
               role="dialog"
               aria-modal="true"
-              aria-label="תפריט ניווט"
+              aria-label={t("aria.mainNav")}
               variants={sidebarMobileVariants}
               initial="closed"
               animate="open"
@@ -242,7 +244,7 @@ export default function Navigation() {
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
-                aria-label="סגירת תפריט"
+                aria-label={t("aria.closeMenu")}
                 className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
                   rounded-md text-zinc-500 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
               >

@@ -10,6 +10,7 @@ const ar: TranslationStrings = {
     defi: "التمويل اللامركزي",
     marketShift: "تحول السوق",
     strategy: "الاستراتيجية",
+    businessModel: "نموذج العمل",
     investor: "المستثمرون",
     proof: "الإثباتات",
     language: "اللغة",
@@ -26,6 +27,20 @@ const ar: TranslationStrings = {
       "TAMS هو تطبيق مفاهيمي مصمم لعرض مبادئ البنية التحتية للاستثمار في البلوكتشين. لا يمثل صندوقاً استثمارياً فعلياً أو حلاً للحفظ أو منتجاً مالياً. لا يتم نشر أي رأس مال حقيقي من خلال هذا التطبيق.",
     readMore: "اقرأ المزيد",
   },
+  aria: {
+    mainNav: "التنقل الرئيسي",
+    dashboardNav: "تنقل لوحة المعلومات",
+    openMenu: "فتح القائمة",
+    closeMenu: "إغلاق القائمة",
+    openDashboardMenu: "فتح قائمة لوحة المعلومات",
+    closeDashboardMenu: "إغلاق قائمة لوحة المعلومات",
+    dashboardMenu: "قائمة لوحة المعلومات",
+    notifications: "الإشعارات",
+    closeNotification: "إغلاق الإشعار",
+    logout: "تسجيل الخروج",
+    close: "إغلاق",
+    openInvestorGuide: "فتح دليل المستثمر",
+  },
   home: {
     hero: {
       badge: "Institutional · Est. 2025",
@@ -35,6 +50,12 @@ const ar: TranslationStrings = {
       cta1: "استعراض البنية",
       cta2: "طلب الوثائق",
       scroll: "تابع",
+      ribbon: {
+        wallet: "محافظ متعددة",
+        storage: "تخزين بارد",
+        methodology: "منهجية مدققة",
+        accredited: "للمستثمرين المعتمدين فقط",
+      },
     },
     thesis: {
       badge: "إطار الاستثمار",

@@ -6,6 +6,7 @@ import { Dialog as SheetPrimitive } from "@base-ui/react/dialog"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
+import { useLanguage } from "@/lib/i18n"
 
 function Sheet({ ...props }: SheetPrimitive.Root.Props) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
@@ -46,6 +47,7 @@ function SheetContent({
   side?: "top" | "right" | "bottom" | "left"
   showCloseButton?: boolean
 }) {
+  const { t } = useLanguage()
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -63,7 +65,7 @@ function SheetContent({
           // נגישות: כפתור הסגירה מקבל שם נגיש דרך sr-only
           <SheetPrimitive.Close
             data-slot="sheet-close"
-            aria-label="סגירה"
+            aria-label={t("aria.close")}
             render={
               <Button
                 type="button"

@@ -10,6 +10,7 @@ const es: TranslationStrings = {
     defi: "DeFi",
     marketShift: "Mercado",
     strategy: "Estrategia",
+    businessModel: "Modelo de negocio",
     investor: "Inversionistas",
     proof: "Pruebas",
     language: "Idioma",
@@ -26,6 +27,20 @@ const es: TranslationStrings = {
       "TAMS es una aplicación conceptual diseñada para demostrar los principios de infraestructura de inversión en blockchain. No representa un fondo operativo, una solución de custodia ni un producto financiero. No se despliega capital real a través de esta aplicación.",
     readMore: "Leer más",
   },
+  aria: {
+    mainNav: "Navegación principal",
+    dashboardNav: "Navegación del panel",
+    openMenu: "Abrir menú",
+    closeMenu: "Cerrar menú",
+    openDashboardMenu: "Abrir menú del panel",
+    closeDashboardMenu: "Cerrar menú del panel",
+    dashboardMenu: "Menú del panel",
+    notifications: "Notificaciones",
+    closeNotification: "Cerrar notificación",
+    logout: "Cerrar sesión",
+    close: "Cerrar",
+    openInvestorGuide: "Abrir guía del inversor",
+  },
   home: {
     hero: {
       badge: "Institutional · Est. 2025",
@@ -35,6 +50,12 @@ const es: TranslationStrings = {
       cta1: "Ver la arquitectura",
       cta2: "Solicitar documentación",
       scroll: "Continuar",
+      ribbon: {
+        wallet: "Multi-wallet",
+        storage: "Almacenamiento frío",
+        methodology: "Metodología auditada",
+        accredited: "Solo inversores acreditados",
+      },
     },
     thesis: {
       badge: "Marco de inversión",

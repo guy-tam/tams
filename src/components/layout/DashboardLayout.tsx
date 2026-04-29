@@ -128,7 +128,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
         {/* פעמון התראות */}
         <button
           type="button"
-          aria-label="התראות"
+          aria-label={t("aria.notifications")}
           className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
         >
           <Bell className="h-4 w-4" />
@@ -142,7 +142,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
   // רשימת קישורי ניווט
   const NavLinks = () => (
     // נגישות: ניווט הדשבורד עם תווית
-    <nav aria-label="ניווט דשבורד" className="flex flex-col gap-1 px-3">
+    <nav aria-label={t("aria.dashboardNav")} className="flex flex-col gap-1 px-3">
       {dashboardNavItems.map((item) => {
         const active = isActive(item.href);
         return (
@@ -250,7 +250,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
       <button
         type="button"
         onClick={() => setMobileOpen(true)}
-        aria-label="פתיחת תפריט דשבורד"
+        aria-label={t("aria.openDashboardMenu")}
         aria-expanded={mobileOpen}
         aria-controls="mobile-nav"
         className={`fixed top-4 ${isRTL ? "right-4" : "left-4"} z-50 flex h-10 w-10 items-center justify-center rounded-lg
@@ -296,7 +296,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
               id="mobile-nav"
               role="dialog"
               aria-modal="true"
-              aria-label="תפריט דשבורד"
+              aria-label={t("aria.dashboardMenu")}
               variants={isRTL ? sidebarMobileVariantsRTL : sidebarMobileVariants}
               initial="closed"
               animate="open"
@@ -308,7 +308,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
-                aria-label="סגירת תפריט דשבורד"
+                aria-label={t("aria.closeDashboardMenu")}
                 className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} flex h-8 w-8 items-center justify-center
                   rounded-md text-zinc-500 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50`}
               >
@@ -340,7 +340,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
             {/* פעמון התראות */}
             <button
               type="button"
-              aria-label="התראות"
+              aria-label={t("aria.notifications")}
               className="relative flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:text-amber-300 hover:bg-amber-500/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
             >
               <Bell className="h-4 w-4" />
@@ -359,7 +359,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
             <button
               type="button"
               onClick={logout}
-              aria-label="התנתקות"
+              aria-label={t("aria.logout")}
               className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
               title="התנתקות"
             >

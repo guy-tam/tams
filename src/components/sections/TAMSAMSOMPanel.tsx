@@ -20,21 +20,21 @@ const texts = {
     items: [
       {
         label: "Total Addressable Market",
-        range: "$2-3T",
+        range: "$16T by 2030",
         assumptions:
-          "Total global crypto market capitalization including all digital assets, DeFi TVL, and institutional crypto holdings.",
+          "BCG projection for tokenized real-world assets ($16T) + global crypto market cap (~$3.5T Q1 2026). Standard Chartered: $30T by 2034.",
       },
       {
         label: "Serviceable Addressable Market",
-        range: "$300-500B",
+        range: "$398B",
         assumptions:
-          "Crypto investment vehicles, managed crypto funds, and DeFi yield strategies accessible to institutional-grade operations.",
+          "Bitcoin ETF AUM ($135B, BlackRock IBIT $100B) + DeFi TVL ($192B) + tokenized RWA ($26.4B) + crypto hedge funds ($45B). Apr 2026 actuals.",
       },
       {
         label: "Serviceable Obtainable Market",
         range: "$25-75M",
         assumptions:
-          "Realistic initial market capture through direct investor relationships, targeting crypto-native HNW individuals and small institutional allocators.",
+          "Realistic 24-month capture through accredited HNW networks. 80% of institutions plan to grow crypto allocations in 2026 — Coinbase Institutional Survey.",
       },
     ] as const,
   },
@@ -42,21 +42,21 @@ const texts = {
     items: [
       {
         label: "שוק כולל בר-מיענה",
-        range: "$2-3T",
+        range: "$16T עד 2030",
         assumptions:
-          "שווי שוק הקריפטו הגלובלי הכולל, לרבות כלל הנכסים הדיגיטליים, נפח DeFi נעול (TVL) ואחזקות קריפטו מוסדיות.",
+          "תחזית BCG ל-RWA מטוקנים ($16T) + שווי שוק הקריפטו הגלובלי (~$3.5T ברבעון 1 2026). Standard Chartered: $30T עד 2034.",
       },
       {
         label: "שוק בר-שירות",
-        range: "$300-500B",
+        range: "$398B",
         assumptions:
-          "מכשירי השקעה בקריפטו, קרנות קריפטו מנוהלות ואסטרטגיות תשואת DeFi הנגישות לפעילות ברמה מוסדית.",
+          "AUM של Bitcoin ETF ($135B, BlackRock IBIT $100B) + DeFi TVL ($192B) + RWA מטוקנים ($26.4B) + קרנות קריפטו ($45B). נתונים בפועל אפריל 2026.",
       },
       {
         label: "שוק בר-השגה",
         range: "$25-75M",
         assumptions:
-          "לכידת שוק ראשונית ריאלית באמצעות קשרי משקיעים ישירים, תוך מיקוד באנשים בעלי הון גבוה מעולם הקריפטו ומקצי הון מוסדיים קטנים.",
+          "לכידה ריאלית ב-24 חודש דרך רשתות HNW מוסמכים. 80% מהמוסדות מתכננים להגדיל הקצאות קריפטו ב-2026 — סקר Coinbase Institutional.",
       },
     ] as const,
   },
@@ -64,21 +64,21 @@ const texts = {
     items: [
       {
         label: "إجمالي السوق القابل للعنونة",
-        range: "$2-3T",
+        range: "$16T بحلول 2030",
         assumptions:
-          "إجمالي القيمة السوقية للعملات المشفرة عالميًا بما في ذلك جميع الأصول الرقمية، وقيمة DeFi المقفلة، وحيازات المؤسسات.",
+          "توقع BCG للأصول الحقيقية المُرمَّزة (16 تريليون $) + إجمالي رأس مال سوق الكريبتو (~3.5 تريليون $ في الربع الأول 2026). Standard Chartered: 30 تريليون $ بحلول 2034.",
       },
       {
         label: "السوق القابل للخدمة",
-        range: "$300-500B",
+        range: "$398B",
         assumptions:
-          "أدوات الاستثمار في العملات المشفرة، والصناديق المُدارة، واستراتيجيات عائد DeFi المتاحة للعمليات المؤسسية.",
+          "AUM لـ Bitcoin ETF (135B$، BlackRock IBIT 100B$) + DeFi TVL (192B$) + RWA مُرمَّز (26.4B$) + صناديق الكريبتو (45B$). أرقام فعلية أبريل 2026.",
       },
       {
         label: "السوق القابل للتحقيق",
         range: "$25-75M",
         assumptions:
-          "استحواذ واقعي أولي على السوق من خلال علاقات مباشرة مع المستثمرين، مستهدفين أفرادًا ذوي ثروات عالية ومخصصين مؤسسيين صغار.",
+          "استحواذ واقعي خلال 24 شهرًا عبر شبكات HNW المعتمدة. 80% من المؤسسات تخطط لزيادة الانكشاف على الكريبتو في 2026 — استطلاع Coinbase Institutional.",
       },
     ] as const,
   },
@@ -86,21 +86,21 @@ const texts = {
     items: [
       {
         label: "Общий адресуемый рынок",
-        range: "$2-3T",
+        range: "$16T к 2030",
         assumptions:
-          "Общая капитализация глобального крипторынка, включая все цифровые активы, TVL DeFi и институциональные криптоактивы.",
+          "Прогноз BCG по токенизированным RWA ($16T) + общая капитализация крипторынка (~$3.5T Q1 2026). Standard Chartered: $30T к 2034.",
       },
       {
         label: "Доступный обслуживаемый рынок",
-        range: "$300-500B",
+        range: "$398B",
         assumptions:
-          "Криптоинвестиционные инструменты, управляемые криптофонды и стратегии доходности DeFi, доступные для институциональных операций.",
+          "AUM Bitcoin ETF ($135B, BlackRock IBIT $100B) + DeFi TVL ($192B) + токенизированные RWA ($26.4B) + криптофонды ($45B). Фактические данные апреля 2026.",
       },
       {
         label: "Достижимый обслуживаемый рынок",
         range: "$25-75M",
         assumptions:
-          "Реалистичный первоначальный захват рынка через прямые отношения с инвесторами, ориентированный на состоятельных крипто-инвесторов и небольших институциональных распределителей.",
+          "Реалистичный захват за 24 месяца через сети аккредитованных HNW. 80% институтов планируют увеличить криптоаллокации в 2026 — опрос Coinbase Institutional.",
       },
     ] as const,
   },
@@ -108,31 +108,34 @@ const texts = {
     items: [
       {
         label: "Mercado Total Direccionable",
-        range: "$2-3T",
+        range: "$16T para 2030",
         assumptions:
-          "Capitalización total del mercado cripto global incluyendo todos los activos digitales, TVL de DeFi y tenencias cripto institucionales.",
+          "Proyección BCG para activos del mundo real tokenizados ($16T) + capitalización total del mercado cripto (~$3.5T Q1 2026). Standard Chartered: $30T para 2034.",
       },
       {
         label: "Mercado Direccionable Servible",
-        range: "$300-500B",
+        range: "$398B",
         assumptions:
-          "Vehículos de inversión cripto, fondos cripto gestionados y estrategias de rendimiento DeFi accesibles para operaciones de grado institucional.",
+          "AUM de Bitcoin ETF ($135B, BlackRock IBIT $100B) + TVL de DeFi ($192B) + RWA tokenizados ($26.4B) + fondos de cripto ($45B). Datos reales abril 2026.",
       },
       {
         label: "Mercado Obtenible Servible",
         range: "$25-75M",
         assumptions:
-          "Captura inicial realista del mercado mediante relaciones directas con inversores, dirigida a individuos cripto-nativos de alto patrimonio y pequeños asignadores institucionales.",
+          "Captura realista en 24 meses mediante redes acreditadas de HNW. 80% de las instituciones planean aumentar la exposición cripto en 2026 — Coinbase Institutional Survey.",
       },
     ] as const,
   },
 } as const;
 
-// נתוני בסיס (ללא תלות בשפה)
+// נתוני בסיס — מבוסס נתוני אפריל 2026
+// TAM = 16,000 ($16T BCG projection by 2030, log scale display)
+// SAM = 398 ($135B BTC ETF + $192B DeFi TVL + $26.4B RWA + $45B crypto funds)
+// SOM = 50 (realistic 24-month capture, mid-point of $25-75M range)
 const marketBase = [
-  { name: "TAM", value: 2500, color: "#3b82f6" },
-  { name: "SAM", value: 400, color: "#8b5cf6" },
-  { name: "SOM", value: 50, color: "#d4a853" },
+  { name: "TAM", value: 16000, color: "#5a8fd8" },
+  { name: "SAM", value: 398, color: "#d4a853" },
+  { name: "SOM", value: 50, color: "#b8902d" },
 ];
 
 // טולטיפ מותאם

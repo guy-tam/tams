@@ -41,6 +41,7 @@ import { useLanguage } from "@/lib/i18n";
 // מפת תרגומים לכל הטקסטים בעמוד
 const texts = {
   en: {
+    aumBanner: "TAMS Capital · Net Asset Value",
     pageTitle: "Portfolio Overview",
     pageSubtitle: "Live snapshot · Investor view",
     totalValue: "Total Portfolio Value",
@@ -69,6 +70,7 @@ const texts = {
     activityWithdrawal: "Withdrawal",
   },
   he: {
+    aumBanner: "TAMS קפיטל · שווי נכסי נטו",
     pageTitle: "סקירת תיק השקעות",
     pageSubtitle: "תצוגת זמן-אמת · פרספקטיבת משקיע",
     totalValue: "שווי תיק כולל",
@@ -97,6 +99,7 @@ const texts = {
     activityWithdrawal: "משיכה",
   },
   ar: {
+    aumBanner: "TAMS كابيتال · صافي قيمة الأصول",
     pageTitle: "نظرة عامة على المحفظة",
     pageSubtitle: "لقطة فورية · عرض المستثمر",
     totalValue: "القيمة الإجمالية للمحفظة",
@@ -125,6 +128,7 @@ const texts = {
     activityWithdrawal: "سحب",
   },
   ru: {
+    aumBanner: "TAMS Capital · Стоимость чистых активов",
     pageTitle: "Обзор портфеля",
     pageSubtitle: "Снимок в реальном времени · вид инвестора",
     totalValue: "Общая стоимость портфеля",
@@ -153,6 +157,7 @@ const texts = {
     activityWithdrawal: "Вывод",
   },
   es: {
+    aumBanner: "TAMS Capital · Valor neto de activos",
     pageTitle: "Resumen del portafolio",
     pageSubtitle: "Vista en tiempo real · perspectiva del inversor",
     totalValue: "Valor total del portafolio",
@@ -406,7 +411,7 @@ export default function DashboardPage() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="min-w-0">
             <p className="text-[10px] tracking-[0.32em] uppercase text-amber-300/70 font-semibold mb-2">
-              TAMS Capital · Net Asset Value
+              {t.aumBanner}
             </p>
             <h1 className="heading-editorial text-3xl md:text-5xl font-bold text-white tracking-tight leading-[1.05] tabular-nums">
               ₪{formatILS(portfolioSummary.totalValue)}

@@ -64,13 +64,13 @@ export default function HeroSection({
 
           {/* trust ribbon — 4 מאזניים שקטים */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-12 text-[10px] tracking-[0.28em] uppercase text-amber-200/55 font-medium">
-            <span>Multi-Wallet</span>
+            <span>{t("home.hero.ribbon.wallet")}</span>
             <span className="text-amber-400/30">·</span>
-            <span>Cold Storage</span>
+            <span>{t("home.hero.ribbon.storage")}</span>
             <span className="text-amber-400/30">·</span>
-            <span>Audited Methodology</span>
+            <span>{t("home.hero.ribbon.methodology")}</span>
             <span className="text-amber-400/30">·</span>
-            <span>Accredited Only</span>
+            <span>{t("home.hero.ribbon.accredited")}</span>
           </div>
 
           {/* CTA — נקי, מוסדי, בלי gradient רב-שכבתי */}

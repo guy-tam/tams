@@ -11,6 +11,7 @@ const he: TranslationStrings = {
     defi: "DeFi",
     marketShift: "שינוי שוק",
     strategy: "אסטרטגיה",
+    businessModel: "מודל עסקי",
     investor: "למשקיע",
     proof: "הוכחות",
     language: "שפה",
@@ -27,6 +28,20 @@ const he: TranslationStrings = {
       "מצגת זו נועדה למטרות מידע ולהדגמה מושגית בלבד. אין היא מהווה ייעוץ פיננסי, הצעה למכירה או שידול לרכישה של ניירות ערך או נכסים דיגיטליים כלשהם. ביצועי עבר אינם מעידים על תוצאות עתידיות. כל השקעה כרוכה בסיכון, לרבות אובדן קרן מלא. השקעות במטבעות קריפטוגרפיים הינן תנודתיות וספקולטיביות במיוחד. יש להיוועץ עם יועצים פיננסיים ומשפטיים מוסמכים לפני קבלת החלטות השקעה.",
     readMore: "קרא עוד",
   },
+  aria: {
+    mainNav: "ניווט ראשי",
+    dashboardNav: "ניווט דשבורד",
+    openMenu: "פתיחת תפריט",
+    closeMenu: "סגירת תפריט",
+    openDashboardMenu: "פתיחת תפריט דשבורד",
+    closeDashboardMenu: "סגירת תפריט דשבורד",
+    dashboardMenu: "תפריט דשבורד",
+    notifications: "התראות",
+    closeNotification: "סגור התראה",
+    logout: "התנתקות",
+    close: "סגירה",
+    openInvestorGuide: "פתיחת מדריך משקיעים",
+  },
   home: {
     hero: {
       badge: "Institutional · Est. 2025",
@@ -36,6 +51,12 @@ const he: TranslationStrings = {
       cta1: "צפה בארכיטקטורה",
       cta2: "פנה לקבלת מסמכים",
       scroll: "המשך מטה",
+      ribbon: {
+        wallet: "ריבוי ארנקים",
+        storage: "אחסון קר",
+        methodology: "מתודולוגיה מבוקרת",
+        accredited: "משקיעים מוסמכים בלבד",
+      },
     },
     thesis: {
       badge: "מסגרת השקעות",

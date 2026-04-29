@@ -6,6 +6,7 @@ import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
+import { useLanguage } from "@/lib/i18n"
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
@@ -47,6 +48,7 @@ function DialogContent({
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean
 }) {
+  const { t } = useLanguage()
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -60,10 +62,10 @@ function DialogContent({
       >
         {children}
         {showCloseButton && (
-          // נגישות: כפתור הסגירה מקבל שם נגיש דרך sr-only
+          // נגישות: כפתור הסגירה מקבל שם נגיש מתורגם
           <DialogPrimitive.Close
             data-slot="dialog-close"
-            aria-label="סגירה"
+            aria-label={t("aria.close")}
             render={
               <Button
                 type="button"

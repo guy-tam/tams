@@ -88,6 +88,7 @@ function ToastCard({
   onClose: () => void;
   isRTL: boolean;
 }) {
+  const { t } = useLanguage();
   const config = toastConfig[item.type];
   const Icon = config.icon;
 
@@ -127,7 +128,7 @@ function ToastCard({
         type="button"
         onClick={onClose}
         className="mt-0.5 shrink-0 rounded-md p-0.5 text-zinc-500 transition-colors hover:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
-        aria-label="סגור התראה"
+        aria-label={t("aria.closeNotification")}
       >
         <X className="h-4 w-4" />
       </button>
@@ -138,7 +139,7 @@ function ToastCard({
 // ספק הטוסטים - עוטף את האפליקציה ומנהל את המצב
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
-  const { isRTL } = useLanguage();
+  const { isRTL, t } = useLanguage();
 
   // הסרת טוסט לפי מזהה
   const removeToast = useCallback((id: string) => {
@@ -193,7 +194,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       <div
         role="region"
         aria-live="polite"
-        aria-label="התראות"
+        aria-label={t("aria.notifications")}
         className={`pointer-events-none fixed bottom-4 z-[9999] flex flex-col-reverse gap-2 ${
           isRTL ? "left-4" : "right-4"
         }`}

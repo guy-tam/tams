@@ -10,6 +10,7 @@ const en: TranslationStrings = {
     defi: "DeFi",
     marketShift: "Market Shift",
     strategy: "Strategy",
+    businessModel: "Business Model",
     investor: "Investor",
     proof: "Proof",
     language: "Language",
@@ -26,6 +27,20 @@ const en: TranslationStrings = {
       "This presentation is for informational and conceptual purposes only. It does not constitute financial advice, an offer to sell, or a solicitation of an offer to buy any securities or digital assets. Past performance is not indicative of future results. All investments carry risk, including potential loss of principal. Cryptocurrency investments are particularly volatile and speculative. Consult with qualified financial and legal advisors before making any investment decisions.",
     readMore: "Read more",
   },
+  aria: {
+    mainNav: "Main navigation",
+    dashboardNav: "Dashboard navigation",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    openDashboardMenu: "Open dashboard menu",
+    closeDashboardMenu: "Close dashboard menu",
+    dashboardMenu: "Dashboard menu",
+    notifications: "Notifications",
+    closeNotification: "Close notification",
+    logout: "Sign out",
+    close: "Close",
+    openInvestorGuide: "Open investor guide",
+  },
   home: {
     hero: {
       badge: "Institutional · Est. 2025",
@@ -35,6 +50,12 @@ const en: TranslationStrings = {
       cta1: "View the Architecture",
       cta2: "Request Documentation",
       scroll: "Continue",
+      ribbon: {
+        wallet: "Multi-Wallet",
+        storage: "Cold Storage",
+        methodology: "Audited Methodology",
+        accredited: "Accredited Only",
+      },
     },
     thesis: {
       badge: "Investment Framework",

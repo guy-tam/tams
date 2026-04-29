@@ -3,6 +3,8 @@
 // דף הבית - חזון החברה, מבוא, ומערכת משקיעים
 import PageTableOfContents from "@/components/layout/PageTableOfContents";
 import HeroSection from "@/components/sections/HeroSection";
+import TrustSignalsRow from "@/components/sections/TrustSignalsRow";
+import MarketSnapshotBand from "@/components/sections/MarketSnapshotBand";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
 import VisionSection from "@/components/sections/VisionSection";
 import InvestorTiers from "@/components/sections/InvestorTiers";
@@ -36,6 +38,7 @@ export default function HomePage() {
 
   const homeSections = [
     { id: "hero", label: "ראשי" },
+    { id: "market", label: "שוק" },
     { id: "thesis", label: "תזה" },
     { id: "vision", label: "חזון" },
     { id: "tiers", label: "דרגות" },
@@ -53,6 +56,14 @@ export default function HomePage() {
           ctaText={t("home.hero.cta1")}
           ctaHref="/architecture"
         />
+      </div>
+
+      {/* Trust signals — Auditor · Custody · Domicile · Compliance */}
+      <TrustSignalsRow />
+
+      {/* Market snapshot — נתוני אפריל 2026 עם footnotes */}
+      <div id="market">
+        <MarketSnapshotBand />
       </div>
 
       <section id="thesis" className="relative py-16 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
