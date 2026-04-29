@@ -396,18 +396,43 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen p-4 md:p-8 space-y-6 relative">
-      {/* כותרת */}
+      {/* כותרת + AUM banner — תצוגת קרן מוסדית */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+        className="surface-tier-1 p-6 md:p-8 relative overflow-hidden"
       >
-        <h1 className="heading-editorial text-2xl md:text-3xl font-bold bg-gradient-to-br from-white via-amber-100/90 to-amber-200/70 bg-clip-text text-transparent">
-          {t.pageTitle}
-        </h1>
-        <p className="text-sm text-zinc-400/80 mt-1 font-light">
-          {t.pageSubtitle}
-        </p>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="min-w-0">
+            <p className="text-[10px] tracking-[0.32em] uppercase text-amber-300/70 font-semibold mb-2">
+              TAMS Capital · Net Asset Value
+            </p>
+            <h1 className="heading-editorial text-3xl md:text-5xl font-bold text-white tracking-tight leading-[1.05] tabular-nums">
+              ₪{formatILS(portfolioSummary.totalValue)}
+            </h1>
+            <p className="text-xs text-zinc-400/85 mt-2.5 font-light tracking-[0.04em]">
+              {t.pageSubtitle} · {new Date().toLocaleDateString("he-IL", { day: "2-digit", month: "long", year: "numeric" })}
+            </p>
+          </div>
+          {/* Period selector — placeholder אסתטי */}
+          <div className="flex items-center gap-1.5 surface-tier-3 p-1 rounded-full self-start md:self-end">
+            {["MTD", "QTD", "YTD", "ITD"].map((p, i) => (
+              <button
+                key={p}
+                type="button"
+                className={`text-[10px] tracking-[0.22em] uppercase px-3.5 py-1.5 rounded-full transition-colors ${
+                  i === 2
+                    ? "bg-amber-500/15 text-amber-200 border border-amber-400/30"
+                    : "text-zinc-500 hover:text-amber-300/70"
+                }`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+        </div>
+        <span className="monogram-watermark" aria-hidden="true">T</span>
       </motion.div>
 
       {/* שורה עליונה - 4 כרטיסי סטטיסטיקה */}
@@ -455,7 +480,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-2 rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
+          className="lg:col-span-2 surface-tier-2 p-6 hover:border-amber-500/35 transition-colors duration-500 relative"
         >
           <h3 className="text-base font-semibold text-white mb-1">
             {t.perfChartTitle}
@@ -504,7 +529,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
+          className="surface-tier-2 p-6 hover:border-amber-500/35 transition-colors duration-500 relative"
         >
           <h3 className="text-base font-semibold text-white mb-1">
             {t.allocationTitle}
@@ -567,7 +592,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
+          className="surface-tier-2 p-6 hover:border-amber-500/35 transition-colors duration-500 relative"
         >
           <h3 className="text-base font-semibold text-white mb-4">
             {t.topHoldings}
@@ -616,7 +641,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="rounded-2xl border border-amber-500/[0.12] bg-gradient-to-br from-[#0c1829]/75 to-[#111f36]/80 backdrop-blur-xl p-6 shadow-lg shadow-blue-950/20 hover:border-amber-500/20 transition-colors duration-500"
+          className="surface-tier-2 p-6 hover:border-amber-500/35 transition-colors duration-500 relative"
         >
           <h3 className="text-base font-semibold text-white mb-4">
             {t.recentActivity}

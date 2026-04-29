@@ -615,10 +615,10 @@ html[lang="ar"] a {
 .card-gilded {
   position: relative;
   background:
-    linear-gradient(160deg, rgba(22, 34, 68, 0.5) 0%, rgba(13, 22, 50, 0.68) 55%, rgba(9, 16, 38, 0.75) 100%);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 168, 83, 0.22);
+    linear-gradient(160deg, rgba(14, 22, 44, 0.78) 0%, rgba(9, 16, 36, 0.86) 55%, rgba(6, 12, 28, 0.90) 100%);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(212, 168, 83, 0.28);
   border-radius: 14px;
   box-shadow:
     0 0 0 1px rgba(212, 168, 83, 0.04),
@@ -1068,3 +1068,77 @@ a, button, [role="button"], .transition-colors, .transition-all {
   transition-timing-function: var(--ease-ceremonial) !important;
   transition-duration: 450ms !important;
 }
+
+
+/* ═══════════════════════════════════════════════════════
+   SURFACE TIER SYSTEM — UI מובטח שצף מעל הוידאו
+   tier-1: גבוה (כותרות, hero, dashboard cards) — 92% opaque
+   tier-2: בינוני (כרטיסי תוכן רגילים) — 78% opaque
+   tier-3: רך (badges, hints, ambient) — 50% opaque
+   ═══════════════════════════════════════════════════════ */
+
+.surface-tier-1 {
+  background: linear-gradient(160deg, rgba(10, 18, 38, 0.92) 0%, rgba(6, 12, 28, 0.95) 100%);
+  backdrop-filter: blur(28px) saturate(1.25);
+  -webkit-backdrop-filter: blur(28px) saturate(1.25);
+  border: 1px solid rgba(212, 168, 83, 0.32);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(212, 168, 83, 0.10) inset,
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 24px 64px -20px rgba(0, 0, 0, 0.6);
+}
+
+.surface-tier-2 {
+  background: linear-gradient(160deg, rgba(12, 20, 42, 0.78) 0%, rgba(8, 14, 32, 0.85) 100%);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  border: 1px solid rgba(212, 168, 83, 0.20);
+  border-radius: 14px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 18px 48px -16px rgba(0, 0, 0, 0.5);
+}
+
+.surface-tier-3 {
+  background: linear-gradient(160deg, rgba(14, 22, 44, 0.50) 0%, rgba(10, 18, 36, 0.60) 100%);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid rgba(212, 168, 83, 0.14);
+  border-radius: 12px;
+}
+
+/* scrim מקומי — אזור מעומעם מתחת לתוכן heavy */
+.scrim-local {
+  position: relative;
+}
+.scrim-local::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,0,0,0.55) 0%, transparent 75%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* hairline זהוב — מפריד אלגנטי */
+.hairline-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.32), transparent);
+}
+
+/* monogram watermark — אות זהב חיוורת בפינה */
+.monogram-watermark {
+  position: absolute;
+  inset-inline-end: 14px;
+  inset-block-end: 10px;
+  font-family: var(--font-frank-ruhl), serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: rgba(212, 168, 83, 0.06);
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+

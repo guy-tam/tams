@@ -1,101 +1,186 @@
-// רקע אמנותי-מוסדי — וידאו פרימיום של ארמון אירופי + שכבות גלריה מאופקות
-// סדר עדיפות מקור (הראשון שעובד מנצח):
-//   1. /video/estate-cinematic — Pexels CC0 — תקרת באר fresco מלכותית
-//   2. /video/viking-cinematic  — קומפוזיציית ציורי Moran/Sinding
-//   3. /video/viking-living-art — תאימות לאחור
-//   4. ציור סטטי viking-hero-poster.jpg — fallback אחרון
-// ה-grading מאופק במכוון: פחות וינייטה, פחות godray — מוזיאון, לא סצנה דרמטית
+// רקע אטמוספרי route-aware — מסע ויזואלי לאורך האתר
+// כל route חשוב מקבל סביבה משלו, עם crossfade חלק בין דפים
+// Palindrome loops (forward+reverse) מבטלים את תחושת ה-loop הקצר
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
-const VIDEO_SOURCES = [
-  { webm: "/video/estate-cinematic.webm", mp4: "/video/estate-cinematic.mp4" },
-  { webm: "/video/viking-cinematic.webm", mp4: "/video/viking-cinematic.mp4" },
-  { webm: "/video/viking-living-art.webm", mp4: "/video/viking-living-art.mp4" },
-];
+type Theme = {
+  id: string;
+  webm: string;
+  mp4: string;
+  poster: string;
+  /** Color grade fine-tune per scene (CSS filter on the <video>) */
+  filter?: string;
+};
+
+const THEMES: Record<string, Theme> = {
+  estate: {
+    id: "estate",
+    webm: "/video/estate-cinematic.webm",
+    mp4: "/video/estate-cinematic.mp4",
+    poster: "/art/viking-hero-poster.jpg",
+    filter: "saturate(0.84) contrast(1.05) brightness(0.74)",
+  },
+  library: {
+    id: "library",
+    webm: "/video/library-cinematic.webm",
+    mp4: "/video/library-cinematic.mp4",
+    poster: "/art/viking-hero-poster.jpg",
+    filter: "saturate(0.78) contrast(1.08) brightness(0.68) hue-rotate(-2deg)",
+  },
+  ocean: {
+    id: "ocean",
+    webm: "/video/ocean-cinematic.webm",
+    mp4: "/video/ocean-cinematic.mp4",
+    poster: "/art/turner-temeraire.jpg",
+    filter: "saturate(0.72) contrast(1.10) brightness(0.66) hue-rotate(-8deg)",
+  },
+  skyline: {
+    id: "skyline",
+    webm: "/video/skyline-cinematic.webm",
+    mp4: "/video/skyline-cinematic.mp4",
+    poster: "/art/viking-hero-poster.jpg",
+    filter: "saturate(0.78) contrast(1.12) brightness(0.62)",
+  },
+  chamber: {
+    id: "chamber",
+    webm: "/video/chamber-cinematic.webm",
+    mp4: "/video/chamber-cinematic.mp4",
+    poster: "/art/viking-hero-poster.jpg",
+    filter: "saturate(0.82) contrast(1.06) brightness(0.70)",
+  },
+};
+
+// מיפוי route → theme
+function themeForPath(pathname: string): Theme {
+  if (pathname === "/") return THEMES.estate;
+  if (pathname.startsWith("/architecture") || pathname.startsWith("/methodology")) return THEMES.library;
+  if (pathname.startsWith("/strategy") || pathname.startsWith("/market-shift") || pathname.startsWith("/defi")) return THEMES.ocean;
+  if (pathname.startsWith("/proof") || pathname.startsWith("/holdings") || pathname.startsWith("/dashboard")) return THEMES.skyline;
+  if (pathname.startsWith("/investor") || pathname.startsWith("/access") || pathname.startsWith("/login") || pathname.startsWith("/company") || pathname.startsWith("/team")) return THEMES.chamber;
+  return THEMES.estate;
+}
 
 export default function AtmosphericBackdrop() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [sourceIndex, setSourceIndex] = useState(0);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const pathname = usePathname() ?? "/";
+  const theme = useMemo(() => themeForPath(pathname), [pathname]);
 
+  // שני סלוטי וידאו — לצורך crossfade חלק בין routes
+  const [activeSlot, setActiveSlot] = useState<"a" | "b">("a");
+  const [themeA, setThemeA] = useState<Theme>(theme);
+  const [themeB, setThemeB] = useState<Theme>(theme);
+  const videoARef = useRef<HTMLVideoElement>(null);
+  const videoBRef = useRef<HTMLVideoElement>(null);
+  const [loadedA, setLoadedA] = useState(false);
+  const [loadedB, setLoadedB] = useState(false);
+
+  // החלפת theme — טוען לסלוט הלא-פעיל ואז מחליף
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-
-    const onCanPlay = () => setVideoLoaded(true);
-    const onError = () => {
-      setSourceIndex((i) => (i < VIDEO_SOURCES.length - 1 ? i + 1 : i));
-      setVideoLoaded(false);
-    };
-
-    v.addEventListener("canplaythrough", onCanPlay);
-    v.addEventListener("error", onError);
-
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) {
-      v.pause();
-      setVideoLoaded(false);
+    const target = activeSlot === "a" ? "b" : "a";
+    if (target === "b") {
+      setThemeB(theme);
+      setLoadedB(false);
+    } else {
+      setThemeA(theme);
+      setLoadedA(false);
     }
-    const onMq = (e: MediaQueryListEvent) => {
-      if (e.matches) { v.pause(); setVideoLoaded(false); }
-      else { v.play().catch(() => {}); }
+    // המעבר עצמו קורה רק אחרי canplay
+  }, [theme.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // כשהסלוט הזמני נטען — מחליפים פוקוס
+  useEffect(() => {
+    const inactiveLoaded = activeSlot === "a" ? loadedB : loadedA;
+    const inactiveTheme = activeSlot === "a" ? themeB : themeA;
+    if (inactiveLoaded && inactiveTheme.id === theme.id) {
+      setActiveSlot((s) => (s === "a" ? "b" : "a"));
+    }
+  }, [loadedA, loadedB, theme.id, activeSlot, themeA, themeB]);
+
+  // reduce-motion — להקפיא הכל
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = (matches: boolean) => {
+      [videoARef.current, videoBRef.current].forEach((v) => {
+        if (!v) return;
+        if (matches) v.pause();
+        else v.play().catch(() => {});
+      });
     };
+    apply(mq.matches);
+    const onMq = (e: MediaQueryListEvent) => apply(e.matches);
     mq.addEventListener("change", onMq);
-
-    return () => {
-      v.removeEventListener("canplaythrough", onCanPlay);
-      v.removeEventListener("error", onError);
-      mq.removeEventListener("change", onMq);
-    };
-  }, [sourceIndex]);
-
-  const current = VIDEO_SOURCES[sourceIndex];
+    return () => mq.removeEventListener("change", onMq);
+  }, []);
 
   return (
     <>
-      {/* פוסטר סטטי — מובטח עד שהוידאו מתחיל */}
+      {/* פוסטר סטטי — חזק עד שהוידאו נטען */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       >
         <div
-          className="absolute inset-0 transition-opacity duration-[2400ms] ease-out"
+          className="absolute inset-0"
           style={{
-            backgroundImage: "url(/art/viking-hero-poster.jpg)",
+            backgroundImage: `url(${theme.poster})`,
             backgroundSize: "cover",
             backgroundPosition: "center 42%",
-            opacity: videoLoaded ? 0 : 0.45,
-            filter: "saturate(0.78) contrast(1.04) brightness(0.7)",
+            opacity: 0.32,
+            filter: "saturate(0.7) contrast(1.05) brightness(0.6)",
           }}
         />
 
-        {/* הוידאו — עדיפות עליונה: estate-cinematic.mp4 (Pexels CC0) */}
+        {/* סלוט A */}
         <video
-          key={sourceIndex}
-          ref={videoRef}
+          key={`a-${themeA.id}`}
+          ref={videoARef}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster="/art/viking-hero-poster.jpg"
+          poster={themeA.poster}
           disablePictureInPicture
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[2400ms] ease-out"
+          onCanPlay={() => setLoadedA(true)}
+          className="absolute inset-0 h-full w-full object-cover"
           style={{
-            opacity: videoLoaded ? 0.48 : 0,
-            // Color grade מאופק — מוזיאון, לא קולנוע פעולה
-            filter: "saturate(0.82) contrast(1.06) brightness(0.74)",
+            opacity: activeSlot === "a" && loadedA ? 0.46 : 0,
+            transition: "opacity 1200ms cubic-bezier(0.19, 1, 0.22, 1)",
+            filter: themeA.filter,
           }}
         >
-          <source src={current.webm} type="video/webm" />
-          <source src={current.mp4} type="video/mp4" />
+          <source src={themeA.webm} type="video/webm" />
+          <source src={themeA.mp4} type="video/mp4" />
+        </video>
+
+        {/* סלוט B */}
+        <video
+          key={`b-${themeB.id}`}
+          ref={videoBRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={themeB.poster}
+          disablePictureInPicture
+          onCanPlay={() => setLoadedB(true)}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{
+            opacity: activeSlot === "b" && loadedB ? 0.46 : 0,
+            transition: "opacity 1200ms cubic-bezier(0.19, 1, 0.22, 1)",
+            filter: themeB.filter,
+          }}
+        >
+          <source src={themeB.webm} type="video/webm" />
+          <source src={themeB.mp4} type="video/mp4" />
         </video>
       </div>
 
-      {/* שכבת tint כחול-עמוק עדינה — מוסיפה ביטחון מוסדי */}
+      {/* tint כחול-עמוק — מאפשר ל-UI לצוף */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
@@ -103,48 +188,38 @@ export default function AtmosphericBackdrop() {
           background: `
             linear-gradient(
               180deg,
-              rgba(8, 16, 32, 0.20) 0%,
-              rgba(6, 12, 28, 0.10) 40%,
-              rgba(4, 10, 22, 0.55) 100%
+              rgba(8, 16, 32, 0.32) 0%,
+              rgba(6, 12, 28, 0.20) 35%,
+              rgba(4, 10, 22, 0.62) 100%
             )
           `,
         }}
       />
 
-      {/* וינייטה מאופקת — לא דרמטית */}
+      {/* וינייטה מאופקת */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 120% 90% at 50% 48%, transparent 32%, rgba(0, 0, 0, 0.55) 100%)",
+            "radial-gradient(ellipse 130% 95% at 50% 50%, transparent 28%, rgba(0, 0, 0, 0.55) 100%)",
         }}
       />
 
-      {/* קריאות טיפוגרפית — דיסק כהה מתחת לכותרות */}
+      {/* קרן זהב עדינה מלמעלה */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 55% 38% at 50% 52%, rgba(0, 0, 0, 0.28) 0%, transparent 70%)",
+            "radial-gradient(ellipse 50% 38% at 50% -10%, rgba(212, 168, 83, 0.10) 0%, transparent 60%)",
         }}
       />
 
-      {/* מרקם בד דק — מוזיאון, לא Photoshop filter */}
-      <div aria-hidden="true" className="atmosphere-layer opacity-60" />
+      {/* מרקם בד — דק מאוד */}
+      <div aria-hidden="true" className="atmosphere-layer opacity-50" />
 
-      {/* קרן זהב עדינה מלמעלה — נוכחות בלי דרמה */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 48% 36% at 50% -10%, rgba(212, 168, 83, 0.10) 0%, transparent 60%)",
-        }}
-      />
-
-      {/* מסגרת גלריה דקה — קו זהב כמעט בלתי נראה */}
+      {/* מסגרת גלריה דקה */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-3 z-0 rounded-[2px]"

@@ -28,13 +28,13 @@ const en: TranslationStrings = {
   },
   home: {
     hero: {
-      badge: "Blockchain Investment Infrastructure",
-      title: "Blockchain Investment Infrastructure",
+      badge: "Institutional · Est. 2025",
+      title: "A Strategic Capital Fund for the Blockchain Era",
       subtitle:
-        "TAMS is a concept framework for institutional-grade digital asset management — combining research-driven long-term holdings, active trading, and DeFi yield strategies within a structured multi-wallet architecture.",
-      cta1: "Explore Architecture",
-      cta2: "Learn More",
-      scroll: "Scroll to explore",
+        "TAMS unites institutional research, long-conviction holdings and DeFi yield strategies inside an isolated multi-wallet architecture — for principals seeking measured, governed exposure to digital assets.",
+      cta1: "View the Architecture",
+      cta2: "Request Documentation",
+      scroll: "Continue",
     },
     thesis: {
       badge: "Investment Framework",

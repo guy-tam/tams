@@ -53,8 +53,10 @@ export default function ThesisCardGrid({ cards }: ThesisCardGridProps) {
             key={index}
             variants={cardVariants}
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
-            className="card-gilded group relative p-5 sm:p-7 transition-all duration-400 hover-lift"
+            className="card-gilded surface-tier-2 group relative p-5 sm:p-7 transition-all duration-400 hover-lift"
           >
+            {/* monogram watermark */}
+            <span className="monogram-watermark" aria-hidden="true">T</span>
             {/* קו גרדיאנט עליון בהאבר */}
             <div
               className="absolute -top-px -left-px -right-px h-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"

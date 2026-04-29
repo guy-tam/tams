@@ -28,13 +28,13 @@ const es: TranslationStrings = {
   },
   home: {
     hero: {
-      badge: "Infraestructura de inversión en blockchain",
-      title: "Infraestructura de Inversión en Blockchain",
+      badge: "Institutional · Est. 2025",
+      title: "Fondo Estratégico de Gestión de Capital para la Era Blockchain",
       subtitle:
-        "TAMS es un marco conceptual para la gestión de activos digitales con estándares institucionales — combinando posiciones a largo plazo basadas en investigación, trading activo y estrategias de rendimiento DeFi dentro de una arquitectura estructurada de múltiples billeteras.",
-      cta1: "Explorar arquitectura",
-      cta2: "Resumen para inversionistas",
-      scroll: "Desplazar hacia abajo",
+        "TAMS integra investigación institucional, posiciones de largo plazo y estrategias de rendimiento DeFi dentro de una arquitectura aislada de múltiples billeteras — para patrimonios que buscan una exposición medida y gobernada a los activos digitales.",
+      cta1: "Ver la arquitectura",
+      cta2: "Solicitar documentación",
+      scroll: "Continuar",
     },
     thesis: {
       badge: "Marco de inversión",

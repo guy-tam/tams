@@ -23,6 +23,16 @@ export default function HeroSection({
 
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+      {/* scrim מקומי — מקרב את ה-UI לקדמת הבמה */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 55% at 50% 52%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.18) 60%, transparent 85%)",
+        }}
+      />
+
       {/* תוכן מרכזי */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
@@ -30,23 +40,38 @@ export default function HeroSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: [0.19, 1, 0.22, 1] }}
         >
-          {/* תג זהב — מאופק, בלי pulse */}
-          <div className="inline-flex items-center gap-2.5 mb-9 px-4 py-2 rounded-full border border-amber-400/25 bg-amber-500/[0.04]">
-            <span className="size-1.5 rounded-full bg-amber-400/80" />
-            <span className="text-[10px] tracking-[0.32em] uppercase text-amber-300/85 font-medium">
+          {/* eyebrow — חותמת מוסדית */}
+          <div className="inline-flex items-center gap-3 mb-9">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-amber-400/60" />
+            <span className="text-[10px] tracking-[0.42em] uppercase text-amber-300/90 font-semibold">
               {t("home.hero.badge")}
             </span>
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-amber-400/60" />
           </div>
 
-          {/* כותרת — לבן בונה, בלי gradient על הטקסט */}
-          <h1 className="heading-editorial text-[2.4rem] sm:text-[3.6rem] md:text-[4.4rem] lg:text-[5.4rem] xl:text-[6rem] tracking-tight leading-[1.06] mb-7 text-white/96 [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+          {/* כותרת — לבן בונה, ללא gradient */}
+          <h1 className="heading-editorial text-[2rem] sm:text-[3rem] md:text-[3.8rem] lg:text-[4.6rem] xl:text-[5.2rem] tracking-[0.005em] leading-[1.12] mb-8 text-white/97 [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] max-w-4xl mx-auto">
             {title}
           </h1>
 
+          {/* hairline זהב */}
+          <div className="hairline-gold w-24 mx-auto mb-7 opacity-70" />
+
           {/* תת כותרת — קריאה, רחבת ידיים */}
-          <p className="text-base sm:text-lg lg:text-xl text-zinc-300/85 max-w-2xl mx-auto mb-12 leading-[1.65] font-light">
+          <p className="text-[15px] sm:text-base lg:text-lg text-zinc-200/90 max-w-2xl mx-auto mb-11 leading-[1.7] font-light [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]">
             {subtitle}
           </p>
+
+          {/* trust ribbon — 4 מאזניים שקטים */}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-12 text-[10px] tracking-[0.28em] uppercase text-amber-200/55 font-medium">
+            <span>Multi-Wallet</span>
+            <span className="text-amber-400/30">·</span>
+            <span>Cold Storage</span>
+            <span className="text-amber-400/30">·</span>
+            <span>Audited Methodology</span>
+            <span className="text-amber-400/30">·</span>
+            <span>Accredited Only</span>
+          </div>
 
           {/* CTA — נקי, מוסדי, בלי gradient רב-שכבתי */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
