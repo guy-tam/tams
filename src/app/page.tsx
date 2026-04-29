@@ -6,6 +6,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import TrustSignalsRow from "@/components/sections/TrustSignalsRow";
 import MarketSnapshotBand from "@/components/sections/MarketSnapshotBand";
 import ThesisCardGrid from "@/components/sections/ThesisCardGrid";
+import OperatingPrinciples from "@/components/sections/OperatingPrinciples";
 import VisionSection from "@/components/sections/VisionSection";
 import InvestorTiers from "@/components/sections/InvestorTiers";
 import FinalCTASection from "@/components/sections/FinalCTASection";
@@ -40,6 +41,7 @@ export default function HomePage() {
     { id: "hero", label: "ראשי" },
     { id: "market", label: "שוק" },
     { id: "thesis", label: "תזה" },
+    { id: "principles", label: "עקרונות" },
     { id: "vision", label: "חזון" },
     { id: "tiers", label: "דרגות" },
     { id: "cta", label: "סיכום" },
@@ -74,6 +76,11 @@ export default function HomePage() {
         />
         <ThesisCardGrid cards={thesisCards} />
       </section>
+
+      {/* 6 עקרונות תפעול — חתימת המוסדיות */}
+      <div id="principles">
+        <OperatingPrinciples />
+      </div>
 
       <div id="vision">
         <VisionSection />
