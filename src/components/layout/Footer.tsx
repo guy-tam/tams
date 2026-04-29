@@ -57,9 +57,9 @@ export default function Footer() {
             <span className="font-medium text-zinc-500">TAMS</span> &middot;{" "}
             {t("footer.rights")}
           </p>
-          <p className="text-[10px] font-light uppercase tracking-[0.2em] text-zinc-700">
-            {t("common.conceptApp")} &middot;{" "}
-            <span className="text-blue-400/40">v0.1</span>
+          <p className="text-[10px] font-light uppercase tracking-[0.22em] text-zinc-600">
+            Institutional&nbsp;Grade <span className="mx-2 text-amber-500/40">·</span>{" "}
+            <span className="text-zinc-500">Investor Preview</span>
           </p>
         </div>
       </div>

@@ -42,7 +42,7 @@ import { useLanguage } from "@/lib/i18n";
 const texts = {
   en: {
     pageTitle: "Portfolio Overview",
-    pageSubtitle: "Updated data — concept only",
+    pageSubtitle: "Live snapshot · Investor view",
     totalValue: "Total Portfolio Value",
     monthlyReturn: "Monthly Return",
     allTimeReturn: "All-Time Return",
@@ -70,7 +70,7 @@ const texts = {
   },
   he: {
     pageTitle: "סקירת תיק השקעות",
-    pageSubtitle: "נתונים מעודכנים — קונספט בלבד",
+    pageSubtitle: "תצוגת זמן-אמת · פרספקטיבת משקיע",
     totalValue: "שווי תיק כולל",
     monthlyReturn: "תשואה חודשית",
     allTimeReturn: "תשואה כוללת",
@@ -98,7 +98,7 @@ const texts = {
   },
   ar: {
     pageTitle: "نظرة عامة على المحفظة",
-    pageSubtitle: "بيانات محدّثة — مفهوم فقط",
+    pageSubtitle: "لقطة فورية · عرض المستثمر",
     totalValue: "القيمة الإجمالية للمحفظة",
     monthlyReturn: "العائد الشهري",
     allTimeReturn: "العائد الإجمالي",
@@ -126,7 +126,7 @@ const texts = {
   },
   ru: {
     pageTitle: "Обзор портфеля",
-    pageSubtitle: "Актуальные данные — только концепция",
+    pageSubtitle: "Снимок в реальном времени · вид инвестора",
     totalValue: "Общая стоимость портфеля",
     monthlyReturn: "Месячная доходность",
     allTimeReturn: "Совокупная доходность",
@@ -154,7 +154,7 @@ const texts = {
   },
   es: {
     pageTitle: "Resumen del portafolio",
-    pageSubtitle: "Datos actualizados — solo concepto",
+    pageSubtitle: "Vista en tiempo real · perspectiva del inversor",
     totalValue: "Valor total del portafolio",
     monthlyReturn: "Rendimiento mensual",
     allTimeReturn: "Rendimiento acumulado",
@@ -422,7 +422,7 @@ export default function DashboardPage() {
           value={`₪${formatILS(portfolioSummary.totalValue)}`}
           change={portfolioSummary.dailyChange}
           icon={Wallet}
-          color="#3b82f6"
+          color="#d4a853"
           isGold
         />
         <StatCard
@@ -430,21 +430,21 @@ export default function DashboardPage() {
           value={`+${portfolioSummary.monthlyChange}%`}
           change={portfolioSummary.monthlyChange}
           icon={TrendingUp}
-          color="#34d399"
+          color="#5a8fd8"
         />
         <StatCard
           label={t.allTimeReturn}
           value={`+${portfolioSummary.allTimeReturn}%`}
           change={portfolioSummary.allTimeReturn}
           icon={BarChart3}
-          color="#818cf8"
+          color="#d4a853"
         />
         <StatCard
           label={t.weeklyReturn}
           value={`+${portfolioSummary.weeklyChange}%`}
           change={portfolioSummary.weeklyChange}
           icon={Percent}
-          color="#60a5fa"
+          color="#5a8fd8"
         />
       </motion.div>
 
@@ -468,9 +468,9 @@ export default function DashboardPage() {
               <AreaChart data={performanceHistory}>
                 <defs>
                   <linearGradient id="perfGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.3} />
-                    <stop offset="50%" stopColor="#3b82f6" stopOpacity={0.08} />
-                    <stop offset="100%" stopColor="#3b82f6" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#d4a853" stopOpacity={0.3} />
+                    <stop offset="50%" stopColor="#d4a853" stopOpacity={0.08} />
+                    <stop offset="100%" stopColor="#d4a853" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <XAxis
@@ -490,7 +490,7 @@ export default function DashboardPage() {
                 <Area
                   type="monotone"
                   dataKey="value"
-                  stroke="#3b82f6"
+                  stroke="#d4a853"
                   strokeWidth={2}
                   fill="url(#perfGrad)"
                 />

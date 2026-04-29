@@ -21,13 +21,17 @@ import {
 export default function HomePage() {
   const { t } = useLanguage();
 
+  // פלטה מאוחדת — זהב מוסדי על כל הכרטיסים, היררכיה דרך הטיפוגרפיה ולא דרך הצבע
+  const GOLD = "#d4a853";
+  const GOLD_DEEP = "#b8902d";
+  const BLUE_DEEP = "#5a8fd8";
   const thesisCards = [
-    { icon: Shield, title: t("home.cards.longTerm.title"), description: t("home.cards.longTerm.description"), accent: "#4f8ff7" },
-    { icon: TrendingUp, title: t("home.cards.trading.title"), description: t("home.cards.trading.description"), accent: "#a78bfa" },
-    { icon: Coins, title: t("home.cards.defi.title"), description: t("home.cards.defi.description"), accent: "#22d3ee" },
-    { icon: Network, title: t("home.cards.multiWallet.title"), description: t("home.cards.multiWallet.description"), accent: "#34d399" },
-    { icon: BarChart3, title: t("home.cards.research.title"), description: t("home.cards.research.description"), accent: "#fbbf24" },
-    { icon: Lock, title: t("home.cards.institutional.title"), description: t("home.cards.institutional.description"), accent: "#fb7185" },
+    { icon: Shield, title: t("home.cards.longTerm.title"), description: t("home.cards.longTerm.description"), accent: GOLD },
+    { icon: TrendingUp, title: t("home.cards.trading.title"), description: t("home.cards.trading.description"), accent: BLUE_DEEP },
+    { icon: Coins, title: t("home.cards.defi.title"), description: t("home.cards.defi.description"), accent: GOLD_DEEP },
+    { icon: Network, title: t("home.cards.multiWallet.title"), description: t("home.cards.multiWallet.description"), accent: GOLD },
+    { icon: BarChart3, title: t("home.cards.research.title"), description: t("home.cards.research.description"), accent: BLUE_DEEP },
+    { icon: Lock, title: t("home.cards.institutional.title"), description: t("home.cards.institutional.description"), accent: GOLD_DEEP },
   ];
 
   const homeSections = [

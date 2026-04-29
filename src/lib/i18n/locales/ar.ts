@@ -16,7 +16,7 @@ const ar: TranslationStrings = {
     investorPortal: "وصول خاص",
   },
   common: {
-    conceptApp: "تطبيق مفاهيمي",
+    conceptApp: "عرض المستثمر",
     version: "الإصدار",
     learnMore: "اقرأ المزيد",
     close: "إغلاق",

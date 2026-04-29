@@ -16,7 +16,7 @@ const ru: TranslationStrings = {
     investorPortal: "Частный доступ",
   },
   common: {
-    conceptApp: "Концептуальное приложение",
+    conceptApp: "Презентация инвестору",
     version: "Версия",
     learnMore: "Подробнее",
     close: "Закрыть",

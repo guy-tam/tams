@@ -129,59 +129,47 @@ export default function Navigation() {
       <div className="flex items-center gap-3 px-6 py-6">
         <TamsLogo variant="sidebar" />
         <div>
-          <h1 className="text-lg font-bold tracking-tight text-white">TAMS</h1>
-          <p className="text-[10px] uppercase tracking-widest text-amber-400/40">
-            {t("common.conceptApp")}
+          <h1 className="text-lg font-semibold tracking-[0.18em] text-white">TAMS</h1>
+          <p className="text-[10px] uppercase tracking-[0.28em] text-amber-400/45 mt-0.5">
+            Institutional
           </p>
         </div>
       </div>
 
-      {/* קו מנורה מוזהב */}
-      <div className="mx-4 mb-4 h-px bg-gradient-to-r from-transparent via-amber-400/25 to-transparent shadow-[0_1px_6px_rgba(212,168,83,0.1)]" />
+      {/* קו זהב דק */}
+      <div className="mx-5 mb-5 h-px bg-gradient-to-r from-transparent via-amber-500/22 to-transparent" />
 
       {/* קישורי ניווט */}
       <div className="flex-1 overflow-y-auto">
         <NavLinks />
       </div>
 
-      {/* כפתור כניסה — מוזהב */}
-      <div className="mx-3 mb-2">
+      {/* כפתור כניסה למשקיעים — איחוד יחיד, לא כפילות */}
+      <div className="mx-3 mb-3">
         <Link
           href="/login"
           className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-xl block"
         >
-          <div className="flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-semibold bg-gradient-to-r from-amber-500/15 via-amber-400/10 to-blue-500/10 border border-amber-500/25 text-amber-400 hover:from-amber-500/25 hover:via-amber-400/15 hover:to-blue-500/15 hover:text-amber-300 hover:border-amber-400/35 hover:shadow-[0_0_16px_rgba(212,168,83,0.12)] transition-all duration-300">
-            <LogIn className="size-4" />
-            <span>Investor Portal</span>
-          </div>
-        </Link>
-      </div>
-
-      {/* גישה פרטית */}
-      <div className="mx-3 mb-3">
-        <Link
-          href="/access"
-          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-xl block"
-        >
-          <div className="flex items-center gap-2.5 rounded-xl px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-amber-400 transition-colors">
+          <div className="flex items-center justify-center gap-2.5 rounded-xl px-4 py-3 text-[12px] font-medium tracking-[0.18em] uppercase border border-amber-500/30 text-amber-300/90 bg-amber-500/[0.04] hover:bg-amber-500/[0.08] hover:text-amber-200 hover:border-amber-400/45 transition-colors duration-300">
+            <LogIn className="size-3.5" />
             <span>{t("nav.investorPortal")}</span>
           </div>
         </Link>
       </div>
 
       {/* שפות */}
-      <div className="mx-3 mb-2">
+      <div className="mx-3 mb-3">
         <LanguageSwitcher />
       </div>
 
-      {/* תחתית — מנורה */}
-      <div className="mx-4 mt-2 mb-2 h-px bg-gradient-to-r from-transparent via-amber-400/20 to-transparent" />
-      <div className="px-6 py-4">
-        <p className="text-[10px] text-amber-400/25 uppercase tracking-[0.2em] font-medium">
-          Institutional Grade
+      {/* תחתית — מינימליסטי, בלי v0.1 */}
+      <div className="mx-5 mt-2 mb-3 h-px bg-gradient-to-r from-transparent via-amber-500/15 to-transparent" />
+      <div className="px-6 pb-5 pt-1">
+        <p className="text-[9px] text-amber-400/35 uppercase tracking-[0.32em] font-medium">
+          Institutional&nbsp;Grade
         </p>
-        <p className="text-[9px] text-zinc-600 uppercase tracking-widest mt-1">
-          {t("common.conceptApp")} &middot; v0.1
+        <p className="text-[9px] text-zinc-600 tracking-[0.2em] mt-1.5">
+          © {new Date().getFullYear()} TAMS
         </p>
       </div>
     </div>
@@ -204,17 +192,23 @@ export default function Navigation() {
         <Menu className="h-5 w-5" />
       </button>
 
-      {/* סיידבר דסקטופ — גבול מנורה מוזהב */}
+      {/* סיידבר דסקטופ — קו זהב דק יחיד, בלי גימיקים */}
       <aside
         className={`hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col fixed inset-y-0 ${isRTL ? "right-0" : "left-0"} z-40
-          backdrop-blur-2xl
-          ${isRTL ? "border-l" : "border-r"} border-zinc-800/40`}
+          backdrop-blur-2xl ${isRTL ? "border-l" : "border-r"} border-amber-500/[0.08]`}
         style={{
-          background: "linear-gradient(180deg, rgba(8,15,28,0.96) 0%, rgba(6,12,24,0.97) 55%, rgba(5,10,20,0.98) 100%)",
-          borderImage: "linear-gradient(to bottom, transparent 5%, rgba(212, 168, 83, 0.36) 30%, rgba(212, 168, 83, 0.24) 50%, rgba(79, 143, 247, 0.28) 70%, transparent 95%) 1",
-          boxShadow: "inset 0 1px 0 rgba(212,168,83,0.1), inset 0 -1px 0 rgba(0,0,0,0.5), 0 0 80px -20px rgba(0,0,0,0.6)",
+          background: "linear-gradient(180deg, rgba(7,12,22,0.94) 0%, rgba(5,10,20,0.96) 60%, rgba(4,8,18,0.97) 100%)",
+          boxShadow: "0 0 60px -20px rgba(0,0,0,0.55)",
         }}
       >
+        {/* קו זהב פנימי — דקיק ומאופק */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-12 ${isRTL ? "left-0" : "right-0"} w-px`}
+          style={{
+            background: "linear-gradient(to bottom, transparent, rgba(212,168,83,0.28) 35%, rgba(212,168,83,0.18) 65%, transparent)",
+          }}
+        />
         <SidebarContent />
       </aside>
 

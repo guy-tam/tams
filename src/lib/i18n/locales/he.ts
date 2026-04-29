@@ -17,7 +17,7 @@ const he: TranslationStrings = {
     investorPortal: "גישה פרטית",
   },
   common: {
-    conceptApp: "אפליקציית מסגרת מושגית",
+    conceptApp: "תצוגת משקיעים",
     version: "גרסה 1.0",
     learnMore: "למידע נוסף",
     close: "סגירה",

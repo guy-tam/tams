@@ -16,7 +16,7 @@ const es: TranslationStrings = {
     investorPortal: "Acceso Privado",
   },
   common: {
-    conceptApp: "Aplicación conceptual",
+    conceptApp: "Vista para inversores",
     version: "Versión",
     learnMore: "Conocer más",
     close: "Cerrar",
